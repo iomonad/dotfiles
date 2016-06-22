@@ -1,0 +1,41 @@
+sys-devel/llvm
+x11-apps/xinit -minimal
+sys-auth/consolekit policykit
+net-misc/networkmanager minimal
+net-misc/networkmanager minimal  nss gnutls  -ncurses -modemmanager  -nss -ppp  -selinux -systemd -test -vala -teamd -bluetooth
+x11-wm/openbox X
+x11-libs/cairo X xcb opengl
+x11-libs/pango X
+app-admin/sudo -nls -pam -sendmail
+media-libs/imlib2 X
+media-sound/mpd alsa network flac audiofile -enventd glib -bzip2 -mad -signalfd -zlib  -curl -tcpd -icu
+net-irc/weechat -spell
+media-libs/libpng apng
+x11-libs/gtk+ X
+www-client/firefox bin ffmpeg -hwaccel -jemalloc3 -jit -gmp-autoupdate
+x11-libs/gdk-pixbuf X
+mail-client/mutt -sasl
+x11-misc/compton X glx
+x11-libs/libxkbcommon X
+x11-libs/libxcb xkb
+virtual/ffmpeg X encode jpeg2k libav mp3 threads x264 network openssl
+media-video/ffmpeg x264 jpeg2k mp3 X network openssl webp v4l
+dev-lang/ghc binarymail-mta/msmtp -nls mta
+net-misc/tor -systemd
+dev-util/radare2 -capstone
+app-misc/binwalk  graph
+dev-libs/libindicate gtk
+media-libs/libcanberra gtk
+dev-libs/libdbusmenu gtk3
+mail-client/claws-mail -libcanberra -libindicate
+dev-libs/libpcre  pcre16
+app-editors/emacs -X -inotify -gtk3 game -acl
+dev-qt/qtwebkit printsupport
+dev-python/PyQt5 widgets webkit  gui network printsupport
+app-admin/conky -iconv -ipv6 -ncurses -portmon
+x11-misc/xmobar -alsa
+net-analyzer/wireshark -perl -gtk3 -qt4
+dev-libs/botan threads
+sys-libs/libstdc++-v3 multilib
+app-emulation/qemu alsa
+dev-qt/qtcreator android

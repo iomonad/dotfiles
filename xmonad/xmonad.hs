@@ -42,7 +42,6 @@ import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..))
 import XMonad.Actions.GridSelect (GSConfig(..), goToSelected, bringSelected, colorRangeFromClassName, buildDefaultGSConfig)
 import XMonad.Actions.DynamicWorkspaces (addWorkspacePrompt, removeEmptyWorkspace)
 import XMonad.Actions.UpdatePointer
-import XMonad.Actions.MouseResize
 import qualified XMonad.Actions.ConstrainedResize as Sqr
 
     -- Layouts modifiers
@@ -69,15 +68,13 @@ import XMonad.Layout.IM (withIM, Property(Role))
 
     -- Prompts
 import XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), Direction1D(..))
+                                  --------------------
 
-------------------------
--- [ CONFIGURATIONS ] --
-------------------------
     -- Styles
 myFont          = "terminus"
-myBorderWidth   = 3
+myBorderWidth   = 4
 myColorBG       = "#181512"
-myColorWhite    = "#eddcd3"
+myColorWhite    = "#683e3e"
 myColorRed      = "#cd546c"
 myColorBrown    = "#989584"
 
@@ -85,19 +82,7 @@ myColorBrown    = "#989584"
 myModMask       = mod4Mask
 myTerminal      = "urxvt"
 
-    -- Prompts colors
-myPromptConfig =
-    defaultXPConfig { font                  = myFont
-                    , bgColor               = myColorBG
-                    , fgColor               = myColorRed
-                    , bgHLight              = myColorBG
-                    , fgHLight              = myColorBrown
-                    , borderColor           = myColorBG
-                    , promptBorderWidth     = myBorderWidth
-                    , height                = 20
-                    , position              = Top
-                    , historySize           = 0
-                    }
+
 
     -- Grid selector colors
 myGridConfig = colorRangeFromClassName
@@ -110,14 +95,11 @@ myGridConfig = colorRangeFromClassName
 myGSConfig colorizer  = (buildDefaultGSConfig myGridConfig)
     { gs_cellheight   = 65
     , gs_cellwidth    = 120
-    , gs_cellpadding  = 10
+    , gs_cellpadding  = 0
     , gs_font         = myFont
     }
 
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----SCRATCHPADS
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--scratchpads
 myScratchpads = 
               [ NS "terminal" "urxvtc_mod -name terminal -e tmux attach"     (resource =? "terminal") myPosition
               , NS "music" "urxvtc_mod -name music -e ncmpcpp"               (resource =? "music")    myPosition
@@ -125,10 +107,7 @@ myScratchpads =
               , NS "wcalc" "urxvtc_mod -name wcalc -e wcalc"                 (resource =? "wcalc")    myPosition
               ] where myPosition = customFloating $ W.RationalRect (1/3) (1/3) (1/3) (1/3)
 
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----KEYBINDINGS
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- keybind
 myKeys =
     -- Xmonad
         [ ("M-C-r",             spawn "xmonad --recompile")
@@ -192,6 +171,7 @@ myKeys =
         , ("M-S-<KP_Divide>",   decreaseLimit)
         , ("M-S-<KP_Multiply>", increaseLimit)
 
+    -- windows hacks
         , ("M-h",               sendMessage Shrink)
         , ("M-l",               sendMessage Expand)
         , ("M-k",               sendMessage zoomIn)
@@ -202,41 +182,29 @@ myKeys =
     -- Workspaces
         , ("<KP_Add>",          moveTo Next nonNSP)
         , ("<KP_Subtract>",     moveTo Prev nonNSP)
-        , ("M-<KP_Add>",        moveTo Next nonEmptyNonNSP)
-        , ("M-<KP_Subtract>",   moveTo Prev nonEmptyNonNSP)
-        , ("M-S-<KP_Add>",      shiftTo Next nonNSP >> moveTo Next nonNSP)
-        , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)
-        , ("M-M1-<KP_Add>",     addWorkspacePrompt myPromptConfig)
+        , ("M-S-<KP_Add>",        moveTo Next nonEmptyNonNSP)
+        , ("M-S-<KP_Subtract>",   moveTo Prev nonEmptyNonNSP)
+        , ("M-<KP_Add>",      shiftTo Next nonNSP >> moveTo Next nonNSP)
+        , ("M-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)
         , ("M-M1-<KP_Subtract>",removeEmptyWorkspace)
 
     -- Apps
         , ("M-<Return>",        spawn "urxvt")
         , ("M-S-<Return>",      spawn "urxvt -e tmux")
-        , ("M-<Space>",         spawn "dmenu_run -nb '#181512' -nf '#989584' -sb '#181512' -sf '#cd546c' -p '>>' -fn 'terminus' -i")
-        , ("C-<Space>",         spawn "pkill dunst")
-        , ("M-g",               spawn "magnet")
-        , ("M-x",               safeSpawn "i3lock" ["-ubi", "/home/logan/images/accueil.png"])
+        , ("M-<Space>",         spawn "rofi")
+        , ("M-g",               spawn "qtox")
+     -- , ("M-x",               safeSpawn "i3lock" ["-ubi", "/home/logan/images/accueil.png"])
         , ("M-f",               raiseMaybe (runInTerm "-name ranger" "ranger") (resource =? "ranger"))
         , ("M-t",               raiseMaybe (runInTerm "-name newsbeuter" "newsbeuter") (resource =? "newsbeuter"))
         , ("M-m",               raiseMaybe (runInTerm "-name mutt" "mutt") (resource =? "mutt"))
-        , ("M-v",               raiseMaybe (runInTerm "-name weechat" "weechat-curses") (resource =? "weechat"))
+     -- , ("M-v",               raiseMaybe (runInTerm "-name weechat" "weechat-curses") (resource =? "weechat"))
         , ("M-o",               raiseMaybe (runInTerm "-name htop" "htop") (resource =? "htop"))
         , ("M-w",               runOrRaise "qutebrowser" (resource =? "Navigator"))
-        , ("M-C-f",             runOrRaise "thunar" (resource =? "thunar"))
-        , ("M-C-<Return>",      runOrRaise "trayerd" (resource =? "trayer"))
-        , ("M-M1-f",            runOrCopy "urxvtc_mod -name ranger -e ranger" (resource =? "ranger"))
-        , ("M-M1-t",            runOrCopy "urxvtc_mod -name newsbeuter -e newsbeuter" (resource =? "newsbeuter"))
-        , ("M-M1-m",            runOrCopy "urxvtc_mod -name mutt -e mutt" (resource =? "mutt"))
-        , ("M-M1-v",            runOrCopy "urxvtc_mod -name weechat -e weechat-curses" (resource =? "weechat"))
-        , ("M-M1-o",            runOrCopy "urxvtc_mod -name htop -e htop" (resource =? "htop"))
-        , ("M-M1-w",            runOrCopy "iceweasel" (resource =? "Navigator"))
-        , ("M-C-A-f",           runOrCopy "thunar" (resource =? "thunar"))
-        , ("M-M1-C-<Return>",   runOrCopy "trayerd" (resource =? "trayer"))
+        , ("C-n",               spawn "tmux new-window")
 
     -- Prompts
         , ("M-,",               goToSelected $ myGSConfig myGridConfig)
         , ("M-S-,",             bringSelected $ myGSConfig myGridConfig)
-        , ("M-:",               changeDir myPromptConfig)
 
     -- Scratchpads
         , ("M-<Tab>",           namedScratchpadAction myScratchpads "terminal")
@@ -252,24 +220,12 @@ myKeys =
         , ("<XF86AudioMute>",   spawn "amixer set Master toggle")
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-        , ("<XF86HomePage>",    safeSpawn "iceweasel" ["/home/logan/.config/infoconf.html"])
-        , ("<XF86Search>",      safeSpawn "iceweasel" ["https://www.duckduckgo.com/"])
-        , ("<XF86Mail>",        runOrRaise "icedove" (resource =? "icedove"))
-        , ("<XF86Calculator>",  runOrRaise "speedcrunch" (resource =? "speedcrunch"))
-        , ("<XF86Eject>",       spawn "toggleeject")
         , ("<Print>",           spawn "scrotd 0")
         ] where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))
 
--- Just disabling the pleb mode, It's tilling gasp.
--- (myMouseKeys = [ ((mod4Mask .|. shiftMask, button3), \w -> focus w >> Sqr.mouseResizeWindow w True) ]    
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----WORKSPACES
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- workspaces
 myWorkspaces = [" i", "ii", "iii", "iv"]
-
 myManageHook = placeHook (withGaps (20,12,12,12) (smart (0.5,0.5))) <+> insertPosition End Newer <+> floatNextHook <+> namedScratchpadManageHook myScratchpads <+>
         (composeAll . concat $
         [ [ resource  =? r --> doF (W.view " i" . W.shift " i")   | r <- myTermApps    ]
@@ -280,19 +236,16 @@ myManageHook = placeHook (withGaps (20,12,12,12) (smart (0.5,0.5))) <+> insertPo
         , [ className =? c --> ask >>= doF . W.sink               | c <- myUnfloatApps ]
         ]) <+> manageHook defaultConfig
         where
-            myTermApps    = ["urxvt", "xterm", "xfce4-terminal", "xfontsel"]
+            myTermApps    = ["termite", "xterm"]
             myWebApps     = ["qutebrowser", "newsbeuter", "mutt"]
-            myMediaApps   = ["easytag", "sonata", "comix", "inkscape", "vlc", "zathura", "gnome-mplayer", "Audacity", "hotot", "ncmpcpp", "weechat", "mplayer", "gimp", "gimp-2.8"]
-            mySystApps    = ["ranger", "thunar", "Thunar", "lxappearance", "geany", "nitrogen", "Qt-subapplication", "gparted", "bleachbit"]
+            myMediaApps   = ["zathura", "ncmpcpp", "weechat", "mplayer","qtox"]
+            mySystApps    = ["ranger", "lxappearance", "Qt-subapplication"]
 
             myFloatApps   = ["Dialog", "htop", "file-roller", "nitrogen", "display", "feh", "xmessage", "trayer"]
             myUnfloatApps = ["Gimp"]
 
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----LAYOUTS
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ renamed [CutWordsLeft 4] $ maximize $ minimize $ boringWindows $ spacing 14 $
+myLayoutHook = avoidStruts $ windowArrange $ T.toggleLayouts float $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ renamed [CutWordsLeft 4] $ maximize $ minimize $ boringWindows $ spacing 0 $
                 onWorkspace " i"  myTermLayout  $
                 onWorkspace "ii"  myWebLayout   $
                 onWorkspace "iii" myMediaLayout $
@@ -313,68 +266,20 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
         float           = renamed [Replace "float"]        $ limitWindows 20   simplestFloat
         gimp            = renamed [Replace "gimp"]         $ limitWindows 5  $ withIM 0.11 (Role "gimp-toolbox") $ reflectHoriz $ withIM 0.15 (Role "gimp-dock") Full
 
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----STATUSBAR
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-myBitmapsDir = "/home/logan/.xmonad/statusbar/icons"
-myXmonadBarL = "dzen2 -x '0' -y '0' -h '16' -w '680' -ta 'l' -fg '"++myColorWhite++"' -bg '"++myColorBG++"' -fn '"++myFont++"'" 
-myXmonadBarR = "conky -c /home/logan/.xmonad/statusbar/conky_dzen | dzen2 -x '680' -y '0' -w '1000' -h '16' -ta 'r' -bg '"++myColorBG++"' -fg '"++myColorWhite++"' -fn '"++myFont++"'"
-
-myLogHook h  = dynamicLogWithPP $ defaultPP
-      { ppOutput           = hPutStrLn h
-      , ppCurrent          = dzenColor myColorRed myColorBG . pad
-      , ppHidden           = dzenColor myColorBrown myColorBG  . noScratchPad
-      , ppHiddenNoWindows  = dzenColor myColorBG myColorBG   . noScratchPad
-      , ppSep              = dzenColor myColorRed myColorBG "  "
-      , ppWsSep            = dzenColor myColorRed myColorBG ""
-      , ppTitle            = dzenColor myColorBrown myColorBG  . shorten 50
-      , ppOrder            = \(ws:l:t:_) -> [ws,l,t]
-      , ppLayout           = dzenColor myColorRed myColorBG  .
-                             (\x -> case x of
-                                 "oneBig"       -> "   ^i("++myBitmapsDir++"/mini/nbstack.xbm)"
-                                 "space"        -> "   ^i("++myBitmapsDir++"/mini/nbstack.xbm)"
-                                 "lined"        -> "   ^i("++myBitmapsDir++"/mini/bstack2.xbm)"
-                                 "monocle"      -> "   ^i("++myBitmapsDir++"/mini/monocle.xbm)"
-                                 "grid"         -> "   ^i("++myBitmapsDir++"/mini/grid.xbm)"
-                                 "float"        -> "   ^i("++myBitmapsDir++"/mini/float.xbm)"
-                                 "gimp"         -> "   ^i("++myBitmapsDir++"/fox.xbm)"
-                                 "Full"         -> "   ^i("++myBitmapsDir++"/mini/monocle2.xbm)"
-                                 _              -> x
-                             )
-      } where noScratchPad ws = if ws == "NSP" then "" else pad ws
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----AUTOSTART
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- startup & co
 myStartupHook = do
-  --        spawnOnce "xsetroot -cursor_name left_ptr &"
-  --        spawnOnce "sh ~/.fehbg &"
-  --        spawnOnce "mpd &"
           spawnOnce "unclutter &"
           spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
-  --        spawnOnce "xautolock -time 15 -locker 'i3lock -ubi /home/logan/images/accueil.png' &"
-  --        spawnOnce "gnome-keyring-daemon --start --components=pkcs11 &"         
-  --        spawnOnce "urxvtc_mod -name terminal -e tmux &"
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----CONFIG
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          spawnOnce "urxvt -e tmux attach || urxvt -e tmux"
 main = do
-    dzenLeftBar  <- spawnPipe myXmonadBarL
-    dzenRightBar <- spawnPipe myXmonadBarR
     xmonad       $  azertyConfig
         { modMask            = myModMask
-        , terminal           = myTerminal
-        , manageHook         = myManageHook 
-        , layoutHook         = myLayoutHook 
-  --      , logHook            = myLogHook dzenLeftBar >> updatePointer (Relative 0.5 0.5) 
-        , startupHook        = myStartupHook
-        , workspaces         = myWorkspaces
-        , borderWidth        = myBorderWidth 
-        , normalBorderColor  = myColorBG
-        , focusedBorderColor = myColorWhite
+           , terminal           = myTerminal
+           , manageHook         = myManageHook 
+           , layoutHook         = myLayoutHook 
+           , startupHook        = myStartupHook
+           , workspaces         = myWorkspaces
+           , borderWidth        = myBorderWidth 
+           , normalBorderColor  = myColorBG
+           , focusedBorderColor = myColorWhite
         } `additionalKeysP`         myKeys 
-  --        `additionalMouseBindings` myMouseKeys <-- Only for plebs

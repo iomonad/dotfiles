@@ -1,0 +1,152 @@
+#
+# bspwm hotkeys
+#
+
+super + shift + Escape
+    bspc quit
+
+# close and kill
+super + {_,shift + }q
+    bspc node -{c,k}
+
+super + shift + t
+    bspc desktop -l next
+
+super + {t,s,f}
+    bspc node -t {tiled,floating,fullscreen}
+
+super + l
+    bspc node -t pseudo_tiled
+
+# Focus the last window/desktop
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+# Swap the focused window with the last window
+super + apostrophe
+    bspc node -s last
+
+# Focus the next older/newer window
+super + {o,i}
+    bspc control --record-history off; \
+    bspc node {older,newer} -f; \
+    bspc control --record-history on
+
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+super + y
+    bspc node -n last.!automatic
+
+super + m
+    bspc node -s biggest
+
+# Circulate the leaves of the tree of the focused desktop
+super + {c,shift + c}
+    bspc node @/ --circulate {forward,backward}
+
+super + ctrl + comma
+    bspc node @/ --rotate 90
+
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }c
+    bspc node -f {next,prev}
+
+super + {comma,period}
+    bspc desktop -C {backward,forward}
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}
+
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + ctrl + {_,shift + }space
+    bspc {node -p cancel,desktop -c}
+
+super + alt + {h,j,k,l}
+    bspc node -e {west -10,south +10,north -10,east +10}
+
+super + alt + shift + {h,j,k,l}
+    bspc node -e {right -10,up +10,down -10,left +10}
+
+super + ctrl + {1-9}
+    bspc node -r 0.{1-9}
+
+super + {Left,Down,Up,Right}
+    xdo move {-x -20,-y +20,-y -20,-x +20}
+
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+# Balance windows
+super + b
+   bspc desktop --balance
+
+~button1
+    bspc pointer -g focus
+
+super + button{1,2,3}
+    bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1,2,3}
+    bspc pointer -t %i %i
+
+super + @button{1,2,3}
+    bspc pointer -u
+
+# ~~~~~~~~~~~~~~~~~~~~"~~~"~~~~~~~
+# wm independent hotkeys
+#~~~~~~~~~~"~~~~~~~"~~~~~~~~~~~~~~
+
+super + Return
+    urxvt 
+
+super + space
+    rofi -show run
+    
+super + p
+    keepassx
+
+super + n
+    tmux new-window     
+super + F3
+    pamixer -i 2
+
+super + w
+    qutebrowser
+
+mod4 + BackSpace
+    comptontoggle.sh
+
+super + g
+    qtox
+
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
+

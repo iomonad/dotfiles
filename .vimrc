@@ -147,35 +147,18 @@ set nocompatible               " be iMproved
 
   " Generic Statusline {{{
   function! SetStatus()
-    setl statusline+=
-          \%1*\ %f
-          \%H%M%R%W%7*\ ┃
-          \%2*\ %Y\ <<<\ %{&ff}%7*\ ┃
+    setl statusline=%f
   endfunction
 
   function! SetRightStatus()
-    setl statusline+=
-          \%5*\ %{StatusFileencoding()}%7*\ ┃
-          \%5*\ %{StatusBuffersize()}%7*\ ┃
-          \%=%<%7*\ ┃
-          \%5*\ %{StatusWrapON()}
-          \%6*%{StatusWrapOFF()}\ %7*┃
-          \%5*\ %{StatusInvisiblesON()}
-          \%6*%{StatusInvisiblesOFF()}\ %7*┃
-          \%5*\ %{StatusExpandtabON()}
-          \%6*%{StatusExpandtabOFF()}\ %7*┃
-          \%5*\ w%{StatusTabstop()}\ %7*┃
-          \%3*\ %l,%c\ >>>\ %P
-          \\
+    setl statusline=
   endfunction " }}}
-
   " Update when leaving Buffer {{{
   function! SetStatusLeaveBuffer()
     setl statusline=""
     call SetStatus()
   endfunction
   au BufLeave * call SetStatusLeaveBuffer() " }}}
-
   " Update when switching mode {{{
   function! SetStatusInsertMode(mode)
     setl statusline=%4*
@@ -195,8 +178,6 @@ set nocompatible               " be iMproved
   au InsertEnter  * call SetStatusInsertMode(v:insertmode)
   au InsertLeave  * call SetStatusInsertMode('normal')
   au BufEnter     * call SetStatusInsertMode('normal') " }}}
-
-  " Some Functions shamelessly ripped and modified from Cream
   "fileencoding (three characters only) {{{
   function! StatusFileencoding()
     if &fileencoding == ""
@@ -405,21 +386,24 @@ set nocompatible               " be iMproved
 " }}}$p
 " Headers  {{{
 "    ====[ C ] ====
-autocmd bufnewfile *.c so ~/.vim/headers/c_header.txt
-autocmd bufnewfile *.c exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd bufnewfile *.c exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
-autocmd Bufwritepre,filewritepre *.c execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
-autocmd bufwritepost,filewritepost *.c execute "normal `a"
+"autocmd bufnewfile *.c so ~/.vim/headers/c_header.txt
+"autocmd bufnewfile *.c exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+"autocmd bufnewfile *.c exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+"autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+"autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+"autocmd bufwritepost,filewritepost *.c execute "normal `a"
 
 "   ====[ C++ ]====
-autocmd bufnewfile *.cpp so ~/.vim/headers/cpp_header.txt
-autocmd bufnewfile *.cpp exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd bufnewfile *.cpp exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
-autocmd Bufwritepre,filewritepre *.c execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
-autocmd bufwritepost,filewritepost *.c execute "normal `a"
+"autocmd bufnewfile *.cpp so ~/.vim/headers/cpp_header.txt
+"autocmd bufnewfile *.cpp exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+"autocmd bufnewfile *.cpp exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+"autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+"autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+"autocmd bufwritepost,filewritepost *.c execute "normal `a"
 "}}}
 
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "vim: fdm=marker
+
+"42 headers
+source ~/.vim/headers/make_header.vim
