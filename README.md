@@ -1,4 +1,4 @@
-'''
+```
 
 # ~/. files 
 Here you can find configuration files for my several setup:
@@ -10,4 +10,4 @@ Here you can find configuration files for my several setup:
 - weechat
 - mutt
 
-'''
+```
