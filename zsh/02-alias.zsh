@@ -327,33 +327,6 @@ losefile() {rm /media/data/Filez/$1}
 # xclip
 # ZSH named directory "~Dropbox"
 
-dbheader() {
-	echo -e " Dropbox - $(dropbox status)
-======================================================"
-}
-
-dbshorturl() {
-	url=$(cush -o -- $(dropbox puburl ~Dropbox/Public/$1))
-	echo -n $url | xclip
-	echo $url
-}
-
-dbup() {
-	dbheader
-	cp $1 /media/data/Dropbox/Public
-	dbshorturl $1
-}
-
-dbls() {
-	dbheader
-	dropbox ls /media/data/Dropbox/$1
-}
-
-dburl() {
-	dbheader
-	dbshorturl $1
-}
-# }}}
 
 # {{{ Function to switch packer/pacman-color, depending on options used
 pac() {
