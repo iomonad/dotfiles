@@ -1,0 +1,11 @@
+set autocomplete
+colors phallus
+
+set noscrollbars
+
+map J gT
+map K gt
+
+map <silent> <C-F1> :js toggle_bottombar()<CR>
+
+
