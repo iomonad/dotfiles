@@ -2,9 +2,22 @@
 !#include </home/seyt/.xres.d/crayolo/colors/5725>
 !#include </home/seyt/.xres.d/crayolo/Xresources>
 
-#include </home/seyt/.xres.d/colors/erosion>
+#include </home/seyt/.xres.d/colors/erosiondark>
+
+! run "fc-list" for a list of available fonts
+!! Terminus font
 *font: xft:terminus:style=bold:pixelsize=12
 *boldFont: xft:terminus:style=bold:pixelsize=12
+
+!! Lemon Font
+
+urxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*letterSpace: 1
+URxvt*allow_bold: true
+
 
 !! Creep Font
 !URxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
