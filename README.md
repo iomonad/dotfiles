@@ -1,3 +1,4 @@
+# ~/.*
 ```
                                                                 '.
              Look like other dotfiles repo right ?             ,;c
