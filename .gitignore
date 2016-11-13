@@ -15,3 +15,7 @@ vimperator/info/default/history-command
 vimperator/info/default/history-search
 newsbeuter/cache.db
 newsbeuter/log
+weechat/irc.conf
+weechat/logs
+weechat/weechat.log
+weechat/weechat_fifo_22740
