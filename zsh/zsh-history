@@ -16,4 +16,8 @@
 : 1479050130:0;git reset
 : 1479050134:1;vim .git
 : 1479050137:282;vim .gitignore
-: 1479050420:0;exit
+: 1479050547:0;cat .mutt/mailboxes
+: 1479050553:0;cat .mutt/mailcap
+: 1479050555:0;exit
+: 1479050893:0;pkill compton
+: 1479050896:0;compton

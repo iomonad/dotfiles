@@ -1,0 +1,132 @@
+#appcontent,
+#appcontent > #content,
+#appcontent > #content > tabbox > tabpanels {
+	background: #1f1f1f !important;
+}
+
+#browser { margin-top: -1px !important; }
+
+#main-window[stylish-url="about:blank"]:not([onclose^="PrintUtils"]):not([title^="Source Chart"]):not([chromehidden="menubar toolbar directories extrachrome "]) #content browser:not([src]) {
+	opacity: 0 !important;
+}
+
+a:active {
+	outline: none !important;
+}
+
+.tabbrowser-arrowscrollbox > .scrollbutton-up,
+.tabbrowser-arrowscrollbox > .scrollbutton-down,
+toolbarbutton#appmenu-toolbar-button,
+toolbarbutton#alltabs-button,
+toolbarbutton#new-tab-button,
+.tab-icon-image,
+.tabs-closebutton-box,
+.tabs-border-bottom,
+.tab-close-button {
+	display: none !important;
+}
+
+tabs#tabbrowser-tabs, tabs#tabbrowser-tabs * {
+	-moz-appearance: none !important;
+	border-radius: 0px !important; 
+	border: none !important;
+	border-bottom: 0px none !important;
+	background-image: none !important;
+	margin-top: 0px !important;
+	max-height: 14px !important;
+	min-height: 14px !important;        
+}
+
+tabs#tabbrowser-tabs {
+	background: #1f1f1f !important;
+	padding-top: 0px !important;
+	margin-left: 0px !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	border-bottom: 0px none !important;
+	text-align: center !important;
+	/*box-shadow: inset 0px -4px 2px rgba(0,0,0,0.1) !important;*/
+}
+
+.tabbrowser-tab {
+	max-height: 14px !important;
+	margin-left: 0px !important;
+	padding-top: 2px !important;
+	color: #775759 !important;
+	border-bottom: 0px none !important;
+	background: #1f1f1f !important;
+	/*box-shadow: inset 0px -4px 2px rgba(0,0,0,0.1) !important;*/
+
+}
+
+.tabbrowser-tab[selected=true] {
+	color: #c0b18b !important;
+	background: #1f1f1f !important;
+	border-bottom: 0px none !important;
+	box-shadow: none !important;
+}
+
+.tabbrowser-tab .tab-text {
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+	margin-top: 2px !important;
+	font-size: 10px !important;
+	font-family: Dweep !important;
+}
+
+/* Hide the new curved tab edges */
+.tab-background {
+    opacity: 0 !important;
+}
+
+/* Hide the little graphic seperator between inactive tabs */
+.tabbrowser-tab:before,
+.tabbrowser-tab:after {
+    visibility: hidden !important;
+}
+
+html {
+	overflow: hidden;
+}
+
+#urlbar dropmarker,
+#identity-box,
+#star-button,
+#go-button,
+.tab-throbber,
+.tabs-newtab-button,
+.tab-throbber[progress] {
+	display: none !important;
+}
+
+.titlebar-placeholder[type="caption-buttons"] {
+	margin-left: 10px !important;
+}
+
+.tabbrowser-tabs:not([drag=detach]) > .tabbrowser-tab:not([pinned])[fadein] {
+	min-width: 30px !important;
+	max-width: 130px !important;
+}
+
+.searchbar-engine-image {
+	display: none !important;
+}
+.search-go-button {
+	display: none !important;
+}
+#nav-bar {
+	background-image: none !important;
+	background-color: #1c1c1c !important;
+	border: none !important;
+	margin-bottom: 0 !important;
+	padding: 0 !important;
+}
+#url-bar {
+	background: none !important;
+	border: none !important;
+	border-radius: 1px 0 0 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	color: #1c1c1c !important;
+}
+#statusbar-display { display: none !important; }
