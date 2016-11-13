@@ -11,3 +11,7 @@ lein/repl-history
 lein/self-installs/
 ranger/history
 zsh/zsh-history
+vimperator/info/default/history-command
+vimperator/info/default/history-search
+newsbeuter/cache.db
+newsbeuter/log

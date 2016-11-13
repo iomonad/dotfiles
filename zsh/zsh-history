@@ -18,6 +18,8 @@
 : 1479050137:282;vim .gitignore
 : 1479050547:0;cat .mutt/mailboxes
 : 1479050553:0;cat .mutt/mailcap
-: 1479050555:0;exit
 : 1479050893:0;pkill compton
-: 1479050896:0;compton
+: 1479051777:0;lsd
+: 1479051817:0;cp docs/rice/dotfiles/windelicato/.compton.conf ~/etc/compton/compton.conf
+: 1479051819:5;compton
+: 1479051825:0;exit
