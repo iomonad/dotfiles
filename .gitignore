@@ -19,3 +19,4 @@ weechat/irc.conf
 weechat/logs
 weechat/weechat.log
 weechat/weechat_fifo_22740
+zsh/zsh-history
