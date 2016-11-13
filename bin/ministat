@@ -1,0 +1,94 @@
+#!/bin/sh
+## system info as a popup notification using bar
+## dkeg 2016
+
+## colors and  fonts
+  . $HOME/bin/popconf
+## glyphs
+  . $HOME/.glyphs
+
+## extras
+  SEP="   "
+  SEP2=" "
+  a=$alpha4
+
+## information section
+    memory() {
+        mem=$(free -m | awk 'NR==2 {print $3}')
+         if [ $mem -gt "500" ]; then
+           echo %{F$a$red}$glymem$SEP$mem%{F-}
+         else
+           echo %{F$a$grn}$glymem$SEP$mem%{F-}
+         fi
+    }
+    temperature() {
+      temp=$(cat /sys/class/thermal/thermal_zone0/temp | awk '{print $1/1000}')
+      if [ $temp -gt "60" ]; then
+        echo %{F$a$red}$glytemp$SEP$temp%{F-}
+      else
+        echo %{F$a$blu}$glytemp$SEP$temp%{F-}
+      fi
+    }
+    bat() {
+        level=$(cat /sys/class/power_supply/BAT0/capacity) 
+        state=$(cat /sys/class/power_supply/BAT0/status)
+        if [ $state = "Discharging" ] && [ $level -lt '25' ] ;then #&& [ $level -gt '14' ] ; then
+            echo %{F$a$red}$level" !"%{F-}
+        else
+            #echo $level 
+            echo %{F$a$ylw}$level%{F-} 
+        fi
+	  }
+    batterystate() {
+        state=$(cat /sys/class/power_supply/BAT0/status)
+        lvl=$(cat /sys/class/power_supply/BAT0/capacity) 
+        
+        case $state in
+            "Charging")
+                current=%{F$a$grn}$glychrg ;;
+            "Discharging")
+                if [ $lvl -lt '10' ]; then
+                    current=%{F$a$red}$glybattpanic
+                elif [ $lvl -gt '10' ] && [ $lvl -lt '25' ]; then
+                    current=%{F$a$red}$glybattlower
+                elif [ $lvl -gt '24' ] && [ $lvl -lt '50' ]; then
+                    current=%{F$a$ylw}$glybattlow
+                elif [ $lvl -gt '49' ] && [ $lvl -lt '75' ]; then
+                    current=%{F$a$ylw}$glybattmid
+                elif [ $lvl -gt '74' ] && [ $lvl -lt '90' ]; then
+                    current=%{F$a$ylw}$glybatt34
+                else
+                    current=%{F$a$grn}$glybattclose 
+                fi ;;
+            "Full")
+                current=%{F$a$grn}$glybattfull ;;
+        esac
+        echo $current%{F-}
+    }
+	vol() {
+        vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2) #sed -e 's/[//g') 
+        mut=$(amixer get Master | awk 'NR==5 {print $6}')
+        head=$(cat "/proc/asound/card0/codec#0" | awk 'NR==141 {print $2}')
+          if [ $mut = "[off]" ] ;then
+              #echo "$glymute  M"
+              echo %{F$a$mag}$glymute$SEP'M'$SEP2
+          elif [ $head = "0x00:" ] ;then
+              echo %{F$a$mag}$glylistn$SEP$vol$SEP2
+          else
+              #echo "$glyvol  $vol"
+              echo %{F$a$cyn}$glyvol$SEP$vol$SEP2
+          fi
+	  }
+    wireless() {
+      wifi=$(awk 'NR==3 {printf("%2.2d\n", ($3/70)*100)}' /proc/net/wireless)
+       if [ $wifi -lt 70 ]; then 
+         strength=%{F$a$red}$glywifi3%{F$a$red}$SEP2$wifi
+       elif [ $wifi -ge 70 ] && [ $wifi -lt 90 ]; then
+         strength=%{F$a$ylw}$glywifi2%{F$a$ylw}$SEP2$wifi
+       else #[ $wifi -gt 90 ]; then 
+         strength=%{F$a$grn}$glywifi%{F$a$grn}$SEP2$wifi
+       fi
+      echo $strength 
+    }
+## populate and display
+popnotify "%{c}$(memory)$SEP$(vol)$SEP$(batterystate)$SEP2$(bat)$SEP$(temperature)$SEP$(wireless)"

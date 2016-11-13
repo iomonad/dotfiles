@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+use strict;
+use warnings FATAL => 'all';
+use File::Copy;
+use File::Path          qw(make_path);
+use File::LsColor qw(ls_color_internal);
+
+*ls_color = *ls_color_internal;
+
+_mkdir(@ARGV);
+
+sub _mkdir {
+  for my $file(@_) {
+    if(-f $file) {
+      if($file =~ m|(.+)[.].+$|) { # I know, works for me for now.
+        my $new_dir = $1;
+        if(make_path($new_dir)) {
+          if(File::Copy::move($file, $new_dir)) {
+            # `vim.vim.html' -> `ggtg/vim.vim.html'
+            printf "`%s' -> `%s/%s'\n",
+              ls_color($file), ls_color($new_dir), ls_color($file);
+          }
+          else {
+            die "ERROR: $@\n";
+          }
+        }
+        else {
+          die "WARNING: $@\n";
+        }
+      }
+    }
+  }
+}

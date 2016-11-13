@@ -1,0 +1,7 @@
+#!/bin/sh
+
+stumpish echo $(
+  mpc --host $MPD_HOST \
+      --format "%file%" |
+      head -1
+)

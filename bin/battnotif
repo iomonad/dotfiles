@@ -1,0 +1,29 @@
+#!/bin/sh
+# dkeg 2014
+# Notifications using Lemonboy BAR for battery alerts
+
+. $HOME/bin/popconf
+
+## You're battery config may be different
+BATT=/sys/class/power_supply/BAT0
+CAPACITY=$(cat $BATT/capacity)
+STATE=$(cat $BATT/status)
+
+MSG='  Battery level'
+URGENT='  Yo! Battery'
+
+## Only show notifications if Discharging
+## Only show once battery level below 70
+    if [ ${STATE} = "Discharging" ] ; then
+    case ${CAPACITY} in
+        [0-9])
+            popper "${URGENT}" "${CAPACITY}"
+            ;;
+        [1-4]*)
+            popper "${MSG}" "${CAPACITY}"
+            ;;
+        [4-6]*)
+            popper "${MSG}" "${CAPACITY}"
+            ;;
+    esac
+    fi

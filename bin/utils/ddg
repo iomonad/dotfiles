@@ -1,0 +1,67 @@
+#!/usr/bin/perl
+use vars qw($VERSION);
+my $APP  = 'ddg';
+$VERSION = '0.004';
+
+use strict;
+use encoding 'utf8';
+use Term::ExtendedColor qw(fg bg);
+use WWW::Search::DuckDuckGo qw(ddg);
+use Data::Dumper;
+
+{
+  package Data::Dumper;
+  no strict 'vars';
+  $Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;
+  $Quotekeys = 0;
+}
+
+my $query = shift // "perl";
+
+my $results = ddg($query);
+
+
+
+for my $type(keys(%{$results})) {
+  if($results->{$type} ne "") {
+    printf("%s: \e[38;5;32m%s\e[0m\n", $type, $results->{$type});
+  }
+}
+
+
+
+
+
+
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+ddg - duckduckgo command-line search utility
+
+=head1 SYNOPSIS
+
+  ddg [QUERY]
+
+=head1 AUTHOR
+
+  Magnus Woldrich
+  CPAN ID: WOLDRICH
+  magnus@trapd00r.se
+  http://japh.se
+
+=head1 REPORTING BUGS
+
+Report bugs on rt.cpan.org or to magnus@trapd00r.se
+
+=head1 COPYRIGHT
+
+Copyright (C) 2011 Magnus Woldrich. All right reserved.
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+# Example script that shows how one can use Mplayer::NowPlaying
+
+use strict;
+use Mplayer::NowPlaying;
+
+my $log = "$ENV{HOME}/.mplayerlog";
+my $c   = now_playing($log, 'identify'); 
+
+if( (!-t STDOUT) or (@ARGV) ) {
+  printf("mplayer: %s  { [ %s - %s (%s) [%s] ] }\n", 
+    $c->{file}, $c->{artist}, $c->{title}, $c->{album}, $c->{year},
+  );
+  exit 0;
+}
+
+for my $wanted(qw(artist album title file year)) {
+  printf("%7s: %s\n", ucfirst($wanted), $c->{$wanted})
+    unless(!exists($c->{$wanted}));
+}

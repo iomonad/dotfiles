@@ -1,0 +1,58 @@
+#! /bin/bash
+
+## dkeg 2015
+## 2bwmColor
+## Whenever you change your xcolor run this and your wm (2bwm) borders will keep with you chosen color scheme!
+## requires xdotool
+
+. $HOME/bin/colr
+
+# merge in case we forgot
+xrdb merge ~/.Xresources
+
+# get current xcolors
+  BG="#$bg"
+  FG="#$fg"
+  BLK="#$blk"
+  BBLK="#$bblk"
+  RED="#$red"
+  GRN="#$grn"
+  YLW="#$ylw"
+  BLU="#$blu"
+  MAG="#$mag"
+  CYN="#$cyn"
+  WHT="#$wht"
+
+# wm border color options
+  foc=$YLW
+  unfoc=$BLK
+  fixc=$RED
+  unkil=$CYN
+  fixunk=$MAG
+  outr=$BG
+  emp=$BG
+
+# set paths 
+  dir=$HOME/git/2bwm
+  file=$HOME/git/2bwm/config.h
+
+# take the colors from the config.h and place into an array  
+  wmcol=$(cat $file|grep "*colors"|awk '{print $6}'|cut -d '}' -f1|awk '{gsub(/"/," ");print $2,$4,$6,$8,$10,$12,$14}')
+  arr=($wmcol)
+
+# action; set the new colors
+   sed -i "s/${arr[0]}/"$foc"/;
+           s/${arr[1]}/"$unfoc"/;
+           s/${arr[2]}/"$fixc"/;
+           s/${arr[3]}/"$unkil"/;
+           s/${arr[4]}/"$fixunk"/;
+           s/${arr[5]}/"$outr"/;
+           s/${arr[6]}/"$emp"/" $file 
+# test
+#  echo ${arr[*]}
+  
+# compile
+  cd $dir && make && sudo make install && cd
+
+# reload
+  xdotool key "super+ctrl+r"

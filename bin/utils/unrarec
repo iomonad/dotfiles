@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+# vim: ft=perl:
+use strict;
+use vars qw($VERSION);
+
+my $APP  = 'unrarec';
+$VERSION = '0.002';
+use Data::Dumper;
+
+{
+  package Data::Dumper;
+  no strict 'vars';
+  $Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;
+  $Quotekeys = 0;
+}
+use Cwd qw(getcwd);
+#use Data::Printer;
+use File::Find::Rule;
+use File::Spec;
+
+my $start_path = File::Spec->rel2abs(shift);
+my $old_path   = getcwd();
+
+#chdir($start_path) or die $!;
+
+my $dirs = { };
+map { s{(.*)/.+[.]rar$}{$1}; $dirs->{$_}=1 } grep {
+  ! /.+\/S(?:ample|ub|creen)s?/ }
+    File::Find::Rule->file()
+      ->name('*.rar')
+      ->in($start_path);
+
+printf "\e[38;5;30;1m%s\e[m:\n", $start_path;
+for my $k(sort keys(%{ $dirs })) {
+  printf "  \e[38;5;30m%s\e[m\n", File::Spec->abs2rel($k);
+}
+
+#print "$_\n" for sort { $dirs->{$b} <=> $dirs-{$a} };
+
+print "\e[1mok\e[m? [y/N] ";
+chomp(my $response = <>);
+if(lc($response) ne 'y') {
+  die "Bailing out...\n";
+}
+for my $d(sort(keys(%$dirs))) {
+  chdir $d or die "chdir $d: $!\n";
+  #warn "chdir $d\n";
+  system('unrar', '-kb', '-o-', 'x', '*.rar');
+}
+
+chdir $old_path or warn "chdir $old_path: $!\n";
+
+BEGIN {
+  printf "\e[?7t"
+}
+END {
+  printf "\e[?7t"
+}

@@ -1,0 +1,12 @@
+#!/bin/sh
+# This will query the terminal for the current font in use. It will only work
+# in xterm compatible terminals.
+# urxvt note: you *must* have enabled frills *and* you must set the insecure
+# resource. xterm is 'insecure' by default.
+
+printf "\033]710;?\007"; xxd
+printf "\033]711;?\007"; xxd
+printf "\033]712;?\007"; xxd
+printf "\033]713;?\007"; xxd # urxvt boldItalic
+
+printf "\033]50;?\007"; xxd

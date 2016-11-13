@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+$0 = basename($0);
+use strict;
+use warnings FATAL => 'all';
+
+my $command = shift || 'uptime';
+
+open(my $fh, '<', "$ENV{HOME}/.ssh/config") or die $!;
+my @hosts;
+while(my $l = <$fh>) {
+  next if $l =~ /^#/;
+  if ($l =~ m/^[Hh]ost\s+([\w.]+)/ and $1 ne $ENV{HOSTNAME}) {
+    push(@hosts, $1);
+  }
+}
+
+#close(STDERR) or die "cant close STDERR: $!\n";
+for my $h(sort(@hosts)) {
+  if(-t STDOUT) {
+   print STDERR sprintf "%-10s ", $h;
+  }
+  system('ssh', '-o', 'ConnectTimeout=2', $h, $command);
+}
+if(-t STDOUT) {
+  #printf "%-10s ", $ENV{HOSTNAME};
+  print STDERR sprintf "%-10s ", $ENV{HOSTNAME};
+}
+else {
+  #print STDERR sprintf "%-10s ", $ENV{HOSTNAME};
+}
+system($command) ;
+
+END {
+#  open(STDERR, '>', '/dev/fd/2') or die "Cant reopen STDERR: $!\n";
+}

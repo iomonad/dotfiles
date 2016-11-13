@@ -1,0 +1,118 @@
+#!/bin/bash
+## system info as a popup notification using lemonbar
+## dkeg 2015 
+
+## colors and  fonts
+  . $HOME/bin/popconf
+## glyphs
+  . $HOME/.glyphs
+
+## extras
+  SEP="   "
+  SEP2=" "
+  a=$alpha
+## information section
+    memory() {
+        mem=$(free -m | awk 'NR==2 {print $3}')
+         if [ $mem -gt "500" ]; then
+           echo %{F$a$red}$glymem$SEP$mem%{F-}
+         else
+           echo %{F$a$grn}$glymem$SEP$mem%{F-}
+         fi
+    }
+    temperature() {
+      temp=$(cat /sys/class/thermal/thermal_zone0/temp | awk '{print $1/1000}')
+      if [ $temp -gt "60" ]; then
+        echo %{F$a$red}$glytemp$SEP$temp%{F%}
+      else
+        echo %{F$a$blu}$glytemp$SEP$temp%{F%}
+      fi
+    }
+    bat() {
+        level=$(cat /sys/class/power_supply/BAT0/capacity) 
+        state=$(cat /sys/class/power_supply/BAT0/status)
+        if [ $state = "Discharging" ] && [ $level -lt '25' ] ;then
+            echo %{F$a$red}$level" !"%{F-}
+        else
+            echo %{F$a$ylw}$level%{F-} 
+        fi
+	  }
+    batterystate () {
+        state=$(cat /sys/class/power_supply/BAT0/status)
+        lvl=$(cat /sys/class/power_supply/BAT0/capacity) 
+        
+        case $state in
+            "Charging")
+                current=%{F$a$grn}$glychrg ;;
+            "Discharging")
+                if [ $lvl -lt '10' ]; then
+                    current=%{F$a$red}$glybattpanic
+                elif [ $lvl -gt '10' ] && [ $lvl -lt '25' ]; then
+                    current=%{F$a$red}$glybattlower
+                elif [ $lvl -gt '24' ] && [ $lvl -lt '50' ]; then
+                    current=%{F$a$ylw}$glybattlow
+                elif [ $lvl -gt '49' ] && [ $lvl -lt '75' ]; then
+                    current=%{F$a$ylw}$glybattmid
+                elif [ $lvl -gt '74' ] && [ $lvl -lt '90' ]; then
+                    current=%{F$a$ylw}$glybatt34
+                else
+                    current=%{F$a$grn}$glybattclose 
+                fi ;;
+            "Full")
+                current=%{F$a$grn}$glybattfull ;;
+        esac
+        echo $current%{F-}
+    }
+	  clockdate() {
+	    clockd=%{F$a$cyn}$glycal$(date +%{F$a$wht}' %d   %b ''  '%{F$a$mag}'  '$glyclock%{F$a$wht}'  %R') 
+	   echo $clockd$SEP2
+	  }
+    clocktime() {
+        clockt=$(date +%{F$a$red}$SEP$glycal'  %R')
+        echo $clockt
+    }
+	vol() {
+        vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)
+        mut=$(amixer get Master | awk 'NR==5 {print $6}')
+        head=$(cat "/proc/asound/card0/codec#0" | awk 'NR==141 {print $2}')
+        if [ $mut = "[off]" ] ;then
+            echo %{F$a$mag}$glymute$SEP'M'$SEP2
+        elif [ $head = "0x00:" ] ;then
+            echo %{F$a$mag}$glylistn$SEP$vol$SEP2
+        else
+            echo %{F$a$cyn}$glyvol$SEP$vol$SEP2
+        fi
+	  }
+    music() {
+        ARTIST=$( cmus-remote -Q 2>/dev/null | grep "tag artist " | cut -d " " -f 3- )
+        TITLE=$( cmus-remote -Q 2>/dev/null | grep title | cut -d " " -f 3- )
+        STATE=$( cmus-remote -Q 2>/dev/null | grep status | cut -d " " -f 2- )
+        DURATION=$( cmus-remote -Q 2>/dev/null | grep duration | cut -d " " -f 2- )
+        POSITION=$( cmus-remote -Q 2>/dev/null | grep position | cut -d " " -f 2- ) 
+        dur=$(( $DURATION ))
+        pos=$(( $POSITION ))
+        if [ -z "$ARTIST" ] ;then
+            ek=$glynote$SEP---
+        else
+            ek="$glylistn$SEP2$ARTIST"
+            case $STATE in
+                paused)    ek="%{F$a$ylw}%{F-}$SEP%{U$a$ylw}$SEP%{+u}%{F$a$wht}$ARTIST%{-u}$SEP%{F$a$ylw}$SEP$glypause%{F$a$wht}$SEP$POSITION/$DURATION%{F-}" ;;
+                playing)   ek="%{F$a$grn}%{F-}$SEP%{U$a$grn}$SEP%{+u}%{F$a$wht}$ARTIST%{-u}$SEP%{F$a$grn}$SEP$glyplay%{F$a$wht}$SEP$POSITION/$DURATION%{F-}" ;;
+                stopped)   ek="%{F$a$red}%{F-}$SEP%{U$a$red}$SEP%{+u}%{F$a$wht}$ARTIST%{-u}$SEP%{F$a$red}$SEP$glystop%{F-}" ;;
+            esac
+        fi
+        echo %{F$a$wht}$SEP2$ek
+    }
+    wireless() {
+      wifi=$(awk 'NR==3 {printf("%2.2d\n", ($3/70)*100)}' /proc/net/wireless)
+       if [ $wifi -lt 70 ]; then 
+         strength=%{F$a$wht}$glywifi3%{F$a$red}$SEP2$wifi
+       elif [ $wifi -ge 70 ] && [ $wifi -lt 90 ]; then
+         strength=%{F$a$wht}$glywifi2%{F$a$ylw}$SEP2$wifi
+       else
+         strength=%{F$a$wht}$glywifi%{F$a$grn}$SEP2$wifi
+       fi
+      echo $strength 
+    }
+## populate and display
+popnotify "$SEP$SEP$(memory)$SEP$(vol)$SEP$(batterystate)$SEP2$(bat)$SEP$(temperature)$SEP%{B-}$SEP%{r}%{F$a$bg}$SEP$SEP$(music)%{F-}$SEP$SEP%{B-}%{F-}$SEP$SEP$(wireless)$SEP$(clockdate)$SEP$SEP"

@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+# chmod, unpack, watch, delete
+use strict;
+use Cwd;
+use File::Find;
+
+my $mp = 'mplayer -fs -msgcolor';
+my $pwd = shift // getcwd();
+
+#my $permdir  = 01742; # -rwxr---wT
+#my $permdir = 01700; # -rwx------T
+my $permdir  = 02740; #
+
+chmod($permdir, $pwd);
+
+my $tempdir;
+$pwd =~ m/^((?:\/[^\/]+){2}\/).*/ and $tempdir = "$1.punpack-temp";
+
+$tempdir = '/tmp/' if(@ARGV);
+
+use vars qw/*name *dir *prune/;
+*name   = *File::Find::name;
+*dir    = *File::Find::dir;
+*prune  = *File::Find::prune;
+
+File::Find::find({wanted  => \&wanted}, $pwd);
+
+sub wanted {
+  /^.+(?:part00)?\.rar/
+  && doexec(0, "unrar x \"{}\" $tempdir/ && $mp $tempdir/* && rm -rv $tempdir/");
+}
+
+sub doexec ($@) {
+    my $ok = shift;
+    my @command = @_; # copy so we don't try to s/// aliases to constants
+    for my $word (@command) {
+      $word =~ s#{}#$name#g;
+    }
+    if ($ok) {
+        my $old = select(STDOUT);
+        $| = 1;
+        print "@command";
+        select($old);
+        return 0 unless <STDIN> =~ /^y/;
+    }
+    chdir($pwd); #sigh
+    system(@command);
+    chdir $File::Find::dir;
+    return !$?;
+}
+
