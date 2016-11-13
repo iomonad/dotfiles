@@ -24,3 +24,17 @@
 : 1479051819:5;compton
 : 1479051825:0;exit
 : 1479054875:83;sudo emerge jp2a
+: 1479054924:0;cd /tmp
+: 1479054926:2;wget http://pngimg.com/upload/chicken_PNG2149.png
+: 1479055011:0;jp2a --background=light chicken_PNG2149.png
+: 1479055099:15;wget http://www.framlinghamvets.com/wp-content/uploads/2015/04/928249-chicken.jpg
+: 1479055201:0;jp2a
+: 1479055230:0;jp2a --background=light 928249-chicken.jpg
+: 1479055239:0;jp2a --background=light 928249-chicken.jpg > dotfiles
+: 1479055241:0;cat dotfiles
+: 1479055246:0;mv dotfiles ~/etc
+: 1479055247:0;cd
+: 1479055247:0;cd etc
+: 1479055260:0;cat dotfiles > README.md
+: 1479055263:0;rm dotfiles
+: 1479055265:0;cat README.md
