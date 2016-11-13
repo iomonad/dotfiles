@@ -25,7 +25,7 @@ setxkbmap fr
 # clean Xorgs files
 rm ~/.serverauth*
 
-hsetroot -fill ~/media/images/wallpapers/fog.jpg
+hsetroot -fill ~/media/images/udylnp.jpg
 # start the WM
 exec bspwm
 
