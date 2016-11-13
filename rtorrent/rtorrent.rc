@@ -1,0 +1,34 @@
+# port_range = 49164-49164
+scgi_port = 127.0.0.1:5000
+# session = /Users/crshd/var/torrent/session
+
+max_uploads_global = 0
+
+# done_fg_color = 2
+# active_fg_color = 4
+
+check_hash = no
+
+schedule = tied_directory,10,10,start_tied=
+schedule = untied_directory,10,10,remove_untied=
+
+directory = /Users/crshd/Downloads/torrent/_incomplete
+
+# schedule = watch_directory_1,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/music/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/music"
+# schedule = watch_directory_2,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/movies/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/movies"
+# schedule = watch_directory_3,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/tv/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/tv"
+# schedule = watch_directory_4,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/pr0n/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/pr0n"
+# schedule = watch_directory_5,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/games/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/games"
+# schedule = watch_directory_6,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/apps/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/apps"
+# schedule = watch_directory_7,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/var/*.torrent,d.set_custom1=/Users/crshd/Downloads/torrent/var"
+
+schedule = watch_directory_1,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/music/*.torrent,d.set_custom1=music,d.set_custom2=~/Downloads/torrent/music"
+schedule = watch_directory_2,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/movies/*.torrent,d.set_custom1=movies,d.set_custom2=~/Downloads/torrent/movies"
+schedule = watch_directory_3,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/tv/*.torrent,d.set_custom1=tv,d.set_custom2=~/Downloads/torrent/tv"
+schedule = watch_directory_4,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/pr0n/*.torrent,d.set_custom1=pr0n,d.set_custom2=~/Downloads/torrent/pr0n"
+schedule = watch_directory_5,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/games/*.torrent,d.set_custom1=games,d.set_custom2=~/Downloads/torrent/games"
+schedule = watch_directory_6,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/apps/*.torrent,d.set_custom1=apps,d.set_custom2=~/Downloads/torrent/apps"
+schedule = watch_directory_7,10,10,"load_start=/Users/crshd/Downloads/torrent/_torrents/var/*.torrent,d.set_custom1=var,d.set_custom2=~/Downloads/torrent/var"
+
+system.method.set_key = event.download.finished,move_complete,"d.set_directory=$d.get_custom2= ;execute=/usr/pkg/bin/gmv,-u,$d.get_base_path=,$d.get_custom2="
+

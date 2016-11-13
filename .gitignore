@@ -3,7 +3,7 @@ mutt/teknik.muttrc
 vim/bundle
 vim/screenshots
 mutt/cache
-mutt
+mutt/temp
 ncmpcpp/error.log
 mpd/mpd.log
 zsh/zsh-history

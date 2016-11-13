@@ -1,5 +1,0 @@
-:set prompt "λ ->  "
-
-import System.Process
-ls = callCommand "ls"
-pwd = callCommand "pwd"

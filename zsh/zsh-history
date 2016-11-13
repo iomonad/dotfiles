@@ -1,1 +1,19 @@
-: 1479048111:0;exit
+: 1479049953:0;cp -r docs/rice/dotfiles/crshd/stumpwm etc
+: 1479049974:0;cp -r docs/rice/dotfiles/crshd/rtorrent etc
+: 1479049993:0;cp -r docs/rice/dotfiles/trapd00r/emacs.d etc
+: 1479050000:0;cp -r docs/rice/dotfiles/trapd00r/emacs.el etc
+: 1479050003:0;cd etc
+: 1479050007:0;mkdir emacs
+: 1479050013:0;mv emacs.el emacs
+: 1479050018:0;mv emacs.d emacs
+: 1479050022:0;ls r
+: 1479050025:0;ls rtorrent
+: 1479050032:0;ls stumpwm/lisp
+: 1479050036:0;	ls stumpwm
+: 1479050102:0;ls /etc/X11/xorg.conf.d/20opengl.conf 
+: 1479050116:0;ls
+: 1479050121:2;gp
+: 1479050130:0;git reset
+: 1479050134:1;vim .git
+: 1479050137:282;vim .gitignore
+: 1479050420:0;exit
