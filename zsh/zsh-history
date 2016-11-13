@@ -23,3 +23,4 @@
 : 1479051817:0;cp docs/rice/dotfiles/windelicato/.compton.conf ~/etc/compton/compton.conf
 : 1479051819:5;compton
 : 1479051825:0;exit
+: 1479054875:83;sudo emerge jp2a
