@@ -2,7 +2,6 @@
 : 1479049974:0;cp -r docs/rice/dotfiles/crshd/rtorrent etc
 : 1479049993:0;cp -r docs/rice/dotfiles/trapd00r/emacs.d etc
 : 1479050000:0;cp -r docs/rice/dotfiles/trapd00r/emacs.el etc
-: 1479050003:0;cd etc
 : 1479050007:0;mkdir emacs
 : 1479050013:0;mv emacs.el emacs
 : 1479050018:0;mv emacs.d emacs
@@ -22,7 +21,6 @@
 : 1479051777:0;lsd
 : 1479051817:0;cp docs/rice/dotfiles/windelicato/.compton.conf ~/etc/compton/compton.conf
 : 1479051819:5;compton
-: 1479051825:0;exit
 : 1479054875:83;sudo emerge jp2a
 : 1479054924:0;cd /tmp
 : 1479054926:2;wget http://pngimg.com/upload/chicken_PNG2149.png
@@ -38,3 +36,5 @@
 : 1479055260:0;cat dotfiles > README.md
 : 1479055263:0;rm dotfiles
 : 1479055265:0;cat README.md
+: 1479057530:7;vim .xres.d/crayolo/Xresources
+: 1479057539:0;exit
