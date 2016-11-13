@@ -65,7 +65,6 @@ VIM=(
   ru
   sed
   sfv
-  sh
   signature
   sty
   sug
@@ -133,7 +132,7 @@ FEH=(
 local MPLAYER_CONFIG=$HOME/.mplayer/config
 
 alias -s $^VIM='vim -X --'
-alias -s $^MPLAYER='mplayer -msgmodule 1 -msgcolor -include $MPLAYER_CONFIG --'
+alias -s $^MPLAYER='mplayer  -msgcolor -include $MPLAYER_CONFIG --'
 alias -s $^FEH='feh -Fzrd --'
 
 alias -s se='ssh'

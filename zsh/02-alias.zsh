@@ -2,7 +2,6 @@
 
 # Some Fun And Usefull Aliases
 
-#alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
 # Some Perl Hacks {{{
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
@@ -18,7 +17,7 @@ alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
 alias   editc='vim $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
-alias   share='python -m http.server'
+alias   share='python3 -m http.server'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 #}}}
@@ -30,8 +29,13 @@ alias  india='ssh scp1@192.168.1.102 -p 19216'
 alias   dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias   n900='ssh -p 19216 user@192.168.1.112'
 alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.100:http/japh.se/doc'
+alias router='ssh root@192.168.0.47 -p 2314'
 # Here copy files to server
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
+alias ip='curl http://jackit.se/ip.php'
+alias empire='ssh root@inother.space -p 2314 cd /srv/empire && python2 /srv/empire/empire && exit'
+# Cool Trick x84
+alias x84='ssh anonymous@1984.ws'
 #}}}
 # Git Alias {{{
 alias     gs='git status --short -b'
@@ -68,10 +72,11 @@ alias     c='cd $HOME/.config'
 alias     r='cd $HOME/docs/rice'
 alias     p='cd $HOME/docs/pentest'
 alias     z='cd $HOME/.config/zsh'
+alias     d='cd $HOME/docs/rice/dots/'
 #}}}
 # Hacks Basic Commands {{{
-alias lsusb='lsusb | matchline -random'
-alias lspci='lspci | matchline -lspci'
+#alias lsusb='lsusb | matchline -random'
+#alias lspci='lspci | matchline -lspci'
 
 #alias  ls=' ls++'
 alias lso='\ls | pv -qL 10'
@@ -113,7 +118,6 @@ alias     vimc='vim *.{c,h}'
 # Lost & useless {{{
 #alias     cpan='cpanm'
 alias    flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
-alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias      die='kill -9 $$'
@@ -143,9 +147,17 @@ alias trapd00rc='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31m
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 #}}}
+# Xero Alias, Thanks to him :) {{{
+alias v="vim"
+alias vi="vim"
+#alias emacs="vim"
+alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+alias clbin="curl -F 'clbin=<-' https://clbin.com"
+alias psef="ps -ef"
+#}}}
 # {{{ Title stuffs
 precmd() {
-	vcs_info
 	setprompt
 	case $TERM in
 		rxvt-256color | screen-256color ) 
@@ -171,6 +183,10 @@ alias df='df -h | grep sd |\
 
 alias duch='du -ch | grep insgesamt |\
   sed -e "s_[0-9]*,[0-9]*[B|G|K|M|T]_\x1b[32m&\x1b[0m_"'
+alias t='tmux'
+alias cp='cp -r '
+alias pingg='ping google.fr -c 5'
+alias pingb='ping 192.168.0.254 -c 5' 
 #}}}
 # {{{ Oneliners
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
@@ -182,195 +198,45 @@ d() { ($1 &) }
 zsh_stats() { history | awk '{print $2}' | sort | uniq -c | sort -rn | head }
 du1() { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
 epoch() { print $(( `echo $1 | cut -b 1-2` * 3600 + `echo $1 | cut -b 4-5` * 60 + `echo $1 | cut -b 7-8` )) }
+alias empty-trash="rm -rf ~/.local"
 # }}}
 
-
-# {{{ Most used Commands
-mostused() {
-	sed -n 's/^\([a-z]*\) .*/\1/p' $HISTFILE |
-	sort |
-	uniq -c |
-	sort -n -k1 |
-	tail -25 |
-	tac
-} # }}}
-
-# {{{ FFMPEG stuffs
-
-# Split Video
-ffmpeg_splitvid()
-{
-	local t=$(epoch `ffprobe $1 2>&1 | grep Duration | cut -b 13-20`)
-	local first=$(( $t / 3 ))
-	local second=$(( $first * 2 ))
-	local duration=$(( $first + 30 ))
-
-	ffmpeg -i $1 -ss 0 -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part1.avi
-	ffmpeg -i $1 -ss $first -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part2.avi
-	ffmpeg -i $1 -ss $second -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part3.avi
-}
-
-ffmpeg_bframes()
-{
-	ffmpeg -i $1 -vcodec copy -sameq -acodec libmp3lame -ab 128k -ar 48000 -ac 2 -threads 0 ${1%.*}.fix.avi
-}
-
-# Convert to x264 (stupid railscasts with their stupid .mov that won't play in mplayer)
-ffmpeg_x264() {
-	ffmpeg -i $1 -acodec aac -strict experimental -ab 96k -vcodec libx264 -vpre slow -crf 22 -threads 0 -f matroska ${1%.*}.mkv
-} 
-
-# Rip Audio as MP3
-ffmpeg_mp3() {
-	ffmpeg -i $1 -acodec libmp3lame -sameq -threads 0 ${1%.*}.mp3
-}
-
-# Convert anything to iPhone and move to LAMP for streaming
-ffmpeg_iphone()
-{
-	ffmpeg -i $1 -acodec libfaac -ab 128k -vcodec libx264 -vpre ipod640 -s 480x320 -r 29 -threads 0 ${1%.*}.mp4
-	mv ${1%.*}.mp4 ~/www/iphone/
-} # }}}
-
-# {{{ Rip Audio CDs to MP3
-ripdatshit()
-{
-	echo "MP3 VBR quality setting: [0-9]"
-	read $q
-	mkdir $HOME/tmp/rip
-	cd $HOME/tmp/rip
-	cdparanoia -B
-	for i in *.wav; do
-		lame -V $q $i mp3/${i%.*.*}.mp3
-	done
-	echo "Tag mp3 files with Easytag? [y/n]"
-	read $yn
-	if [[ "$yn" == "y" ]]; then
-		easytag $HOME/tmp/rip
-	fi
-} # }}}
-
-# {{{ Create ISO from device or directory
-mkiso()
-{
-	case $1 in
-		/dev/*)
-			dd if=$1 of=$2 ;;
-		*)
-			mkisofs -o $2 $1 ;;
-	esac
-} # }}}
-
-# {{{ Setup empty github repo
-mkgit() {
-	mkdir $1
-	cd $1
-	git init
-	touch README.markdown
-	git add README.markdown
-	git commit -m 'inital setup - automated'
-	git remote add origin git@github.com:seytz/$1.git
-	git push origin master
-} # }}}
-
-# {{{ Archiving - Compress/decompress various archive types with a single command
-ark() {
-	case $1 in
-
-		e)
-			case $2 in
-				*.tar.bz2)   tar xvjf $2      ;;
-				*.tar.gz)    tar xvzf $2      ;;
-				*.bz2)       bunzip2 $2       ;;
-				*.rar)       unrar x $2       ;;
-				*.gz)        gunzip $2        ;;
-				*.tar)       tar xvf $2       ;;
-				*.tbz2)      tar xvjf $2      ;;
-				*.tgz)       tar xvzf $2      ;;
-				*.zip)       unzip $2         ;;
-				*.Z)         uncompress $2    ;;
-				*.7z)        7z x $2          ;;
-				*)           echo "'$2' kann nicht mit >ark< entpackt werden" ;;
-			esac ;;
-
-		c)
-			case $2 in
-				*.tar.*)    arch=$2; shift 2;
-					tar cvf ${arch%.*} $@
-					case $arch in
-						*.gz)   gzip -9r ${arch%.*}   ;;
-						*.bz2)  bzip2 -9zv ${arch%.*} ;;
-					esac                                ;;
-				*.rar)      shift; rar a -m5 -r $@; rar k $1    ;;
-				*.zip)      shift; zip -9r $@                   ;;
-				*.7z)       shift; 7z a -mx9 $@                 ;;
-				*)          echo "Kein gültiger Archivtyp"      ;;
-			esac ;;
-
-		*)
-			echo "WATT?" ;;
-
-	esac
-} # }}}
-
-# {{{ Quick Link saving for fast saves/recalls
-addfile() {echo $2 >> /media/data/Filez/$1}
-searchfile() {ls /media/data/Filez | grep $1}
-getfile() {cat /media/data/Filez/$1 | xclip}
-losefile() {rm /media/data/Filez/$1}
+# GIT {{{
+alias ga="git add -A"
+alias gm="git commit -m"
+alias gp="git push origin master"
+alias gi="git init"
+alias gib="git init --bare"
+alias gl="git log"
 # }}}
 
-# {{{ Functions for more comfortable use of DropboxCLI
-# requires:
-# dropbox-cli
-# cush
-# xclip
-# ZSH named directory "~Dropbox"
+# FUN {{{
+alias reddit="rtv"
+#}}}
 
+alias youtube="mpsyt"
+alias external-ip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'  '>'"
+alias radio="mplayer http://radio.2f30.org:8000/live.mp3"
+alias radio-trinitas="mpv http://live.radiotrinitas.ro:8003"
+alias radio-uzic="mplayer http://www.uzic.ch/tek.m3u"
+alias radio-trance="mplayer http://streaming.radionomy.com:8000/Trance-Libre-webradio.m3u"
+alias estimate-update="emerge -upvND --with-bdeps=y @world"
+alias pcmanfm="dbus-launch pcmanfm"
 
-# {{{ Function to switch packer/pacman-color, depending on options used
-pac() {
-	case $1 in
-
-		-S | -Ss | -Ssq | -Si | -G )
-			sudo packer $@ ;;
-
-		-Su | -Syu )
-			sudo packer $@
-			echo "" > $HOME/.pacmanupdates ;;
-
-		* )
-			sudo pacman-color $@ ;;
-
-	esac
-} # }}}
-
-port() {
-	case $1 in
-		install )
-			shift
-			prt-get depinst $@ ;;
-		remove | lock | unlock )
-			sudo prt-get $@ ;;
-		new )
-			mkdir $HOME/ports/$2
-			chmod 777 $HOME/ports/$2
-			cd $HOME/ports/$2
-			touch Pkgfile ;;
-		fetchup )
-			sudo ports -u
-			ports -d ;;
-		list )
-			ports -l ;;
-		pre-install )
-			sudo sh $(prt-get path $2)/pre-install ;;
-		post-install )
-			sudo sh $(prt-get path $2)/post-install ;;
-		* )
-			prt-get $@ ;;
-	esac
-}
-
-rc.d() {
-	sudo /etc/rc.d/$@
-}
+alias poweroff="sudo poweroff"
+alias shutdown="sudo shutdown now"
+alias reboot="sudo reboot"
+# Cabal {{{
+alias ci="cabal install"
+alias cu="cabal update"
+alias cb="cabal build"
+alias cr="cabal run"
+#}}}
+# Stack {{{
+alias sb="stack build"
+alias st="stack test"
+alias sr="stack resolv"
+alias se="stack exec"
+alias sg="stack ghci"
+alias sd="stack list-dependencies"
+# }}}

@@ -1,1 +1,0 @@
-../weetris.pl

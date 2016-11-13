@@ -1,0 +1,30 @@
+## {{{ ZSH main config file
+##
+
+## Source other config files
+for r in $HOME/.config/zsh/*.zsh; do
+  if [[ $DEBUG > 0 ]]; then
+    echo "zsh: sourcing $r"
+  fi
+  source $r
+done
+
+PATH="/home/seyt/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/seyt/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/seyt/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/seyt/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/seyt/perl5"; export PERL_MM_OPT;
+
+export HISTFILE=~/.config/zsh/zsh-history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_SAVE_NO_DUPS
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
+xrdb .Xresources
+
+cat ~/.todo
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi

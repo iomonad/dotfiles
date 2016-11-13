@@ -2,12 +2,14 @@
 
 # Some Classic {{{
 export HOSTNAME="darknet"
-export ZSH_THEME="trapd00r"
+export ZSH_THEME="g0tr00t"
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export EDITOR=vim
 export PAGER=less
-export BROWSER=firefox-bin
+export BROWSER=/opt/firefox/firefox
+export PORT="1337"
 #}}}
+
 # Directories {{{
 export XDG_CONFIG_HOME="$HOME/.config"
 #export XDG_CACHE_HOME="$HOME/etc/cache"
@@ -15,7 +17,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #export DEVEL_HOME="$HOME/dev"
 export BIN_HOME="$HOME/bin"
 #export DEVEL_HOME="$HOME/dev"
+# Export The urxvt Socket path
+export RXVT_SOCKET='/tmp/urxvt-socket'
 #}}}}
+
 # Perl Hack Path {{{
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
@@ -47,9 +52,12 @@ export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
 export MOZ_DISABLE_PANGO=1
 #export CLIVE_CONFIG="/home/scp1/etc/cliverc"
 # The Path {{{
-export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
+export GEM_PATH='.gem/ruby/2.2.0/bin'
+export PATH=$GEM_PATH:~/.cabal/bin:/opt/jdk/bin:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 #}}}
+
+export MONGODB_PATH="mongodb://monabot:secretpass@localhost:27017/irc-bot-db"
 # Fonts For System, Useless {{{
 export FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
 export FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp1252'
@@ -81,7 +89,7 @@ export DZEN_ALIGNMENT='c'
 export X_OSD_COLOR='#a8ff00'
 #}}}
 # Yeah Hack My MPD {{{
-export MPD_HOST='localhost'
+#export MPD_HOST='localhost'
 #export MPD_HOST='192.168.1.100'
 #export MPD_PORT=6600
 #export MPD_PASS=`smokingkills`

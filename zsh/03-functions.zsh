@@ -1,13 +1,13 @@
-# Some Functions 
+# Some Functions
 
-# Mplayer Hack {{{
+# Mplayer Hacks {{{
 mplayer() {
   /usr/bin/mplayer \
-    -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config "$@"
+    -msgmodule 1 -msgcolor -include $HOME/.mplayer/config "$@"
 }
 mplayer_headphones() {
   /usr/bin/mplayer \
-    -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config \
+    -msgmodule 1 -msgcolor -include $HOME/.mplayer/config \
     -channels 6 -af resample=48000,hrtf "$@"
 }
 #}}}
@@ -107,13 +107,70 @@ goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
 #}}}
-
 # Backup ZSH config {{{
 zshbackup(){
   cd $HOME/.config/zsh/
-  tar -c *.zsh -f backupzsh.tar.gz
+  tar -c *.zsh -f backupzsh.tar.gz &> /dev/null
   cd ~/
   echo 'Backup saved into ~/.config/zsh/'
 }
 #}}}
+# Connect to the VPS {{{
+  vps(){
+    ssh root@inother.space -p 2314
+    clear
+    echo "Connection Reset By peer"
+       }
+#}}}
+# nullpointer url shortener {{{
+short() {
+  curl -F"shorten=$*" https://0x0.st
+}
+#upload file
+x0st() {
+    curl -F"file=@${1}" https://0x0.st
+}
+#}}}
+
+random-wallpaper () {
+    while true; do
+    #Deleting any old wallpaper downloaded by this app in the past
+    rm wallpaperRandomUnsplash.jpg
+
+    # Downloading picture
+    wget https://unsplash.it/1920/1080/?random >/dev/null 2>&1
+
+    # Converting picture
+    mv ./index.html?random ./wallpaperRandomUnsplash.jpg
+
+    # Setting wallpaper
+    feh --bg-scale wallpaperRandomUnsplash.jpg
+
+    sleep 600
+done
+}
+
+shellcode-extract () {
+
+	if [ $# -lt 1 ]; then
+              echo '`shellcode-extract` requires an binary object (.o).'
+	fi
+	for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
+
+}
+wall() {
+hsetroot -fill ~/media/images/wallpapers/blacknwhite/wallpaper-$(((RANDOM%150)+1)).jpg  -contrast .85 -brightness -0.02
+}
+
+# Todo sec
+todo-clean() {
+    cat /dev/null > $HOME/.todo
+}
+todo-add() {
+    echo "# $1" >> $HOME/.todo
+}
+
+freemind() {
+    ssh kortex@sch.freemind.ovh -p 1402
+}
 # vim: ft=sh:
