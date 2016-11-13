@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-exiftool -all= "$@"
-# kshglob doesn't allow use to do  (jpe?g|[ct]iff ...), that's why it looks like
-# this :(
-#setopt kshglob
-rm -v *.(jpg|jpeg|png|tiff|pdf)_original

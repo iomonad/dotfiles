@@ -1,2 +1,0 @@
-#!/bin/zsh
-printf "$@: completed %s" "$(date +%c)" | mailx 'm@japh.se'

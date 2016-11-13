@@ -1,3 +1,0 @@
-#!/bin/sh
-#cdp - cd up on dir
-cd $(pwd|perl -pe 's/^((?:\/[^\/]+)*\/).*/$1/')

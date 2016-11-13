@@ -1,4 +1,0 @@
-#!/bin/sh
-# jackit++
-
-curl http://jackit.se/ip.php

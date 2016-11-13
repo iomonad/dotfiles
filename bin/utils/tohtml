@@ -1,5 +1,0 @@
-#!/bin/sh
-#tohtml
-for f in $@; do 
-  wim "$f" -c TOhtml -c :w -c :q! -c :q!
-done

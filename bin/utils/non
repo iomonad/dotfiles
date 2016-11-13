@@ -1,6 +1,0 @@
-#!/usr/bin/perl
-
-while(<>) {
-  s/\n/  »  /;
-  print;
-}

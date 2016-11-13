@@ -1,9 +1,0 @@
-#!/usr/bin/ruby
-
-def uncolor(str)
-  str.gsub(/\e\[(?:[0-9];?)+m/, '')
-end
-
-ARGF.each_line do |l|
-  puts uncolor(l)
-end

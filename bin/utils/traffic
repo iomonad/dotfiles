@@ -1,4 +1,0 @@
-#!/bin/sh
-
-tail -fq $(find /mnt/httpd -type f -iname '*access.log') \
-  | logstalgia -1680x1050 -x --paddle-mode vhost -

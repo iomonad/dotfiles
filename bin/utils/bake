@@ -1,9 +1,0 @@
-#!/bin/sh
-# vim: ft=sh et sw=2:
-if [[ -f Makefile.PL ]]; then
-  perl Makefile.PL  PREFIX=~ LIB=~/lib/
-elif [[ -f Build.PL ]]; then
-  perl Build.PL  PREFIX=~ LIB=~/lib/
-else
-  cpanm . || dzil .
-fi

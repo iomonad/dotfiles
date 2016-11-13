@@ -1,3 +1,0 @@
-#!/bin/sh
-
-lp -d Canon_MP150 -o outputorder=reverse "$@"
