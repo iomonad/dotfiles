@@ -1,6 +1,7 @@
 # ~/.* Dotfiles
 -------
 > Some dotfiles to use as configurations files for cli programs.
+
 ```
                                                                 '.
              Look like other dotfiles repo right ?             ,;c
@@ -35,4 +36,5 @@
                                         .....',;'.;'.
                                                                               ```
                                                                               
- T                                                                          
+Some of these dotfiles are found around the web. Some can not work.
+I use this repo as folder in $HOME/etc, and use symlinks to manage them.
