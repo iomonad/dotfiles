@@ -1,4 +1,6 @@
-# ~/.*
+# ~/.* Dotfiles
+-------
+> Some dotfiles to use as configurations files for cli programs.
 ```
                                                                 '.
              Look like other dotfiles repo right ?             ,;c
@@ -32,3 +34,5 @@
                                              ..,c'.
                                         .....',;'.;'.
                                                                               ```
+                                                                              
+ T                                                                          
