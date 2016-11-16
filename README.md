@@ -2,6 +2,10 @@
 -------
 > Some dotfiles to use as configurations files for cli programs.
 
+### Current setup:
+![Desktop Screenshot](https://u.teknik.io/Mn0QO.png)
+
+
 ```
                                                                 '.
              Look like other dotfiles repo right ?             ,;c
