@@ -1,1 +1,17 @@
-ffmpeg -r 30 -f x11grab -i :0.0 -vcodec libx264 -threads 0 -acodec pcm_s16le  -qscale 1 -s $(xwininfo -root | grep 'geometry' | awk '{print $2;}') filename.mkv
+if [ -z "$1" ]
+ then
+    echo "rec - Simple screen recording"
+    echo "Usage: rec <name>"
+    exit 1
+fi
+
+DATE=`date +%Y-%m-%d-%H-%M-%S`
+
+echo "[+] Starting recording screen with filename $1.mp4 <ctrl-c to end>"
+ffmpeg -r 30 -s 1366x768 -f x11grab -i :0.0 -vcodec msmpeg4v2 -qscale 1 $1.avi &> /dev/null
+echo "[+] Starting encoding ..."
+ffmpeg -i $1.avi -c:v libx264 -crf 19 -preset slow -c:a libfaac -b:a 192k -ac 2 $1.mp4 &> /dev/null
+echo "[+] Cleaning up ..."
+rm $1.avi &> /dev/null
+mv $1.mp4 $HOME/media/rice/cast/$1-$DATE.mp4
+echo "[+] Done !"
