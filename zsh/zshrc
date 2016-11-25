@@ -26,5 +26,5 @@ setopt EXTENDED_HISTORY
 
 xrdb .Xresources
 
-cat ~/.todo
+task # Show tasks
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi

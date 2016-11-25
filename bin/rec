@@ -1,3 +1,1 @@
-#!/bin/zsh
-ffmpeg -f x11grab -r 25 -s 1280x720 -i :0.0+0,24 -vcodec libx264 -threads 0 video.mkv
-ffmpeg -i video.mkv -vcodec libx264 -vpre hq -crf 22 -threads 0 video.mp4
+ffmpeg -r 30 -f x11grab -i :0.0 -vcodec libx264 -threads 0 -acodec pcm_s16le  -qscale 1 -s $(xwininfo -root | grep 'geometry' | awk '{print $2;}') filename.mkv

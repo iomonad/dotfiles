@@ -184,6 +184,7 @@ alias df='df -h | grep sd |\
 alias duch='du -ch | grep insgesamt |\
   sed -e "s_[0-9]*,[0-9]*[B|G|K|M|T]_\x1b[32m&\x1b[0m_"'
 alias t='tmux'
+alias ta='tmux attach -t'
 alias cp='cp -r '
 alias pingg='ping google.fr -c 5'
 alias pingb='ping 192.168.0.254 -c 5' 
@@ -210,10 +211,13 @@ alias gib="git init --bare"
 alias gl="git log"
 # }}}
 
+# Raspberry {{{
+alias framboise="ssh root@192.168.0.47"
 # FUN {{{
 alias reddit="rtv"
 #}}}
 
+alias nano="vim"
 alias youtube="mpsyt"
 alias external-ip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'  '>'"
 alias radio="mplayer http://radio.2f30.org:8000/live.mp3"

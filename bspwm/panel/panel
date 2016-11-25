@@ -1,0 +1,5 @@
+#!/bin/sh
+while :; do
+    echo "%{c}$(date '+%a %d %b %l:%M %p') | $(acpi | sed 's/%//g' | sed 's/,//g') %"
+   sleep 2
+done | bar -d -f "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*" -F $(xrq 'urxvt*foreground') -B $(xrq 'urxvt*background')

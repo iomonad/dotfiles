@@ -173,4 +173,9 @@ todo-add() {
 freemind() {
     ssh kortex@sch.freemind.ovh -p 1402
 }
+
+sshagent() {
+    exec ssh-agent zsh # Open SHell
+    ssh-add
+}
 # vim: ft=sh:

@@ -40,7 +40,8 @@ bindkey -s '^v' 'vim\n'
 bindkey -s '^u' 'sudo emerge --sync && sudo emerge -auDN @world\n'
 bindkey -s '^b' 'mutt\n'
 bindkey -s '^w' 'hsetroot -fill ~/media/images/wallpapers/blacknwhite/wallpaper-$(((RANDOM%150)+1)).jpg  -contrast .85 -brightness -0.02 \n'
-bindkey -s '^p' 'rm -rf ~/.{local,cache,gvfs,dbus,m2,w3m,thumbnails,lyrics,java,ipython,dbshell,wget-hsts,netrc,swp}\n'
+#bindkey -s '^p' 'rm -rf ~/.{local,cache,gvfs,dbus,m2,w3m,thumbnails,lyrics,java,ipython,dbshell,wget-hsts,netrc,swp}\n'
+bindkey -s '^p' 'git push origin master'
 #}}}
 
 # Bind custom defined completers {{{

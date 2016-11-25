@@ -45,4 +45,4 @@ bspc rule -a Conky sticky=on manage=off lower=on
 bspc rule -a astime sticky=on
 bspc rule -a feh floating=on manage=off
 
-/home/sunn/.config/bspwm/panel/panel &
+$HOME/.config/bspwm/panel/panel &
