@@ -28,4 +28,4 @@ rm ~/.serverauth*
 hsetroot -fill ~/media/images/udylnp.jpg
 # start the WM
 exec bspwm
-
+#xmonad

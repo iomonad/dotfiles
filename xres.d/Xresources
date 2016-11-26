@@ -2,7 +2,7 @@
 !#include </home/seyt/.xres.d/crayolo/colors/5725>
 !#include </home/seyt/.xres.d/crayolo/Xresources>
 
-#include </home/seyt/.xres.d/colors/erosion>
+#include </home/seyt/.xres.d/colors/punpun>
 
 ! run "fc-list" for a list of available fonts
 !! Terminus font
