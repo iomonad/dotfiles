@@ -257,8 +257,7 @@ myStartupHook = do
 
 -- [MAIN] {{{
 -- Centralized configuration entry
-main = do
-    xmonad       $  azertyConfig
+main = xmonad       $  azertyConfig
         { modMask            = myModMask
         , terminal           = myTerminal
         , manageHook         = myManageHook
