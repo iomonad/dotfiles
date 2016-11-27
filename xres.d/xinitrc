@@ -25,7 +25,5 @@ setxkbmap fr
 # clean Xorgs files
 rm ~/.serverauth*
 
-hsetroot -fill ~/media/images/udylnp.jpg
 # start the WM
-exec bspwm
-#xmonad
+xmonad

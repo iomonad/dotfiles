@@ -244,3 +244,6 @@ alias se="stack exec"
 alias sg="stack ghci"
 alias sd="stack list-dependencies"
 # }}}
+
+alias mp="mplayer"
+alias mpf="mplayer -fs"

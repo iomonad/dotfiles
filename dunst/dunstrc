@@ -1,5 +1,5 @@
 [global]
-font = creep 9
+font = Tewi 8
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -148,8 +148,8 @@ icon_position = off
 icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-width = 1
-color = "#999697"
+width = 3
+color = "#ffffff"
 
 [shortcuts]
 
@@ -175,13 +175,13 @@ context = ctrl+shift+period
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-foreground = "#ebdbb2"
-background = "#32302f"
+foreground = $(xrq background)
+background = $(xrq foreground)
 timeout = 3
 
 [urgency_normal]
-foreground = "#999697"
-background = "#1b1b1b"
+background = "#11171C"
+foreground = "#E6E6E6"
 timeout = 3
 
 [urgency_critical]
