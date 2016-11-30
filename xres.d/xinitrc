@@ -8,7 +8,7 @@ xset fp rehash
 # Set cursor from X to pointer
 xsetroot -cursor_name left_ptr &
 
-#Fix java
+#Fix java Apps
 wmname LG3D
 
 # Urxvt Daemon
@@ -18,9 +18,7 @@ urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
 
 # Other programs
-#urxvtd -q -f -o &
 setxkbmap fr
-#unclutter
 
 # clean Xorgs files
 rm ~/.serverauth*

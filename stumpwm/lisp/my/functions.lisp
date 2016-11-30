@@ -8,5 +8,6 @@
       (setf (tile-group-last-frame group) last)
       (run-hook-with-args *focus-frame-hook* f last)
       (setf show-indicator t))
+    ;; w00000t
     (if w (focus-window w) (no-focus group (frame-window last)))
     (if show-indicator (show-frame-outline group))))

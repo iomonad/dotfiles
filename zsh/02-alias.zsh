@@ -247,3 +247,7 @@ alias sd="stack list-dependencies"
 
 alias mp="mplayer"
 alias mpf="mplayer -fs"
+
+alias e="emacs -nw"
+alias es="emacs --daemon"
+alias ec="emacsclient -c"

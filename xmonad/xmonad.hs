@@ -31,7 +31,7 @@ import           XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import           XMonad.Actions.CopyWindow (kill1, copyToAll, killAllOtherCopies, runOrCopy)
 import           XMonad.Actions.WindowGo (runOrRaise, raiseMaybe)
 import           XMonad.Actions.WithAll (sinkAll, killAll)
-import           XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..))
+import           XMonad.Actions.CycleWS (prevWS, nextWS, moveTo, shiftTo, WSType(..))
 import           XMonad.Actions.GridSelect (GSConfig(..), goToSelected, bringSelected, colorRangeFromClassName, buildDefaultGSConfig)
 import           XMonad.Actions.DynamicWorkspaces (addWorkspacePrompt, removeEmptyWorkspace)
 import           XMonad.Actions.UpdatePointer
@@ -52,23 +52,17 @@ import           XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), Toggle(.
 import           XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import           XMonad.Layout.GridVariants (Grid(Grid))
-import           XMonad.Layout.SimplestFloat
 import           XMonad.Layout.OneBig
 import           XMonad.Layout.ZoomRow (zoomRow, zoomIn, zoomOut, zoomReset, ZoomMessage(ZoomFullToggle))
 import           XMonad.Layout.IM (withIM, Property(Role))
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Gaps
-import           XMonad.Layout.Spacing
 import           XMonad.Layout.Fullscreen
-import           XMonad.Layout.NoBorders
-import           XMonad.Layout.PerWorkspace
 import           XMonad.Layout.SimplestFloat
 import           XMonad.Layout.Tabbed
 import           XMonad.Layout.ResizableTile
 import           XMonad.Layout.Circle
 import           XMonad.Layout.ThreeColumns
--- Workspaces
-import XMonad.Actions.CycleWS (prevWS, nextWS)
 -- Prompts
 import           XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), Direction1D(..))
 -- [/IMPORTS]}}}
@@ -80,6 +74,10 @@ sBordW   = 5 -- Set width border size
 sColorsB = "#12AEF" -- Unselected terminal
 sColorsF = "#ffffff" -- Selected Terminal
 sColorsW = "#ffffff" -- Colors when activity or warning
+
+sWall :: String
+sWall = "jenga.jpg" -- The wallpaper in $HOME/media/images/wallpapers/
+
 -- Settings and Other.
 myModMask       = mod4Mask -- Set as "SUPER" key akka w1nd0w$
 myTerminal      = "urxvtc" -- The terminal to use.
@@ -117,9 +115,9 @@ myGSConfig colorizer  = (buildDefaultGSConfig myGridConfig)
 -- current workspace if it already exists.
 myScratchpads =
               [ NS "terminal" "urxvtc -name terminal -e tmux attach"     (resource =? "terminal") myPosition
-              , NS "music" "urxvtc -name music -e ncmpcpp"               (resource =? "music")    myPosition
+              , NS "music" "urxvtc -name music -e tmux -c ncmpcpp"               (resource =? "music")    myPosition
               , NS "rtorrent" "urxvtc -name rtorrent -e rtorrent"        (resource =? "rtorrent") myPosition
-              , NS "ide" "urxvtc -name ide  -e emacs"                    (resource =? "ide")      myPosition
+              , NS "ide" "urxvtc -name ide  -e tmux -c emacsclient -c"                    (resource =? "ide")      myPosition
               ] where myPosition = customFloating $ W.RationalRect (1/3) (1/3) (1/3) (1/3)
 -- [/SCRATCHPADS] }}}
 
@@ -199,14 +197,14 @@ myMouseKeys = [ ((mod4Mask .|. shiftMask, button3), \w -> focus w >> Sqr.mouseRe
 -- [/KEYBINDINGS] }}}
 
 -- [WORKSPACE] {{{
-myWorkspaces = [" i", "ii", "iii", "iv","v"] -- Define numbers and names of workspaces
+myWorkspaces = ["term", "web", "media", "pirate","porn"] -- Define numbers and names of workspaces
 -- This hooks force the redirection to a given workspace.
 myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPosition End Newer <+> floatNextHook <+> namedScratchpadManageHook myScratchpads <+>
         (composeAll . concat $
-        [ [ resource  =? r --> doF (W.view " i" . W.shift " i")   | r <- myTermApps    ]
-        , [ resource  =? r --> doF (W.view "ii" . W.shift "ii")   | r <- myWebApps     ]
-        , [ resource  =? r --> doF (W.view "iii" . W.shift "iii") | r <- myMediaApps   ]
-        , [ resource  =? r --> doF (W.view "iv" . W.shift "iv")   | r <- mySystApps    ]
+        [ [ resource  =? r --> doF (W.view "term" . W.shift "term")   | r <- myTermApps    ]
+        , [ resource  =? r --> doF (W.view "web" . W.shift "web")   | r <- myWebApps     ]
+        , [ resource  =? r --> doF (W.view "media" . W.shift "media") | r <- myMediaApps   ]
+        , [ resource  =? r --> doF (W.view "pirate" . W.shift "pirate")   | r <- mySystApps    ]
         , [ resource  =? r --> doFloat                            | r <- myFloatApps   ] -- Make float apss floating
         , [ className =? c --> ask >>= doF . W.sink               | c <- myUnfloatApps ]
         ]) <+> manageHook defaultConfig
@@ -218,16 +216,30 @@ myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPositi
             myFloatApps   = ["Dialog","lxappearance"]
             myUnfloatApps = []
 -- [/WORKSPACE] }}}
-
+--
 -- [LAYOUTS] {{{
 --Layouts definitions, defined in differents workspaces.
 myLayoutHook = gaps [(U, 8), (R, 8), (L, 8), (D, 8)] $
                                          avoidStruts $
-                                         spacing 8   $
-                                         (commonLayouts)
-     where commonLayouts = ( tiled ||| Circle )
+                                         spacing 8
+                                         commonLayouts
+     where commonLayouts = tiled ||| grid ||| oneBig ||| lined ||| space ||| monocle
            -- Layout defined (Custom)
-           tiled = Tall nmaster delta ratio
+           monocle = limitWindows 20 Full -- Fullpaged
+           -- Default tiling layout
+           tiled   = Tall nmaster delta ratio
+           -- One Big Layout, other more smaller
+           oneBig  = limitWindows 6  $ Mirror $ mkToggle (single MIRROR) $
+                            mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $
+                                  OneBig (2/3) (2/3) -- 2 on 3 ratio.
+           -- Same as oneBig, but with ultra large gap
+           space   = limitWindows 4  $ spacing 36 $ Mirror $
+                            mkToggle (single MIRROR) $ mkToggle (single REFLECTX) $
+                                    mkToggle (single REFLECTY) $ OneBig (2/3) (2/3) -- Adjust to big gap
+           -- Grided like we like, w/ batteries included
+           grid    = limitWindows 12 $ mkToggle (single MIRROR) $ Grid (16/10)
+           -- Linear like kit-kats / Cannot be grided
+           lined   = limitWindows 3  $ Mirror $ mkToggle (single MIRROR) zoomRow
            -- Variables
            nmaster = 1
            ratio   = 1/2
@@ -240,8 +252,8 @@ myLayoutHook = gaps [(U, 8), (R, 8), (L, 8), (D, 8)] $
 myStartupHook = do
       --  spawnOnce "mpd &"
           spawnOnce "wmname LG3D"
+          spawnOnce $ "hsetroot -fill ~/media/images/wallpapers/" ++ sWall
           spawnOnce "unclutter &"
-          spawnOnce "hsetroot -fill ~/.xres.d/wallpapers/jenga.jpg"
           spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
           spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}

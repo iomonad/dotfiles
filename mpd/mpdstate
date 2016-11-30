@@ -1,9 +1,9 @@
-sw_volume: 0
+sw_volume: 52
 audio_device_state:1:MPD alsa
 audio_device_state:1:vis_feed
 state: play
-current: 28
-time: 37.546000
+current: 24
+time: 119.513000
 random: 1
 repeat: 0
 single: 0
@@ -12,57 +12,29 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/1 - Lead Squid.mp3
-1:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/2 - Caravan!.mp3
-2:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/3 - Embers.mp3
-3:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/4 - Sirocco.mp3
-4:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/5 - Mists Of Krakatoa.mp3
-5:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/6 - Sharbat Gula.mp3
-6:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/7 - Samhain Labs.mp3
-7:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/8 - Seneca.mp3
-8:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009- Here Be Dragons/9 - The MacGuffin.mp3
-9:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 01 Celladoor.mp3
-10:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 02 Lobby.mp3
-11:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 03 Mists of Krakatoa.mp3
-12:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 04 Adaptation of the Koto Song.mp3
-13:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 05 Symmetry of 6's.mp3
-14:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 06 Nothing Changes-Senki Dala-Embers.mp3
-15:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 07 Black Wings.mp3
-16:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 08 Goya.mp3
-17:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead- If I Stay/The Kilimanjaro Darkjazz Ensemble - Live - I Forsee the Dark Ahead, If I Stay - 09 The MacGuffin.mp3
-18:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 01 - The Nothing Changes.mp3
-19:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 02 - Pearls For Swine.mp3
-20:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 03 - Adaptation Of The Koto Song.mp3
-21:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 04 - Lobby.mp3
-22:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 05 - Parallel Corners.mp3
-23:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 06 - Rivers Of Congo.mp3
-24:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 07 - Solomon's Curse.mp3
-25:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 08 - Amygdhala.mp3
-26:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 09 - Guernican Perspectives.mp3
-27:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 10 - Vegas.mp3
-28:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2006- Selftitled/The Kilimanjaro Darkjazz Ensemble - 11 - March Of The Swine.mp3
-29:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  01 - Caos Calmo.mp3
-30:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  02 - Munchen.mp3
-31:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  03 - Serpent.mp3
-32:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  04 - Twisted Horizons.mp3
-33:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  05 - Shadows.mp3
-34:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  06 - Symmetry of 6's.mp3
-35:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  07 - Horns Of King David.mp3
-36:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2009 - Mutations/The Kilimanjaro Darkjazz Ensemble (Mutations EP 2009) -  08 - Avian Lung.mp3
-37:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/01.All Is One.mp3
-38:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/02.Giallo.mp3
-39:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/03.White Eyes.mp3
-40:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/04.Cocaine.mp3
-41:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/05.Celladoor.mp3
-42:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/06.Cotard Delusion.mp3
-43:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/07.Les Etoiles Mutantes.mp3
-44:Psychedelic/The Kilimanjaro Darkjazz Ensemble + The Mount Fuji Doomjazz Corperation/The Kilimanjaro Darkjazz Ensemble -2010-  From The Stairwell/08.Past Midnight.mp3
-45:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/01.All Is One.mp3
-46:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/02.Giallo.mp3
-47:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/03.White Eyes.mp3
-48:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/04.Cocaine.mp3
-49:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/05.Celladoor.mp3
-50:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/06.Cotard Delusion.mp3
-51:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/07.Les Etoiles Mutantes.mp3
-52:Psychedelic/The Kilimanjaro Darkjazz Ensemble -  From The Stairwell (2011) 320 vtwin88cube/08.Past Midnight.mp3
+0:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/01 Based Is How You Feel Inside.mp3
+1:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/02 Fall In Love.mp3
+2:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/03 Improvised Jam.mp3
+3:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/04 Mass Appeal _ Transmission.mp3
+4:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/05 I Got A Bad Feeling About This.mp3
+5:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/06 Salmonella.mp3
+6:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/07 The World Is Yours _ Brooklyn Zoo.mp3
+7:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/08 Freedom _ Billium Evans (Prod. Seeds of Yaris).mp3
+8:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/09 Listeriosis.mp3
+9:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/10 Camel.mp3
+10:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/11 Title Theme _ Saria's Song _ Song Of Storms.mp3
+11:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/12 Outro _ Glasper.mp3
+12:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/01 Earl (Feat. Leland Whitty).mp3
+13:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/02 Vices.mp3
+14:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/03 Rotten Decay.mp3
+15:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/04 Limit To Your Love.mp3
+16:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/05 Bastard _ Lemonade.mp3
+17:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/06 CHSTR.mp3
+18:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/07 UWM (Feat. Leland Whitty).mp3
+19:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/08 DMZ.mp3
+20:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/09 CMYK.mp3
+21:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/10 Flashing Lights.mp3
+22:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/11 You Made Me Realise (Feat. Luan Phung).mp3
+23:Shoegazen/Slowdive - Discography 1991-2005 [FLAC]/1995 - Pygmalion/03 - Miranda.flac
+24:Shoegazen/Slowdive - Discography 1991-2005 [FLAC]/1995 - Pygmalion/04 - Trellisaze.flac
 playlist_end
