@@ -115,13 +115,6 @@ zshbackup(){
   echo 'Backup saved into ~/.config/zsh/'
 }
 #}}}
-# Connect to the VPS {{{
-  vps(){
-    ssh root@inother.space -p 2314
-    clear
-    echo "Connection Reset By peer"
-       }
-#}}}
 # nullpointer url shortener {{{
 short() {
   curl -F"shorten=$*" https://0x0.st
