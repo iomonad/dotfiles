@@ -11,8 +11,7 @@ lein/repl-history
 lein/self-installs/
 ranger/history
 zsh/zsh-history
-vimperator/info/default/history-command
-vimperator/info/default/history-search
+vimperator/info
 newsbeuter/cache.db
 newsbeuter/log
 weechat/irc.conf
