@@ -1,0 +1,4 @@
+#!/bin/bash
+
+notify-send "Torrent $1 completed."
+mv "/home/seyt/torrents/_session/$1" "/home/seyt/torrent/$1"

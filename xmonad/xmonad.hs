@@ -117,7 +117,7 @@ myScratchpads =
               [ NS "terminal" "urxvtc -name terminal -e tmux attach"     (resource =? "terminal") myPosition
               , NS "music" "urxvtc -name music -e tmux -c ncmpcpp"               (resource =? "music")    myPosition
               , NS "rtorrent" "urxvtc -name rtorrent -e rtorrent"        (resource =? "rtorrent") myPosition
-              , NS "ide" "urxvtc -name ide  -e tmux -c emacsclient -c"                    (resource =? "ide")      myPosition
+              , NS "ide" "urxvtc -name ide  -e 'tmux -c emacs'"                    (resource =? "ide")      myPosition
               ] where myPosition = customFloating $ W.RationalRect (1/3) (1/3) (1/3) (1/3)
 -- [/SCRATCHPADS] }}}
 

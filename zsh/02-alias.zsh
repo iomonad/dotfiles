@@ -251,3 +251,6 @@ alias mpf="mplayer -fs"
 alias e="emacs -nw"
 alias es="emacs --daemon"
 alias ec="emacsclient -c"
+
+# Connect to the rtorrent daemon
+alias torrent="stty stop undef; stty start undef; screen -r rtd"

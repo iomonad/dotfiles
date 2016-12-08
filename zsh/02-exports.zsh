@@ -52,7 +52,7 @@ export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
 export MOZ_DISABLE_PANGO=1
 #export CLIVE_CONFIG="/home/scp1/etc/cliverc"
 # The Path {{{
-export GEM_PATH='.gem/ruby/2.2.0/bin'
+export GEM_PATH='/home/seyt/.gem/ruby/2.2.0/bin/'
 export PATH=$ANDROID_HOME/tools/:$ANDROID_HOMEbuild-tools/25.0.1/:$ANDROID_HOME/platform-tools/:$GEM_PATH:~/.cabal/bin:/opt/jdk/bin:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 #}}}
