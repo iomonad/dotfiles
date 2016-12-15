@@ -163,9 +163,6 @@ todo-add() {
     echo "# $1" >> $HOME/.todo
 }
 
-freemind() {
-    ssh kortex@sch.freemind.ovh -p 1402
-}
 
 sshagent() {
     exec ssh-agent zsh # Open SHell
