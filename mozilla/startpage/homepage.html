@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<!--  Html page from : https://github.com/thelostt/etc  -->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<title>New Tab</title>
+<style type="text/css">
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: "terminus";
+    font-size: 8pt;
+    background: #000000;
+}
+
+h1 {
+  margin: 0;
+  padding: 2px;
+  font-family: "yuki", "siji";
+  font-size: 8pt;
+  background: #303c3d;
+  color: #000000;
+}
+
+.shit {
+  display: inline-block;
+	border: 3px solid #000;
+	margin: 0 5px; vertical-align: top;
+}
+
+.shit span {
+	display: block;
+}
+
+a, a:link, a:visited {
+  color: #6d6b6e;
+  text-decoration: none;
+  transition: .2s ease-out;
+}
+
+a:hover, a:active {
+  color: #303c3d;
+}
+
+#center {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#center #content {
+  margin: 0;
+  overflow: visible;
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 50%;
+  transform: translate(40%,-80%);
+}
+</style>
+
+<script type="text/javascript" language="javascript">
+
+var $=function(id) { return document.getElementById(id); };
+
+var links = [
+  [" CHILLING STUFF", [
+    ["hacker news", "https://news.ycombinator.com"],
+    ["mail", "https://mail.riseup.net"],
+    ["mail2", "https://icloud.com"],
+    ["reddit", "https://reddit.com"],
+    ["youtube", "https://youtube.com"],
+    ["discogs", "https://discogs.com"]
+  ]],
+
+  [" C", [
+    ["cxx reference", "https://en.cppreference.com"],
+    ["rust reference", "https://doc.rust-lang.org/nightly/std/"],
+    ["stackoverflow", "https://stackoverflow.com"],
+    ["github", "https://github.com"],
+    ["melpon", "http://melpon.org/wandbox"],
+    ["godbolt", "http://godbolt.org"],
+  ]],
+
+  [" REDDIT", [
+    ["r/cpp", "https://reddit.com/r/cpp"],
+    ["r/rust", "https://reddit.com/r/rust"],
+    ["r/programming", "https://reddit.com/r/programming"],
+    ["r/linux", "https://reddit.com/r/linux"],
+    ["r/unixporn", "https://reddit.com/r/unixporn"],
+    ["r/unixart", "https://reddit.com/r/unixart"],
+    ["r/outrun", "https://reddit.com/r/outrun"],
+    ["r/all", "https://reddit.com/r/all"],
+  ]],
+  w
+];
+
+function init()
+{
+  var fuckme = "";
+
+  for (var i = 0; i < links.length; ++i)
+  {
+    var list = links[i];
+    var title = list[0];
+
+    fuckme += "<span class=\"shit\"><h1>" + title + "</h1>";
+
+    for (var j = 0; j < list[1].length; ++j)
+    {
+      var pair = list[1][j];
+      fuckme +=
+        "<a href=\"" + pair[1] + "\">" + pair[0] + "</a><br/>";
+    }
+
+    fuckme += "</span>";
+  }
+
+  $('fill-menu').innerHTML = fuckme;
+}
+
+</script>
+</head>
+
+<body onload="javascript:init();">
+  <div id="center">
+    <div id="content">
+      <span id="fill-menu">
+      </span>
+    </div>
+  </div>
+</body>
+</html>
+
