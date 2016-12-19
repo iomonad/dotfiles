@@ -84,7 +84,7 @@ set index_format    = "%3C [%Z] %D %-20.18F //   %s"
 set alias_format    = "%4n %t %-20a %r"
 
 # composing mail
-set realname        = "Dean Thomson"     # who am i?
+set realname        = "iomonad"         # who am i?
 set envelope_from                        # which from?
 set sig_dashes                           # dashes before my sig... sweet
 set edit_headers                         # show headers when composing
