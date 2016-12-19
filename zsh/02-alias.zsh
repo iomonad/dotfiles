@@ -254,3 +254,6 @@ alias ec="emacsclient -c"
 
 # Connect to the rtorrent daemon
 alias torrent="stty stop undef; stty start undef; screen -r rtd"
+
+# Android source code sync tool
+alias rs="repo sync -c -j 4" # Current branch for cynaogenmod

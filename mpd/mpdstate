@@ -1,9 +1,9 @@
-sw_volume: 0
+sw_volume: 1
 audio_device_state:1:MPD alsa
 audio_device_state:1:vis_feed
-state: pause
-current: 1
-time: 103.979000
+state: play
+current: 2
+time: 161.146000
 random: 1
 repeat: 0
 single: 0
@@ -12,12 +12,10 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:bandcamp/legowelt/klaus-kinski/01 - fizzcaraldo.mp3
-1:bandcamp/legowelt/klaus-kinski/02 - against-the-world.mp3
-2:bandcamp/legowelt/klaus-kinski/03 - a-crazy-plan.mp3
-3:bandcamp/legowelt/klaus-kinski/04 - nomios-the-nomium-syndrome.mp3
-4:bandcamp/legowelt/klaus-kinski/05 - cherri-meets-the-professor.mp3
-5:bandcamp/legowelt/klaus-kinski/06 - arrival-at-the-station.mp3
-6:bandcamp/legowelt/klaus-kinski/07 - behind-the-forest.mp3
-7:bandcamp/legowelt/klaus-kinski/08 - cherris-theme.mp3
+0:bandcamp/8-bit/8-bit/01 - 1-untitled.mp3
+1:bandcamp/8-bit/8-bit/02 - 2-untitled.mp3
+2:bandcamp/8-bit/8-bit/03 - 3-untitled.mp3
+3:bandcamp/8-bit/8-bit/04 - 4-untitled.mp3
+4:bandcamp/8-bit/8-bit/05 - 5-untitled.mp3
+5:bandcamp/8-bit/8-bit/06 - 6-untitled.mp3
 playlist_end

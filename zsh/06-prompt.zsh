@@ -11,7 +11,7 @@ setprompt() {
   local PWD="%F{7}$($HOME/.config/zsh/rzsh_path)%f"
   local TTY="%F{4}%y%f"
   local EXIT="%(?..%F{202}%?%f)"
-  local PRMPT="λ ${USER}@$HOST::${TTY}-> $PWD
+  local PRMPT=";; ${USER}@$HOST::${TTY}-> $PWD
   ${EXIT}%F{202}── %f "
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
     PROMPT="$PRMPT"
