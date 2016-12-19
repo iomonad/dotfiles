@@ -70,10 +70,10 @@ import           XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), 
 -- [SETTINGS] {{{
 -- Colors and Styles
 sFont    = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
-sBordW   = 5 -- Set width border size
-sColorsB = "#12AEF" -- Unselected terminal
-sColorsF = "#ffffff" -- Selected Terminal
-sColorsW = "#ffffff" -- Colors when activity or warning
+sBordW   = 1 -- Set width border size
+sColorsB = "#303c3d" -- Unselected terminal
+sColorsF = "#303c3d" -- Selected Terminal
+sColorsW = "#6D6B6E" -- Colors when activity or warning
 
 sWall :: String
 sWall = "jenga.jpg" -- The wallpaper in $HOME/media/images/wallpapers/
@@ -252,9 +252,9 @@ myLayoutHook = gaps [(U, 8), (R, 8), (L, 8), (D, 8)] $
 myStartupHook = do
       --  spawnOnce "mpd &"
           spawnOnce "wmname LG3D"
-          spawnOnce $ "hsetroot -fill ~/media/images/wallpapers/" ++ sWall
           spawnOnce "unclutter &"
           spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
+          spawnOnce $ "hsetroot -fill ~/media/images/wallpapers/" ++ sWall ++ "NULL"
           spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}
 

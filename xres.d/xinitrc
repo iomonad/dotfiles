@@ -15,7 +15,7 @@ wmname LG3D
 urxvtd --quiet --opendisplay --fork
 
 # URxvt clipboard magic
-autocutsel -selection clipboard -fork
+utocutsel -selection clipboard -fork
 
 # Other programs
 setxkbmap fr

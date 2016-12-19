@@ -1,9 +1,9 @@
 sw_volume: 1
 audio_device_state:1:MPD alsa
 audio_device_state:1:vis_feed
-state: play
+state: pause
 current: 2
-time: 161.146000
+time: 189.636000
 random: 1
 repeat: 0
 single: 0
