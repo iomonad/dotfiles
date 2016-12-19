@@ -4,8 +4,6 @@
 
 # Some Perl Hacks {{{
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
-alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
-#}}}
 # Translate Tricks {{{
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
@@ -28,12 +26,10 @@ alias macoss='ssh scp1@industrialrefuge.com'
 alias  india='ssh scp1@192.168.1.102 -p 19216'
 alias   dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias   n900='ssh -p 19216 user@192.168.1.112'
-alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.100:http/japh.se/doc'
 alias router='ssh root@192.168.0.47 -p 2314'
 # Here copy files to server
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 alias ip='curl http://jackit.se/ip.php'
-alias empire='ssh root@inother.space -p 2314 cd /srv/empire && python2 /srv/empire/empire && exit'
 # Cool Trick x84
 alias x84='ssh anonymous@1984.ws'
 #}}}
@@ -125,12 +121,9 @@ alias    urxvt='urxvt -name URxvt.shiva'
 alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
-alias    dev='echo http://devel.japh.se/ \&& echo http://dev.japh.se/|xclip'
 #}}}
-# Very Very Deep Tricks {{{
+# Other fun Tricks {{{
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
-alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
-
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/dev/CPANTS \
                     && cd $HOME/dev/CPANTS'
 alias   iostat='iostat -mtx'
@@ -141,9 +134,6 @@ alias    shiva='ps -eo pcpu,pid,user,args \
                   | head -10 && iostat -mtx && mpstat -P 'ALL' && sar'
 
 
-alias a='printf "  %s\n  %s\n  %s\n  %s\n" "Magnus Woldrich" "CPAN ID: WOLDRICH" "m@japh.se" "http://japh.se"'
-alias trapd00r='printf "\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightweight Perl hacker\n"'
-alias trapd00rc='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n"'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 #}}}

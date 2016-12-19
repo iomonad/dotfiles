@@ -95,19 +95,14 @@ export X_OSD_COLOR='#a8ff00'
 #export MPD_HOST='192.168.1.100'
 #export MPD_PORT=6600
 #export MPD_PASS=`smokingkills`
-#export MPD_USER='scp1'
+#export MPD_USER='mpd'
 export LISTMAX=300
 #}}}
-# Some Fucked Paths {{{
+# Some shit Paths {{{
 #export CDPATH='.:~:/mnt'
 #export PERL_DL_NONLAZY=1
-#export PERLBREW_ROOT="/mnt/Leftover/Perl5"
 #export PERL_UNICODE=1
-## Use Term::ReadLine::Zoid for vi-bindings
-## Not needed anymore - http://japh.se/all/perl/2011/01/21/Readline/
-## also see https://github.com/trapd00r/configs/blob/master/.inputrc
 #export PERL_RL=Zoid
 #}}}
-export ANDROID_HOME="/home/seyt/Android/Sdk/build-tools"
+export ANDROID_HOME="$HOME/Android/Sdk/build-tools"
 # vim: set ts=2 expandtab sw=2:
-
