@@ -1,0 +1,90 @@
+[user]
+  name = iomonad
+  email = iomonad@riseup.net
+[core]
+  autocrlf = input
+  ignorecase = false
+  whitespace = cr-at-eol
+  editor     = vim
+  pager = less -x4
+[merge]
+  tool = vimdiff
+[credential]
+  helper = cache --timeout=28800
+[github]
+  user = iomonad
+[url "https://iomonad@github.com"]
+  insteadOf = https://github.com
+[color]
+  branch     = auto
+  diff       = 1
+  grep       = auto
+  pager      = 0
+  showbranch = auto
+  status     = auto
+  ui         = auto
+
+[color "status"]
+  added     = 2 bold
+  branch    = 100
+  changed   = 085 bold
+  header    = 086
+  nobranch  = 197
+  untracked = 240
+
+[color "branch"]
+  current = 172
+  local   = 85 bold
+  remote  = 039
+  plain   = 240 reverse
+
+[color "diff"]
+  old        = 124
+  new        = 34 bold
+  plain      = 137
+  meta       = 85
+  frag       = 86
+  func       = 87
+  commit     = 4
+  whitespace = 160 bold
+[alias]
+  cmd = commit --amend --no-edit
+  gg = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+  mc = merge --no-ff
+  last = "!git log -7 HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[30;1m%s\\033[m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
+  lastt = "!git log -14 HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[30;1m%s\\033[m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
+  co   = checkout
+  ci   = commit
+  st   = status
+  pu   = push
+  pl   = pull
+  undo = checkout --
+  log1 = log --
+  whatthefuckdidido = diff HEAD
+  sum  = git-summary
+  effort  = git-summary
+  styoyo = git-awesome-status
+  l    = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-40s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';}; f"
+  ll   = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-50s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';}; f"
+  lll  = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-80s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }'; }; f"
+  lg40 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-40s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+  lg50 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-50s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+  lg80 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-80s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  le = log --oneline --decorate
+  grep = grep -Ii
+  gr = grep -Ii
+  f = "!git ls-files | grep -i"
+  plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+  rank = shortlog -sn --no-merges
+  bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+  unpushed = !GIT_CURRENT_BRANCH=$(git name-rev --name-only HEAD) && git log origin/$GIT_CURRENT_BRANCH..$GIT_CURRENT_BRANCH --oneline`
+  unmerged = !git branch --no-merged master | grep -Ev \"(archive/|staging)\"
+  active-merged = !git branch --merged master | grep -Ev \"(archive/|staging)\"
+
