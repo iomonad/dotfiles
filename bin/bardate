@@ -1,5 +1,5 @@
 #!/bin/sh
 while :; do
 	echo "%{c}$(date '+%a %d %b %l:%M %p') | $(acpi | awk '{gsub(/*,/,); print }' | sed 's/%//g' | sed 's/,//g') %"
-   sleep 2
+   sleep 1
 done | bar -d -f -*-creep-regular-*-*--16-*-*-*-*-*-*-1 -F "$(xrq *foreground)" -B "$(xrq *background)" -g "200x40+1123+22"

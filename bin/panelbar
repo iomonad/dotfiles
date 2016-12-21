@@ -1,5 +1,8 @@
 #!/bin/sh
+
+FOO=$(uptime | awk '{print $3}' | sed s/,//)
+
 while :; do
-    echo "%{c}$(date '+%a %d %b %l:%M %p') | $(acpi | sed 's/%//g' | sed 's/,//g') %"
+    echo "%{c}$(date '+%a %d %b %l:%M %p') | $FOO"
    sleep 2
 done | bar -d -f "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*" -F $(xrq 'urxvt*foreground') -B $(xrq 'urxvt*background')
