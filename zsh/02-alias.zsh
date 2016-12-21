@@ -247,3 +247,11 @@ alias torrent="stty stop undef; stty start undef; screen -r rtd"
 
 # Android source code sync tool
 alias rs="repo sync -c -j 4" # Current branch for cynaogenmod
+
+alias ginstall='sudo emerge -a'
+alias gremove='sudo emerge -ac'
+alias gsystem_update='sudo emerge -aev world'
+alias gfind='sudo emerge -S'
+alias gupdate='sudo emerge --sync'
+alias gdepclean='sudo emerge --depclean'
+

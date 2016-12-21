@@ -9,6 +9,17 @@ for r in $HOME/.config/zsh/*.zsh; do
   source $r
 done
 
+# {{{ if ... else ... fi
+# root & user
+if [ $UID -eq 0 ]; then 
+    CARETCOLOR="red"
+    # user_prompt="⚡"
+    # user_prompt="#"
+else 
+    CARETCOLOR="green"
+    # user_prompt="»"
+fi
+
 PATH="/home/seyt/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/seyt/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/seyt/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
