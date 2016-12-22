@@ -5,8 +5,10 @@
 ### Installation
 ```bash
 $ git clone https://github.com/iomonad/dotfiles.git $HOME/etc
+
 # Move to the repo
 $ cd $HOME/etc
+
 # Make some symlinks. Ex,
 $ ln -s $HOME/etc/ssh $HOME/.ssh
 ```
@@ -17,8 +19,10 @@ $ ln -s $HOME/etc/ssh $HOME/.ssh
 ```bash
 # Initialize submodules
 $ git submodule init
+
 # Update repo
 $ git submodule update
+
 # Make symlinks
 $ ln -s $HOME/etc/emacs $HOME/.emacs.d
 ```
@@ -27,6 +31,7 @@ $ ln -s $HOME/etc/emacs $HOME/.emacs.d
 ```bash
 # To update dotfiles, just execute these commands
 $ git pull
+
 # For emacs
 $ git fetch ; git merge origin/master
 ```
