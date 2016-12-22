@@ -3,6 +3,7 @@ host *
     controlmaster auto
     controlpath ~/.ssh/connections/ssh_%r@%h:%p
     controlpersist  yes
+    ForwardX11 no
 
 host space
     hostname inother.space
@@ -10,17 +11,26 @@ host space
     user root
     compression no
     cipher blowfish-cbc
+    IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/space_rsa
 
 Host tunnel
     HostName git.inother.space
     IdentityFile ~/.ssh/keys/space_rsa
     LocalForward 9906 127.0.0.1:3306
+    IdentitiesOnly yes
+    cipher arcfour
     User root
 
 Host github.com
-    port 80
+    HostName github.com
     user git
     IdentityFile ~/.ssh/keys/github_rsa
     IdentitiesOnly yes
+    cipher arcfour
 
+Host gist.github.com
+    user git
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/github_rsa
+    cipher arcfour
