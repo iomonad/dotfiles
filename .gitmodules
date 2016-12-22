@@ -1,0 +1,3 @@
+[submodule "emacs"]
+	path = emacs
+	url = git@github.com:iomonad/emacs.d.git
