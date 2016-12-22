@@ -1,0 +1,26 @@
+VisualHostKey yes
+host *
+    controlmaster auto
+    controlpath ~/.ssh/connections/ssh_%r@%h:%p
+    controlpersist  yes
+
+host space
+    hostname inother.space
+    port 2314
+    user root
+    compression no
+    cipher blowfish-cbc
+    IdentityFile ~/.ssh/keys/space_rsa
+
+Host tunnel
+    HostName git.inother.space
+    IdentityFile ~/.ssh/keys/space_rsa
+    LocalForward 9906 127.0.0.1:3306
+    User root
+
+Host github.com
+    port 80
+    user git
+    IdentityFile ~/.ssh/keys/github_rsa
+    IdentitiesOnly yes
+

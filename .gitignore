@@ -29,3 +29,6 @@ xmonad/xmonad-x86_64-linux
 *.zwc
 xmonad/xmonad.errors
 zsh/backupzsh.tar.gz
+ssh/known_hosts
+ssh/keys
+ssh/connections/
