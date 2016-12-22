@@ -83,6 +83,15 @@ alias ls1='\ls -1'
 alias lsa='\ls --color=auto --time-style=full-iso'
 alias lsd='/bin/ls -FAv | grep /$ | column'
 #}}}
+
+# C'mon {{{
+alias xlx='xrdb -load ~/.Xresources'
+alias dirsize='du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f'
+alias creationdate='stat -F '%D' +mtime'
+alias tcpdump='sudo tcpdump -i eth0'
+alias installfont='sudo fc-cache -f -v'
+
+#}}}
 # Common Application Hacks {{{
 alias sortbycolumn='sort -n -k3'
 alias            R='rehash'
@@ -150,7 +159,7 @@ alias psef="ps -ef"
 precmd() {
 	setprompt
 	case $TERM in
-		rxvt-256color | screen-256color ) 
+		rxvt-256color | screen-256color )
 			print -Pn "\e]0;%n@%m: %~\a" ;;
 	esac
 }
@@ -177,7 +186,7 @@ alias t='tmux'
 alias ta='tmux attach -t'
 alias cp='cp -r '
 alias pingg='ping google.fr -c 5'
-alias pingb='ping 192.168.0.254 -c 5' 
+alias pingb='ping 192.168.0.254 -c 5'
 #}}}
 # {{{ Oneliners
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
@@ -216,7 +225,7 @@ alias radio-uzic="mplayer http://www.uzic.ch/tek.m3u"
 alias radio-trance="mplayer http://streaming.radionomy.com:8000/Trance-Libre-webradio.m3u"
 alias estimate-update="emerge -upvND --with-bdeps=y @world"
 alias pcmanfm="dbus-launch pcmanfm"
-
+alias speed_test='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias poweroff="sudo poweroff"
 alias shutdown="sudo shutdown now"
 alias reboot="sudo reboot"
@@ -248,10 +257,30 @@ alias torrent="stty stop undef; stty start undef; screen -r rtd"
 # Android source code sync tool
 alias rs="repo sync -c -j 4" # Current branch for cynaogenmod
 
-alias ginstall='sudo emerge -a'
-alias gremove='sudo emerge -ac'
-alias gsystem_update='sudo emerge -aev world'
-alias gfind='sudo emerge -S'
-alias gupdate='sudo emerge --sync'
-alias gdepclean='sudo emerge --depclean'
+# Emerge Tricks {{{
+alias esystem_update='sudo emerge -aev world'
+alias efull_system_update='sudo emerge -auDN @world'
+alias esync="sudo emerge --sync"
+alias esearch="sudo emerge --search"
+alias einfo="sudo emerge --info"
+alias eclean="sudo emerge --clean"
+alias edepclean="sudo emerge --depclean"
+alias unmerge="sudo emerge --unmerge"
+alias listsets="sudo emerge --list-sets"
+alias eprune="sudo emerge --prune"
+alias eregen="sudo emerge --regen"
+alias eresume="sudo emerge --resume"
+alias esearchdesc="sudo emerge --searchdesc"
+alias newsall="sudo eselect news read all"
+alias newslist="sudo eselect news list"
+alias newspurge="sudo eselect news purge"
+#}}}
 
+# w00t {{{
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+
+# }}}

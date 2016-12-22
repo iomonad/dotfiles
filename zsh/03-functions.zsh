@@ -25,7 +25,7 @@ vimconfig() {
 }
 
 zshconfig() {
-  vim $XDG_CONFIG_HOME/zsh/*.{zsh,theme}
+  vim $HOME/etc/zsh/*.zsh
 }
 #}}}
 # The Evil Become {{{
@@ -168,4 +168,65 @@ sshagent() {
     exec ssh-agent zsh # Open SHell
     ssh-add
 }
+
+# Append to the firstline
+# of a file.
+insheader() {
+    if [ -z "$2"]
+     then
+        echo "Insert header to a file"
+        echo "Usage: insheader <header> <file>"
+        exit 0
+    fi
+    echo -e "$(cat $1)\n$(cat $2)" > $2 2> /dev/null
+    echo "Done."
+}
+
+# Use a direct toilet banner
+insbanner() {
+    if [ -z "$2"]
+     then
+        echo "Insert toilet banner to the head"
+        echo "Usage: insbanner <text> <file>"
+        exit 0
+    fi
+    echo -e "$(toilet -f future $1)\n$(cat $2)" > $2 2> /dev/null
+    echo "Done. Don't forget to add comments."
+}
+# Dictionnary functions {{{
+dwordnet () { curl dict://dict.org/d:${1}:wn; }
+dacron () { curl dict://dict.org/d:${1}:vera; }
+djargon () { curl dict://dict.org/d:${1}:jargon; }
+dfoldoc () { curl dict://dict.org/d:${1}:foldoc; }
+dthesaurus () { curl dict://dict.org/d:${1}:moby-thes; }
+# }}}
+
+# Wiki search
+wikipediaSearch() {
+    echo -n -e "\n============================================\n\tWelcome to WikiPedia Search"; echo ""; i=1 ; for line in $(lynx --dump "http://en.wikipedia.org/w/index.php?title=Special%3ASearch&profile=default&search=$1&fulltext=Search" | grep http://en.wikipedia.org/wiki | cut -c7-); do echo $i $line; lines[$i]=$line ;  i=$(($i+1)); done ; echo -n -e "\n============================================\n\tPlease select the link to open - "; read answer; w3m ${lines[$answer]}
+}
+sepSearch() {
+    echo -n -e "\n============================================\n\tWelcome to WikiPedia Search"; echo ""; i=1 ; for line in $(lynx --dump "http://plato.stanford.edu/search/searcher.py?query=$1" | grep http://plato.stanford.edu | cut -c7-); do echo $i $line; lines[$i]=$line ;  i=$(($i+1)); done ; echo -n -e "\n============================================\n\tPlease select the link to open - "; read answer; w3m ${lines[$answer]}
+}
+# Error prompt
+ewarn() { echo -e "\033[1;33m>>> \033[0m$@"; }"]]"}
+
+# Creates an archive from given directory
+mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
+
+# Colored man pages {{{
+man() {
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;37m") \
+		LESS_TERMCAP_md=$(printf "\e[1;37m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;47;30m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[0;36m") \
+			man "$@"
+}
+#}}}
 # vim: ft=sh:
