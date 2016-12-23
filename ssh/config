@@ -1,7 +1,7 @@
 VisualHostKey yes
 host *
     controlmaster auto
-    controlpath ~/.ssh/connections/ssh_%r@%h:%p
+    controlpath ~/.ssh/connections/ssh_%r@%h:%p # socket pattern
     controlpersist  yes
     ForwardX11 no
 
