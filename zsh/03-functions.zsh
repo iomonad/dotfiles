@@ -209,7 +209,6 @@ sepSearch() {
     echo -n -e "\n============================================\n\tWelcome to WikiPedia Search"; echo ""; i=1 ; for line in $(lynx --dump "http://plato.stanford.edu/search/searcher.py?query=$1" | grep http://plato.stanford.edu | cut -c7-); do echo $i $line; lines[$i]=$line ;  i=$(($i+1)); done ; echo -n -e "\n============================================\n\tPlease select the link to open - "; read answer; w3m ${lines[$answer]}
 }
 # Error prompt
-ewarn() { echo -e "\033[1;33m>>> \033[0m$@"; }"]]"}
 
 # Creates an archive from given directory
 mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
