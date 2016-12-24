@@ -216,6 +216,7 @@ alias framboise="ssh root@192.168.0.47"
 alias reddit="rtv"
 #}}}
 
+
 alias nano="vim"
 alias youtube="mpsyt"
 alias external-ip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'  '>'"
@@ -274,6 +275,8 @@ alias esearchdesc="sudo emerge --searchdesc"
 alias newsall="sudo eselect news read all"
 alias newslist="sudo eselect news list"
 alias newspurge="sudo eselect news purge"
+# Should be executed when new kernel update
+alias nvidia-rebuild-drivers="emerge @module-rebuild"
 #}}}
 
 # w00t {{{
