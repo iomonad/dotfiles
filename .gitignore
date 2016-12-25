@@ -32,3 +32,14 @@ zsh/backupzsh.tar.gz
 ssh/known_hosts
 ssh/keys
 ssh/connections/
+weechat/country
+weechat/logs
+weechat/buddylist.txt
+weechat/irc.conf
+weechat/weechat.log
+*.log
+weechat/urlserver_list.txt
+weechat/sec.conf
+weechat/perl
+weechat/python
+ranger/bookmarks

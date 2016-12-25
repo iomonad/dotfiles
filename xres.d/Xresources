@@ -11,12 +11,12 @@
 
 !! Lemon Font
 
-urxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-urxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-urxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-urxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-URxvt*letterSpace: 1
-URxvt*allow_bold: true
+!urxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!urxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!urxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!urxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*letterSpace: 1
+!URxvt*allow_bold: true
 
 
 !! Creep Font

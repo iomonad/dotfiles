@@ -180,7 +180,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-S-<KP_Add>",      shiftTo Next nonNSP >> moveTo Next nonNSP) -- Move and follow prop to next workspace
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP) -- Move and follow prop to last workspace
     -- Prompts Popup
-        , ("M-,",               goToSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected go to the prop
+     --   , ("M-,",               goToSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected go to the prop
         , ("M-S-,",             bringSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected move prop to current workspace
     -- Scratchpads
         , ("M-<Tab>",           namedScratchpadAction myScratchpads "terminal") -- Pop a terminal as scratchpads ^ useless
@@ -205,6 +205,7 @@ myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPositi
         , [ resource  =? r --> doF (W.view "web" . W.shift "web")   | r <- myWebApps     ]
         , [ resource  =? r --> doF (W.view "media" . W.shift "media") | r <- myMediaApps   ]
         , [ resource  =? r --> doF (W.view "pirate" . W.shift "pirate")   | r <- mySystApps    ]
+        , [ resource  =? r --> doF (W.view "porn" . W.shift "porn")   | r <- mySystApps    ]
         , [ resource  =? r --> doFloat                            | r <- myFloatApps   ] -- Make float apss floating
         , [ className =? c --> ask >>= doF . W.sink               | c <- myUnfloatApps ]
         ]) <+> manageHook defaultConfig

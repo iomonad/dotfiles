@@ -17,9 +17,6 @@ urxvtd --quiet --opendisplay --fork
 # URxvt clipboard magic
 utocutsel -selection clipboard -fork
 
-# Other programs
-setxkbmap fr
-
 # clean Xorgs files
 rm ~/.serverauth*
 
