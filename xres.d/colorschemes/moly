@@ -1,0 +1,31 @@
+!// ObliviousGmn
+
+ *.foreground: 	#ffffff
+ *.background: 	#222222
+ *cursorColor:  #222222
+ *colorUL:      #C5C8A8
+
+!//black
+  *color0: 	#474747
+  *color8: 	#383838
+!//red
+  *color1: 	#D85774
+  *color9: 	#F59BB0
+!//green
+  *color2: 	#C5C8A8
+  *color10: 	#DEFFD4
+!//yellow
+  *color3: 	#BACCAC
+  *color11: 	#BED19E
+!//blue
+  *color4: 	#C777AF
+  *color12:     #D498D0
+!//magenta
+  *color5: 	#E36BB2
+  *color13: 	#D14BAA
+!//cyan
+  *color6: 	#D09EAF
+ *color14: 	#CC91A3
+!// White
+  *color7: 	#F5CCD4
+  *color15: 	#FFFFFF

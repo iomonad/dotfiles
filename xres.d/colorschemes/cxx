@@ -1,0 +1,26 @@
+#define fg #3c3c3b
+#define bg #dddddd
+#define lbg #d0d0d0
+*foreground: fg
+*background: bg
+*cursorColor: #3c3c3b
+*color233: bg
+*color232: lbg
+*color17: #14161b
+*color0:  #c0c0c0
+*color8:  #3c3c3b
+*color1:  #5f819d
+*color9:  #5f819d
+*color2:  #545454
+*color10: #545454
+*color3:  #545454
+*color11: #545454
+*color4:  #777777
+*color12: #777777
+*color5:  #777777
+*color13: #777777
+*color6:  #777777
+*color14: #777777
+*color7:  #3c3c3b
+*color15: #3c3c3b
+

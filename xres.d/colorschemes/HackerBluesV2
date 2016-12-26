@@ -1,0 +1,41 @@
+#ObliviousGmn
+#HackerBluesV2
+
+# -------- BASE -------- #
+  *background: 	 #1C1C24
+  *foreground: 	 #9AC2C2
+  *cursorColor:  #888896
+  *colorUL:      #888896
+# ---------------------- #
+
+!Black
+*color0:               #34344A
+*color8:               #464664
+
+!Red
+*color1:               #56707E
+*color9:               #688696
+
+!Green
+*color2:               #888896
+*color10:              #9E9EB0
+
+!Yellow
+*color3:               #20A4A4
+*color11:              #24BCBC
+
+!Blue
+*color4:               #30627C
+*color12:              #3A7898
+
+!Magenta
+*color5:               #6898B0
+*color13:              #78AEC8
+
+!Cyan
+*color6:               #6A8698
+*color14:              #7C9CB2
+
+!White
+*color7:               #9AC2C2
+*color15:              #B4E2E2

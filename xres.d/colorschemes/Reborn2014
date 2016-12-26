@@ -1,0 +1,36 @@
+  *background: 	 #131314
+  *foreground: 	 #BFBFBF
+  *cursorColor:  #4B8F84
+  *colorUL:      #4B8F84
+
+!Black
+*color0:               #2C2C38
+*color8:               #2B2B3D
+
+!Red
+*color1:               #807359
+*color9:               #807359
+
+!Green
+*color2:               #4B8F84
+*color10:              #4B8F84
+
+!Yellow
+*color3:               #CCBEA3
+*color11:              #CCBEA3
+
+!Blue
+*color4:               #666680
+*color12:              #666680
+
+!Magenta
+*color5:               #E678AA
+*color13:              #E678AA
+
+!Cyan
+*color6:               #407580
+*color14:              #407580
+
+!White
+*color7:               #BFBFBF
+*color15:              #E6E6E6

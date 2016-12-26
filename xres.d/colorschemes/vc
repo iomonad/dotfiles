@@ -1,0 +1,28 @@
+#define fg #6d6b6e
+#define bg #000000
+#define lbg #020202
+*foreground: fg
+*background: bg
+*cursorColor: fg
+*color233: bg
+*color0:   #25272b
+! keywords
+*color1:   #4a4b4c
+*color2:   #4a4b4c
+*color3:   #828285
+*color4:   #5d5b5e
+*color5:   #4a4b4c
+*color6:   #6d6b6f
+*color7:   #4a4b4c
+*color8:   #15171b
+*color9:   #4a4b4c
+*color10:  #3a3b3c
+*color11:  #4a4b4c
+*color12:  #4a4b4c
+*color13:  #3a3b3c
+*color14:  #4a4b4c
+*color15:  #4a4b4c
+
+!a2a5a5
+!4a4c4b
+!6d6b6e
