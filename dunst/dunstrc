@@ -1,5 +1,5 @@
 [global]
-font = Tewi 8
+font = xft:terminus:pixelsize=10
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -148,8 +148,8 @@ icon_position = off
 icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-width = 3
-color = "#ffffff"
+width = 1
+color = "#567265"
 
 [shortcuts]
 
@@ -180,8 +180,8 @@ background = $(xrq foreground)
 timeout = 3
 
 [urgency_normal]
-background = "#11171C"
-foreground = "#E6E6E6"
+background = "#000000"
+foreground = "#567265"
 timeout = 3
 
 [urgency_critical]
