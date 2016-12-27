@@ -1,0 +1,29 @@
+! Colors
+*background:   #121417
+*foreground:   #d2d2d2
+
+! BLK
+*color0:      #272432
+*color8:      #46444d
+! RED
+*color1:      #af6c69
+*color9:      #af6c69
+! GRN
+*color2:      #7e9c80
+*color10:     #7e9c80
+! YLW
+*color3:      #b29c7c
+*color11:     #b29c7c
+! BLU
+*color4:      #637b81
+*color12:     #637b81
+! MAG
+*color5:      #896e72
+*color13:     #896e72
+! CYN
+*color6:      #5a8585
+*color14:     #5a8585
+! WHT
+*color7:      #bfbec3
+*color15:     #bfbec3
+

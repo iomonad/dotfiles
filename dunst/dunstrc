@@ -1,5 +1,6 @@
 [global]
-font = xft:terminus:pixelsize=10
+#font = xft:terminus:pixelsize=10
+font = terminus
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -181,7 +182,7 @@ timeout = 3
 
 [urgency_normal]
 background = "#000000"
-foreground = "#567265"
+foreground = "#ffffff"
 timeout = 3
 
 [urgency_critical]

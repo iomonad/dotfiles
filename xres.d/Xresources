@@ -2,7 +2,7 @@
 !#include </home/seyt/.xres.d/crayolo/colors/5725>
 !#include </home/seyt/.xres.d/crayolo/Xresources>
 
-#include </home/seyt/.xres.d/colors/punk>
+#include </home/seyt/.xres.d/colorschemes/punk>
 
 ! run "fc-list" for a list of available fonts
 !! Terminus font
@@ -10,14 +10,18 @@
 *boldFont: xft:terminus:style=bold:pixelsize=12
 
 !! Lemon Font
-
-!urxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!urxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!urxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!urxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
 !URxvt*letterSpace: 1
 !URxvt*allow_bold: true
 
+!! Kori Metis font
+!URxvt*font: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*boldFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*italicFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*bolditalicFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
 
 !! Creep Font
 !URxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
@@ -25,13 +29,22 @@
 !URxvt*italicFont: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
 !URxvt*boldItalicFont: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
 
+! Xft
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:    96
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba: rgb
+
 ! Terminal window size
 URxvt*geometry: 65x17
 
 ! Disable scrollbar
 URxvt.scrollBar: false
 
-! Set urxvt as login shell
+! Set URxvt as login shell
 URxvt*loginShell: true
 
 ! Set terminal padding
@@ -50,10 +63,17 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 ! Extensions
-urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback
-urxvt*urlLauncher:     w3m
-urxvt*matcher.button:  1
+URxvt*perl-lib:        /home/seyt/.xres.d/urxvt-perls
+URxvt*perl-ext-common: default,matcher,searchable-scrollback
+URxvt*urlLauncher:     w3m
+URxvt*matcher.button:  1
+
+! Keybind
+URxvt.keysym.Control-Alt-C: perl:clipboard:copy
+URxvt.keysym.Control-Alt-V: perl:clipboard:paste
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-u: perl:url-select:select_next
 
 ! blink
 URxvt*cursorBlink: true
