@@ -286,4 +286,8 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+alias sshu='ssh -o UserKnownHostsFile=/dev/null'
+alias sr='ssh -l root'
+alias sru='ssh -l root -o UserKnownHostsFile=/dev/null'
+
 # }}}
