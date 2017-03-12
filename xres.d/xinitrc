@@ -1,9 +1,12 @@
 # Load X ressources
-xrdb $HOME/.Xresources
+xrdb -load  $HOME/.Xresources
 
 # Load fonts
-xset +fp ~/.xres.d/fonts
+xset +fp ~/.fonts
 xset fp rehash
+xset -dpms
+xrdb -load .Xresources
+#compton --config ~/bin/compton.conf -C
 
 # Set cursor from X to pointer
 xsetroot -cursor_name left_ptr &
@@ -15,10 +18,12 @@ wmname LG3D
 urxvtd --quiet --opendisplay --fork
 
 # URxvt clipboard magic
-utocutsel -selection clipboard -fork
+autocutsel -selection clipboard -fork
 
 # clean Xorgs files
 rm ~/.serverauth*
 
+# Set the wall
+hsetroot -tile ~/.xres.d/wallpaper/tiled/pattern.gif
 # start the WM
-xmonad
+exec bspwm

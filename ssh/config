@@ -21,7 +21,7 @@ Host tunnel
     IdentitiesOnly yes
     cipher arcfour
     User root
-
+    
 Host github.com
     HostName github.com
     user git
@@ -34,3 +34,22 @@ Host gist.github.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/github_rsa
     cipher arcfour
+
+host pi
+    user pi
+    hostname fsociety.local
+
+host gate
+    user gate
+    port 23147
+    hostname 192.168.0.20
+    cipher arcfour
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/home_key
+
+host home
+    user gate
+    port 23147
+    cipher arcfour
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/home_key

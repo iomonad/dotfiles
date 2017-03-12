@@ -80,8 +80,8 @@ hi ContentSeparator border-top: 0px;
 "For other descriptions of each item, please see ``Styling'' section included with
 Vimperator
 
-hi CmdLine>* font-family: Terminus 9
-hi CompDesc font-family: Terminus 9
-hi CompResult font-family: Terminus 9
-hi StatusLine font-family: Terminus 9
+hi CmdLine>* font-family: Berry 9
+hi CompDesc font-family: Berry 9
+hi CompResult font-family: Berry 9
+hi StatusLine font-family: Berry 9
 hi PromptText width: 0px

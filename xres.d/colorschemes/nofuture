@@ -1,0 +1,28 @@
+URxvt*foreground: #576265
+URxvt*background: #000000
+URxvt*cursorColor: #576265
+
+!Black
+*color0: #303c3d
+*color8: #2e3436
+!Red
+*color1: #a35b66
+*color9: #ab6b74
+!Green
+*color2: #99ab6f
+*color10: #acb792
+!Yellow
+*color3: #ca9733
+*color11: #ccaa69
+!Blue
+*color4: #495d6e
+*color12: #687987
+!Magenta
+*color5: #825969
+*color13: #977381
+!Cyan
+*color6: #839191
+*color14: #98A4A4
+!White
+*color7: #E0E0E0
+*color15: #e5e5e5

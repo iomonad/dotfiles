@@ -158,7 +158,7 @@ export ANDROID_PLATFORM_TOOLS="$ANDROID_HOME/platform-tools/"
 export ANDROID_TOOLs="$ANDROID_HOME/tools"
 export CYANOGEN_ROOT="$HOME/android/cyanogen"
 export ANDROID_PATHS="$ANDROID_BUILD_TOOLS:$ANDROID_TOOLs:$ANDROID_PLATFORM_TOOLS"
-
+export PICC="$HOME/dev/rpi-toolchain"
 # }}}
 
 # Java path {{{
@@ -190,7 +190,7 @@ export PERL_PATHS="$PERL_SITE_BIN:$PERL_CORE_PATH:$PERL_VENDOR_PATH:$PERL5_SITE_
 # }}}
 
 # The Glorious Path {{{
-export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_PATH:$JAVA_BIN_PATH:$PERL_PATHS:$ANDROID_PATHS"
+export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_PATH:$JAVA_BIN_PATH:$PERL_PATHS:$ANDROID_PATHS:$PICC"
 #}}}
 
 # vim: set ts=2 expandtab sw=2:

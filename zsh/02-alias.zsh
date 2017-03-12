@@ -114,7 +114,7 @@ alias      wig='wminput -c gamepad&'
 alias      wit='wminput -c buttons-term&'
 #}}}
 #}}}
-# Vim Speed Edit {{{
+# VimSpeed Edit {{{
 alias    vimsh='vim *.sh'
 alias    vimpm='vim *.pm'
 alias    vimpl='vim *.pl'
@@ -126,7 +126,7 @@ alias    flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias      die='kill -9 $$'
-alias    urxvt='urxvt -name URxvt.shiva'
+alias    urxvt='urxvt -name URxvt.darknet'
 alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
@@ -149,7 +149,7 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 # Xero Alias, Thanks to him :) {{{
 alias v="vim"
 alias vi="vim"
-#alias emacs="vim"
+alias nano="vim"
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias clbin="curl -F 'clbin=<-' https://clbin.com"
@@ -286,4 +286,12 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+# }}}
+
+# Newly added {{{
+alias pcmanfm='ck-launch-session dbus-launch pcmanfm'
+alias vim='/usr/bin/em' # back to Micro Emacs
+alias vi='/usr/bin/em'
+alias proxy="proxychains -q -f $HOME/etc/proxychains/proxychains.conf"
+alias clock="while :; do date '+%T'; sleep 1; done | bar $BAROPT"
 # }}}

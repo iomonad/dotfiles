@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vimb - The Vim like Browser</title>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="vimb - the vim like browser is a fast, keyboard driven and lightweight web-browser"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Daniel Carl"/>
+  <link rel="stylesheet" type="text/css" href="theme/main.css"/>
+</head>
+<body>
+<div id="page">
+<div id="content">
+<a href="#nav-main" class="nogui">skip to main navigation</a>
+<h1 id="vimb---the-vim-like-browser"><abbr title="vim browser - the vim like browser">vimb</abbr> - the vim like browser</h1>
+
+<p><a href="https://github.com/fanglingsu/vimb" title="vimb project sources">Vimb</a> is a fast and lightweight vim like web browser based on the
+webkit web browser engine and the GTK toolkit. Vimb is modal like the great
+vim editor and also easily configurable during runtime. Vimb is mostly
+keyboard driven and does not detract you from your daily work.</p>
+
+<p>If your are familiar with vim or have some experience with pentadactyl the use
+of <abbr title="vim browser - the vim like browser">vimb</abbr> would be a breeze, if not we missed our target.</p>
+
+<h2 id="latest-features">latest features</h2>
+
+<dl>
+  <dt>New setting ‘closed-max-items’</dt>
+  <dd>Maximum number of stored last closed browser windows. If closed-max-items is
+set to 0, closed browser windows will not be stored. By default this is 10.</dd>
+  <dt>New option <a href="man.html#OPTIONS">-p, –profile</a></dt>
+  <dd>This allows to create and run <abbr title="vim browser - the vim like browser">vimb</abbr> with a seperate named config directory,
+with own history and bookmarks.</dd>
+  <dt>New setting ‘hint-follow-last’</dt>
+  <dd>If on, <abbr title="vim browser - the vim like browser">vimb</abbr> automatically follows the last remaining hint on the page
+(default behaviour). If off hints are fired only if enter is pressed.</dd>
+  <dt>Remote-Control via socket (previously a fifo)</dt>
+  <dd>If <abbr title="vim browser - the vim like browser">vimb</abbr> is started with <code>-s</code> or <code>--socket</code> option, <abbr title="vim browser - the vim like browser">vimb</abbr> creates a unix
+domain socket named <code>$XDG_RUNTIME_DIR/vimb/socket/{pid}</code>.</dd>
+  <dd>All commands written to the socket are executed in the same way like the
+right hand side of the <code>map</code> commands. This allow to perform normal mode
+commands as well as ex commands.</dd>
+  <dd>Example:
+
+    <pre><code>sh -c "vimb -s -d &gt; ~/socket" &amp;
+SOCKET=$(&lt; ~/socket)
+echo ':o http://fanglingsu.github.io/vimb/&lt;CR&gt;' | socat - UNIX-CONNECT:$SOCKET
+echo ':o !&lt;Tab&gt;&lt;Tab&gt;&lt;CR&gt;' | socat - UNIX-CONNECT:$SOCKET
+echo '&lt;C-Q&gt;' | socat - UNIX-CONNECT:$SOCKET
+# or start an interactive remote control session
+socat READLINE UNIX-CONNECT:$(&lt; ~/socket)
+</code></pre>
+  </dd>
+</dl>
+
+<h2 id="screenshots">screenshots</h2>
+
+<p>There isn’t really much to see for a browser that is controlled via keyboard.
+But following images may give a impression of they way <abbr title="vim browser - the vim like browser">vimb</abbr> works.</p>
+
+<p><a href="media/vimb-hints.png"><img src="media/vimb-hints.png" alt="vimb hinting marks active element like links" title="link hinting (688x472 32kB)" width="350" /></a>
+<a href="media/vimb-completion.png"><img src="media/vimb-completion.png" alt="completion with scrallable completion menu" title="completion of settings (690x472 10kB)" width="350" /></a></p>
+
+<h2 id="features">features</h2>
+
+<ul>
+  <li>vim like usage and <a href="man.html#Key_Mapping" title="vimb keybindings">keybindings</a></li>
+  <li>follow links via keyboard <a href="man.html#Hinting" title="vimb hinting">hints</a></li>
+  <li>read it later <a href="man.html#Queue" title="vimb read it later queue feature">queue</a> to collect URIs for later use</li>
+  <li>page marks</li>
+  <li>tagged bookmarks</li>
+  <li>cookie support</li>
+  <li>userscripts and user style sheet support</li>
+  <li>completions for commands, url history, bookmarks, bookmark tags, variables
+and search queries</li>
+  <li><a href="man.html#Command_Line_History" title="vimb keybindings to access history">history</a> for commands, url and search queries</li>
+  <li>open textareas with configurable editor</li>
+  <li>user defined url <a href="man.html#Shortcuts" title="vimb shortcuts">shortcuts</a> with up to 9 placeholders</li>
+  <li>xembed - so <abbr title="vim browser - the vim like browser">vimb</abbr> can be used together with <a href="faq.html#tabbed">tabbed</a></li>
+  <li>kiosk mode without keybindings and context menu</li>
+  <li>manipulate http request headers</li>
+  <li>custom <a href="man.html#Handlers" title="vimb custom protocol handlers">protocol handlers</a></li>
+  <li><abbr title="HTTP Strict Transport Security">HSTS</abbr> – HTTP Strict Transport Security</li>
+  <li>multiple yank/paste registers</li>
+</ul>
+
+<h2 id="packages">packages</h2>
+
+<ul>
+  <li>archlinux <a href="https://aur.archlinux.org/packages/vimb-git/" title="vimb - archlinux package"><abbr title="vim browser - the vim like browser">vimb</abbr>-git</a>, <a href="https://aur.archlinux.org/packages/vimb/" title="vimb - archlinux package"><abbr title="vim browser - the vim like browser">vimb</abbr></a></li>
+  <li><a href="http://pkgsrc.se/www/vimb" title="vimb - NetBSD package">NetBSD</a></li>
+  <li><a href="http://www.freshports.org/www/vimb/" title="vimb - FreeBSD port">FreeBSD</a></li>
+  <li><a href="https://github.com/voidlinux/void-packages/blob/master/srcpkgs/vimb/template" title="vimb - Void Linux package">Void Linux</a></li>
+</ul>
+
+<h2 id="download">download</h2>
+<ul>
+  <li>
+    <p>You can get <abbr title="vim browser - the vim like browser">vimb</abbr> from github by following command.</p>
+
+    <pre><code>git clone git://github.com/fanglingsu/vimb.git vimb
+</code></pre>
+  </li>
+  <li>
+    <p>Or you can download actual source as <a href="https://github.com/fanglingsu/vimb/archive/master.tar.gz" title="vimb download tar.gz">tar.gz</a> or as <a href="https://github.com/fanglingsu/vimb/archive/master.zip" title="vimb download zip">zip</a> or get
+one of the <a href="https://github.com/fanglingsu/vimb/releases" title="vimb download releases">releases</a>.</p>
+  </li>
+</ul>
+
+<h2 id="contribute">contribute</h2>
+
+<p>If you find a misbehaviour or have feature requests use the
+<a href="https://github.com/fanglingsu/vimb/issues" title="vimb vim like browser - issues">issue tracker</a> provided by github or via <a href="https://lists.sourceforge.net/lists/listinfo/vimb-users" title="vimb vim like browser - mailing list">mailing list</a>.</p>
+
+<h2 id="alternatives">alternatives</h2>
+
+<ul>
+  <li><a href="http://sourceforge.net/apps/trac/vimprobable/">vimprobable</a> this was the initial inspiration for the <abbr title="vim browser - the vim like browser">vimb</abbr> browser and has
+a lot of features in common</li>
+  <li><a href="http://surf.suckless.org/">surf</a> a really minimalistic browser of the suckless project. No runtime
+configuration.</li>
+</ul>
+
+
+</div>
+<nav>
+  <h3 id="nav-main" class="nogui">main navigation</h3>
+  <ul>
+    <li class="active"><span>home</span></li>
+    <li><a href="man.html">manual</a></li>
+    <li><a href="faq.html">faq</a></li>
+    <li><a href="scripts.html">scripts</a></li>
+  </ul>
+</nav>
+<footer><a href="#page" title="to top">&#9650; top</a></footer>
+</div>
+</body>
+</html>

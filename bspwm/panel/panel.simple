@@ -1,0 +1,5 @@
+#!/bin/sh
+while :; do
+    echo "$(date '+%a %d %b %l:%M %p') | %{c} $(mpc current) %"
+   sleep 2
+done | bar -d -f "xft:berry" -F $(xrq 'urxvt*foreground') -B $(xrq 'urxvt*background') -g 1366x$(bspc config top_padding)

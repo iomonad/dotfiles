@@ -1,5 +1,7 @@
 #
-# bspwm hotkeys
+# sxhkdrc - Hotkey deamon configuration file
+# iomonad (github.com/iomonad/dotfiles)
+# 2017 - <iomonad@riseup.net>
 #
 
 super + shift + Escape
@@ -40,6 +42,7 @@ super + {comma,period}
 # preselect
 #
 
+s
 # preselect the direction
 super + ctrl + {Left,Down,Up,Right}
     bspc node -p {west,south,north,east}
@@ -134,26 +137,27 @@ super + w
 
 
 super + space
-    rofi -show run
+    rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc "#555555" -bg "#222222" -hlbg "#222222" -hlfg "#c79595" -fg "#ffffff" -font "Terminus 15"
 # uguush screen capture
 control + super + shift + w
-    ~/bin/uguush -w
+    ~/bin/uguush -o mixtape -w
 
 # uguush fullscreen
 control + super + shift + f
-    ~/bin/uguush -f
+    ~/bin/uguush -o mixtape -f
 
 # uguush selection
 control + super + shift + s
-    ~/bin/uguush -s
+    ~/bin/uguush -o mixtape -s
 
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd
 
-super + n
-	tmux new-window
-
+# Your song sucks
 super + shift + m
 	mpc next
 
+# Start pcmanfm
+super + p
+  ck-launch-session dbus-launch pcmanfm

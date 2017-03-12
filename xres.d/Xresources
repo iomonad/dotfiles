@@ -1,33 +1,19 @@
-!DKEG s crayolo font system (huge thanks)
-!#include </home/seyt/.xres.d/crayolo/colors/5725>
-!#include </home/seyt/.xres.d/crayolo/Xresources>
+! /-----------------------\
+! | Updated by iomonad    |
+! | localhost             |
+! | 2017                  |
+! \-----------------------/
 
-#include </home/seyt/.xres.d/colorschemes/punk>
+!! Crayolo mode
+!#include </home/iomonad/.xres.d/crayolo/colors/drift>
+!#include </home/iomonad/.xres.d/crayolo/Xresources>
 
-! run "fc-list" for a list of available fonts
-!! Terminus font
-*font: xft:terminus:style=bold:pixelsize=12
-*boldFont: xft:terminus:style=bold:pixelsize=12
+! Classic import
+#include </home/iomonad/.xres.d/colorschemes/shinru>
 
-!! Lemon Font
-!URxvt*font: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*boldFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*italicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*bolditalicFont: -*-lemon-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*letterSpace: 1
-!URxvt*allow_bold: true
-
-!! Kori Metis font
-!URxvt*font: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
-!URxvt*boldFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
-!URxvt*italicFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
-!URxvt*bolditalicFont: -kori-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1
-
-!! Creep Font
-!URxvt*font: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-!URxvt*boldFont: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-!URxvt*italicFont: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
-!URxvt*boldItalicFont: -*-creep-regular-*-*--16-*-*-*-*-*-*-1
+! Font
+*font: xft:berry:style=bold:pixelsize=12
+*boldFont: xft:berry:style=bold:pixelsize=12
 
 ! Xft
 Xft.antialias:  1
@@ -79,9 +65,7 @@ URxvt.keysym.C-u: perl:url-select:select_next
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
 
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
+!! Rofi configuration
 rofi.color-enabled: true
 rofi.color-window: #000000, #000000, #000000
 rofi.color-normal: #000000, #576265, #000000, #000000, #000000

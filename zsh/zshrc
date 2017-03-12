@@ -37,6 +37,5 @@ setopt EXTENDED_HISTORY
 
 xrdb .Xresources
 
-task # Show tasks
-export TERM=xterm-256color
+export TERM=xterm-color
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi

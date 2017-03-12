@@ -5,7 +5,7 @@
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
-  editor     = vim
+  editor     = emacs
   pager = less -x4
 [merge]
   tool = vimdiff
@@ -97,3 +97,4 @@
   # clean merged branch
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+  g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
