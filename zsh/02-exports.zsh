@@ -189,6 +189,8 @@ export PERL5_VENDOR_PATH="/usr/lib/perl5/vendor_perl/bin"
 export PERL_PATHS="$PERL_SITE_BIN:$PERL_CORE_PATH:$PERL_VENDOR_PATH:$PERL5_SITE_BIN:$PERL5_CORE_PATH:$PERL5_VENDOR_PATH"
 # }}}
 
+export GOPATH="$HOME/dev/gopath"
+unset GOROOT # fix path
 # The Glorious Path {{{
 export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_PATH:$JAVA_BIN_PATH:$PERL_PATHS:$ANDROID_PATHS:$PICC"
 #}}}

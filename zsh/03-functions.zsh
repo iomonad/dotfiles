@@ -11,6 +11,9 @@ mplayer_headphones() {
 	-channels 6 -af resample=48000,hrtf "$@"
 }
 #}}}
+#cd() {
+#     builtin cd;ls
+#}
 # ZSH compile {{{
 zc() {
     for z in $HOME/etc/zsh/*.zsh $HOME/.zshrc; do
@@ -71,9 +74,6 @@ du1() {
 }
 #}}}
 # Hacked CD {{{
-cd() {
-    builtin cd $@; ls
-}
 regcheck() {
     emulate -L zsh
     zmodload -i zsh/pcre
@@ -707,10 +707,6 @@ perm() {
     perl -e "printf \"%o\n\",(stat shift)[2] & 07777" $1
 }
 
-# Display process information from his name
-p() {
-    ps -o user,pid,pgid,sid,cmd -e | grep $1 | grep -v grep
-}
 
 # Display in column mounted partition
 cmount() {

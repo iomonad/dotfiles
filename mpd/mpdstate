@@ -2,66 +2,24 @@ sw_volume: 1
 audio_device_state:1:MPD alsa
 audio_device_state:1:vis_feed
 state: play
-current: 18
-time: 282.285000
+current: 3
+time: 235.380000
 random: 1
 repeat: 0
 single: 0
 consume: 0
-crossfade: 0
+crossfade: 5
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/01 Based Is How You Feel Inside.mp3
-1:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/02 Fall In Love.mp3
-2:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/03 Improvised Jam.mp3
-3:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/04 Mass Appeal _ Transmission.mp3
-4:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/05 I Got A Bad Feeling About This.mp3
-5:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/06 Salmonella.mp3
-6:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/07 The World Is Yours _ Brooklyn Zoo.mp3
-7:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/08 Freedom _ Billium Evans (Prod. Seeds of Yaris).mp3
-8:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/09 Listeriosis.mp3
-9:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/10 Camel.mp3
-10:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/11 Title Theme _ Saria's Song _ Song Of Storms.mp3
-11:Psychedelic/BADBADNOTGOOD - BBNG (2011) - JKoop/BADBADNOTGOOD - BBNG (2011)/12 Outro _ Glasper.mp3
-12:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/01 Earl (Feat. Leland Whitty).mp3
-13:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/02 Vices.mp3
-14:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/03 Rotten Decay.mp3
-15:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/04 Limit To Your Love.mp3
-16:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/05 Bastard _ Lemonade.mp3
-17:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/06 CHSTR.mp3
-18:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/07 UWM (Feat. Leland Whitty).mp3
-19:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/08 DMZ.mp3
-20:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/09 CMYK.mp3
-21:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/10 Flashing Lights.mp3
-22:Psychedelic/BADBADNOTGOOD - BBNG2 - JKoop/BBNG2 (MP3-V0)/11 You Made Me Realise (Feat. Luan Phung).mp3
-23:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/01 - And That, Too..flac
-24:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/02 - Speaking Gently.flac
-25:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/03 - Time Moves Slow (feat. Sam Herring).flac
-26:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/04 - Confessions Pt II (feat. Colin Stetson).flac
-27:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/05 - Lavender (feat. Kaytranada).flac
-28:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/06 - Chompy's Paradise.flac
-29:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/07 - IV.flac
-30:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/08 - Hyssop of Love (feat. Mick Jenkins).flac
-31:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/09 - Structure No. 3.flac
-32:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/10 - In Your Eyes (feat. Charlotte Day Wilson).flac
-33:Psychedelic/BADBADNOTGOOD - IV (2016) [24-96 HD FLAC]/11 - Cashmere.flac
-34:Psychedelic/BADBADNOTGOOD-III/01 - triangle.mp3
-35:Psychedelic/BADBADNOTGOOD-III/02 - cant-leave-the-night.mp3
-36:Psychedelic/BADBADNOTGOOD-III/03 - confessions.mp3
-37:Psychedelic/BADBADNOTGOOD-III/04 - kaleidoscope.mp3
-38:Psychedelic/BADBADNOTGOOD-III/05 - eyes-closed.mp3
-39:Psychedelic/BADBADNOTGOOD-III/06 - hedron.mp3
-40:Psychedelic/BADBADNOTGOOD-III/07 - differently-still.mp3
-41:Psychedelic/BADBADNOTGOOD-III/08 - since-you-asked-kindly.mp3
-42:Psychedelic/BADBADNOTGOOD-III/09 - cs60.mp3
-43:Psychedelic/BADBADNOTGOOD-III/01 - triangle.mp3
-44:Psychedelic/BADBADNOTGOOD-III/02 - cant-leave-the-night.mp3
-45:Psychedelic/BADBADNOTGOOD-III/03 - confessions.mp3
-46:Psychedelic/BADBADNOTGOOD-III/04 - kaleidoscope.mp3
-47:Psychedelic/BADBADNOTGOOD-III/05 - eyes-closed.mp3
-48:Psychedelic/BADBADNOTGOOD-III/06 - hedron.mp3
-49:Psychedelic/BADBADNOTGOOD-III/07 - differently-still.mp3
-50:Psychedelic/BADBADNOTGOOD-III/08 - since-you-asked-kindly.mp3
-51:Psychedelic/BADBADNOTGOOD-III/09 - cs60.mp3
+0:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/01 A Walk.flac
+1:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/02 Hours.flac
+2:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/03 Daydream.flac
+3:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/04 Dive.flac
+4:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/05 Coastal Brake.flac
+5:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/06 Ascension.flac
+6:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/07 Melanine.flac
+7:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/08 Adrift.flac
+8:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/09 Epigram.flac
+9:Electro/Tycho - Discography (2002-2014) [FLAC]/2011 Dive/10 Elegy.flac
 playlist_end

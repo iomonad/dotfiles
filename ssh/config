@@ -53,3 +53,11 @@ host home
     cipher arcfour
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/home_key
+
+host bee
+    user root
+    hostname 51.255.162.140
+    port 2314
+    cipher arcfour
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/home_key

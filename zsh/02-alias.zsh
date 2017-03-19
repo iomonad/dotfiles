@@ -298,4 +298,5 @@ alias vim='/usr/bin/em' # back to Micro Emacs
 alias vi='/usr/bin/em'
 alias proxy="proxychains -q -f $HOME/etc/proxychains/proxychains.conf"
 alias clock="while :; do date '+%T'; sleep 1; done | bar $BAROPT"
+alias cd="builtin cd"
 # }}}
