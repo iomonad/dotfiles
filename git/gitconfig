@@ -1,20 +1,27 @@
 [user]
   name = La Monade
   email = iomonad@riseup.net
+	signingkey = 957B691F07D8D335
+
 [core]
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
   editor     = emacs
   pager = less -x4
+
 [merge]
   tool = vimdiff
+
 [credential]
   helper = cache --timeout=28800
+
 [github]
   user = iomonad
+
 [url "https://iomonad@github.com"]
   insteadOf = https://github.com
+
 [color]
   branch     = auto
   diff       = 1
@@ -24,6 +31,9 @@
   status     = auto
   ui         = auto
 
+[commit]
+	gpgsign = true
+  
 [color "status"]
   added     = 2 bold
   branch    = 100
@@ -98,3 +108,5 @@
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[gpg]
+	program = gpg2
