@@ -37,5 +37,12 @@ setopt EXTENDED_HISTORY
 
 xrdb .Xresources
 
+if pgrep -x "gpg-agent" > /dev/null
+then
+    true
+else
+    gpg-agent --daemon
+fi
+        
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 export TERM=xterm-color
