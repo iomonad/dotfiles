@@ -203,7 +203,7 @@ alias empty-trash="rm -rf ~/.local"
 
 # GIT {{{
 alias ga="git add -A"
-alias gm="git commit -m"
+alias grs="git ls-files | grep '\.swp$' | xargs git rm &&  git ls-files | grep '\.~' | xargs git rm"
 alias gp="git push origin master"
 alias gi="git init"
 alias gib="git init --bare"
