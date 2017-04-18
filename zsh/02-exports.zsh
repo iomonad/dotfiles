@@ -167,7 +167,7 @@ export JAVA_BIN_PATH="/opt/jdk/bin/"
 
 # Haskell related {{{
 export CABAL_BIN_PATH="$HOME/.cabal/bin"
-#export STACK_BIN_PATH="$HOME/.stack/bin" # Nope
+export STACK_BIN_PATH="$HOME/.stack/bin" # Nope
 # }}}
 
 # User binary path {{{
@@ -192,7 +192,7 @@ export PERL_PATHS="$PERL_SITE_BIN:$PERL_CORE_PATH:$PERL_VENDOR_PATH:$PERL5_SITE_
 export GOPATH="$HOME/dev/gopath"
 unset GOROOT # fix path
 # The Glorious Path {{{
-export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_PATH:$JAVA_BIN_PATH:$PERL_PATHS:$ANDROID_PATHS:$PICC"
+export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_BIN_PATH:$STACK_BIN_PATH:$JAVA_BIN_PATH:$PERL_PATHS:$ANDROID_PATHS:$PICC"
 #}}}
 
 # vim: set ts=2 expandtab sw=2:

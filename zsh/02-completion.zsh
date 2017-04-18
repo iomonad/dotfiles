@@ -9,7 +9,7 @@ zstyle ':completion:*'                       list-dirs-first true
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
-zstyle ':completion:*'                       my-accounts='m@japh.se'
+zstyle ':completion:*'                       my-accounts='iomonad@riseup.net'
 
 zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
@@ -242,7 +242,7 @@ zstyle ':completion:*:(ssh|scp):*:hosts-domain' ignored-patterns \
       '<->.<->.<->.<->' '^*.*' '*@*'
 
 zstyle ':completion:*:(ssh|scp):*:hosts-ipaddr' ignored-patterns \
-      '^<->.<->.<->.<->' '127.0.0.<->'
+z      '^<->.<->.<->.<->' '127.0.0.<->'
 
 zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
       adm bin daemon halt lp named shutdown sync

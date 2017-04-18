@@ -1,3 +1,9 @@
 [submodule "emacs"]
 	path = emacs
-	url = git@github.com:iomonad/emacs.d.git
+	url = https://github.com/iomonad/emacs.d.git
+[submodule "xres.d/crayolo"]
+	path = xres.d/crayolo
+	url = https://github.com/dkeg/crayolo.git
+[submodule "xres.d/urxvt-perls"]
+	path = xres.d/urxvt-perls
+	url = https://github.com/muennich/urxvt-perls.git

@@ -45,19 +45,19 @@ newfile=$tmpdir/$newfile
 cp $1 $newfile
 
 case $(uname) in
-  "Linux")
-    if [ -z $open_with ]; then
-      xdg-open $newfile
-    else
-      # TODO - handle this case
-      $open_width $newfile
-    fi
-  ;;
-  "Darwin")
-    if [ -z $open_with ]; then
-      open $newfile
-    else
-      open -a "$open_with" $newfile
-    fi
-  ;;
+    "Linux")
+	if [ -z $open_with ]; then
+	    xdg-open $newfile
+	else
+	    # TODO - handle this case
+	    $open_width $newfile
+	fi
+	;;
+    "Darwin")
+	if [ -z $open_with ]; then
+	    open $newfile
+	else
+	    open -a "$open_with" $newfile
+	fi
+	;;
 esac

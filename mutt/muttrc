@@ -1,140 +1,100 @@
-###
-# ~/.mutt/muttrc
-###
+# Filename: muttrc
+# Un-Copyright (c/) 2008-2017 Clement Trösa <iomonad@riseup.net>
+# 
+# Last-Updated: 04/08/2017 Saturday 23:29:42
+# Description: Mutt configuration
 
-# directories and commands
-set alias_file       = ~/.mutt/alias         # alias file
-set mailcap_path     = ~/.mutt/mailcap       # w3m html viewing
-set header_cache     = ~/.mutt/cache/headers # where to store headers
-set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
-set certificate_file = ~/.mutt/certificates  # where to store certs
-set mailcap_path     = ~/.mutt/mailcap       # entrys for filetypes
-set signature        = ~/.mutt/sig           # my signature file
-set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set editor='vim + -c "set textwidth=128" -c "set wrap" -c "set nocp" -c "set spell spelllang=en" -c "?^$"'
-set sig_on_top       = yes
+# Some Globals variables
+set alias_file       = ~/.mutt/alias          # alias file
+set mailcap_path     = ~/.mutt/mailcap        # w3m html viewing
+set header_cache     = ~/.mutt/cache/headers  # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies   # where to store bodies
+set certificate_file = ~/.mutt/certificates   # where to store certs
+set mailcap_path     = ~/.mutt/mailcap        # entrys for filetypes
+set signature        = ~/.mutt/sig            # my signature file
+set tmpdir           = ~/.mutt/temp           # where to keep temp files
+set editor           = emacs                  # because vim sucks
+set sig_on_top       = yes                    # always insert signature
 
-# main options
-set mbox_type       = Maildir         # mailbox type
-set folder          = ~/docs/mail          # mailbox location
-set spoolfile       = "+mrrobot/INBOX"  # mrrobot is default inbox
-set timeout         = 3               # idle time before scanning
-set mail_check      = 0               # minimum time between scans
-set sort_alias      = alias           # sort alias file by alias
-set reverse_alias                     # show names from alias file in index
-unset move                            # gmail does that
-set smart_wrap = yes
-set allow_ansi = yes
-set delete                            # don't ask, just do
-unset confirmappend                   # don't ask, just do!
-set quit                              # don't ask, just do!!
-unset mark_old                        # read/new is good enough for me
-set beep_new = yes                    # bell on new mails
-set check_new = yes
-
-set pipe_decode                       # strip headers and eval mimes when piping
-set thorough_search                   # strip headers and eval mimes before searching
+# Main Options
+set mbox_type        = Maildir                # mailbox type
+set folder           = ~/documents/mail       # mailbox location
+set spoolfile        = "+riseup/INBOX"        # riseup is default inbox
+set timeout          = 3                      # idle time before scanning
+set mail_check       = 0                      # minimum time between scans
+set sort_alias       = alias                  # sort alias file by alias
+set reverse_alias                             # show names from alias file in index
+unset move                                    # gmail does that
+set smart_wrap       = yes                    
+set allow_ansi       = yes
+set delete                                    # don't ask, just do
+unset confirmappend                           # don't ask, just do!
+set quit                                      # don't ask, just do!!
+unset mark_old                                # read/new is good enough for me
+set beep_new         = yes                    # bell on new mails
+set check_new        = yes                    # refresh for new mails
+set pipe_decode                               # strip headers and eval mimes when piping
+set thorough_search                           # strip headers and eval mimes before searching
 set send_charset="us-ascii:utf-8"
-set mail_check_stats = yes
+set sleep_time       = 0
 
-set sleep_time = 0
-
-
-# Sidebar Patch --------------------------------------
-#set sidebar_visible = yes
-#set sidebar_width   = 30
-#color sidebar_new magenta default
-
-# Status Bar -----------------------------------------
-set status_chars  = " *%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# Interface customisation
+set status_chars     = " *%A"
+set status_format    = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 color status red default
+color progress white magenta                  # Options from patch
+# Header options
+set hdrs             = yes
+unignore from: to: cc: date: subject:         # show only these
+unhdr_order *                                 # some distros order things by default
+hdr_order date: from: to: cc: subject:        # and in this order
+unignore from: to: cc: date: subject:         # show only these
+hdr_order from: to: cc: date: subject:        # and in this order
 
-# Header Options -------------------------------------
-set hdrs=yes
+# Indexing options
+set sort = reverse-last-date-received
+set uncollapse_jump                           # don't collapse on an unread message
+set sort_re                                   # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
-unignore from: to: cc: date: subject:   # show only these
-unhdr_order *                           # some distros order things by default
-hdr_order date: from: to: cc: subject:  # and in this order
-
-
-# index options
-# set sort              = threads                     # like gmail
-set sort              = reverse-last-date-received  # like gmail
-set uncollapse_jump                                 # don't collapse on an unread message
-set sort_re                                         # thread based on regex
-set reply_regexp      = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-
-# pager options
-# set pager_context     = 3
-# set pager_index_lines = 10  # number of index lines to show
-# set pager_context     = 35  # number of context lines to show
-# set pager_stop        = yes # don't go to next message automatically
-set menu_scroll             # scroll in menus
-set smart_wrap              # don't split words
-set tilde                   # show tildes like in vim
-set markers = no             # no ugly plus signs
-auto_view text/html         # view html automatically
+# Paging Options
+set menu_scroll                               # scroll in menus
+set smart_wrap                                # don't split words
+set tilde                                     # show tildes like in vim
+set markers = no                              # no ugly plus signs
+auto_view text/html                           # view html automatically
 alternative_order text/html text/enriched text/plain
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
-# formats
+# Time formating
 set date_format     = "[%d/%m/%y] [%I:%M%P]"
 set index_format    = "%3C [%Z] %D %-20.18F //   %s"
 set alias_format    = "%4n %t %-20a %r"
 
-# composing mail
-set realname        = "iomonad"         # who am i?
-set envelope_from                        # which from?
-set sig_dashes                           # dashes before my sig... sweet
-set edit_headers                         # show headers when composing
-set fast_reply                           # skip to compose when replying
-set sendmail_wait   = 1                  # wait for sending... to complete
-set askcc                                # ask for CC:
-set fcc_attach                           # save attachments with the body
-unset mime_forward                       # forward attachments as part of body
-set forward_format  = "Fwd: %s"          # format for subject when forwarding
-set forward_decode                       # decode when forwarding
-set attribution     = "On %d, %n wrote:" # set the attribution
-set reply_to                             # reply to Reply to: field
-set reverse_name                         # reply as whomever it was to
-set include                              # include message in replies
-set forward_quote                        # include message in forwards
+# Mail composition options
+set realname        = "Clement Trösa"         # who am i?
+set sig_dashes                                # Show a sweet signature
+set edit_headers                              # show headers when composing
+set fast_reply                                # skip to compose when replying
+set sendmail_wait   = 1                       # wait for sending... to complete
+set askcc                                     # ask for CC:
+set fcc_attach                                # save attachments with the body
+unset mime_forward                            # forward attachments as part of body
+set forward_format  = "Fwd: %s"               # format for subject when forwarding
+set forward_decode                            # decode when forwarding
+set attribution     = "On %d, %n wrote:"      # set the attribution
+set reply_to                                  # reply to Reply to: field
+set reverse_name                              # reply as whomever it was to
+set include                                   # include message in replies
+set forward_quote                             # include message in forwards
 set beep_new
 set ispell = "aspell -e -c"
-set skip_quoted_offset = 3
 
-
-# headers to show
-
-# ignore *                                 # ignore all headers
-unignore from: to: cc: date: subject:   # show only these
-hdr_order from: to: cc: date: subject:  # and in this order
-
-# boxes
-mailboxes +teknik/INBOX +teknik/Sent
-mailboxes +riseup/INBOX +riseup/Sent
-
-# progress bar patch
-color progress white magenta
-
-# always sourced
-source $alias_file              # required for functionality
-source ~/.mutt/colors            # source colors file
-source ~/.mutt/sidebar.muttrc   # any muttng options are here
-source ~/.mutt/teknik.muttrc
-source ~/.mutt/riseup.muttrc
-
-
-# account specific sources
-folder-hook teknik/*   source ~/.mutt/teknik.muttrc
-folder-hook riseup/*   source ~/.mutt/riseup.muttrc
-
-# these just give me headaches
+# Removing bullshit options
 bind index,pager \#    noop
 bind index i           noop
 
-# bindings
+# Binding for fast moving
 bind pager q           exit
 bind pager /           search
 bind pager <up>        previous-line
@@ -151,41 +111,17 @@ bind index K           previous-unread
 bind index J           next-unread
 bind index,pager R     group-reply
 
+# Define box
+mailboxes +riseup/Inbox +riseup/Sent +riseup/Drafts
 
-# macros
+# Source configurations
+source $alias_file                           # required for functionality
+#source ~/.mutt/colors                        # source colors file
+source ~/.mutt/riseup.muttrc
+source ~/.mutt/pgp.muttrc
+# Some hacks
 macro index \Cr "<tag-prefix><clear-flag>N" "mark tagged messages as read"
 macro index <esc>m "T~N<enter>;WNT~O<enter>;WO\CT~T<enter>" "mark all messages read"
 macro index B   "<limit>~b "                "search message bodies"
 macro index I   "<change-folder>!<enter>"   "go to Inbox"
-# Ctrl-n, Ctrl-p to select next, previous folder.
-# Ctrl-o to open selected folder.
-#bind index,pager \CP sidebar-prev
-#bind index,pager \CN sidebar-next
-#bind index,pager \CO sidebar-open
-# save a decoded copy in ~
 macro index P   "<pipe-message>cat > ~/"    "save message as"
-
-# quick-sync ~/Mail immediately with offlineimap
-macro index Z   "<shell-escape>/usr/bin/offlineimap -q -o<enter>" "sync IMAP"
-
-# load browser
-macro attach 'V' "<pipe-entry>cat >~/.cache/mutt/mail.html && qutebrowser --target tab ~/.cache/mutt/mail.html &>/dev/null && rm ~/.cache/mutt/mail.html<enter>"
-
-# GPG Encrypt
-set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
-set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
-set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
-set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
-set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xDBD0F842 -- -r %r -- %f"
-set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xDBD0F842 -- -r %r -- %f"
-set pgp_import_command="gpg --no-verbose --import -v %f"
-set pgp_export_command="gpg --no-verbose --export --armor %r"
-set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
-set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r"
-set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
-set pgp_autosign=yes
-set pgp_sign_as=0xB66F352D
-set pgp_replyencrypt=yes
-set pgp_timeout=1800
-set pgp_good_sign="^gpg: Good signature from"

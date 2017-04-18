@@ -12,17 +12,29 @@
 #include </home/iomonad/.xres.d/colorschemes/shinru>
 
 ! Font
-*font: xft:berry:style=bold:pixelsize=12
-*boldFont: xft:berry:style=bold:pixelsize=12
+!*font: xft:berry:style=bold:pixelsize=12
+!*boldFont: xft:berry:style=bold:pixelsize=12
 
-! Xft
-Xft.antialias:  1
-Xft.autohint:   0
-Xft.dpi:    96
-Xft.hinting:    1
-Xft.hintstyle:  hintslight
-Xft.lcdfilter:  lcddefault
+!*.font: xft:Ubuntu Mono derivative Powerline:style=Regular:size=9
+!*.boldFont: xft:Ubuntu Mono derivative Powerline:size=9
+*.letterSpace: -1
+
+Xft.dpi:        96
+XTerm*faceName: xft:PragmataPro:pixelsize=12
+URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
+URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
+
+! Xft settings
+Xft.antialias: true
+Xft.autohint: 1
+Xft.hinting: true
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
 Xft.rgba: rgb
+
+URxvt.depth: 0
+
+URxvt.intensityStyles:  false   
 
 ! Terminal window size
 URxvt*geometry: 65x17
@@ -49,7 +61,7 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 ! Extensions
-URxvt*perl-lib:        /home/seyt/.xres.d/urxvt-perls
+URxvt*perl-lib:        /home/iomonad/.xres.d/urxvt-perls
 URxvt*perl-ext-common: default,matcher,searchable-scrollback
 URxvt*urlLauncher:     w3m
 URxvt*matcher.button:  1

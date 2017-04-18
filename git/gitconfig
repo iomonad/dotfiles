@@ -1,7 +1,7 @@
 [user]
   name = La Monade
   email = iomonad@riseup.net
-	signingkey = 957B691F07D8D335
+  signingkey = 957B691F07D8D335
 
 [core]
   autocrlf = input
@@ -31,8 +31,8 @@
   status     = auto
   ui         = auto
 
-[commit]
-	gpgsign = true
+#[commit]
+#	gpgsign = true
   
 [color "status"]
   added     = 2 bold
