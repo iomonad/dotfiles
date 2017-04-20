@@ -9,20 +9,21 @@
 !#include </home/iomonad/.xres.d/crayolo/Xresources>
 
 ! Classic import
-#include </home/iomonad/.xres.d/colorschemes/shinru>
+#include </home/iomonad/.xres.d/colorschemes/earth>
 
 ! Font
 !*font: xft:berry:style=bold:pixelsize=12
 !*boldFont: xft:berry:style=bold:pixelsize=12
 
-!*.font: xft:Ubuntu Mono derivative Powerline:style=Regular:size=9
-!*.boldFont: xft:Ubuntu Mono derivative Powerline:size=9
 *.letterSpace: -1
 
 Xft.dpi:        96
 XTerm*faceName: xft:PragmataPro:pixelsize=12
 URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
 URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
+
+!URxvt.font: xft:source code pro:size=9
+!URxvt.letterSpace: -2
 
 ! Xft settings
 Xft.antialias: true
@@ -83,5 +84,11 @@ rofi.color-window: #000000, #000000, #000000
 rofi.color-normal: #000000, #576265, #000000, #000000, #000000
 rofi.color-active: #000000, #576265, #000000, #000000, #000000
 rofi.color-urgent: #807557, #dc322f, #eee8d5, #dc322f, #fdf6e3
-!rofi.opacity: 80
+rofi.opacity: 90
 rofi.font:            Terminus 8
+
+*VT100.colorBDMode:                   true
+*VT100.colorBD:                       red
+*VT100.colorULMode:                   true
+*VT100.colorUL:                       magenta
+*VT100.veryBoldColors:                6

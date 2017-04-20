@@ -135,7 +135,8 @@ super + F3
 super + w
 	/opt/firefox/firefox
 
-
+super + e
+    emacs-25.1
 super + space
     rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc "#555555" -bg "#222222" -hlbg "#222222" -hlfg "#c79595" -fg "#ffffff" -font "Terminus 15"
 # uguush screen capture
