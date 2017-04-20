@@ -41,7 +41,6 @@ alias    gdd='git diff'
 alias     gc='git commit'
 alias    glp='gl -p'
 alias    gcu='git commit -m "updates"'
-alias github='PAGER=cat perl /home/scp1/bin/github'
 alias   what="--stat -p --reverse HEAD@{1}.. | perl -pe 's/^(\++.+).*/\e[38;5;34m\e[1m$1\e[m/; s/^(\-+.*)/\e[38;5;196m\e[1m$1\e[m/'"
 #alias     gd='PAGER="" git diff $ | skate --language diff -'
 #}}}
@@ -146,7 +145,7 @@ alias    shiva='ps -eo pcpu,pid,user,args \
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 #}}}
-# Xero Alias, Thanks to him :) {{{
+# Xero Alias {{{
 alias v="vim"
 alias vi="vim"
 alias nano="vim"
@@ -294,8 +293,6 @@ alias sru='ssh -l root -o UserKnownHostsFile=/dev/null'
 
 # Newly added {{{
 alias pcmanfm='ck-launch-session dbus-launch pcmanfm'
-alias vim='/usr/bin/em' # back to Micro Emacs
-alias vi='/usr/bin/em'
 alias proxy="proxychains -q -f $HOME/etc/proxychains/proxychains.conf"
 alias clock="while :; do date '+%T'; sleep 1; done | bar $BAROPT"
 alias cd="builtin cd"

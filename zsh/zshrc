@@ -29,6 +29,10 @@ setopt HIST_SAVE_NO_DUPS
 setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
+#Don't share history between terminals
+unsetopt APPEND_HISTORY
+stty -ixon
+
 xrdb .Xresources
 
 if pgrep -x "gpg-agent" > /dev/null
