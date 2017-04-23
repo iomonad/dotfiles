@@ -755,4 +755,8 @@ dumpaudio() {
 pronounce() {
     wget -qO- $(wget -qO- "http://dictionary.reference.com/browse/$@" | grep -o '<audio>.*<source src="http://[^"]*\.mp3".*</audio>' | head -n1 | sed -r 's/^.*src="([^"]*\.mp3)".*$/\1/') | mpg123 -
 }
+
+list-boost-libs() {
+    for f in $(ls -1 /usr/lib64/libboost_*.a); do basename $f .a | cut -c 4-99; done;
+}
 # vim: ft=sh:
