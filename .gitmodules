@@ -10,3 +10,6 @@
 [submodule "glowingbear-themes"]
 	path = glowingbear-themes
 	url = git@github.com:iomonad/glowingbear-themes.git
+[submodule "mozilla/user-style"]
+	path = mozilla/user-style
+	url = git@github.com:phallus/user-styles.git
