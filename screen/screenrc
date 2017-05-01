@@ -91,6 +91,5 @@ register ] "\033:se ai\015a"
 
 
 # Start using custom layout
-screen -t weechat
 screen -t $ zsh
 screen -t emacs
