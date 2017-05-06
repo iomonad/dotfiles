@@ -196,3 +196,4 @@ export PATH="$SYSTEM_PATHS:$GEM_PATH:$CABAL_BIN_PATH:$STACK_BIN_PATH:$JAVA_BIN_P
 #}}}
 
 # vim: set ts=2 expandtab sw=2:
+IPFS_PATH=/home/iomonad/public/ipfs
