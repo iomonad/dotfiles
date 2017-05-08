@@ -1,0 +1,142 @@
+#!/usr/bin/perl
+my $APP      = 'prename';
+our $VERSION = '0.162';
+use strict;
+use warnings;
+
+use utf8;
+use open qw(:std :utf8);
+use encoding 'utf8';
+
+use Getopt::Long;
+use Pod::Usage;
+
+my ($verbose, $no_act, $force);
+
+GetOptions(
+  'v|verbose' => \$verbose,
+  'n|no-act'  => \$no_act,
+  'f|force'   => \$force,
+);
+
+my $re = shift;
+
+if(!defined($re)) {
+  usage();
+  exit 1;
+}
+
+
+$verbose++ if $no_act;
+
+if(!@ARGV) {
+  print "reading filenames from STDIN\n" if $verbose;
+  @ARGV = <STDIN>;
+  chomp(@ARGV);
+}
+
+
+my $max_len = 25;
+
+for(sort(@ARGV)) {
+  my $was = $_;
+
+  eval($re);
+  die($@) if($@);
+
+  next if($was eq $_);
+
+  if(-e $_ and !$force) {
+    print STDERR "$was not renamed: $_ already exists\n";
+  }
+  elsif(($no_act) or (rename($was, $_))) {
+    $was = sprintf("%.25s%s", $was, length($was) > 25 ? "\e[38;5;40m...\e[m" : '');
+    printf("%s => %s\n", $was, $_);
+    # Thank you mauke        ↓
+    #print sprintf('%*s', $max_len, $was), ' => ', $_, "\n";
+
+    # This breaks perl.vim :)
+    #printf("@{[ls_color(sprintf(\"%${max_len}s\", $was))]} => %s\n", ls_color($_));
+  }
+  else {
+    print STDERR "Can't rename $was => $_: $!\n";
+  }
+}
+
+sub usage {
+  print "$APP $VERSION\n";
+  pod2usage(verbose => 1);
+}
+
+=pod
+
+=head1 NAME
+
+rename - renames multiple files
+
+=head1 SYNOPSIS
+
+B<rename> S<[ B<-v> ]> S<[ B<-n> ]> S<[ B<-f> ]> I<perlexpr> S<[ I<files> ]>
+
+=head1 DESCRIPTION
+
+C<rename>
+renames the filenames supplied according to the rule specified as the
+first argument.
+The I<perlexpr> 
+argument is a Perl expression which is expected to modify the C<$_>
+string in Perl for at least some of the filenames specified.
+If a given filename is not modified by the expression, it will not be
+renamed.
+If no filenames are given on the command line, filenames will be read
+via standard input.
+
+For example, to rename all files matching C<*.bak> to strip the extension,
+you might say
+
+	rename 's/\.bak$//' *.bak
+
+To translate uppercase names to lower, you'd use
+
+	rename 'y/A-Z/a-z/' *
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-v>, B<--verbose>
+
+Verbose: print names of files successfully renamed.
+
+=item B<-n>, B<--no-act>
+
+No Action: show what files would have been renamed.
+
+=item B<-f>, B<--force>
+
+Force: overwrite existing files.
+
+=back
+
+=head1 ENVIRONMENT
+
+No environment variables are used.
+
+=head1 AUTHOR
+
+Larry Wall
+
+=head1 SEE ALSO
+
+mv(1), perl(1)
+
+=head1 DIAGNOSTICS
+
+If you give an invalid Perl expression you'll get a syntax error.
+
+=head1 BUGS
+
+The original C<rename> did not check for the existence of target filenames,
+so had to be used with care.  I hree I've fixed that (Robin Barker).
+
+=cut

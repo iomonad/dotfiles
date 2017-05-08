@@ -5,5 +5,6 @@
                   [lein-ancient "0.6.10"]
                   [lein-bikeshed "0.4.1"]
                   [lein-cloverage "1.0.9"]
-                  [lein-topology "0.2.0"]
+                  [lein-topology "0.2.0"]                  
+                  [lein-hiera "0.9.5"]
                   [walmartlabs/vizdeps "0.1.6"]]}}

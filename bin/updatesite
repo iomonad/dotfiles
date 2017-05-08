@@ -1,0 +1,2 @@
+#!/bin/sh
+scp -P 19216 -r $HOME/dev/trapd00r.se/_genSite scp1@192.168.1.128:http/

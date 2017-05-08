@@ -1,0 +1,75 @@
+#!/usr/bin/perl 
+# vim:ft=perl:
+# crossmake - Makes cross's in all kinds of shapes and colors
+# btime 2010-04-02
+# mtime 2016-09-03 22:21:23
+
+use strict;
+
+use Getopt::Long;
+use List::Util qw(shuffle);
+
+our($color, $char, $space, $ansi, $size);
+my @colors; 
+
+GetOptions(
+  'color!'    => \$color,
+  'char=s'    => \$char,
+  'space=s'   => \$space,
+  'size=i'    => \$size,
+  'ansi!'     => \$ansi,
+  'help'      => \&help,
+);
+
+for(my $i = 0; $i < ($ansi ? 16 : 256); $i++) {
+  push(@colors, sprintf("\033[38;5;%dm", $i));
+}
+
+my @chars = shuffle(qw([♥] ♥ o O x X));
+my @space = shuffle(('▇', '▕', '#'));
+
+my $token  = $char  // $chars[0];
+my $ws     = $space // $space[0];
+my $count  = $size  // 8;
+my $endesc = "\033[0m";
+
+
+my $c;
+for(my $i = 0; $i < $count; ++$i) {
+  if($i % 2 == 0) {
+    @colors = shuffle(@colors);
+    $c = $colors[0] unless ! $color;
+  }
+  else {
+    @colors = shuffle(@colors); 
+    $c = $colors[0] unless ! $color;
+  }
+  my $j = (2 * $count) - ($i * 2);
+  print $c, $ws x $i, $token, $ws x $j, $token, $ws x $i, "\n";
+}
+
+for(my $i = $count; $i > 0; --$i) {
+  if($i % 2 == 0) {
+    @colors = shuffle(@colors);
+    $c = $colors[0] unless ! $color;
+  }
+  else {
+    @colors = shuffle(@colors);
+    $c = $colors[0] unless ! $color;
+  }
+  my $j = (2 * $count) - ($i * 2);
+  print $c, $ws x $i, $token, $ws x $j, $token, $ws x $i, "\n";
+}
+
+sub help {
+  print << "HLEP";
+  USAGE
+    $0 [OPTIONS]
+  OPTIONS
+    --(no)color
+    --char      char
+    --space     " "
+    --size      size of painting (default: 8)
+HLEP
+exit 0;
+}

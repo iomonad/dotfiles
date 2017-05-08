@@ -6,7 +6,6 @@ xset +fp ~/.fonts
 xset fp rehash
 xset -dpms
 xrdb -load .Xresources
-#compton --config ~/bin/compton.conf -C
 
 # Set cursor from X to pointer
 xsetroot -cursor_name left_ptr &

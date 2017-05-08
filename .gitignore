@@ -19,7 +19,6 @@ weechat/logs
 weechat/weechat.log
 weechat/weechat_fifo_22740
 zsh/zsh-history
-bin/utils
 vimperator/info/default
 mpd/mpd.pid
 mpd/mpdstate

@@ -46,4 +46,4 @@ bspc rule -a feh floating=on manage=off
 # Exec on start
 wmname LG3D
 compton --config $HOME/etc/compton/smooth.conf &
-statusbar
+#statusbar

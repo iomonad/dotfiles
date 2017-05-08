@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+my @c = qw(
+
+    100020 001714  0d0020 001717
+   00170b   170013 00170b
+  0d0020
+  000419
+  001620
+  001420                    000c20
+  000920                    161703
+   001021 001713   000020  091703
+    170014 170d03  030218 170905
+);
+
+bg();
+sub bg {
+  my $background = $_[0] || $c[int(rand(scalar(@c)))];
+  warn "$background\n";
+  print "\e]11;#$background\a";
+  print "\e]10;#ffffff\a";
+}

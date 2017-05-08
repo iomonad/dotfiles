@@ -1,0 +1,9 @@
+#!/bin/sh
+printf '\033]710;%s\a' \
+  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+printf '\033]711;%s\a' \
+  -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+printf '\033]712;%s\a' \
+  'xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3'
+printf '\033]713;%s\a' \
+  -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1

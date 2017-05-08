@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+use strict;
+use feature 'say';
+use Audio::MPD;
+use utf8;
+use open qw(:utf8);
+use WWW::Mechanize;
+
+map { $_ = "http://" . $_ unless $_ =~ /http:/ } @ARGV;
+
+my $mpd = Audio::MPD->new(
+  host => '192.168.1.128',
+  port => 6600,
+);
+
+my $agent = do {
+  $mpd->current ? $mpd->current->title : 'Laleh';
+};
+
+$agent =~ s{[åä]+}{a}g;
+$agent =~ s{[ö]}{o}g;
+
+my $m = WWW::Mechanize->new(
+  agent => $agent,
+);
+
+say $m->get($_)->title for @ARGV;

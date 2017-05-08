@@ -1,0 +1,14 @@
+#!/bin/sh
+#'xft:C64 Pro Mono:style=Regular:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+#'xft:C64 Pro:style=Regular:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+#'xft:C64 User Mono:style=Regular:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+#'xft:C64 User:style=Regular:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+
+printf '\033]710;%s\007' \
+  'xft:C64 User Mono:style=Regular:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+printf '\033]711;%s\007' \
+  'xft:C64 User Mono:style=Regular:embolden=1:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+printf '\033]712;%s\007' \
+  'xft:C64 User Mono:style=Regular:slant=italic:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
+printf '\033]713;%s\007' \
+  'xft:C64 User Mono:style=Regular:embolden=1:slant=italic:pixelsize=16:antialias=1:hinting=1:hintstyle=3'
