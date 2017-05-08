@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cclive -qbc --agent 'Mozilla/5.0' --max-retries 2 $(umph -a "$@")
