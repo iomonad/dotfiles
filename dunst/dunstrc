@@ -1,6 +1,6 @@
 [global]
 #font = xft:terminus:pixelsize=10
-font = terminus
+font = Pragmata Pro
 
 # Allow a small subset of html markup:
 #   <b>bold</b>

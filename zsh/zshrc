@@ -33,6 +33,7 @@ setopt EXTENDED_HISTORY
 unsetopt APPEND_HISTORY
 stty -ixon
 
+
 xrdb .Xresources
 
 if pgrep -x "gpg-agent" > /dev/null
@@ -44,9 +45,3 @@ fi
         
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 export TERM=rxvt
-
-PATH="/home/iomonad/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/iomonad/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/iomonad/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/iomonad/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/iomonad/perl5"; export PERL_MM_OPT;

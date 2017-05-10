@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 # Globals Completion {{{
-#zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*'                       accept-exact '*(N)'
 zstyle ':completion:*'                       separate-sections 'yes'
@@ -131,7 +131,7 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
-
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # ignore completion to commands we don't have
 zstyle ':completion:*:functions'          ignored-patterns '_*'
 
@@ -246,6 +246,6 @@ z      '^<->.<->.<->.<->' '127.0.0.<->'
 zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
       adm bin daemon halt lp named shutdown sync
 
-zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
-  'iomonad@inother.space' 'root@192.168.1.1' 'root@192.168.1.2'
+# Start the shit
+autoload -U compinit && compinit
 # }}}

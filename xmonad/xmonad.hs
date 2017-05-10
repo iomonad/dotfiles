@@ -70,30 +70,26 @@ import           XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), 
 -- [SETTINGS] {{{
 -- Colors and Styles
 sFont    = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
-sBordW   = 1 -- Set width border size
+sBordW   = 3 -- Set width border size
 sColorsB = "#303c3d" -- Unselected terminal
 sColorsF = "#303c3d" -- Selected Terminal
 sColorsW = "#6D6B6E" -- Colors when activity or warning
 
-sWall :: String
-sWall = "jenga.jpg" -- The wallpaper in $HOME/media/images/wallpapers/
-
--- Settings and Other.
+           -- Settings and Other.
 myModMask       = mod4Mask -- Set as "SUPER" key akka w1nd0w$
 myTerminal      = "urxvtc" -- The terminal to use.
 -- Prompt Colors
-myPromptConfig =
-    defaultXPConfig { font                  = sFont
-                    , bgColor               = sColorsB
-                    , fgColor               = sColorsF
-                    , bgHLight              = sColorsB
-                    , fgHLight              = sColorsF
-                    , borderColor           = sColorsW
-                    , promptBorderWidth     = sBordW
-                    , height                = 20
-                    , position              = Top
-                    , historySize           = 0
-                    }
+myPromptConfig = defaultXPConfig { font                  = sFont
+                                 , bgColor               = sColorsB
+                                 , fgColor               = sColorsF
+                                 , bgHLight              = sColorsB
+                                 , fgHLight              = sColorsF
+                                 , borderColor           = sColorsW
+                                 , promptBorderWidth     = sBordW
+                                 , height                = 20
+                                 , position              = Top
+                                 , historySize           = 0
+                                 }
 -- Grid selector colors
 myGridConfig = colorRangeFromClassName
     (0x00,0x00,0x00) -- lowest inactive bg
@@ -255,7 +251,6 @@ myStartupHook = do
           spawnOnce "wmname LG3D" -- Fix java errors
           spawnOnce "unclutter -idle 1 &"
           spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
-          spawnOnce $ "hsetroot -fill ~/media/images/wallpapers/" ++ sWall ++ "NULL"
           spawnOnce "panelbar"
           spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}

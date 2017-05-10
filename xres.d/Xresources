@@ -9,7 +9,7 @@
 !#include </home/iomonad/.xres.d/crayolo/Xresources>
 
 ! Classic import
-#include </home/iomonad/.xres.d/colorschemes/earth>
+#include </home/iomonad/.xres.d/colorschemes/pepe>
 
 ! Font
 !*font: xft:berry:style=bold:pixelsize=12
@@ -21,9 +21,6 @@ Xft.dpi:        96
 XTerm*faceName: xft:PragmataPro:pixelsize=12
 URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
 URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
-
-!URxvt.font: xft:source code pro:size=9
-!URxvt.letterSpace: -2
 
 ! Xft settings
 Xft.antialias: true

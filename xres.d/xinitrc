@@ -1,28 +1,13 @@
 # Load X ressources
 xrdb -load  $HOME/.Xresources
-
-# Load fonts
 xset +fp ~/.fonts
 xset fp rehash
 xset -dpms
 xrdb -load .Xresources
-
-# Set cursor from X to pointer
 xsetroot -cursor_name left_ptr &
-
-#Fix java Apps
 wmname LG3D
-
-# Urxvt Daemon
 urxvtd --quiet --opendisplay --fork
-
-# URxvt clipboard magic
 autocutsel -selection clipboard -fork
-
-# clean Xorgs files
 rm ~/.serverauth*
-
-# Set the wall
-hsetroot -tile ~/.xres.d/wallpaper/tiled/pattern.gif
-# start the WM
-exec bspwm
+hsetroot -tile $HOME/.xres.d/wallpaper/chicago1.jpg
+exec xmonad

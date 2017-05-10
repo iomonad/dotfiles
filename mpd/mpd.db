@@ -21325,7 +21325,7 @@ AlbumArtist: Quasimoto
 mtime: 1450467158
 song_end
 song_begin: 05 Astronaut.m4a
-Time: 129.914000
+Time: 129.913000
 Artist: Quasimoto
 Album: Yessir, Whatever
 Title: Astronaut
@@ -47651,8 +47651,112 @@ end: Techno/Acid/Recondite/[2013] Waldluft EP
 end: Techno/Acid/Recondite
 end: Techno/Acid
 directory: Classic
-mtime: 1490477778
+mtime: 1494269893
 begin: Techno/Classic
+directory: Dax J - Shades of Black LP [2015]
+mtime: 1494234299
+begin: Techno/Classic/Dax J - Shades of Black LP [2015]
+song_begin: 01. Orlok's Symphony.mp3
+Time: 150.543000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Orlok's Symphony
+Track: 1
+Genre: Techno
+Date: 2015
+mtime: 1494234298
+song_end
+song_begin: 02. Beyond The Planets.mp3
+Time: 360.829000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Beyond The Planets
+Track: 2
+Genre: Techno
+Date: 2015
+mtime: 1494234299
+song_end
+song_begin: 03. Renegades of Conflict.mp3
+Time: 356.728000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Renegades of Conflict
+Track: 3
+Genre: Techno
+Date: 2015
+mtime: 1494234291
+song_end
+song_begin: 04. Devine Right.mp3
+Time: 348.813000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Devine Right
+Track: 4
+Genre: Techno
+Date: 2015
+mtime: 1494234296
+song_end
+song_begin: 05. In The Shadows.mp3
+Time: 216.137000
+Artist: Dax J
+Album: Shades of Black LP
+Title: In The Shadows
+Track: 5
+Genre: Techno
+Date: 2015
+mtime: 1494234296
+song_end
+song_begin: 06. Protect The Prophecy.mp3
+Time: 352.888000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Protect The Prophecy
+Track: 6
+Genre: Techno
+Date: 2015
+mtime: 1494234295
+song_end
+song_begin: 07. Requiem Souls.mp3
+Time: 352.653000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Requiem Souls
+Track: 7
+Genre: Techno
+Date: 2015
+mtime: 1494234292
+song_end
+song_begin: 08. Black Pegasus.mp3
+Time: 378.984000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Black Pegasus
+Track: 8
+Genre: Techno
+Date: 2015
+mtime: 1494234296
+song_end
+song_begin: 09. Sempa.mp3
+Time: 330.266000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Sempa
+Track: 9
+Genre: Techno
+Date: 2015
+mtime: 1494234297
+song_end
+song_begin: 10. Afterlife.mp3
+Time: 144.875000
+Artist: Dax J
+Album: Shades of Black LP
+Title: Afterlife
+Track: 10
+Genre: Techno
+Date: 2015
+mtime: 1494234285
+song_end
+end: Techno/Classic/Dax J - Shades of Black LP [2015]
 directory: Janice
 mtime: 1487278078
 begin: Techno/Classic/Janice
