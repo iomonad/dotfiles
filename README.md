@@ -36,4 +36,4 @@ $ git pull
 $ git fetch ; git merge origin/master
 ```
 ### Current setup:
-![Desktop Screenshot](https://my.mixtape.moe/dyqjgu.png)
+![Desktop Screenshot](https://my.mixtape.moe/hjmzvz.png)
