@@ -208,7 +208,7 @@ myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPositi
         where
             myTermApps    = [] -- Removing urxvt to avoid workspace redirections.
             myWebApps     = ["firefox"]
-            myMediaApps   = ["zathura","mplayer"]
+            myMediaApps   = ["zathura","mplayer","mpv"]
             mySystApps    = []
             myFloatApps   = ["Dialog","lxappearance"]
             myUnfloatApps = []
@@ -247,12 +247,12 @@ myLayoutHook = gaps [(U, 8), (R, 8), (L, 8), (D, 8)] $
 -- [AUTOSTART] {{{
 -- Start some program at xsession startup
 myStartupHook = do
-      --  spawnOnce "mpd &"
-          spawnOnce "wmname LG3D" -- Fix java errors
-          spawnOnce "unclutter -idle 1 &"
-          spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
-          spawnOnce "panelbar"
-          spawnOnce "urxvtc -e tmux &"
+  spawnOnce "mpd &"
+  spawnOnce "wmname LG3D" -- Fix java errors
+  spawnOnce "unclutter -idle 1 &"
+  spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
+  spawnOnce "panelbar"
+  spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}
 
 -- [MAIN] {{{

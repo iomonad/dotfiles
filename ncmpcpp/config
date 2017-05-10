@@ -1,7 +1,7 @@
 # Host and music location
 mpd_host = "localhost"
 mpd_port = "6600"
-mpd_music_dir = "/home/seyt/media/music"
+mpd_music_dir = "/home/iomonad/media/Music"
 
 # Delays
 
@@ -32,7 +32,7 @@ cyclic_scrolling = "yes"
 display_bitrate= "yes"
 ignore_leading_the = "yes"
 enable_window_title = "yes"
-progressbar_look = "·· "
+progressbar_look = "━━ "
 
 # Interface
 user_interface="classic"
