@@ -1,6 +1,0 @@
-#!/bin/sh
-printf '\033]710;%s\007' 5x8
-printf '\033]711;%s\007' \
-  'xft:Neep:style=Bold SemiCondensed:pixelsize=10'
-printf '\033]712;%s\007' \
-  'xft:Neep:SemiCondensed:pixelsize=10'

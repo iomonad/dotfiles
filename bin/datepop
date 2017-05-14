@@ -1,4 +1,0 @@
-#!/bin/zsh
-date=$(date)
-
-notify-send $date

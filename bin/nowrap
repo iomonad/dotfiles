@@ -1,2 +1,0 @@
-#!/bin/sh
-printf %b '\033[?7l'

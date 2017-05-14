@@ -1,3 +1,0 @@
-#!/usr/bin/perl -p
-# vim: ft=perl smc&:
-s/((^\w)|(\s\w))/\U$1/g, s/([\w']+)/\u\L$1/g;

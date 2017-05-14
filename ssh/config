@@ -64,3 +64,11 @@ host bee
     cipher arcfour
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/home_key
+
+host pirate
+    user pirate
+    hostname 192.168.0.31
+    port 22
+    cipher arcfour
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/home_key

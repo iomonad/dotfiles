@@ -1,5 +1,0 @@
-#!/bin/sh
-printf "\033]710;%s\007" \
-  -misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1 
-printf "\033]711;%s\007" \
-  -misc-tamsyn-bold-r-normal--14-101-100-100-c-70-iso8859-1

@@ -1,2 +1,0 @@
-#!/bin/sh
-podchecker $(find -iname '*.pod')

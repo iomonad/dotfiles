@@ -130,7 +130,7 @@ myKeys =  -- The Workspace switcher.
 
     -- Windows
         -- Core
-        , ("M-r",               refresh) -- Refresh layout
+        , ("M-*",               refresh) -- Refresh layout
         , ("M-q",               kill1) -- Kill current props
         , ("M-C-q",             killAll) -- Full cleanup. Kill all props on the layout.
         -- Utils
@@ -163,7 +163,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-C-<Left>",        sendMessage (DecreaseLeft 10)) -- Descrease size to left
     -- Layouts
         , ("M-!",               asks (XMonad.layoutHook . config) >>= setLayout) -- Reset all layout modifications.
-        , ("M-*",                sendMessage NextLayout) -- Rotate between different layouts.
+        , ("M-r",               sendMessage NextLayout) -- Rotate between different layouts.
         , ("M-S-f",             sendMessage (T.Toggle "float")) -- Toggle float layou mode
         , ("M-S-b",             sendMessage $ Toggle NOBORDERS) -- Toggle border display
         , ("M-S-d",             sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) -- Toogle FullScreen
@@ -253,6 +253,7 @@ myStartupHook = do
   spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
   spawnOnce "panelbar"
   spawnOnce "urxvtc -e tmux &"
+  spawnOnce "transmission-daemon"
 -- [/AUTOSTART] }}}
 
 -- [MAIN] {{{

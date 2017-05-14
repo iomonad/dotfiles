@@ -1,2 +1,0 @@
-#!/bin/sh
-scp -r -P 19216 $HOME/usr/share/doc/* scp1@laleh::http/japh.se/doc/

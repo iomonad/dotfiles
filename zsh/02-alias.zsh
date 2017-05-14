@@ -215,7 +215,7 @@ alias framboise="ssh root@192.168.0.47"
 alias reddit="rtv"
 #}}}
 
-
+alias f="firefox-bin"
 alias nano="vim"
 alias youtube="mpsyt"
 alias external-ip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'  '>'"
@@ -252,7 +252,7 @@ alias es="emacs --daemon"
 alias ec="emacsclient -c"
 
 # Connect to the rtorrent daemon
-alias torrent="stty stop undef; stty start undef; screen -r rtd"
+alias torrent="transmission-remote-cli"
 
 # Android source code sync tool
 alias rs="repo sync -c -j 4" # Current branch for cynaogenmod

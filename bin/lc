@@ -1,5 +1,0 @@
-#!/usr/bin/perl -p
-# vim: ft=perl smc&:
-$_ = lc $_;
-
-print lc while <>;

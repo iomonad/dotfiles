@@ -1,4 +1,0 @@
-#!/bin/sh
-# upload Perl module/script to the perlcritic web service
-
-wget -q -O - --post-file="$@" http://perlcritic.com/perl/critic.pl

@@ -1,4 +1,0 @@
-#!/bin/sh
-pickyfont set ter2  normal
-pickyfont set ter2b bold
-pickyfont set pro2  italic
