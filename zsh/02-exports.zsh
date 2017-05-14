@@ -172,12 +172,13 @@ export STACK_BIN_PATH="$HOME/.stack/bin" # Nope
 
 # User binary path {{{
 export USER_BIN_PATH="$HOME/bin"
+export USER_UTILS_PATH="$HOME/bin/utils/"
 export SYSTEM_BOOTSTAGE_BIN="/bin"
 export SYSTEM_SU_BIN="/sbin"
 export SYSTEM_WIDE_BIN="/usr/bin"
 export SYSTEM_SU_WIDE_BIN="/usr/sbin"
 export SYSTEM_HOST_BIN="/usr/local/bin"
-export SYSTEM_PATHS="$USER_BIN_PATH:$SYSTEM_BOOTSTAGE_BIN:$SYSTEM_SU_BIN:$SYSTEM_WIDE_BIN:$SYSTEM_SU_WIDE_BIN:$SYSTEM_HOST_BIN" # Centralized
+export SYSTEM_PATHS="$USER_BIN_PATH:$SYSTEM_BOOTSTAGE_BIN:$SYSTEM_SU_BIN:$SYSTEM_WIDE_BIN:$SYSTEM_SU_WIDE_BIN:$SYSTEM_HOST_BIN:$USER_UTILS_PATH"
 # }}}
 # Perl Paths {{{
 export PERL_SITE_BIN="$SYSTEM_WIDE_BIN/site_perl"

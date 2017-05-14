@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+use strict;
+use LWP;
+
+sub _get_weather {
+    my $browser = LWP::UserAgent->new();
+    my $res = $browser->get("http://wttr.in/Paris");
+    print "$res"
+}
+_get_weather
