@@ -5,6 +5,9 @@ use LWP;
 sub _get_weather {
     my $browser = LWP::UserAgent->new();
     my $res = $browser->get("http://wttr.in/Paris");
-    print "$res"
+    if ($res->is_success)
+    {
+        print $res->decoded_content;
+    }
 }
 _get_weather
