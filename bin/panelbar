@@ -1,0 +1,13 @@
+#!/bin/sh
+
+FOO=$(uptime | awk '{print $3}' | sed s/,//)
+
+DL=$(ifconfig wlp5s0 | grep 'RX packets' | awk '{print $6}' | sed 's/(//')
+UP=$(ifconfig wlp5s0 | grep 'TX packets' | awk '{print $6}' | sed 's/(//')
+MPD=$(mpc --format "%artist% - %title%" | bc -l 1)
+WEATHER=$($HOME/bin/utils/weather)
+
+while :; do
+    echo "    $(date '+%a %d %b %l:%M %p') | $WEATHER"
+    sleep 2
+done | bar -d -f "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*" -F $(xrq 'urxvt*foreground') -b     

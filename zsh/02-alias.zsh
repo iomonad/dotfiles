@@ -297,4 +297,6 @@ alias proxy="proxychains -q -f $HOME/etc/proxychains/proxychains.conf"
 alias clock="while :; do date '+%T'; sleep 1; done | bar $BAROPT"
 alias cd="builtin cd"
 alias g="git"
+alias unique="sort -u"
+alias opem="xdg-open"
 # }}}

@@ -187,6 +187,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-<Space>",         spawn "rofi -show run") -- Start Rofi
         , ("M-<Return>",        spawn "urxvtc -name urxvt") -- New terminal Instance
         , ("M-w",               spawn "firefox") -- Start firefox
+        , ("M-p",               spawn "ck-launch-session dbus-launch pcmanfm")
         ] where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))
 myMouseKeys = [ ((mod4Mask .|. shiftMask, button3), \w -> focus w >> Sqr.mouseResizeWindow w True) ] -- Custom extra keys.

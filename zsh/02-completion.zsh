@@ -80,17 +80,20 @@ zstyle ':completion:*:(ssh|scp):*:hosts-ipaddr' ignored-patterns \
 zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
       adm bin daemon halt lp named shutdown sync
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
-  'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
+       'pirate@192.168.0.31' 'openbsd@93.178.34.96' 'openbsd@90.33.102.43' 'root@localhost' 'iomonad@localhost'
 zstyle ':completion:*:*:*:users' ignored-patterns \
-        adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
-        dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
-        hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
-        mailman mailnull mldonkey mysql nagios \
-        named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
-        operator pcap postfix postgres privoxy pulse pvm quagga radvd \
-        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
+       adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
+       dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
+       hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
+       mailman mailnull mldonkey mysql nagios \
+       named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+       operator pcap postfix postgres privoxy pulse pvm quagga radvd \
+       rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 zstyle '*' single-ignored show
 #zstyle ':completion:*:options'               menu search
+[[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
+zstyle ':completion:*:hosts' hosts $_ssh_config
+
 #}}}
 # Hate GO but ... {{{
 go_prefixes=(5 6 8)
