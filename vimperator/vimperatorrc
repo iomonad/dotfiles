@@ -124,10 +124,9 @@ set! browser.tabs.insertRelatedAfterCurrent='false'
 set! extensions.getAddons.showPane=0
 set! font.name.monospace.x-western="PragmataPro"
 set! font.name.sans-serif.x-western="PragmataPro"
-set! font.name.serif.x-western="Pragmata"
+set! font.name.serif.x-western="PragmataPro"
 set! zoom.minPercent=50
 
 color phallus
-
 
 echo ""
