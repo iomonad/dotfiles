@@ -300,3 +300,10 @@ alias g="git"
 alias unique="sort -u"
 alias open="xdg-open"
 # }}}
+
+# Elixir Mix Build Tool {{{
+alias mc="mix compile"
+alias md="mix deps.get"
+alias mt="mix test"
+alias mi="iex -S mix"
+# }}}
