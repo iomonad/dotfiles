@@ -2,6 +2,9 @@
 -------
 > Some dotfiles to use as configurations files for cli programs.
 
+### Current desktop:
+![Desktop Screenshot](https://my.mixtape.moe/iyncqy.png)
+
 ### Installation
 ```bash
 $ git clone https://github.com/iomonad/dotfiles.git $HOME/etc
@@ -35,5 +38,3 @@ $ git pull
 # For emacs
 $ git fetch ; git merge origin/master
 ```
-### Current setup:
-![Desktop Screenshot](https://my.mixtape.moe/hjmzvz.png)
