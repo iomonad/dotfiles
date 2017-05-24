@@ -9,5 +9,5 @@ wmname LG3D
 urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
 rm ~/.serverauth*
-hsetroot -tile $HOME/.xres.d/wallpaper/chicago1.jpg
+hsetroot -tile $HOME/.xres.d/wallpaper/wall.jpeg
 exec xmonad
