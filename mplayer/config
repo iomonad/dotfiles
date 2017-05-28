@@ -1,22 +1,3 @@
-### vim: ft=mplayerconf:fdm=marker:fdl=0:fmr=#{{{,#}}}:et:sw=2 smc&:
-###
-#      ${HOME}/etc/mplayer/config
-#      ${XDG_CONFIG_HOME}/mplayer/config
-#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
-#         owner  Magnus Woldrich <m@japh.se>
-#         btime  2009-04-24
-#         mtime  2012-11-12 20:23:41
-#   permissions  You are free to use things you may find useful here.
-#                Would my tweaks happen to give you a raise or fetch you a
-#                girlfriend, it goes without saying I'm counting on you
-#                to share with me as I've shared with you.
-#           git  git://github.com/trapd00r/configs.git
-#                http://github.com/trapd00r/configs/mplayer
-#           url  http://devel.japh.se/configs/mplayer
-#           irc  japh@freenode #mplayer #zsh #vim #perl
-#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
-###
-###
 
 [sid]#{{{
 #playing-msg        = "\e[m\n\n  \e[38;5;100m⌃\e[38;5;220;3m LISTEN TO THIS MOTHERFUCKER\e[m\e[38;5;106;1;3m\e[38;5;100m ⌄\e[m\n\t\e[38;5;32;3;1m${path}\e[m\n\n\e[38;5;233m"
@@ -28,8 +9,7 @@ subalign            = 2
 noterm-osd          = 1
 volstep             = 5
 softvol=1
-alang              = sv,eng,ger,jap,
-input  = conf=/home/scp1/etc/mplayer/input.conf
+alang              = sv,eng,ger,jap,fr
 #af                 = extrastereo
 af                 = volnorm
 #af-adv             = force=5
@@ -192,7 +172,7 @@ double             = 1
 ffactor            = 10
 embeddedfonts      = 1
 fixed-vo           = 1
-#font               = 'Anonymous Pro'
+font               = ''
 fs                 = 1
 #lavdopts threads   = 2
 #mixer              = /dev/mixer

@@ -11,6 +11,7 @@
 ! Classic import
 #include </home/iomonad/.xres.d/colorschemes/pepe>
 
+!#include </home/iomonad/.xres.d/colorschemes/nord>
 ! Font
 !*font: xft:berry:style=bold:pixelsize=12
 !*boldFont: xft:berry:style=bold:pixelsize=12

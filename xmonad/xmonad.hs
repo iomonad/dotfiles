@@ -137,7 +137,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-<Delete>",        withFocused $ windows . W.sink) -- Rotate windows
         , ("M-S-<Delete>",      sinkAll) -- Toggle border selection
         -- Windows selection (ALT - M1 based)
-        , ("M1-z",               windows W.focusMaster) -- Select master
+        , ("M1-z",              windows W.focusMaster) -- Select master
         , ("M1-<F9>",           windows W.focusDown) -- Select using mouse hovering
         , ("M1-<Tab>",          windows W.focusDown) -- Select using simple term selection switcher.
         , ("M1-a",              windows W.swapDown) -- It say: swap down
@@ -166,7 +166,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-r",               sendMessage NextLayout) -- Rotate between different layouts.
         , ("M-S-f",             sendMessage (T.Toggle "float")) -- Toggle float layou mode
         , ("M-S-b",             sendMessage $ Toggle NOBORDERS) -- Toggle border display
-        , ("M-S-d",             sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) -- Toogle FullScreen
+        , ("M-f",             sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) -- Toogle FullScreen
     -- Shrinks
         , ("M-h",               sendMessage Shrink) -- Shrink size of current terminal to left
         , ("M-l",               sendMessage Expand) --  Expand size of current terminal to right
