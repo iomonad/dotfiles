@@ -67,7 +67,7 @@ host bee
 
 host pirate
     user pirate
-    hostname 192.168.0.31
+    hostname 192.168.0.32
     port 24728
     cipher arcfour
     IdentitiesOnly yes
