@@ -46,3 +46,4 @@ cache
 weechat/ssl
 stack/global-project/.stack-work
 mpd/mpd.db
+mpd/playlists
