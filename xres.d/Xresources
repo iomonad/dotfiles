@@ -50,27 +50,27 @@ URxvt.internalBorder: 6
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.clipboard.autocopy: true
+!URxvt.perl-ext-common: default,clipboard
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.clipboard.autocopy: true
 
 ! resize on the fly
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 ! Extensions
-URxvt*perl-lib:        /home/iomonad/.xres.d/urxvt-perls
-URxvt*perl-ext-common: default,matcher,searchable-scrollback
-URxvt*urlLauncher:     w3m
-URxvt*matcher.button:  1
+!URxvt*perl-lib:        /home/iomonad/.xres.d/urxvt-perls
+!URxvt*perl-ext-common: default,matcher,searchable-scrollback
+!URxvt*urlLauncher:     w3m
+!URxvt*matcher.button:  1
 
 ! Keybind
-URxvt.keysym.Control-Alt-C: perl:clipboard:copy
-URxvt.keysym.Control-Alt-V: perl:clipboard:paste
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.C-Escape: perl:keyboard-select:activate
-URxvt.keysym.C-u: perl:url-select:select_next
+!URxvt.keysym.Control-Alt-C: perl:clipboard:copy
+!URxvt.keysym.Control-Alt-V: perl:clipboard:paste
+!URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!URxvt.keysym.C-Escape: perl:keyboard-select:activate
+!URxvt.keysym.C-u: perl:url-select:select_next
 
 ! blink
 URxvt*cursorBlink: true
