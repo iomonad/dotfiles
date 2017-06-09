@@ -176,13 +176,20 @@ myKeys =  -- The Workspace switcher.
         , ("M-S-<KP_Add>",      shiftTo Next nonNSP >> moveTo Next nonNSP) -- Move and follow prop to next workspace
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP) -- Move and follow prop to last workspace
     -- Prompts Popup
-     --   , ("M-,",               goToSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected go to the prop
+        --   , ("M-,",               goToSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected go to the prop
         , ("M-S-,",             bringSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected move prop to current workspace
     -- Scratchpads
-  --       , ("M-<Tab>",           namedScratchpadAction myScratchpads "terminal") -- Pop a terminal as scratchpads ^ useless
+        --       , ("M-<Tab>",           namedScratchpadAction myScratchpads "terminal") -- Pop a terminal as scratchpads ^ useless
         , ("M-c",               namedScratchpadAction myScratchpads "ide") -- Start a terminal with emacs for dev
         , ("M-b",               namedScratchpadAction myScratchpads "rtorrent")
         , ("M-m",               namedScratchpadAction myScratchpads "music")
+    -- Medias
+        , ("M-S-n",             spawn "mpc next")
+        , ("M-S-p",             spawn "mpc prev")
+        , ("M-S-k",             spawn "mpc stop")
+        , ("M-S-s",             spawn "mpc shuffle")
+        , ("M-S-j",             spawn "mpc pause")
+        , ("M-S-k",             spawn "mpv play")
     -- Apps
         , ("M-<Space>",         spawn "rofi -show run") -- Start Rofi
         , ("M-<Return>",        spawn "urxvtc -name urxvt") -- New terminal Instance
