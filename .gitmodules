@@ -13,3 +13,6 @@
 [submodule "bin/utils"]
 	path = bin/utils
 	url = https://github.com/iomonad/utils
+[submodule "vim"]
+	path = vim
+	url = https://github.com/iomonad/vimrc.git

@@ -1,13 +1,13 @@
 [user]
-  name = La Monade
-  email = iomonad@riseup.net
+  name = Clement Trösa
+  email = me@trosa.io
   signingkey = 957B691F07D8D335
 
 [core]
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
-  editor     = emacs
+  editor     = vim
   pager = less -x4
 
 [merge]

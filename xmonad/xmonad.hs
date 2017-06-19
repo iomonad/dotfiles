@@ -261,7 +261,6 @@ myStartupHook = do
   spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
   spawnOnce "panelbar"
   spawnOnce "urxvtc -e tmux &"
-  spawnOnce "transmission-daemon"
 -- [/AUTOSTART] }}}
 
 -- [MAIN] {{{

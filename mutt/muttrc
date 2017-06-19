@@ -1,6 +1,6 @@
 # Filename: muttrc
 # Un-Copyright (c/) 2008-2017 Clement Trösa <iomonad@riseup.net>
-# 
+#
 # Last-Updated: 04/08/2017 Saturday 23:29:42
 # Description: Mutt configuration
 
@@ -13,7 +13,7 @@ set certificate_file = ~/.mutt/certificates   # where to store certs
 set mailcap_path     = ~/.mutt/mailcap        # entrys for filetypes
 set signature        = ~/.mutt/sig            # my signature file
 set tmpdir           = ~/.mutt/temp           # where to keep temp files
-set editor           = emacs                  # because vim sucks
+set editor           = vim                    # because emacs sucks
 set sig_on_top       = yes                    # always insert signature
 
 # Main Options
@@ -25,7 +25,7 @@ set mail_check       = 0                      # minimum time between scans
 set sort_alias       = alias                  # sort alias file by alias
 set reverse_alias                             # show names from alias file in index
 unset move                                    # gmail does that
-set smart_wrap       = yes                    
+set smart_wrap       = yes
 set allow_ansi       = yes
 set delete                                    # don't ask, just do
 unset confirmappend                           # don't ask, just do!
