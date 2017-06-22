@@ -47,3 +47,5 @@ weechat/ssl
 stack/global-project/.stack-work
 mpd/mpd.db
 mpd/playlists
+mutt/trosa.muttrc
+*msmtprc

@@ -19,7 +19,7 @@ set sig_on_top       = yes                    # always insert signature
 # Main Options
 set mbox_type        = Maildir                # mailbox type
 set folder           = ~/documents/mail       # mailbox location
-set spoolfile        = "+riseup/INBOX"        # riseup is default inbox
+set spoolfile        = "+trosa/INBOX"       # trosaio is default inbox
 set timeout          = 3                      # idle time before scanning
 set mail_check       = 0                      # minimum time between scans
 set sort_alias       = alias                  # sort alias file by alias
@@ -112,12 +112,12 @@ bind index J           next-unread
 bind index,pager R     group-reply
 
 # Define box
-mailboxes +riseup/Inbox +riseup/Sent +riseup/Drafts
+mailboxes +trosa/Inbox +trosa/Sent +trosa/Drafts
 
 # Source configurations
 source $alias_file                           # required for functionality
-#source ~/.mutt/colors                        # source colors file
-source ~/.mutt/riseup.muttrc
+#source ~/.mutt/colors                      # source colors file
+source ~/.mutt/trosa.muttrc
 source ~/.mutt/pgp.muttrc
 # Some hacks
 macro index \Cr "<tag-prefix><clear-flag>N" "mark tagged messages as read"

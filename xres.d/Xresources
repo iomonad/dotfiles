@@ -33,7 +33,7 @@ Xft.rgba: rgb
 
 URxvt.depth: 0
 
-URxvt.intensityStyles:  false   
+URxvt.intensityStyles:  false
 
 ! Terminal window size
 URxvt*geometry: 65x17

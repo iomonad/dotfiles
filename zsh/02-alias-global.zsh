@@ -25,4 +25,5 @@ alias -g xinitrc=$HOME/.xinitrc
 alias -g useflags=/etc/portage/package.use
 alias -g makeconf=/etc/make.conf
 alias -g ncmpconf=$HOME/.ncmpcpp/config
+alias -g xre=$/.Xresources
 #}}}

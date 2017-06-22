@@ -1,6 +1,9 @@
-{- WM: Xmonad
-   Author: IOmonad <iomonad@riseup.net>
-   Date: 21:42 26 Nov 2016  -}
+{-
+ - File: xmonad.hs
+ - Author: Clement Trosa <me@trosa.io>
+ - Date: 19/06/2017 08:59:27 AM
+ - Last Modified: 19/06/2017 08:59:27 AM
+ -}
 
 -- [IMPORTS] {{{
 -- Xmonad: Core
@@ -70,11 +73,12 @@ import           XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), 
 -- [SETTINGS] {{{
 -- Colors and Styles
 sFont    = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
-sBordW   = 3 -- Set width border size
-sColorsB = "#303c3d" -- Unselected terminal
-sColorsF = "#303c3d" -- Selected Terminal
+sBordW   =  2 -- Set width border size
+sColorsB = "#1F1F1F" -- Unselected terminal
+sColorsF = "#683e3e" -- Selected Terminal
 sColorsW = "#6D6B6E" -- Colors when activity or warning
-
+sGap = 0 -- Gap between windowns
+sSpace = 0 -- space between windows
            -- Settings and Other.
 myModMask       = mod4Mask -- Set as "SUPER" key akka w1nd0w$
 myTerminal      = "urxvtc" -- The terminal to use.
@@ -203,7 +207,7 @@ myMouseKeys = [ ((mod4Mask .|. shiftMask, button3), \w -> focus w >> Sqr.mouseRe
 -- [WORKSPACE] {{{
 myWorkspaces = ["term", "web", "media", "pirate","porn"] -- Define numbers and names of workspaces
 -- This hooks force the redirection to a given workspace.
-myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPosition End Newer <+> floatNextHook <+> namedScratchpadManageHook myScratchpads <+>
+myManageHook = placeHook ( smart(1,1)) <+> insertPosition End Newer <+> floatNextHook <+> namedScratchpadManageHook myScratchpads <+>
         (composeAll . concat $
         [ [ resource  =? r --> doF (W.view "term" . W.shift "term")   | r <- myTermApps    ]
         , [ resource  =? r --> doF (W.view "web" . W.shift "web")   | r <- myWebApps     ]
@@ -224,9 +228,9 @@ myManageHook = placeHook (withGaps (5,2,2,2) (smart (0.5,0.5))) <+> insertPositi
 --
 -- [LAYOUTS] {{{
 --Layouts definitions, defined in differents workspaces.
-myLayoutHook = gaps [(U, 8), (R, 8), (L, 8), (D, 8)] $
+myLayoutHook = gaps [(U, sGap), (R, sGap), (L, sGap), (D, sGap)] $
                                          avoidStruts $
-                                         spacing 8
+                                         spacing sSpace
                                          commonLayouts
      where commonLayouts = tiled ||| grid ||| oneBig ||| lined ||| space ||| monocle
            -- Layout defined (Custom)
@@ -258,8 +262,8 @@ myStartupHook = do
   spawnOnce "mpd &"
   spawnOnce "wmname LG3D" -- Fix java errors
   spawnOnce "unclutter -idle 1 &"
-  spawnOnce "compton -c -b -e 0.8 -t -8 -l -9 -r 6 -o 0.7 -m 1.0 &"
-  spawnOnce "panelbar"
+  spawnOnce "compton --config $HOME/etc/compton/smooth.conf &"
+  --spawnOnce "panelbar"
   spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}
 
