@@ -1,5 +1,3 @@
-
-
 set noscrollbars
 
 set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
@@ -16,7 +14,6 @@ set   hintinputs=label,name,value
 set   hintmatching=wordstartswith
 set   history=150
 set   hlsearch
-"set   loadplugins
 set   maxitems=30
 set   messages=20
 set   newtab=all
@@ -51,7 +48,7 @@ nnoremap h     :bprev<cr>
 
 
 map <M-space> usermode!
-map <M-1>     tabgroups switch 
+map <M-1>     tabgroups switch
 
 nnoremap d     :tabclose!<cr>
 nnoremap <f1>   :set usermode!<cr>
@@ -109,13 +106,11 @@ nnoremap <C-a>   g0
 set! accessibility.typeaheadfind.autostart='false'
 set! accessibility.typeaheadfind='false'
 set! browser.backspace_action=0
-set! browser.cache.disk.enable='false'
-set! browser.cache.disk.parent_directory=/dev/shm
 set! layout.css.dpi=0
 set! network.protocol-handler.expose.magnet=false
 set! browser.ctrlTab.previews='true'
 set! browser.display.show_image_placeholders='false'
-set! browser.display.use_system_colors='true'
+set! browser.display.use_system_colors='false'
 set! browser.download.dir="/home/seyt/download"
 set! browser.enable_automatic_image_resizing='true'
 set! browser.newtabpage.columns=5

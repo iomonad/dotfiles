@@ -1,12 +1,16 @@
+# ┏━┓┏━┓╻ ╻   ┏━╸┏━┓┏┓╻┏━╸╻┏━╸
+# ┗━┓┗━┓┣━┫   ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓
+# ┗━┛┗━┛╹ ╹   ┗━╸┗━┛╹ ╹╹  ╹┗━┛
+
+Include private/*
+
 VisualHostKey yes
 host *
     controlmaster auto
     controlpath ~/.ssh/connections/ssh_%r@%h:%p
     controlpersist  yes
     ForwardX11 no
-    UseRoaming no
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-    
 
 host space
     hostname inother.space
@@ -24,7 +28,7 @@ Host tunnel
     IdentitiesOnly yes
     cipher arcfour
     User root
-    
+
 Host github.com
     HostName github.com
     user git
@@ -46,13 +50,6 @@ host gate
     user root
     port 23147
     hostname 192.168.0.20
-    cipher arcfour
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/home_key
-
-host home
-    user root
-    port 23147
     cipher arcfour
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/home_key

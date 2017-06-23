@@ -9,7 +9,8 @@
 !#include </home/iomonad/.xres.d/crayolo/Xresources>
 
 ! Classic import
-#include </home/iomonad/.xres.d/colorschemes/pepe>
+!#include </home/iomonad/.xres.d/colorschemes/pepe>
+#include </home/iomonad/.xres.d/colorschemes/fyre>
 
 !#include </home/iomonad/.xres.d/colorschemes/nord>
 ! Font

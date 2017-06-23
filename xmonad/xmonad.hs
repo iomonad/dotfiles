@@ -225,7 +225,6 @@ myManageHook = placeHook ( smart(1,1)) <+> insertPosition End Newer <+> floatNex
             myFloatApps   = ["Dialog","lxappearance"]
             myUnfloatApps = []
 -- [/WORKSPACE] }}}
---
 -- [LAYOUTS] {{{
 --Layouts definitions, defined in differents workspaces.
 myLayoutHook = gaps [(U, sGap), (R, sGap), (L, sGap), (D, sGap)] $
@@ -263,7 +262,6 @@ myStartupHook = do
   spawnOnce "wmname LG3D" -- Fix java errors
   spawnOnce "unclutter -idle 1 &"
   spawnOnce "compton --config $HOME/etc/compton/smooth.conf &"
-  --spawnOnce "panelbar"
   spawnOnce "urxvtc -e tmux &"
 -- [/AUTOSTART] }}}
 

@@ -49,3 +49,4 @@ mpd/mpd.db
 mpd/playlists
 mutt/trosa.muttrc
 *msmtprc
+ssh/private
