@@ -1,8 +1,14 @@
+# ┏━╸╻╺┳╸   ┏━╸┏━┓┏┓╻┏━╸╻┏━╸
+# ┃╺┓┃ ┃    ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓
+# ┗━┛╹ ╹    ┗━╸┗━┛╹ ╹╹  ╹┗━┛
+
+# --~-- User related --~--
 [user]
   name = Clement Trösa
   email = me@trosa.io
   signingkey = 957B691F07D8D335
 
+# --~-- Core configuration  --~--
 [core]
   autocrlf = input
   ignorecase = false
@@ -10,18 +16,23 @@
   editor     = vim
   pager = less -x4
 
+# --~-- Merging --~--
 [merge]
   tool = vimdiff
 
+# --~-- Credentials --~--
 [credential]
   helper = cache --timeout=28800
 
+# --~-- Github options --~--
 [github]
   user = iomonad
 
+# --~-- Force ident on https
 [url "https://iomonad@github.com"]
   insteadOf = https://github.com
 
+# --~-- Color the output --~--
 [color]
   branch     = auto
   diff       = 1
@@ -30,10 +41,6 @@
   showbranch = auto
   status     = auto
   ui         = auto
-
-#[commit]
-#	gpgsign = true
-  
 [color "status"]
   added     = 2 bold
   branch    = 100
@@ -41,13 +48,11 @@
   header    = 086
   nobranch  = 197
   untracked = 240
-
 [color "branch"]
   current = 172
   local   = 85 bold
   remote  = 039
   plain   = 240 reverse
-
 [color "diff"]
   old        = 124
   new        = 34 bold
@@ -57,6 +62,8 @@
   func       = 87
   commit     = 4
   whitespace = 160 bold
+
+# --~-- Some alias --~--
 [alias]
   cmd = commit --amend --no-edit
   gg = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
@@ -70,7 +77,7 @@
   pl   = pull
   undo = checkout --
   log1 = log --
-  whatthefuckdidido = diff HEAD
+  wtfdidido = diff HEAD
   sum  = git-summary
   effort  = git-summary
   styoyo = git-awesome-status
@@ -109,5 +116,9 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   us =  submodule update --recursive --remote
+
+#--~-- Misc --~--
 [gpg]
 	program = gpg2
+[commit]
+	template = /home/iomonad/etc/git/gitmessage
