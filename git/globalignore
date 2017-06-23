@@ -1,0 +1,12 @@
+*~
+.*.swp
+.DS_Store
+log/
+*.log
+npm-debug.log
+*.pyc
+*.hi
+*.o
+*.dll
+*.exe
+*.class

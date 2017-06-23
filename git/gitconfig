@@ -15,10 +15,13 @@
   whitespace = cr-at-eol
   editor     = vim
   pager = less -x4
+	excludesfile = /home/iomonad/etc/git/globalignore
 
 # --~-- Merging --~--
 [merge]
   tool = vimdiff
+	branchdesc = true
+	stat = true
 
 # --~-- Credentials --~--
 [credential]
@@ -122,3 +125,4 @@
 	program = gpg2
 [commit]
 	template = /home/iomonad/etc/git/gitmessage
+	status = true
