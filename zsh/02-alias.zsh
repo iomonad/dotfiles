@@ -1,3 +1,6 @@
+# ┏━┓╻  ╻┏━┓┏━┓
+# ┣━┫┃  ┃┣━┫┗━┓
+# ╹ ╹┗━╸╹╹ ╹┗━┛
 #vim: tw=0 nowrap ts=2 ft=sh:
 
 # Some Fun And Usefull Aliases
@@ -133,13 +136,13 @@ alias     tree='tree -dA'
 # Other fun Tricks {{{
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/dev/CPANTS \
-                    && cd $HOME/dev/CPANTS'
+  && cd $HOME/dev/CPANTS'
 alias   iostat='iostat -mtx'
 alias     cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 alias memusage='ps -e -orss=,args= | sort -b -k1,1n|pr -TW$COLUMNS'
 alias    shiva='ps -eo pcpu,pid,user,args \
-                  | sort -k 1 -r \
-                  | head -10 && iostat -mtx && mpstat -P 'ALL' && sar'
+  | sort -k 1 -r \
+  | head -10 && iostat -mtx && mpstat -P 'ALL' && sar'
 
 
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
@@ -156,18 +159,18 @@ alias psef="ps -ef"
 #}}}
 # {{{ Title stuffs
 precmd() {
-	setprompt
-	case $TERM in
-		rxvt-256color | screen-256color )
-			print -Pn "\e]0;%n@%m: %~\a" ;;
-	esac
+  setprompt
+  case $TERM in
+    rxvt-256color | screen-256color )
+      print -Pn "\e]0;%n@%m: %~\a" ;;
+  esac
 }
 
 preexec() {
-	case $TERM in
-		rxvt-256color | screen-256color )
-			print -Pn "\e]0;$1\a" ;;
-	esac
+  case $TERM in
+    rxvt-256color | screen-256color )
+      print -Pn "\e]0;$1\a" ;;
+  esac
 } # }}}
 # System Hacks {{{
 # Fun with sed

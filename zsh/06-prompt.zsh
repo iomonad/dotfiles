@@ -1,3 +1,7 @@
+# ┏━┓┏━┓┏━┓┏┳┓┏━┓╺┳╸
+# ┣━┛┣┳┛┃ ┃┃┃┃┣━┛ ┃
+# ╹  ╹┗╸┗━┛╹ ╹╹   ╹
+
 local IT="${terminfo[sitm]}${terminfo[bold]}"
 local ST="${terminfo[sgr0]}${terminfo[ritm]}"
 
@@ -17,6 +21,6 @@ setprompt() {
     PROMPT="$PRMPT"
   else
     PROMPT="${vcs_info_msg_0_}
-$PRMPT"
+    $PRMPT"
   fi
 }

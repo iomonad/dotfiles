@@ -1,3 +1,7 @@
+# ┏━╸┏━┓╻  ┏━┓┏━┓┏━┓
+# ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
+# ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
+
 # Some colors {{{
 GREP_COLORS="38;5;230:sl=38;5;240:cs=38;5;100:mt=38;5;161;1:fn=38;5;197:ln=38;5;212:bn=38;5;44:se=38;5;166"
 #}}}
@@ -10,4 +14,4 @@ export ACK_COLOR_FILENAME="cyan bold on_black"
 export ACK_COLOR_LINENO="bold green"
 # }}}
 # Export
-export LS_COLORS 
+export LS_COLORS

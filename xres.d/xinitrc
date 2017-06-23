@@ -9,5 +9,6 @@ wmname LG3D
 urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
 hsetroot -fill $HOME/.xres.d/wallpaper/GawjG.jpg
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmobar $HOME/.xmonad/xmobar.hs
+rm ~/.serverauth.*
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmobar $HOME/.xmonad/xmobar.hs
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
