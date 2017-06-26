@@ -195,7 +195,7 @@ myKeys =  -- The Workspace switcher.
         , ("M-S-j",             spawn "mpc pause")
         , ("M-S-k",             spawn "mpv play")
     -- Apps
-        , ("M-<Space>",         spawn "rofi -show run") -- Start Rofi
+       , ("M-<Space>",          spawn "rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc '#555555' -bg '#222222' -hlbg '#222222' -hlfg '#c79595' -fg '#ffffff' -font 'Terminus 15'")
         , ("M-<Return>",        spawn "urxvtc -name urxvt") -- New terminal Instance
         , ("M-w",               spawn "firefox") -- Start firefox
         , ("M-p",               spawn "ck-launch-session dbus-launch pcmanfm")

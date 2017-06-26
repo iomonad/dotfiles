@@ -74,18 +74,25 @@ URxvt.resize-font.bigger: C-Up
 !URxvt.keysym.C-u: perl:url-select:select_next
 
 ! blink
-URxvt*cursorBlink: true
-URxvt*cursorUnderline: true
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
 
-!! Rofi configuration
-rofi.color-enabled: true
-rofi.color-window: #000000, #000000, #000000
-rofi.color-normal: #000000, #576265, #000000, #000000, #000000
-rofi.color-active: #000000, #576265, #000000, #000000, #000000
-rofi.color-urgent: #807557, #dc322f, #eee8d5, #dc322f, #fdf6e3
-rofi.opacity: 90
-rofi.font:            Terminus 8
-
+! rofi
+rofi.background: #000000
+rofi.foreground: #ffffff1
+rofi.highlightbg: #6699CC
+rofi.highlightfg: #1B2B34
+rofi.bgalt: #1B2B34
+rofi.lines: 10
+rofi.eh: 2
+rofi.width: 100
+rofi.padding:   700
+rofi.opacity:   80
+rofi.bw: 0
+rofi.terminal: st
+rofi.glob: true
+rofi.tokenize: false
+rofi.fullscreen: true
 *VT100.colorBDMode:                   true
 *VT100.colorBD:                       red
 *VT100.colorULMode:                   true

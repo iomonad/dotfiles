@@ -51,3 +51,4 @@ mutt/trosa.muttrc
 *msmtprc
 ssh/private
 zsh/02-private.zsh
+passwords.kdbx
