@@ -32,6 +32,12 @@ servers = (
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
+  },
+  {
+    address = "freenodeok2gncmy.onion";
+    port = "6667";
+    use_tls = "no";
+    tls_verify = "no";
   }
 );
 
@@ -374,8 +380,11 @@ settings = {
   core = {
     real_name = "Clement trosa";
     user_name = "iomonad";
-    nick = "iomonad";
+    nick = "trosa";
+    proxy_address = "localhost:9955 ";
+    use_proxy = "yes";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = " tan.theme"; };
+  proxy = { irssiproxy_password = "salmon"; irssiproxy_ports = "7888"; };
 };

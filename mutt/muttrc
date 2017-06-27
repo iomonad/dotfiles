@@ -19,7 +19,7 @@ set sig_on_top       = yes                    # always insert signature
 # Main Options
 set mbox_type        = Maildir                # mailbox type
 set folder           = ~/documents/mail       # mailbox location
-set spoolfile        = "+trosa/INBOX"       # trosaio is default inbox
+set spoolfile        = "+trosa/INBOX"         # trosaio is default inbox
 set timeout          = 3                      # idle time before scanning
 set mail_check       = 0                      # minimum time between scans
 set sort_alias       = alias                  # sort alias file by alias

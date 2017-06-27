@@ -11,11 +11,11 @@ done
 
 # {{{ if ... else ... fi
 # root & user
-if [ $UID -eq 0 ]; then 
+if [ $UID -eq 0 ]; then
     CARETCOLOR="red"
     # user_prompt="⚡"
     # user_prompt="#"
-else 
+else
     CARETCOLOR="green"
     # user_prompt="»"
 fi
@@ -33,15 +33,14 @@ setopt EXTENDED_HISTORY
 unsetopt APPEND_HISTORY
 stty -ixon
 
-
 xrdb .Xresources
 
-if pgrep -x "gpg-agent" > /dev/null
-then
-    true
-else
-    gpg-agent --daemon
-fi
-        
+# if pgrep -x "gpg-agent" > /dev/null
+# then
+#     true
+# else
+#     gpg-agent --daemon
+# fi
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 export TERM=rxvt
