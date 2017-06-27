@@ -6,7 +6,7 @@
 [user]
   name = Clement Trösa
   email = me@trosa.io
-  signingkey = 957B691F07D8D335
+  signingkey = D3A0D8A0A3ADDF28
 
 # --~-- Core configuration  --~--
 [core]

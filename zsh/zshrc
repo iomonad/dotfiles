@@ -35,12 +35,20 @@ stty -ixon
 
 xrdb .Xresources
 
-# if pgrep -x "gpg-agent" > /dev/null
-# then
-#     true
-# else
-#     gpg-agent --daemon
-# fi
+# sec helpers {{{
+
+# gpg {{{
+if pgrep -x "gpg-agent" > /dev/null
+then
+    true
+else
+    gpg-agent --daemon --enable-ssh-support --use-standard-socket \
+      --log-file ~/.gnupg/gpg-agent.log
+fi
+# }}}
+
+# }}}
+
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 export TERM=rxvt
