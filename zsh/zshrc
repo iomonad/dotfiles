@@ -45,6 +45,9 @@ else
     gpg-agent --daemon --enable-ssh-support --use-standard-socket \
       --log-file ~/.gnupg/gpg-agent.log
 fi
+
+export GPG_TTY=$(tty) # Requiered for gpg2 agent !
+
 # }}}
 
 # }}}
