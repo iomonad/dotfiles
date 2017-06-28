@@ -1,0 +1,18 @@
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile /tmp/.msmtp.log
+
+# trosa.io
+account trosa
+host w00tw00t
+port 587
+tls on
+auth on
+tls_starttls on
+from me@trosa.io
+user me@trosa.io
+password mov-aex-h00t
+
+account default : trosa
