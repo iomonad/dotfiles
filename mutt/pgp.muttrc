@@ -1,6 +1,5 @@
 # Filename: pgp.muttrc
 # Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
-# 
 # Last-Updated: 04/08/2017 Saturday 23:26:36
 # Description: Gpg addons configuration to mutt
 
@@ -17,8 +16,8 @@ set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs 
 set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r"
 set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
 set pgp_autosign=yes
-set pgp_sign_as = 0xACF71A423459253E
-set postpone_encrypt_as = 0xACF71A423459253E
+set pgp_sign_as = 0xC47694D341061731
+set postpone_encrypt_as = 0x1677B1260796994A
 set postpone_encrypt=yes
 set pgp_replyencrypt=yes
 set pgp_timeout=1800

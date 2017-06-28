@@ -53,3 +53,4 @@ ssh/private
 zsh/02-private.zsh
 passwords.kdbx
 mutt/n
+xres.d/crayolo

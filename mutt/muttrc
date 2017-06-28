@@ -72,9 +72,9 @@ set index_format    = "%3C [%Z] %D %-20.18F //   %s"
 set alias_format    = "%4n %t %-20a %r"
 
 # Mail composition options
-set realname        = "Clement Trösa"         # who am i?
+set realname        = "Clement Trosa"         # who am i?
 set sig_dashes                                # Show a sweet signature
-set edit_headers                              # show headers when composing
+set edit_headers                              # show headers wheamposing
 set fast_reply                                # skip to compose when replying
 set sendmail_wait   = 1                       # wait for sending... to complete
 set askcc                                     # ask for CC:
@@ -116,7 +116,7 @@ mailboxes +trosa/Inbox +trosa/Sent +trosa/Drafts
 
 # Source configurations
 source $alias_file                           # required for functionality
-#source ~/.mutt/colors                      # source colors file
+source ~/.mutt/colors                      # source colors file
 source ~/.mutt/trosa.muttrc
 source ~/.mutt/pgp.muttrc
 # Some hacks
@@ -125,3 +125,4 @@ macro index <esc>m "T~N<enter>;WNT~O<enter>;WO\CT~T<enter>" "mark all messages r
 macro index B   "<limit>~b "                "search message bodies"
 macro index I   "<change-folder>!<enter>"   "go to Inbox"
 macro index P   "<pipe-message>cat > ~/"    "save message as"
+macro index O "<shell-escape>offlineimap -a trosa -q -uquiet<enter>"

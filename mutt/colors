@@ -1,4 +1,4 @@
-# vim: filetype=muttrc 
+# vim: filetype=muttrc
 
 # set default
 color normal     default	default
@@ -18,7 +18,7 @@ color index      cyan          default "~u"
 #uncolor index "~P"
 #uncolor index "~C @.com"
 #uncolor index "~N ~u"
-#uncolor index "~N !~u" 
+#uncolor index "~N !~u"
 #uncolor index "~T"
 #uncolor index "~D"
 
@@ -42,7 +42,7 @@ color index         brightyellow		default		"~Q"                        # message
 color index         blue		default		"~R"                        # read messages
 color index         brightgreen		default		"~U"                        # unread messages
 color index         brightyellow    default		"~U~$"                      # unread, unreferenced messages
-color index         color241		default		"~v"                        # messages part of a collapsed thread
+# color index         color241		default		"~v"                        # messages part of a collapsed thread
 color index         magenta		default		"~P"                        # messages from me
 color index         red		default		"~p!~F"                     # messages to me
 color index         magenta		default		"~N~p!~F"                   # new messages to me
@@ -54,9 +54,9 @@ color index         brightgreen		default		"~N~F"                      # new flag
 color index         brightgreen		default		"~N~F~p"                    # new flagged messages to me
 color index         brightgreen		default		"~U~F~p"                    # new flagged messages to me
 color index         brightblack		magenta		"~D"                        # deleted messages
-color index         color245		default		"~v~(!~N)"                  # collapsed thread with no unread
-color index         color136		default		"~v~(~N)"                   # collapsed thread with some unread
-color index         color64		default		"~N~v~(~N)"                 # collapsed thread with unread parent
+# color index         color245		default		"~v~(!~N)"                  # collapsed thread with no unread
+# color index         color136		default		"~v~(~N)"                   # collapsed thread with some unread
+# color index         color64		default		"~N~v~(~N)"                 # collapsed thread with unread parent
 
 # set up the headers
 color header     brightmagenta default "^from:"
