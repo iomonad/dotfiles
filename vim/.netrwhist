@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/iomonad'
+let g:netrw_dirhist_2='/home/iomonad/.emacs'
+let g:netrw_dirhist_3='/home/iomonad/.emacs/org'
+let g:netrw_dirhist_4='/home/iomonad'
+let g:netrw_dirhist_5='/home/iomonad/.gnupg'
+let g:netrw_dirhist_6='/home/iomonad/.gnupg/private-keys-v1.d'
+let g:netrw_dirhist_7='/home/iomonad'
