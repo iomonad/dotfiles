@@ -1,9 +1,0 @@
-#!/bin/sh
-# remove songs NOT matching PATTERN from playlist
-
-pattern="$1"
-
-mpc --format "%position% %artist% %album% %title%" playlist \
-  | ngrep $pattern \
-  | awk '{print $1}'  \
-  | mpc del
