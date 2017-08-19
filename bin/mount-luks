@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo cryptsetup luksOpen /dev/sdb1 encrypted-usb
+sudo mkdir -p /mnt/usb
+sudo mount /dev/mapper/encrypted-usb /mnt/usb
+
+export $PS1="(luks shell) > " /bin/bash
+
+sudo umount /mnt/usb
+sudo cryptsetup luksClose encrypted-usb
+tput reset && echo "Session terminated"

@@ -1,3 +1,8 @@
+#!/bin/bash
+# File: 03-functions.zsh
+# Author: Clement Trosa <me@trosa.io>
+# Date: 28/06/2017 05:53:22 PM
+# Last Modified: 28/06/2017 05:53:22 PM
 # ┏━╸╻ ╻┏┓╻┏━╸╺┳╸╻┏━┓┏┓╻┏━┓
 # ┣╸ ┃ ┃┃┗┫┃   ┃ ┃┃ ┃┃┗┫┗━┓
 # ╹  ┗━┛╹ ╹┗━╸ ╹ ╹┗━┛╹ ╹┗━┛
@@ -761,5 +766,11 @@ pronounce() {
 
 list-boost-libs() {
 for f in $(ls -1 /usr/lib64/libboost_*.a); do basename $f .a | cut -c 4-99; done;
+}
+
+makesecure() {
+   chown -R "$USER:$(id -gn)" $1
+   chmod 700 $1 # disable folder acces
+   chmod 600 $1/*
 }
 # vim: ft=sh:

@@ -36,6 +36,14 @@ Host github.com
     IdentitiesOnly yes
     cipher arcfour
 
+
+Host gitlab.com
+    HostName gitlab.com
+    user git
+    IdentityFile ~/.ssh/keys/github_rsa
+    IdentitiesOnly yes
+    cipher arcfour
+
 Host gist.github.com
     user git
     IdentitiesOnly yes
