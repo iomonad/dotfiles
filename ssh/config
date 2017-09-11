@@ -77,3 +77,10 @@ host pirate
     cipher arcfour
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/home_key
+
+host trosa
+    user root
+    port 23147
+    hostname pub.trosa.io
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/keys/github_rsa
