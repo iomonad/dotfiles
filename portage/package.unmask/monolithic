@@ -1,0 +1,5 @@
+# required by chibi-scheme (argument)
+# /var/lib/layman/chemoelectric/profiles/package.mask:
+# Barry Schwartz (26 Apr 2017)
+# This ebuild is a work in progress works, at best, only partially.
+=dev-scheme/chibi-scheme-0.7.3

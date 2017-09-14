@@ -1,0 +1,3 @@
+#undef BANNER_TIMEOUT
+#define BANNER_TIMEOUT 0
+#define NET_PROTO_IPV6

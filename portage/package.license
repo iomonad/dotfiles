@@ -1,0 +1,4 @@
+# required by oracle-jdk-bin (argument)
+>=dev-java/oracle-jdk-bin-1.8.0.121 Oracle-BCLA-JavaSE
+# required by rar (argument)
+>=app-arch/rar-5.5.0_p20170811 RAR

@@ -91,7 +91,7 @@ export MOZ_DISABLE_PANGO=1
 #export CLIVE_CONFIG="/home/scp1/etc/cliverc"
 
 # The Path {{{
-export GEM_PATH='/home/seyt/.gem/ruby/2.2.0/bin/'
+export GEM_PATH='/home/iomonad/.gem/ruby/2.2.0/bin/'
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 #}}}
 
@@ -143,7 +143,7 @@ export LISTMAX=300
 #}}}
 
 # Ruby Path
-export GEM_PATH='/home/seyt/.gem/ruby/2.2.0/bin/'
+export GEM_PATH='/home/iomonad/.gem/ruby/2.2.0/bin/'
 
 export CONFIG_PATH="$HOME/etc"
 export ZSH_PATH="$CONFIG_PATH/zsh"

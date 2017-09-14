@@ -80,6 +80,7 @@ host pirate
 
 host trosa
     user root
+    controlmaster no
     port 23147
     hostname pub.trosa.io
     IdentitiesOnly yes
