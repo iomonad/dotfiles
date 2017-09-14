@@ -3,7 +3,7 @@
 > Some dotfiles to use as configurations files for cli programs.
 
 ### Current desktop:
-![Desktop Screenshot](https://my.mixtape.moe/iyncqy.png)
+![Desktop Screenshot](http://pub.trosa.io/rice/pool.png)
 
 ### Installation
 ```bash
