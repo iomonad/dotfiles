@@ -197,7 +197,7 @@ myKeys =  -- The Workspace switcher.
     -- Apps
        , ("M-<Space>",          spawn "rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc '#555555' -bg '#222222' -hlbg '#222222' -hlfg '#c79595' -fg '#ffffff' -font 'Terminus 15'")
         , ("M-<Return>",        spawn "urxvtc -name urxvt") -- New terminal Instance
-        , ("M-w",               spawn "firefox") -- Start firefox
+        , ("M-w",               spawn "~/bin/chromium") -- Start firefox
         , ("M-p",               spawn "ck-launch-session dbus-launch pcmanfm")
         ] where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))

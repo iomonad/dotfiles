@@ -1,0 +1,5 @@
+#!/bin/bash
+
+BASEDIR=$HOME/dev/chromium
+
+$BASEDIR/latest/chrome --user-data-dir="$HOME/.chromium" $* &> /dev/null

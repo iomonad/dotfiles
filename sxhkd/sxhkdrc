@@ -133,7 +133,7 @@ super + F3
     pamixer -i 2
 
 super + w
-	/opt/firefox/firefox
+    ~/bin/chromium
 
 super + e
     emacs-25.1
