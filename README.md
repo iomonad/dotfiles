@@ -16,5 +16,5 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 * Nothing useful.
 <br>
 <p align="center">
-  <img src="https://imgs.xkcd.com/comics/standards.png "/>
+  <img src="https://imgs.xkcd.com/comics/standards.png"/>
 </p> 
