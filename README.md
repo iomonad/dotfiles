@@ -1,8 +1,10 @@
 # dotfiles
 
-<a href="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/32.png" alt="dotfiles logo"
-  width="80" height="80" align="right"></a>
-  
+
+<a href="https://github.com/iomonad/iomonad.el"><img
+  src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/32.png" alt="Normalize Logo"
+  width="60" height="60" align="right"></a>
+
   > Dotfiles backup.
  
 **Installation**
