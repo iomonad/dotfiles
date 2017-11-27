@@ -1,40 +1,20 @@
-# ~/.* Dotfiles
--------
-> Some dotfiles to use as configurations files for cli programs.
+# dotfiles
 
-### Current desktop:
-![Desktop Screenshot](http://pub.trosa.io/rice/pool.png)
-
-### Installation
+<a href="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/32.png" alt="dotfiles logo"
+  width="80" height="80" align="right"></a>
+  
+  > Dotfiles backup.
+ 
+**Installation**
 ```bash
-$ git clone https://github.com/iomonad/dotfiles.git $HOME/etc
+git clone https://github.com/iomonad/dotfles ~/etc
 
-# Move to the repo
-$ cd $HOME/etc
-
-# Make some symlinks. Ex,
-$ ln -s $HOME/etc/ssh $HOME/.ssh
+ln -s $HOME/etc/ssh $HOME/.ssh
 ```
+## What does it contains ?
 
-### Special Note for Emacs
-> Emacs is managed in an external repo, to install it:
-
-```bash
-# Initialize submodules
-$ git submodule init
-
-# Update repo
-$ git submodule update
-
-# Make symlinks
-$ ln -s $HOME/etc/emacs $HOME/.emacs.d
-```
-
-### Keep it up to date
-```bash
-# To update dotfiles, just execute these commands
-$ git pull
-
-# For emacs
-$ git fetch ; git merge origin/master
-```
+* Nothing useful.
+<br>
+<p align="center">
+  <img src="https://imgs.xkcd.com/comics/standards.png "/>
+</p> 
