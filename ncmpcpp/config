@@ -2,7 +2,7 @@
 
 mpd_host = "localhost"
 mpd_port = "6600"
-mpd_music_dir = "/home/iomonad/media/Music"
+mpd_music_dir = "/home/iomonad/media/music"
 
 # Delays
 
