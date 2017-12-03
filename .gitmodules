@@ -1,6 +1,6 @@
 [submodule "emacs"]
 	path = emacs
-	url = https://github.com/iomonad/emacs.d.git
+	url = git@github.com:iomonad/iomonad.el.git
 [submodule "xres.d/crayolo"]
 	path = xres.d/crayolo
 	url = https://github.com/dkeg/crayolo.git
