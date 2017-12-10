@@ -18,5 +18,5 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 * Mainly a garbage with maybe useful things.
 <br>
 <p align="center">
-  <img src="https://u.teknik.io/DIWXB.png"/>
+  <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/DIWXB.png"/>
 </p> 
