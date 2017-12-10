@@ -1,0 +1,65 @@
+! Workman                         !
+!_________________________________!
+!                                 !
+!    ` 1 2 3 4 5 6 7 8 9 0 - =    !
+!     q d r w b j f u p ; [ ] \   !
+!      a s h t g y n e o i '      !
+!       z x m c v k l , . /       !
+!                                 !
+!    ~ ! @ # $ % ^ & * ( ) _ +    !
+!     Q D R W B J F U P : { } |   !
+!      A S H T G Y N E O I "      !
+!       Z X M C V K L < > ?       !
+!_________________________________!
+
+! number row
+keycode 49 = grave asciitilde
+keycode 10 = 1 exclam
+keycode 11 = 2 at
+keycode 12 = 3 numbersign
+keycode 13 = 4 dollar
+keycode 14 = 5 percent
+keycode 15 = 6 asciicircum
+keycode 16 = 7 ampersand
+keycode 17 = 8 asterisk
+keycode 18 = 9 parenleft
+keycode 19 = 0 parenright
+keycode 20 = minus underscore
+keycode 21 = equal plus
+! top row
+keycode 24 = q Q
+keycode 25 = d D
+keycode 26 = r R
+keycode 27 = w W
+keycode 28 = b B
+keycode 29 = j J
+keycode 30 = f F
+keycode 31 = u U
+keycode 32 = p P
+keycode 33 = semicolon colon
+keycode 34 = bracketleft braceleft
+keycode 35 = bracketright braceright
+keycode 51 = backslash bar
+! middle row
+keycode 38 = a A
+keycode 39 = s S
+keycode 40 = h H
+keycode 41 = t T
+keycode 42 = g G
+keycode 43 = y Y
+keycode 44 = n N
+keycode 45 = e E
+keycode 46 = o O
+keycode 47 = i I
+keycode 48 = apostrophe quotedbl
+! bottom row
+keycode 52 = z Z
+keycode 53 = x X
+keycode 54 = m M
+keycode 55 = c C
+keycode 56 = v V
+keycode 57 = k K
+keycode 58 = l L
+keycode 59 = comma less
+keycode 60 = period greater
+keycode 61 = slash question

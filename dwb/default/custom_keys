@@ -1,0 +1,4 @@
+@Home@:scroll_top
+@End@:scroll_bottom
+@space@:scroll_page_down
+Shift @space@:scroll_page_up

@@ -1,0 +1,65 @@
+! Dvorak        (ordered numbers) !
+!_________________________________!
+!                                 !
+!    ` 1 2 3 4 5 6 7 8 9 0 [ ]    !
+!     ' , . p y f g c r l / = \   !
+!      a o e u i d h t n s -      !
+!       ; q j k x b m w v z       !
+!                                 !
+!    ~ ! @ # $ % ^ & * ( ) { }    !
+!     " < > P Y F G C R L ? + |   !
+!      A O E U I D H T N S _      !
+!       : Q J K X B M W V Z       !
+!_________________________________!
+
+! number row
+keycode 49 = grave asciitilde
+keycode 10 = 1 exclam
+keycode 11 = 2 at
+keycode 12 = 3 numbersign
+keycode 13 = 4 dollar
+keycode 14 = 5 percent
+keycode 15 = 6 asciicircum
+keycode 16 = 7 ampersand
+keycode 17 = 8 asterisk
+keycode 18 = 9 parenleft
+keycode 19 = 0 parenright
+keycode 20 = bracketleft braceleft
+keycode 21 = bracketright braceright
+! top row
+keycode 24 = apostrophe quotedbl
+keycode 25 = comma less
+keycode 26 = period greater
+keycode 27 = p P
+keycode 28 = y Y
+keycode 29 = f F
+keycode 30 = g G
+keycode 31 = c c
+keycode 32 = r R
+keycode 33 = l l
+keycode 34 = slash question
+keycode 35 = equal plus
+keycode 51 = backslash bar
+! middle row
+keycode 38 = a A
+keycode 39 = o O
+keycode 40 = e E
+keycode 41 = u U
+keycode 42 = i I
+keycode 43 = d D
+keycode 44 = h H
+keycode 45 = t T
+keycode 46 = n N
+keycode 47 = s S
+keycode 48 = minus underscore
+! bottom row
+keycode 52 = semicolon colon
+keycode 53 = q Q
+keycode 54 = j J
+keycode 55 = k K
+keycode 56 = x X
+keycode 57 = b B
+keycode 58 = m M
+keycode 59 = w W
+keycode 60 = v V
+keycode 61 = z Z
