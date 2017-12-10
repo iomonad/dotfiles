@@ -15,6 +15,13 @@ host *
     ForwardX11 no
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 
+Host *.42.fr
+     SendEnv LANG LC_*
+     StrictHostKeyChecking no
+     GSSAPIAuthentication yes
+     GSSAPIDelegateCredentials yes
+     PasswordAuthentication yes
+
 host space
     hostname inother.space
     port 2314
