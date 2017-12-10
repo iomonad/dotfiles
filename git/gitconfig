@@ -15,7 +15,7 @@
   whitespace = cr-at-eol
   editor     = vim
   pager = less -x4
-	excludesfile = /home/iomonad/etc/git/globalignore
+	excludesfile = ~/documents/dotfiles/git/globalignore
 
 # --~-- Merging --~--
 [merge]
@@ -119,10 +119,11 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   us =  submodule update --recursive --remote
+	yolo = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
 
 #--~-- Misc --~--
 [gpg]
 	program = gpg2
 [commit]
-	template = /home/iomonad/etc/git/gitmessage
+	template = ~/.gitmessage
 	status = true

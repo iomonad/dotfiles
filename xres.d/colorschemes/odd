@@ -1,0 +1,29 @@
+!ObliviousGmnColors
+
+*background: #111111 
+*foreground: #D8D8D8
+
+!black
+urxvt*color0: #2E1F1F
+urxvt*color8: #422D2D
+!red
+   *color1: #AA0E50
+   *color9: #BE0E50
+!green
+   *color2: #1DCC9F
+   *color10: #1FD9A9
+!yellow
+   *color3: #27C282
+   *color11: #2CDB93
+!blue
+   *color4: #7182A8
+   *color12: #8194BF
+!magenta
+   *color5: #A673A6
+   *color13: #7F5AA1
+!cyan
+   *color6: #6DA3A1
+   *color14: #669997
+!white
+   *color7: #B7BBBD
+   *color15: #D9D9D9

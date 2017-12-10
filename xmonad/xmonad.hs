@@ -5,30 +5,31 @@
  - Last Modified: 19/06/2017 08:59:27 AM
  -}
 
--- [IMPORTS] {{{
--- Xmonad: Core
 import           XMonad
 import           XMonad.Config.Azerty
 import qualified XMonad.StackSet as W
--- Haskell: Common
-import           System.IO (hPutStrLn)
+import           System.IO
 import           System.Exit (exitSuccess)
 import           Data.Maybe (isJust)
 import           Data.List
 import qualified Data.Map as M
 import           Data.Bits ((.|.))
--- Xmonad: Utilies
 import           XMonad.Util.EZConfig (additionalKeysP, additionalMouseBindings)
 import           XMonad.Util.NamedScratchpad (NamedScratchpad(NS), namedScratchpadManageHook, namedScratchpadAction, customFloating)
 import           XMonad.Util.Run (safeSpawn, unsafeSpawn, runInTerm, spawnPipe)
 import           XMonad.Util.SpawnOnce
--- Hooks
+import qualified XMonad.Util.Dzen as Dzen
 import           XMonad.Hooks.DynamicLog (dynamicLogWithPP, defaultPP, dzenColor, pad, shorten, wrap, PP(..))
 import           XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import           XMonad.Hooks.Place (placeHook, withGaps, smart)
 import           XMonad.Hooks.InsertPosition
 import           XMonad.Hooks.FloatNext (floatNextHook, toggleFloatNext, toggleFloatAllNew)
--- Actions
+import		 XMonad.Hooks.DynamicLog
+import		 XMonad.Hooks.SetWMName
+import 		 XMonad.Hooks.ManageHelpers
+import 		 XMonad.Hooks.EwmhDesktops (ewmhDesktopsStartup)
+import		 XMonad.Hooks.DynamicLog
+import		 XMonad.Hooks.UrgencyHook
 import           XMonad.Actions.Promote
 import           XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import           XMonad.Actions.CopyWindow (kill1, copyToAll, killAllOtherCopies, runOrCopy)
@@ -40,7 +41,6 @@ import           XMonad.Actions.DynamicWorkspaces (addWorkspacePrompt, removeEmp
 import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.MouseResize
 import qualified XMonad.Actions.ConstrainedResize as Sqr
--- Layouts modifiers
 import           XMonad.Layout.PerWorkspace (onWorkspace)
 import           XMonad.Layout.Renamed (renamed, Rename(CutWordsLeft, Replace))
 import           XMonad.Layout.WorkspaceDir
@@ -66,22 +66,19 @@ import           XMonad.Layout.Tabbed
 import           XMonad.Layout.ResizableTile
 import           XMonad.Layout.Circle
 import           XMonad.Layout.ThreeColumns
--- Prompts
 import           XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), Direction1D(..))
--- [/IMPORTS]}}}
 
--- [SETTINGS] {{{
--- Colors and Styles
 sFont    = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
+barFont    = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
 sBordW   =  2 -- Set width border size
 sColorsB = "#1F1F1F" -- Unselected terminal
 sColorsF = "#683e3e" -- Selected Terminal
 sColorsW = "#6D6B6E" -- Colors when activity or warning
 sGap = 0 -- Gap between windowns
 sSpace = 0 -- space between windows
-           -- Settings and Other.
-myModMask       = mod4Mask -- Set as "SUPER" key akka w1nd0w$
-myTerminal      = "urxvtc" -- The terminal to use.
+
+myModMask = mod4Mask -- Set as "SUPER" key akka w1nd0w$
+myTerminal = "urxvtc" -- The terminal to use.
 -- Prompt Colors
 myPromptConfig = defaultXPConfig { font                  = sFont
                                  , bgColor               = sColorsB
@@ -109,17 +106,36 @@ myGSConfig colorizer  = (buildDefaultGSConfig myGridConfig)
     }
 -- [/SETTINGS]}}}
 
+colorBlack          = "#000000"
+colorBlackAlt       = "#040404"
+colorGray           = "#444444"
+colorGrayAlt        = "#282828"
+colorDarkGray       = "#161616"
+colorWhite          = "#cfbfad"
+colorWhiteAlt       = "#8c8b8e"
+colorDarkWhite      = "#606060"
+colorCream          = "#a9a6af"
+colorDarkCream      = "#5f656b"
+colorMagenta        = "#a488d9"
+colorMagentaAlt     = "#7965ac"
+colorDarkMagenta    = "#8e82a2"
+colorBlue           = "#98a7b6"
+colorBlueAlt        = "#598691"
+colorDarkBlue       = "#464a4a"
+colorNormalBorder   = colorDarkWhite
+colorFocusedBorder  = colorMagenta
+
 -- [SCRATCHPADS] {{{
 -- Very handy hotkey-launched floating terminal window.
 -- Pressing it will spawn the terminal, or bring it to the
 -- current workspace if it already exists.
 myScratchpads =
               [ NS "terminal" "urxvtc -name terminal -e tmux attach"     (resource =? "terminal") myPosition
-              , NS "music" "urxvtc -name music -e tmux -c ncmpcpp"               (resource =? "music")    myPosition
+              , NS "music" "urxvtc -name music -e tmux -c ncmpcpp"       (resource =? "music")    myPosition
               , NS "rtorrent" "urxvtc -name rtorrent -e rtorrent"        (resource =? "rtorrent") myPosition
-              , NS "ide" "urxvtc -name ide  -e emacs"                    (resource =? "ide")      myPosition
+              , NS "ide" "emacs"          			         (resource =? "ide")      myPosition
               ] where myPosition = customFloating $ W.RationalRect (1/3) (1/3) (1/3) (1/3)
--- [/SCRATCHPADS] }}}
+
 
 -- [KeyBindings] {{{
 myKeys =  -- The Workspace switcher.
@@ -130,7 +146,7 @@ myKeys =  -- The Workspace switcher.
     -- Xmonad
         [ ("M-C-r",             spawn "xmonad --recompile") -- Recompile source code
         , ("M-M1-r",            spawn "xmonad --restart") -- Restart fresh binary
-        , ("M-S-Esc",            io exitSuccess) -- Exit XMonad
+        , ("M-S-Esc",           io exitSuccess) -- Exit XMonad
 
     -- Windows
         -- Core
@@ -183,7 +199,7 @@ myKeys =  -- The Workspace switcher.
         --   , ("M-,",               goToSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected go to the prop
         , ("M-S-,",             bringSelected $ myGSConfig myGridConfig) -- Prompt the popup, and when selected move prop to current workspace
     -- Scratchpads
-        --       , ("M-<Tab>",           namedScratchpadAction myScratchpads "terminal") -- Pop a terminal as scratchpads ^ useless
+        --, ("M-<Tab>",         namedScratchpadAction myScratchpads "terminal") -- Pop a terminal as scratchpads ^ useless
         , ("M-c",               namedScratchpadAction myScratchpads "ide") -- Start a terminal with emacs for dev
         , ("M-b",               namedScratchpadAction myScratchpads "rtorrent")
         , ("M-m",               namedScratchpadAction myScratchpads "music")
@@ -195,9 +211,9 @@ myKeys =  -- The Workspace switcher.
         , ("M-S-j",             spawn "mpc pause")
         , ("M-S-k",             spawn "mpv play")
     -- Apps
-       , ("M-<Space>",          spawn "rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc '#555555' -bg '#222222' -hlbg '#222222' -hlfg '#c79595' -fg '#ffffff' -font 'Terminus 15'")
+       , ("M-<Space>",          spawn " rofi -show run -config /home/iomonad/.config/rofi/rofi-config")
         , ("M-<Return>",        spawn "urxvtc -name urxvt") -- New terminal Instance
-        , ("M-w",               spawn "~/bin/chromium") -- Start firefox
+        , ("M-w",               spawn "firefox") -- Start firefox
         , ("M-p",               spawn "ck-launch-session dbus-launch pcmanfm")
         ] where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))
@@ -205,78 +221,115 @@ myMouseKeys = [ ((mod4Mask .|. shiftMask, button3), \w -> focus w >> Sqr.mouseRe
 -- [/KEYBINDINGS] }}}
 
 -- [WORKSPACE] {{{
-myWorkspaces = ["term", "web", "media", "pirate","porn"] -- Define numbers and names of workspaces
--- This hooks force the redirection to a given workspace.
+
+myWorkspaces :: [[Char]]
+myWorkspaces = ["term", "web", "media", "pirate","pr0n"]
+
+myManageHook :: ManageHook
 myManageHook = placeHook ( smart(1,1)) <+> insertPosition End Newer <+> floatNextHook <+> namedScratchpadManageHook myScratchpads <+>
         (composeAll . concat $
-        [ [ resource  =? r --> doF (W.view "term" . W.shift "term")   | r <- myTermApps    ]
-        , [ resource  =? r --> doF (W.view "web" . W.shift "web")   | r <- myWebApps     ]
-        , [ resource  =? r --> doF (W.view "media" . W.shift "media") | r <- myMediaApps   ]
-        , [ resource  =? r --> doF (W.view "pirate" . W.shift "pirate")   | r <- mySystApps    ]
-        , [ resource  =? r --> doF (W.view "porn" . W.shift "porn")   | r <- mySystApps    ]
-        , [ resource  =? r --> doFloat                            | r <- myFloatApps   ] -- Make float apss floating
-        , [ className =? c --> ask >>= doF . W.sink               | c <- myUnfloatApps ]
+        [ [ resource  =? r --> doF (W.view "term" . W.shift "term")   	| r <- myTermApps    ]
+        , [ resource  =? r --> doF (W.view "web" . W.shift "web")   	| r <- myWebApps     ]
+        , [ resource  =? r --> doF (W.view "media" . W.shift "media") 	| r <- myMediaApps   ]
+        , [ resource  =? r --> doF (W.view "pirate" . W.shift "pirate") | r <- mySystApps    ]
+        , [ resource  =? r --> doF (W.view "pr0n" . W.shift "pr0n")   	| r <- mySystApps    ]
+        , [ resource  =? r --> doFloat                            	| r <- myFloatApps   ]
+        , [ className =? c --> ask >>= doF . W.sink               	| c <- myUnfloatApps ]
         ]) <+> manageHook defaultConfig
         where
-            myTermApps    = [] -- Removing urxvt to avoid workspace redirections.
-            myWebApps     = ["firefox"]
+            myTermApps    = [""]
+            myWebApps     = ["firefox", "firefox-bin", "chromium", "Firefox"]
             myMediaApps   = ["zathura","mplayer","mpv"]
             mySystApps    = []
-            myFloatApps   = ["Dialog","lxappearance"]
+            myFloatApps   = ["Dialog","lxappearance", "Xmessage"]
             myUnfloatApps = []
--- [/WORKSPACE] }}}
--- [LAYOUTS] {{{
---Layouts definitions, defined in differents workspaces.
+
 myLayoutHook = gaps [(U, sGap), (R, sGap), (L, sGap), (D, sGap)] $
                                          avoidStruts $
                                          spacing sSpace
                                          commonLayouts
      where commonLayouts = tiled ||| grid ||| oneBig ||| lined ||| space ||| monocle
-           -- Layout defined (Custom)
            monocle = limitWindows 20 Full -- Fullpaged
-           -- Default tiling layout
            tiled   = Tall nmaster delta ratio
-           -- One Big Layout, other more smaller
            oneBig  = limitWindows 6  $ Mirror $ mkToggle (single MIRROR) $
                             mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $
                                   OneBig (2/3) (2/3) -- 2 on 3 ratio.
-           -- Same as oneBig, but with ultra large gap
            space   = limitWindows 4  $ spacing 36 $ Mirror $
                             mkToggle (single MIRROR) $ mkToggle (single REFLECTX) $
                                     mkToggle (single REFLECTY) $ OneBig (2/3) (2/3) -- Adjust to big gap
-           -- Grided like we like, w/ batteries included
            grid    = limitWindows 12 $ mkToggle (single MIRROR) $ Grid (16/10)
-           -- Linear like kit-kats / Cannot be grided
            lined   = limitWindows 3  $ Mirror $ mkToggle (single MIRROR) zoomRow
-           -- Variables
            nmaster = 1
            ratio   = 1/2
            delta   = 3/100
 
--- [/LAYOUTS] }}}
+myStatusBar = "dzen2 -x '0' -y '0' -h '14' -w '260' -ta 'l' -bg '" ++ colorDarkGray ++ "' -fg '" ++ colorCream ++ "' -fn '" ++ sFont ++ "'"
+myLogHook :: Handle -> X ()
+myLogHook h = dynamicLogWithPP $ defaultPP
+    {
+        ppCurrent           =   dzenColor colorBlueAlt    colorDarkGray . hideScratchpad
+      , ppVisible           =   dzenColor colorCream      colorDarkGray . hideScratchpad
+      , ppHidden            =   dzenColor colorDarkCream  colorDarkGray . hideScratchpad
+      , ppHiddenNoWindows   =   dzenColor colorGray       colorDarkGray . hideScratchpad
+      , ppUrgent            =   dzenColor colorMagenta    colorDarkGray . pad
+      , ppWsSep             =   ""
+      , ppSep               =   " | "
+      , ppLayout            =   dzenColor colorMagentaAlt colorDarkGray .
+                                (\x -> case x of
+                                    "Full" -> "*"
+                                    "ReflectX *" -> "*"
+                                    "ReflectX -" -> "-"
+                                    "ReflectX =" -> "="
+                                    "ReflectX +" -> "+"
+                                    "ReflectX %" -> "%"
+                                    "ReflectX @" -> "@"
+                                    "ReflectX #" -> "#"
+                                    "ReflectY *" -> "*"
+                                    "ReflectY -" -> "-"
+                                    "ReflectY =" -> "="
+                                    "ReflectY +" -> "+"
+                                    "ReflectY %" -> "%"
+                                    "ReflectY @" -> "@"
+                                    "ReflectY #" -> "#"
+                                    "ReflectX ReflectY *" -> "*"
+                                    "ReflectX ReflectY -" -> "-"
+                                    "ReflectX ReflectY =" -> "="
+                                    "ReflectX ReflectY +" -> "+"
+                                    "ReflectX ReflectY %" -> "%"
+                                    "ReflectX ReflectY @" -> "@"
+                                    "ReflectX ReflectY #" -> "#"
+                                    "Minimize *" -> "*"
+                                    "Minimize -" -> "-"
+                                    "Minimize =" -> "="
+                                    "Minimize +" -> "+"
+                                    "Minimize %" -> "%"
+                                    "Minimize @" -> "@"
+                                    "Minimize #" -> "#"
+                                    _      -> x
+                                )
+      , ppTitle             =   (" " ++) . dzenColor colorWhiteAlt colorDarkGray . dzenEscape
+      , ppOutput            =   hPutStrLn h
+    }
+    where
+      hideScratchpad ws = if ws == "NSP" then "" else pad ws -- hide sp in ws list (thanks to p.brisbin)
 
--- [AUTOSTART] {{{
--- Start some program at xsession startup
+myStartupHook :: X ()
 myStartupHook = do
-  spawnOnce "mpd &"
-  spawnOnce "wmname LG3D" -- Fix java errors
-  spawnOnce "unclutter -idle 1 &"
-  spawnOnce "compton --config $HOME/etc/compton/smooth.conf &"
-  spawnOnce "urxvtc -e tmux &"
--- [/AUTOSTART] }}}
+	ewmhDesktopsStartup >> setWMName "LG3D"
 
--- [MAIN] {{{
--- Centralized configuration entry
-main = xmonad       $  azertyConfig
-        { modMask            = myModMask
-        , terminal           = myTerminal
-        , manageHook         = myManageHook
-        , layoutHook         = myLayoutHook
-        , startupHook        = myStartupHook
-        , workspaces         = myWorkspaces
-        , borderWidth        = sBordW
-        , normalBorderColor  = sColorsB
-        , focusedBorderColor = sColorsW
-        } `additionalKeysP`         myKeys
-          `additionalMouseBindings` myMouseKeys
--- [/MAIN] }}}
+main :: IO ()
+main = do
+   dzenStatusBar <- spawnPipe myStatusBar
+   xmonad $ withUrgencyHook dzenUrgencyHook { args = ["-fn", barFont, "-bg", colorDarkCream, "-fg", colorBlue]} $ defaultConfig
+       { modMask            = myModMask
+       , terminal           = myTerminal
+       , manageHook         = myManageHook
+       , layoutHook         = myLayoutHook
+       , startupHook        = myStartupHook
+       , workspaces         = myWorkspaces
+       , borderWidth        = sBordW
+       , logHook 	    = myLogHook dzenStatusBar >> setWMName "LG3D"
+       , normalBorderColor  = sColorsB
+       , focusedBorderColor = sColorsW
+       } `additionalKeysP`         myKeys
+         `additionalMouseBindings` myMouseKeys

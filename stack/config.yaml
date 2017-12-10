@@ -8,7 +8,7 @@
 # See https://docs.haskellstack.org/en/stable/yaml_configuration/#templates
 templates:
   params:
-    author-name: Clement Trösa
-    author-email: iomonad@riseup.net
-    copyright: Clement Trösa <iomonad@riseup.net>
+    author-name: Clement Trosa
+    author-email: me@trosa.io
+    copyright: Clement Trosa <me@trosa.io>
     github-username: iomonad

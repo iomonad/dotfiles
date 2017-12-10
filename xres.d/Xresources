@@ -5,25 +5,31 @@
 ! \-----------------------/
 
 !! Crayolo mode
-!#include </home/iomonad/.xres.d/crayolo/colors/drift>
+!#include </home/iomonad/.xres.d/crayolo/colors/mattd>
 !#include </home/iomonad/.xres.d/crayolo/Xresources>
 
 ! Classic import
-!#include </home/iomonad/.xres.d/colorschemes/pepe>
-#include </home/iomonad/.xres.d/colorschemes/fyre>
+#include </home/iomonad/.xres.d/colorschemes/hfb>
 
 !#include </home/iomonad/.xres.d/colorschemes/nord>
 ! Font
 !*font: xft:berry:style=bold:pixelsize=12
 !*boldFont: xft:berry:style=bold:pixelsize=12
 
-*.letterSpace: -1
+!*.letterSpace: -1
 
-Xft.dpi:        96
-XTerm*faceName: xft:PragmataPro:pixelsize=12
-URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
-URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
+!Xft.dpi:        96
+!XTerm*faceName: xft:PragmataPro:pixelsize=12
+!URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
+!URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
 
+!URxvt*font:              -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
+!URxvt*boldFont:          -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
+!URxvt*italicFont:        -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
+!URxvt*boldItalicFont:    -*-lemon-medium-r-normal-*-10-*-75-75-m-50-i
+
+URxvt*font:             xft:profont-10
+URxvt*boldFont: xft:profont-10
 ! Xft settings
 Xft.antialias: true
 Xft.autohint: 1
@@ -76,25 +82,3 @@ URxvt.resize-font.bigger: C-Up
 ! blink
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
-
-! rofi
-rofi.background: #000000
-rofi.foreground: #ffffff1
-rofi.highlightbg: #6699CC
-rofi.highlightfg: #1B2B34
-rofi.bgalt: #1B2B34
-rofi.lines: 10
-rofi.eh: 2
-rofi.width: 100
-rofi.padding:   700
-rofi.opacity:   80
-rofi.bw: 0
-rofi.terminal: st
-rofi.glob: true
-rofi.tokenize: false
-rofi.fullscreen: true
-*VT100.colorBDMode:                   true
-*VT100.colorBD:                       red
-*VT100.colorULMode:                   true
-*VT100.colorUL:                       magenta
-*VT100.veryBoldColors:                6

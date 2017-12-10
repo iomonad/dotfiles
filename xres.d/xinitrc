@@ -6,9 +6,10 @@ xset -dpms
 xrdb -load .Xresources
 xsetroot -cursor_name left_ptr &
 wmname LG3D
+unclutter&
 urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
-hsetroot -fill $HOME/.xres.d/wallpaper/GawjG.jpg
-rm ~/.serverauth.*
-#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmobar $HOME/.xmonad/xmobar.hs
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+hsetroot -tile .xres.d/wallpaper/chicago3.jpg
+compton -c -t-5 -l-5 -r3 -o.48 &
+#exec ~/documents/stumpwm/stumpwm
+exec xmonad

@@ -2,7 +2,7 @@ download-path "/home/iomonad/media/podcast"
 max-downloads 3
 podcast-auto-enqueue no
 
-browser ~/bin/chromium
+browser firefox
 player mplayer
 
 auto-reload yes
