@@ -7,7 +7,7 @@
 
   > Dotfiles backup.
  
-**Installation**
+**Installation*
 ```bash
 git clone https://github.com/iomonad/dotfles ~/etc
 
@@ -15,8 +15,8 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 ```
 ## What does it contains ?
 
-* Nothing useful.
+* Mainly a garbage with maybe useful things.
 <br>
 <p align="center">
-  <img src="https://imgs.xkcd.com/comics/standards.png"/>
+  <img src="https://u.teknik.io/DIWXB.png"/>
 </p> 
