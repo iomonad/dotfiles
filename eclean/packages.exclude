@@ -1,0 +1,4 @@
+# /etc/eclean/packages.exclude
+# In this file you can list some categories or cat/pkg-name for which you want
+# to protect binary packages from "ecleaning".
+# See `man eclean` for syntax details.

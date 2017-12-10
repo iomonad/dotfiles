@@ -1,0 +1,11 @@
+x11-base/xorg-server -minimal
+# required by www-client/firefox-52.4.0::gentoo
+# required by firefox (argument)
+>=dev-lang/python-2.7.14-r1:2.7 sqlite
+# required by media-sound/pulseaudio-10.0::gentoo[alsa,alsa-plugin]
+# required by www-client/firefox-bin-52.5.0-r1::gentoo[pulseaudio]
+# required by firefox-bin (argument)
+>=media-plugins/alsa-plugins-1.1.1-r1 pulseaudio
+# required by x11-drivers/xf86-video-nouveau-1.0.15::gentoo
+# required by @preserved-rebuild (argument)
+>=x11-libs/libdrm-2.4.82 video_cards_nouveau

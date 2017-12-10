@@ -1,5 +1,0 @@
-cross-armv7j-hardfloat-linux-gnueabi/binutils arm -amd64 -~amd64
-cross-armv7j-hardfloat-linux-gnueabi/gcc arm -amd64 -~amd64
-cross-armv7j-hardfloat-linux-gnueabi/linux-headers arm -amd64 -~amd64
-cross-armv7j-hardfloat-linux-gnueabi/glibc arm -amd64 -~amd64
-cross-armv7j-hardfloat-linux-gnueabi/gdb arm ~arm -amd64 -~amd64

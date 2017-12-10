@@ -1,0 +1,9 @@
+# required by =www-client/firefox-bin-57.0.1 (argument)
+=www-client/firefox-bin-57.0.1 ~amd64
+# required by x11-wm/stumpwm-contrib-20171028::gentoo
+=x11-wm/stumpwm-1.0.1_rc ~amd64
+# required by x11-wm/stumpwm-1.0.1_rc::gentoo[contrib]
+# required by stumpwm (argument)
+=x11-wm/stumpwm-contrib-20171028 ~amd64
+# required by newsboat (argument)
+=net-news/newsboat-2.10.1 ~amd64

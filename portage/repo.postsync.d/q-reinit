@@ -1,0 +1,10 @@
+#!/bin/sh
+
+repository_name=$1
+repository_path=$3
+
+if [ -n "${repository_name}" ]; then
+	q ${PORTAGE_QUIET:+-q} --reinitialize="${repository_path}"
+fi
+
+:
