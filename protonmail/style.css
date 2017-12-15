@@ -1,0 +1,249 @@
+.headerDesktop-container {
+    background-color: #1D1D1D
+}
+.search-form-fieldset {
+    background: #161616
+}
+[class*="searchForm-action-button-"] {
+    color: #DFDFDF
+}
+.searchForm-action-button-advanced:hover,
+.searchForm-action-button-toggle:hover {
+    background: #602C91
+}
+.customRadio-input:checked+.customRadio-mask {
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 10px #602C91;
+    border-color: #602C91
+}
+.pm_button.primary,
+.pm_button.primary:active {
+    color: #fff;
+    background-color: #1D1D1D;
+    border-color: #1D1D1D
+}
+.pm_button.primary:hover,
+.pm_button.primary:focus {
+    background-color: #161616;
+    border-color: #161616
+}
+.navigation>li.active,
+.navigation>li:hover {
+    box-shadow: 0 5px 0 0 #602C91 inset
+}
+.navigation-link {
+    color: #DFDFDF
+}
+.navigation-title:hover {
+    color: #602C91
+}
+.pm_dropdown .navigationUser-logout {
+    background-color: #1D1D1D !important;
+    border-color: #1D1D1D !important;
+    color: #DFDFDF !important
+}
+.pm_dropdown .navigationUser-logout:hover {
+    background-color: #161616 !important;
+    border-color: #161616 !important;
+    color: #DFDFDF !important
+}
+.sidebar-btn-compose,
+.sidebar-btn-compose:active {
+    color: #fff !important;
+    background: #602C91 !important;
+    border: none !important
+}
+.sidebar-btn-compose:hover {
+    color: #fff !important;
+    background: #602C91 !important;
+    border: none !important;
+    box-shadow: inset 0 400px 400px rgba(0, 0, 0, 0.1)
+}
+.headerDesktop-logo {
+    background-color: #1D1D1D
+}
+body section.sidebar {
+    background: #1D1D1D
+}
+body section.sidebar a.compose {
+    background: #602C91;
+    color: #DFDFDF
+}
+body section.sidebar a.compose:hover {
+    background: #DFDFDF;
+    border-color: #DFDFDF;
+    color: #1D1D1D
+}
+body section.sidebar ul.menu li a {
+    color: #DFDFDF
+}
+body section.sidebar ul.menu li a:hover {
+    color: #602C91
+}
+body section.sidebar ul.menu li.active a,
+body section.sidebar ul.menu li.active a {
+    color: #DFDFDF
+}
+body section.sidebar ul.menu li.active a i.fa,
+body section.sidebar ul.menu li.active a i.fa:hover {
+    color: #602C91 !important;
+    opacity: 1
+}
+body section.sidebar ul.menu li a .fa-repeat {
+    color: #DFDFDF;
+    opacity: 1
+}
+body section.sidebar ul.menu li a i.fa {
+    color: #DFDFDF;
+    opacity: 0.5
+}
+body section.sidebar ul.menu li a i.fa:hover,
+body section.sidebar ul.menu li a:hover i.fa {
+    color: #DFDFDF;
+    opacity: 1
+}
+body section.sidebar ul.menu li a em {
+    color: #DFDFDF;
+    opacity: 0.5
+}
+body section.sidebar div.labels ul li a {
+    color: #DFDFDF;
+    opacity: 0.5
+}
+body section.sidebar div.labels ul li a:hover {
+    color: #DFDFDF;
+    opacity: 1
+}
+body section.sidebar div.footer div.link a,
+body section.sidebar a.version {
+    color: #DFDFDF;
+    opacity: 0.5
+}
+body section.sidebar div.footer div.link a:hover,
+body section.sidebar a.version:hover {
+    color: #602C91;
+    opacity: 1
+}
+body section.sidebar div.footer div.storage strong {
+    color: #DFDFDF;
+    opacity: 0.5
+}
+body section.sidebar div.footer .bar em {
+    background: #602C91;
+    height: 3px
+}
+body section.sidebar div.footer .bar {
+    background: #DFDFDF;
+    height: 3px
+}
+.pm_buttons,
+.pm_buttons a {
+    color: #1D1D1D
+}
+.conversation.marked::before {
+    background: #602C91;
+    width: 5px
+}
+#pm_composer .composer header {
+    background: #1D1D1D;
+    color: #DFDFDF
+}
+p a {
+    color: #602C91
+}
+#pm_composer .composer footer .pm_button {
+    background: #DFDFDF;
+    color: #1D1D1D
+}
+#pm_composer .composer footer .pm_button:hover {
+    background: #DFDFDF;
+    color: #1D1D1D
+}
+#pm_composer .composer footer .pm_button.primary {
+    background: #1D1D1D;
+    color: #DFDFDF
+}
+#pm_composer .composer footer .pm_button.primary:hover {
+    background: #602C91;
+    color: #DFDFDF
+}
+#pm_settings .pm_tabs {
+    background: #e6eaf0
+}
+#pm_settings .pm_tabs li a.pm_button {
+    color: #1D1D1D;
+    border-color: #e6eaf0
+}
+#pm_settings .pm_tabs li a.pm_button:hover {
+    color: #602C91
+}
+#pm_settings .pm_tabs li.active a.pm_button {
+    color: #602C91
+}
+.pm_button.link {
+    color: #602C91
+}
+.pm_toggle.off .off,
+.pm_toggle.on .on {
+    background: #1D1D1D;
+    color: #DFDFDF
+}
+.alert.alert-info {
+    background: #e6eaf0;
+    color: #000
+}
+html.protonmail .text-purple {
+    color: #602C91
+}
+#pm_settings .bar em {
+    background: #602C91;
+    height: 4px
+}
+#pm_settings .bar {
+    background: #1D1D1D;
+    opacity: 0.5;
+    height: 4px
+}
+#plans .plans .plan h3 {
+    background: #1D1D1D;
+    color: #DFDFDF
+}
+#plans .plans .plan.plus-plan h3 span,
+#plans .plans .plan.visionary-plan h3 span,
+#plans .plans .plan.visionary-plan header {
+    color: #DFDFDF
+}
+#plans .plans .plan footer .cycle strong {
+    color: #602C91
+}
+#plans .plans .plan footer .cycle .discount {
+    border-color: transparent #602C91 transparent transparent
+}
+#plans .plans .plan footer .cycle .discount span {
+    color: #DFDFDF
+}
+.pm_modal .modal-dialog {
+    border-color: #1D1D1D
+}
+.pm_modal .modal-dialog .close {
+    color: #DFDFDF;
+    background: #1D1D1D
+}
+.pm_badge {
+    color: #DFDFDF
+}
+.pm_badge.primary {
+    background: #1D1D1D;
+    color: #DFDFDF
+}
+.pm_badge.success {
+    background: #602C91;
+    color: #DFDFDF
+}
+.pm_table table th a,
+.pm_table table th .fa {
+    color: #602C91
+}
+body .cg-notify-message.notification-success {
+    background-color: #602C91;
+    color: #DFDFDF
+}
