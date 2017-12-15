@@ -75,3 +75,4 @@ newsbeuter/cache.db
 newsbeuter/history.cmdline
 newsbeuter/history.search
 sbcl/quicklisp
+*.db
