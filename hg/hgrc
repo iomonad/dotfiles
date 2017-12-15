@@ -1,0 +1,14 @@
+[ui]
+username = Clement Trosa <me@trosa.io>
+verbose = True
+
+[extensions]
+hgext.bookmarks =
+hggit = 
+hgext.graphlog =
+hgext.color=
+hgext.hgview=
+
+[hgview]
+dotradius = 6
+interface = raw 

@@ -1,0 +1,50 @@
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window yes
+own_window_transparent no
+own_window_type panel
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager
+total_run_times 0
+
+#borders
+draw_borders no
+border_inner_margin -3
+border_outer_margin -3
+#border_margin 3
+
+#shades
+draw_shades no
+
+#position
+gap_x 0
+gap_y 0
+alignment bottom_middle
+
+#behaviour
+update_interval 1
+
+#colour
+default_color 8f8f8f
+
+#default_shade_color 000000
+#own_window_colour 262729
+own_window_colour 30303a #283e52
+
+#font
+use_xft yes
+font lemon:size=9
+
+# Force UTF8? note that UTF8 support required XFT
+#override_utf8_locale yes
+
+#to prevent window from moving
+#use_spacer none
+minimum_size 1600
+#maximum_width 1600
+
+TEXT
+${color eeeeee} ${exec ~/bin/mustat -i} ${color b4b4b4}${exec ~/bin/mustat -s} ${color eeeeee} \
+$alignc ${color eeeeee}⮖ ${color b4b4b4}${time %R - %a, %b %d} \
+$alignr  ${color eeeeee}${exec ~/bin/batc -i} ${color b4b4b4}${exec ~/bin/batc -s} \
