@@ -54,22 +54,13 @@ URxvt*loginShell: true
 ! Set terminal padding
 URxvt.internalBorder: 6
 
-! Enables copy/paste with Ctrl-Shift-C/V
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-!URxvt.perl-ext-common: default,clipboard
-!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-!URxvt.clipboard.autocopy: true
-
 ! resize on the fly
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 ! Extensions
-!URxvt*perl-lib:        /home/iomonad/.xres.d/urxvt-perls
 !URxvt*perl-ext-common: default,matcher,searchable-scrollback
-!URxvt*urlLauncher:     w3m
+!URxvt*urlLauncher:     /usr/bin/firefox
 !URxvt*matcher.button:  1
 
 ! Keybind
@@ -82,3 +73,6 @@ URxvt.resize-font.bigger: C-Up
 ! blink
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
+
+URxvt.print-pipe: "cat > /dev/null"
+
