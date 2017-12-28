@@ -1,0 +1,84 @@
+#!/bin/bash
+# http://www.ewanleith.com/blog/wp-content/uploads/2010/04/mongodb.txt
+#
+# mongodb     Startup script for the mongodb server
+#
+# chkconfig: - 64 36
+# description: MongoDB Database Server
+#
+# processname: mongodb
+#
+
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+if [ -f /etc/sysconfig/mongodb ]; then
+	. /etc/sysconfig/mongodb
+fi
+
+prog="mongod"
+mongod="/opt/mongodb/bin/mongod"
+CONF="/etc/mongodb.conf"
+DB="/data/db"
+LOG="/var/log/mongodb/mongodb.log"
+LOCK="/var/lock/subsys/$prog"
+RETVAL=0
+
+start() {
+	echo -n $"Starting $prog: "
+	daemon $mongod "--config $CONF 2>&1 >>$LOG"
+	#daemon $mongod "--config $CONF --fork --logpath $LOG --logappend 2>&1 >>$LOG"
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && touch $LOCK
+	return $RETVAL
+}
+
+stop() {
+	echo -n $"Stopping $prog: "
+	killproc $prog
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && rm -f $LOCK
+	return $RETVAL
+}
+
+reload() {
+	echo -n $"Reloading $prog: "
+	killproc $prog -HUP
+	RETVAL=$?
+	echo
+	return $RETVAL
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		start
+		;;
+	condrestart)
+		if [ -f $LOCK ]; then
+			stop
+			start
+		fi
+		;;
+	reload)
+		reload
+		;;
+	status)
+		status $mongod
+		RETVAL=$?
+		;;
+	*)
+		echo $"Usage: $0 {start|stop|restart|condrestart|reload|status}"
+		RETVAL=1
+esac
+
+exit $RETVAL
