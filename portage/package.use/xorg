@@ -9,3 +9,7 @@ x11-base/xorg-server -minimal
 # required by x11-drivers/xf86-video-nouveau-1.0.15::gentoo
 # required by @preserved-rebuild (argument)
 >=x11-libs/libdrm-2.4.82 video_cards_nouveau
+# required by media-gfx/graphviz-2.38.0-r1::gentoo
+# required by dev-lang/scala-2.11.4-r1::gentoo[-binary]
+# required by scala (argument)
+>=media-libs/gd-2.2.4 fontconfig
