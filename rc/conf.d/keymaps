@@ -1,6 +1,6 @@
 # Use keymap to specify the default console keymap.  There is a complete tree
 # of keymaps in /usr/share/keymaps to choose from.
-keymap="dvorak"
+keymap="us"
 
 # Should we first load the 'windowkeys' console keymap?  Most x86 users will
 # say "yes" here.  Note that non-x86 users should leave it as "no".

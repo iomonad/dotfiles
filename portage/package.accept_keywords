@@ -7,3 +7,18 @@
 =x11-wm/stumpwm-contrib-20171028 ~amd64
 # required by newsboat (argument)
 =net-news/newsboat-2.10.1 ~amd64
+# required by idea-community (argument)
+=dev-util/idea-community-2017.2.2.172.3757.52 ~amd64
+# required by yarn (argument)
+=sys-apps/yarn-1.2.1 ~amd64
+# required by dev-java/sbt-0.13.13::gentoo
+# required by sbt (argument)
+=dev-lang/scala-2.11.11 ~amd64
+# required by sbt (argument)
+=dev-java/sbt-0.13.13 ~amd64
+# required by goland (argument)
+=dev-util/goland-2017.3 ~amd64
+# required by idea-ultimate (argument)
+=dev-util/idea-ultimate-2017.3.1.173.3942.27 ~amd64
+# required by leiningen-bin (argument)
+=dev-java/leiningen-bin-2.7.1-r1 ~amd64
