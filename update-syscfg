@@ -8,8 +8,48 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+WDIR=`pwd`
+CP=cp -r
+RM=rm -r
+PPATH=/etc/portage
+PDIR=$WDIR/portage
+BDIR=/boot
+
+_retrieve_portage() {
+    $RM $PDIR
+    $CP $PPATH $PDIR
+    echo -e 'Done portage.'
+}
+
+_retrieve_kernel() {
+    $CP $BDIR/config-* $WDIR/kernel
+    $CP /usr/src/linux/.config $WDIR/kernel/mainline-config
+    echo -e 'Done kernel configs.'
+}
+
+_retrieve_grub() {
+    $CP $BDIR/grub/grub* $WDIR/grub    
+    echo -e 'Done grub configs.'
+}
+
+_retrieve_sysctl() {
+    $CP /etc/sysctl.conf $WDIR/sysctl    
+    echo -e 'Done sysctl config.'
+}
+
+_retrieve_rc() {
+    $CP /etc/rc.conf $WDIR/rc
+    $RM $WDIR/rc/conf.d
+    $CP /etc/conf.d $WDIR/rc
+    echo -e 'Done sysctl config.'
+}
+
 main () {
-    echo foo
+    _retrieve_portage
+    _retrieve_kernel
+    _retrieve_grub
+    _retrieve_sysctl
+    _retrieve_rc
 }
 
 main
