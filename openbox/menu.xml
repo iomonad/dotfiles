@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="apps-net-menu" label="Internet">
+		<item label="Luakit">
+			<action name="Execute">
+				<execute>luakit</execute>
+			</action>
+		</item>
+		<item label="Skype">
+			<action name="Execute">
+				<execute>skype</execute>
+			</action>
+		</item>
+		<item label="Remote">
+			<action name="Execute">
+				<execute>urxvt -g 100x20 -e transmission-remote-cli</execute>
+			</action>
+		</item>
+		<item label="Chrome">
+			<action name="Execute">
+				<execute>chromium</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="system-menu" label="System">
+		<menu id="system-menu-942421" label="Configure">
+			<item label="OB Menu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+			<item label="OB Config">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<separator/>
+			<item label="Gtk Config">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Color Pick">
+				<action name="Execute">
+					<execute>gcolor2</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="system-menu-20522" label="Config Files">
+			<item label="Xinitrc">
+				<action name="Execute">
+					<execute>urxvt -g 100x20 -e vim ~/.xinitrc</execute>
+				</action>
+			</item>
+			<item label="Bashrc">
+				<action name="Execute">
+					<execute>urxvt -g 100x20 -e vim ~/.bashrc</execute>
+				</action>
+			</item>
+			<item label="Folders">
+				<action name="Execute">
+					<execute>thunar</execute>
+				</action>
+			</item>
+			<item label="Xdefaults">
+				<action name="Execute">
+					<execute>urxvt -g 100x20 -e vim ~/.Xdefaults</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="Refresh">
+			<action name="Reconfigure"/>
+		</item>
+	</menu>
+	<menu id="root-menu" label="Openbox 3">
+		<separator label="GmnBox"/>
+		<menu id="root-menu-144125" label="Terminal">
+			<item label="Music">
+				<action name="Execute">
+					<execute>urxvt -g 100x10 -e ncmpcpp</execute>
+				</action>
+			</item>
+			<item label="Youtube">
+				<action name="Execute">
+					<execute>urxvt -g 100x15 -e youtube-viewer</execute>
+				</action>
+			</item>
+			<item label="Weechat">
+				<action name="Execute">
+					<execute>urxvt -g 100x12 -e weechat-curses</execute>
+				</action>
+			</item>
+			<menu id="root-menu-144125-454416" label="Settings">
+				<item label="Gimp">
+					<action name="Execute">
+						<execute>gimp</execute>
+					</action>
+				</item>
+				<item label="Reminder">
+					<action name="Execute">
+						<execute>urxvt -g 100x10 -e vim ~/.reminder</execute>
+					</action>
+				</item>
+				<item label="Alsamixer">
+					<action name="Execute">
+						<execute>urxvt -g 125x25 -e alsamixer</execute>
+					</action>
+				</item>
+				<item label="Photoshop">
+					<action name="Execute">
+						<execute>wine /home/oblivious/Dropbox/Linux/WineCS2/PhotoshopPortable.exe </execute>
+					</action>
+				</item>
+			</menu>
+		</menu>
+		<menu id="apps-net-menu"/>
+		<menu id="system-menu"/>
+		<item label="Places">
+			<action name="Execute">
+				<execute>urxvt -g 100x12 -e ranger</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>

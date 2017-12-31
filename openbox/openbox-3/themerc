@@ -1,0 +1,56 @@
+# ObliviousGmn, June 2014
+# https://github.com/ObliviousGmn
+# Gmnbox V2 - Only Customizes Menus, OSD and Window Decorations!
+# Enjoy! Mod to your liking!!
+
+# Palette..
+# BG:    #131314
+# Bar:   #20202E
+# Text:  #BFBFBF
+
+# Menu 
+menu.items.active.bg: flat solid
+menu.items.active.bg.color: #20202E
+menu.items.active.text.color: #BFBFBF
+menu.items.bg: flat solid
+menu.items.bg.color: #131314
+menu.items.disabled.text.color: #20202E
+menu.items.text.color: #BFBFBF
+menu.overlap.x: -4
+menu.separator.color: #20202E
+menu.title.bg: flat solid
+menu.title.*.color: #20202E
+*.border.color: black
+*.justify: left
+
+# OSD
+osd.bg: Solid Flat
+osd.bg.color: #131314
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #20202E
+osd.label.bg: parentrelative
+osd.label.text.color: #BFBFBF
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #131314
+
+# Padding
+padding.height: 2
+padding.width: 30
+window.client.padding.width: 0
+
+# Window
+border.width: 1
+window.handle.width: 0
+window.active.title.bg: flat
+window.*.title.bg: flat
+window.*.title.bg.color: #20202E
+window.*.title.separator.color: #131314
+
+# Tweaks
+*.*.label.bg: parentrelative
+*.*.button.*.bg: parentrelative
+window.*.label.text.color: #20202E
+*.*.button.*.image.color: #20202E
+
+# Shadow, Small shadow to menu font
+menu.items.font: shadow=y:shadowoffset=1:shadowtint=25
