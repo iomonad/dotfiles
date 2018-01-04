@@ -1,0 +1,33 @@
+## | ~/.interrobangrc
+## | mostly centered, large display
+
+# Cosmetics:
+set font      = -artwiz-fkp-medium-r-normal-*-16-160-75-75-m-80-iso10646-1
+set geometry  = 1000x16+300+28
+set border    = 14px #363636
+set colors    = #666666 #363636 #363636 #464646 #363636 #666666
+
+# Behavior:
+set bangchar  = !
+set autocomp  = 1
+set list      = true
+set last      = true
+set margin    = -30
+set run_hook  = %s || (notify-send "interrobang" "command not valid or exit non-zero")
+
+# !BANG syntax:
+bang term     = urxvt -e %s
+bang dwb      = dwb %s
+bang ff       = firefox %s
+bang pdf      = mupdf %s
+bang man      = urxvt -e man %s
+bang calc     = notify-send "$(echo '%s' | bc -l)"
+bang dic      = notify-send "$(sdcv -n --data-dir /howl/conf/share/stardict --utf8-output -u WordNet '%s')"
+bang ?        = echo "interrobang ignored \"%s\""
+
+# Tab completion for !BANG(s):
+tab default   = percontation "%s" %s | sort -u
+tab ff        = [[ -n $(xclip -selection primary -o) ]] && sel=primary || sel=clipboard ; echo "%s%s$(xclip -selection ${sel} -o)"
+tab dwb       = [[ -n $(xclip -selection primary -o) ]] && sel=primary || sel=clipboard ; echo "%s%s$(xclip -selection ${sel} -o)"
+tab calc      = str="%s%s"; echo "!calc $(echo ${str#\!calc} | bc -l)"
+tab ?         = ignore="%s%s"; awk '/^bang/ {print $2;}' ~/.interrobangrc

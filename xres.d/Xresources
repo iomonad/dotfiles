@@ -38,7 +38,7 @@ Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 
-URxvt.depth: 0
+!URxvt.depth: 0
 
 URxvt.intensityStyles:  false
 
@@ -59,9 +59,9 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
 ! Extensions
-!URxvt*perl-ext-common: default,matcher,searchable-scrollback
-!URxvt*urlLauncher:     /usr/bin/firefox
-!URxvt*matcher.button:  1
+URxvt*perl-ext-common: default,matcher,searchable-scrollback
+URxvt*urlLauncher:     /usr/bin/firefox-bin
+URxvt*matcher.button: C1
 
 ! Keybind
 !URxvt.keysym.Control-Alt-C: perl:clipboard:copy
