@@ -1,0 +1,43 @@
+include /etc/xpdf/xpdfrc
+
+# Set the default PostScript file or command.
+psFile			"|lpr"
+# Set the command used to run a web browser when a URL hyperlink is clicked.
+urlCommand	"firefox '%s'"
+
+# Unbind arrow keys so we can change fullscreen behavior
+unbind down any
+unbind right any
+unbind up any
+unbind left any
+
+# Rebind arrow keys to defaults in the windowed context
+bind down window scrollDown(16)
+bind right window scrollRight(16)
+bind up window scrollUp(16)
+bind left window scrollLeft(16)
+
+# Bind arrow keys to next/prev page actions in the fullscreen context
+bind down fullScreen nextPage
+bind right fullScreen nextPage
+bind up fullScreen prevPage
+bind left fullScreen prevPage
+
+#========================================================================
+
+# User-defined bindings
+
+bind h any scrollLeft(35)
+bind l any scrollRight(35)
+bind k any scrollUpPrevPage(35)
+bind j any scrollDownNextPage(35)
+
+bind ctrl-f any scrollDownNextPage(320)
+bind ctrl-b any scrollUpPrevPage(320)
+
+bind ctrl-d any scrollDownNextPage(160)
+bind ctrl-u any scrollUpPrevPage(160)
+
+bind g      any gotoPage(1)
+bind G  any gotoLastPage
+bind /          any find
