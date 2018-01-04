@@ -1,6 +1,3 @@
-;;-------~---~----------~----------~----
-;; Web search 
-;;---~----~-~-------------~---------~---
 
 (defmacro make-web-jump (name url-prefix)
   `(defcommand ,name (search)

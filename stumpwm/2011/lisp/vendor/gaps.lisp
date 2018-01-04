@@ -3,7 +3,6 @@
 (defvar *useless-gaps-size* 6)
 (defvar *useless-gaps-on* nil)
 
-;; Redefined - with `if`s for *useless-gaps-on*
 (defun maximize-window (win)
   "Maximize the window."
   (multiple-value-bind (x y wx wy width height border stick)

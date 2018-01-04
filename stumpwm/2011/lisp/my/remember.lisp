@@ -1,8 +1,4 @@
-;;-------~---~----------~----------~----
-;; Rewrite some commands
-;;-------~---~----------~----------~----
 
-;; reassign original commands to *-forget
 (defcommand quit-forget () () "Quit StumpWM without remembering current state."
   (with-open-file (stream *debug-file* :direction :io :if-exists :supersede))
   (cond ((find-group (current-screen) *scratchpad-group-name*)
@@ -60,17 +56,12 @@ after the restart."
                       (current-group))))))
   (remember-all) (quit-forget))
 
-;;-------~---~----------~----------~----
-;; Dumping
-;;-------~---~----------~----------~----
 
 (defun remember-all () ()
 "Similiar to remember-group except all information is dumped, useful
 for next startup or recalling all undo actions."
   (dump-to-datadir "rules") (dump-to-datadir "desktop"))
 
-;; dump [current]-group (for current-screen), [current]-screen, desktop or window-placement-rules
-;; to a dynamically named file in user defined *data-dir*.
 (defcommand dump-to-datadir (expr) (:rest)
   "Dump group (from current-screen), screen (current-screen), desktop or rules to file in data-dir.
 Just specify what you want to dump and this will dynamically create and name file accordingly."
@@ -91,7 +82,6 @@ Just specify what you want to dump and this will dynamically create and name fil
            (dump-desktop-to-file o) (message "~A dumped" expr)))
         (t (message "dont know how to dump ~a" expr))))
 
-;; dump to file, which is silent, but with more informative prompts.
 (defcommand dump-group-to-file (file) ((:rest "group to file: "))
   "Dumps the frames of the current group of the current screen to the named file."
   (dump-to-file (dump-group (current-group)) file))
@@ -103,9 +93,6 @@ Just specify what you want to dump and this will dynamically create and name fil
   (dump-to-file (dump-desktop) file))
 
 
-;;-------~---~----------~----------~----
-;; Groups
-;;-------~---~----------~----------~----
 
 (defun remember-group (&optional (group (current-group))) ()
 "Remember current group information before calling another command or

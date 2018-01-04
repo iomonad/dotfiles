@@ -1,7 +1,3 @@
-;;-----------------------------------------
-;; author: milomouse <vincent[at]fea.st> ;;
-;; *data-dir*/../functions.lisp          ;;
-;;-----------------------------------------
 
 (defun fmt-group-status (group)
   (let ((screen (group-screen group)))
@@ -163,7 +159,6 @@ will only display valid files anyway."
     M)))) (update-resize-map)
 
 #|
-;; for use with dzen2 (a bit awkward..)
 (defun update-fullscreen (window action)
   (let ((fullscreen-p (window-fullscreen window)))
     (case action
@@ -183,4 +178,3 @@ will only display valid files anyway."
            (resize-head 0 0 0 1600 900)))))))
 |#
 
-;; EOF

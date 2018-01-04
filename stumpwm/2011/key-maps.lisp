@@ -1,21 +1,13 @@
-;;-----------------------------------------
-;; author: milomouse <vincent[at]fea.st> ;;
-;; *data-dir*/../key-maps.lisp           ;;
-;;-----------------------------------------
 
-;; export custom maps.
 (export '(*echo-map* *xsel-map* *xclip-clipboard-map* *xclip-primary-map* *frequent-map*
           *win-frame-map* *mplayer-map1* *mplayer-map2* *dump-map1* *dump-map2*))
 
-;; set a few undefined keysyms, unavailable in */stumpwm/keysyms.lisp
 (define-keysym #x1008ff02 "XF86MonBrightnessUp")
 (define-keysym #x1008ff03 "XF86MonBrightnessDown")
 (define-keysym #x1008ff2f "XF86Sleep")
 
-;; set "Super+Shift+\" as prefix for root-map bindings (i will not be using this)
 (set-prefix-key (kbd "s-|"))
 
-;; some useful window/frame commands.
 (defvar *win-frame-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -26,7 +18,6 @@
     (dk m (kbd "ESC") "abort")
    M)))
 
-;; transfer contents of clipboard selection into other buffers, or manually type cmd.
 (defvar *xclip-clipboard-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -38,7 +29,6 @@
     (dk m (kbd "ESC") "abort")
    M)))
 
-;; transfer contents of primary selection into other buffers, or manually type cmd.
 (defvar *xclip-primary-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -50,7 +40,6 @@
     (dk m (kbd "ESC") "abort")
    M)))
 
-;; interact with the xselection and meta commands.
 (defvar *xsel-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -62,7 +51,6 @@
     (dk m (kbd "ESC") "abort")
   M)))
 
-;; frequently used echoes for quick information grabbing.
 (defvar *echo-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -87,7 +75,6 @@
     (dk m (kbd "ESC") "abort")
    M)))
 
-;; keyboard layouts.
 (defvar *xmod-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -104,7 +91,6 @@
     (dk m (kbd "v") "exec xmodmap /howl/conf/keymaps/dvorak.xmodmap")
    M)))
 
-;; frequently used commands.
 (defvar *frequent-map*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -125,7 +111,6 @@
     (dk m (kbd "ESC") "abort")
    M)))
 
-;; mplayer daemon (mifo) frequently used commands.
 (defvar *mplayer-map1*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -158,7 +143,6 @@
     (dk m (kbd "ESC")   "abort")
    M)))
 
-;; mplayer daemon (mifo) useful seek commands.
 (defvar *mplayer-map2*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -175,7 +159,6 @@
     (dk m (kbd "ESC")   "abort")
    M)))
 
-;; quickly dump rules, desktop, screen, or group
 (defvar *dump-map1*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -185,7 +168,6 @@
     (dk m (kbd "g") "dump-to-datadir group")
    M)))
 
-;; quickly restore rules, desktop, screen, or group
 (defvar *dump-map2*
   (let ((m (make-sparse-keymap)))
     (labels ((dk (m k c) (define-key m k c)))
@@ -326,4 +308,3 @@
 ;    (dk m (kbd "XF86Sleep")             "exec sudo systemctl suspend")
    M)))
 
-;; EOF

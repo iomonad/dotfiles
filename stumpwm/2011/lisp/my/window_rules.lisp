@@ -1,7 +1,3 @@
-;;-------~---~----------~----------~----
-;; Window Rules
-;;-------~---~----------~----------~----
-;; frame raise lock (lock AND raise == jumpto)
 
 (define-frame-preference "web"
                          (0 t t :class "Firefox"))

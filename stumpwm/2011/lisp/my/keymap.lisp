@@ -1,11 +1,9 @@
-;; Groups
 (dotimes (i 9)
   (define-key *top-map* (kbd (format nil "s-~A" (1+ i)))
     (format nil "go-group ~A" (1+ i)))
   (define-key *top-map* (kbd (format nil "s-M-~A" (1+ i)))
     (format nil "gmove ~A" (1+ i))))
 
-;; Frames
 (loop for (vi-key name) in '(("k" "up")
                              ("j" "down")
                              ("h" "left")
@@ -17,7 +15,6 @@
            (define-key *top-map* (kbd shifted-key-combo)
              (format nil "move-window ~A" name))))
 
-;; Top-map
 (define-key *top-map* (kbd "s-q")        "delete")
 (define-key *top-map* (kbd "s-R")        "loadrc")
 (define-key *top-map* (kbd "s-Q")        "restart")
@@ -29,7 +26,6 @@
 (define-key *top-map* (kbd "Print")      (format nil "exec ~A/zenscrupload"    (getenv "BIN_HOME")))
 (define-key *top-map* (kbd "s-Print")    (format nil "exec ~A/zenscrupload -s" (getenv "BIN_HOME")))
 
-;; Multimedia Keys
 (define-key *top-map* (kbd "XF86AudioPlay")        "exec mpc toggle")
 (define-key *top-map* (kbd "XF86AudioNext")        "exec mpc next")
 (define-key *top-map* (kbd "XF86AudioPrev")        "exec mpc prev")
@@ -42,7 +38,6 @@
 
 (define-key *top-map* (kbd "C-Insert") "send-selection")
 
-;; Vim-ify menu
 (setf *menu-map*
       (let ((m (make-sparse-keymap)))
         (define-key m (kbd "k")   'menu-up)
@@ -66,7 +61,6 @@
         m))
 (define-key *top-map* (kbd "s-g") '*group-map*)
 
-;; Application Launchers
 (defvar *launch-map* nil
   "Keymap for launching stuffs")
 (setf *launch-map*

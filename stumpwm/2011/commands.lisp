@@ -1,10 +1,3 @@
-;;-----------------------------------------
-;; author: milomouse <vincent[at]fea.st> ;;
-;; *data-dir*/../commands.lisp           ;;
-;;-----------------------------------------
-
-;; before we go further, rewrite colon command to old behavior.
-;; (this should already be fixed in newest version)
 (defcommand colon (&optional initial-input) (:rest)
   (let ((cmd (completing-read (current-screen) ": "
           (all-commands) :initial-input (or initial-input ""))))
@@ -13,7 +6,6 @@
     (when (plusp (length cmd))
       (eval-command cmd t))))
 
-;; redefine run-shell-command for 'zsh', change :shell "", and fix a typo.
 (defcommand run-shell-command (cmd &optional collect-output-p)
   ((:shell "execute: "))
   "Run the specified shell command. If @var{collect-output-p} is @code{T}
@@ -25,10 +17,6 @@ then run the command synchronously and collect the output."
 (setf *shell-program* (stumpwm::getenv "SHELL"))
 (defcommand-alias exec run-shell-command)
 
-;; create a scratchpad group if none exist and toggle between viewing current group and scratchpad group.
-;; (idea from Ion3+ window-manager except scratchpad is a group and not a floating frame)
-;; (also inspired by another users 'scratchpad' command set, although i found all the functions
-;;  and parameters to be wasteful, especially since this creates it per screen anyway)
 (defcommand scratchpad () ()
 "Create a scratchpad group for current screen, if not found, and toggle between the scatchpad group
 and the current group upon reissue of the same command."
@@ -37,8 +25,6 @@ and the current group upon reissue of the same command."
         (cond ((eq cg sg) (gother)) (t (switch-to-group sg) (message "scratchpad")))
       (progn (gnew *scratchpad-group-name*) (message "scratchpad")))))
 
-;; undo to last state in current-group (set by calling 'remember-group' in various commands/functions),
-;; unless no state found. (once i learn more about lisp i'll try removing the use of a second temp file)
 (defcommand undo (&optional (group (current-group))) ()
 "If an undo state exists for group, revert to last state. Multiple calls toggle between the two states."
   (when group
@@ -60,8 +46,6 @@ and the current group upon reissue of the same command."
               (show-frame-indicator group)))))
         (message "Cannot undo previous state. Nothing found for group ~A" (list (group-name group)))))))
 
-;; dump [current-]group (for current-screen), [current-]screen, desktop or window-placement-rules
-;; to a dynamically named file in user defined *data-dir*.
 (defcommand dump-to-datadir (expr) (:rest)
 "Dump group (from current-screen), screen (current-screen), desktop or rules to file in data-dir.
 Just specify what you want to dump and this will dynamically create and name file accordingly."
@@ -82,8 +66,6 @@ Just specify what you want to dump and this will dynamically create and name fil
             (dump-desktop-to-file o) (message "~A dumped" expr)))
         (t (message "don't know how to dump ~a" expr))))
 
-;; restore [current]-group (for current-screen), [current]-screen, desktop or window-placement-rules
-;; from a previously created file (more correctly from DUMP-TO-DATADIR) in user defined *data-dir*.
 (defcommand restore-from-datadir (expr) (:rest)
 "Restore file from data-dir, previously created by 'dump-to-datadir', according to what you specify.
 You may restore group (for current-screen), screen (for current-screen), desktop or rules. This will
@@ -120,7 +102,6 @@ undo the loading of that file. There are no undo states when loading 'screen', '
             (message "unable to find valid ~A file in data dir" expr)))
         (t (message "dont know how to restore ~a" expr))))
 
-;; swap neighbors but do not change focus to specified neighbor direction.
 (defcommand (exchange-direction-remain tile-group) (dir &optional (win (current-window)))
     ((:direction "Direction: "))
     "If neighbor window exists, swap current window with neighbor in specified direction while
@@ -133,7 +114,6 @@ keeping focus on current frame, unlike 'exchange-direction' where focus moves to
             (message "No window in direction ~A!" dir)))
       (message "No window in current frame!")))
 
-;; move focused window to next/prev group without following it. focus remains on current frame.
 (defcommand gmove-next () ()
 "Move focused window to next group without switching to it. Unlike behavior in gnext-with-window."
   (move-window-to-next-group (current-group) (sort-groups (current-screen))))
@@ -141,23 +121,19 @@ keeping focus on current frame, unlike 'exchange-direction' where focus moves to
 "Move focused window to previous group without switching to it. Unlike behavior in gprev-with-window."
   (move-window-to-next-group (current-group) (reverse (sort-groups (current-screen)))))
 
-;; from simias: rotate windows.
 (defcommand rotate-windows () ()
   (let* ((frames (group-frames (current-group)))
             (win (frame-window (car (last frames)))))
           (shift-windows-forward frames win)))
 
-;; rework of original random-bg command, display random wallpaper on root window.
 ;(defcommand display-random-bg () () "Display a random background image on root window."
 ;  (run-shell-command
 ;    (concatenate 'string "display -window root -resize 1600x900! " (select-random-bg-image))))
 
-;; designate master window/frame (should probably use current frame number, but less dynamic?)
 (defcommand (master-make tile-group) () () "Designate current window as Master."
   (renumber 0) (repack-window-numbers) (remember-group))
 (defcommand (master-focus tile-group) () () "Focus on designated Master window." (select-window-by-number 0))
 
-;; swap current window with master (should be 0 (from master-make)) and desginate it as the new master.
 (defcommand (master-swap tile-group) (num &optional (group (current-group))) ((:window-number t))
   "If current window is not Master and Master exists, swap current
 window with Master and designate this as the new Master."
@@ -166,8 +142,6 @@ window with Master and designate this as the new Master."
   (let ((win (find-if #'match (group-windows group))))
     (when (and win group) (exchange-windows (current-window) win) (master-make)))))
 
-;; [with *shell-program* "/bin/zsh"] look for detached 'tmux [socket] xorg' session and attach, else create new.
-;; (also useful for StumpWM crashes, as tmux windows survive crashes and this command brings them back)
 (defcommand tmux-attach-else-new () () "Find detached tmux session and attach, else create new session."
   (run-shell-command
   "if [[ -n ${$(tmux -S /tmp/user-keep/${USER}/tmux/xorg list-session|grep -v attached)[1]//:} ]]; then
@@ -176,7 +150,6 @@ window with Master and designate this as the new Master."
     urxvt -e tmux -S /tmp/user-keep/${USER}/tmux/xorg new-session
   fi"))
 
-;; reassign original commands to *-forget
 (defcommand quit-forget () () "Quit StumpWM without remembering current state."
   (with-open-file (stream *debug-file* :direction :io :if-exists :supersede))
   (cond ((find-group (current-screen) *scratchpad-group-name*)
@@ -230,7 +203,6 @@ after the restart." (remember-all) (restart-soft-forget))
         (current-group))))))
   (remember-all) (quit-forget))
 
-;; redefine resize commands
 (defcommand (resize tile-group) (width height) ((:number "+ Width: ")
                                                 (:number "+ Height: "))
   "Resize the current frame by @var{width} and @var{height} pixels."
@@ -271,7 +243,6 @@ or @key{ESC} to exit." (let ((frame (tile-group-current-frame (current-group))))
 (defcommand (abort-iresize tile-group) () () "Undo resize changes if aborted."
   (resize-unhide) (undo) (message "Abort resize") (pop-top-map))
 
-;; remove frame and reallocate space while remembering removed frame position, also hiding frame-indicator.
 (defcommand (remove-split tile-group)
 (&optional (group (current-group)) (frame (tile-group-current-frame group))) ()
 "Remove the specified frame in the specified group (defaults to current group, current
@@ -311,7 +282,6 @@ remembering their previous positions, also hiding frame highlights."
             (update-decoration (frame-window l)))))))
 
 
-;; remember states if not already in 'only' mode (e.g., one frame).
 (defcommand only () () "Delete all the frames but the current one and grow it
 to take up the entire head and remember previous states if entire head
 is not already taken up (e.g. already in 'only' mode)."
@@ -338,13 +308,11 @@ is not already taken up (e.g. already in 'only' mode)."
             (show-frame-indicator group))
         (sync-frame-windows group (tile-group-current-frame group))))))
 
-;; remember frame positions before splitting (do not edit split-frames function for this)
 (defcommand (hsplit tile-group) () () "Remember current state before splitting the
 current frame into 2 side-by-side frames." (remember-group) (split-frame-in-dir (current-group) :column))
 (defcommand (vsplit tile-group) () ()  "Remember current state before splitting the
 current frame into 2 frames, one on top of the other." (remember-group) (split-frame-in-dir (current-group) :row))
 
-;; dump to file, which is silent, but with more informative prompts.
 (defcommand dump-group-to-file (file) ((:rest "group to file: "))
   "Dumps the frames of the current group of the current screen to the named file."
   (dump-to-file (dump-group (current-group)) file))
@@ -355,7 +323,6 @@ current frame into 2 frames, one on top of the other." (remember-group) (split-f
   "Dumps the frames of all groups of all screens to the named file."
   (dump-to-file (dump-desktop) file))
 
-;; predefined echoes for speed, else use 'shell-command-output'.
 (defcommand echo-highcpu-user () () "" (message-no-timeout (run-shell-command "ps -U root,privoxy,15,daemon,nobody,unbound --deselect -C tmux,urxvt k -%cpu opid,nice,args:70,etime:10,%cpu,pmem | head -75" t)))
 (defcommand echo-highcpu-root () () "" (message-no-timeout (run-shell-command "ps -U h,privoxy,15,daemon,nobody,unbound --deselect -C tmux,urxvt k -%cpu opid,nice,args:70,etime:10,%cpu,pmem | head -75" t)))
 (defcommand echo-highcpu-rest () () "" (message-no-timeout (run-shell-command "ps -U root,h --deselect -C tmux,urxvt k -%cpu opid,nice,args:70,etime:10,%cpu,pmem | head -75" t)))
@@ -404,7 +371,6 @@ N->8 ^08black^n ^18red^n ^28green^n ^38yellow^n ^48blue^n ^58magenta^n ^68cyan^n
 B->9 ^B^09black^n ^B^19red^n ^B^29green^n ^B^39yellow^n ^B^49blue^n ^B^59magenta^n ^B^69cyan^n ^B^79white^n ^B^89user^n ^B^99user^n
 N->9 ^09black^n ^19red^n ^29green^n ^39yellow^n ^49blue^n ^59magenta^n ^69cyan^n ^79white^n ^89user^n ^99user^n")))
 
-;; sent output of command to echo-string (may hang if used wrong).
 (defcommand shell-command-output (command) ((:string "execute/output: "))
   "Take output of command and display it. This may hang if used wrong."
   (check-type command string) (run-shell-command-output command))
@@ -415,19 +381,14 @@ command's output. This may hang if used wrong."
   (let ((cmd (read-one-line (current-screen) ": " :initial-input initial)))
     (when cmd (shell-command-output cmd))))
 
-;; manpage reader. needs filename completion, etc.. very simple right now
 (defcommand manpage (command) ((:rest "manpage: ")) ""
   (run-shell-command (format nil "urxvt -e man ~a" command)))
 
-;; prompt for X selection to transfer, or prompt for X selection to echo
 (defcommand prompt-xclip (filename) ((:rest "xclip -selection ")) ""
   (run-shell-command (format nil "xclip -selection ~a" filename)))
-;; prompt for X selection to display contents of.
 (defcommand echo-xclip (filename) ((:rest "echo.selection: ")) ""
   (echo-string (current-screen) (run-shell-command (format nil "xclip -selection ~a -o" filename) t)))
 
-;; i don't like 'Colon' showing editable command in prompt
-;; perhaps i'll figure out a global macro/function for this..
 (defcommand prompt-mifo-command (filename) ((:rest "mifo.command: ")) ""
   (run-shell-command (format nil "mifo --command ~a" filename)))
 (defcommand prompt-mifo-next (filename) ((:rest "mifo.next: ")) ""
@@ -453,7 +414,6 @@ command's output. This may hang if used wrong."
 (defcommand prompt-mifo-seek (filename) ((:rest "mifo.seek: ")) ""
   (run-shell-command (format nil "mifo --seek ~a" filename)))
 
-;; evaluate string, with prettier color.
 (defcommand eval-line (cmd) ((:rest "eval: "))
   "Evaluate the s-expression and display the result(s)."
   (handler-case
@@ -463,9 +423,7 @@ command's output. This may hang if used wrong."
     (error (c)
       (err "^B^5*~A" c))))
 
-;; run or raise.
 (defcommand ror_dwb () () "" (setf *run-or-raise-all-groups* t) (run-or-raise "dwb" '(:class "Dwb")))
 (defcommand ror_mutt () () "" (setf *run-or-raise-all-groups* t)
   (run-or-raise "urxvt -title '[urxvt] mutt' -e mutt -F ${XDG_CONFIG_DIR:-${HOME}}/mutt/muttrc" '(:title "\\[urxvt\\] mutt")))
 
-;; EOF

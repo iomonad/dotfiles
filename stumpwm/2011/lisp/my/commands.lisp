@@ -1,11 +1,9 @@
-;; To-and-Fro Group switching (like i3)
 (defcommand go-group (n) ((:number "Go to group: "))
   "Go to selected group, or back to last used one"
   (if (= (slot-value (current-group) 'number) n)
       (gother)
     (run-commands (format nil "gselect ~A" n))))
 
-;; Tmux
 (defcommand tmux (session) ((:string "Session name: "))
   "Attach tmux session or start a new one.
    Only works with SBCL"
@@ -97,7 +95,6 @@
                              ("Album" "album")
                              ("Title" "title")))
 
-;; Toggle horizontal/vertical split
 (defcommand toggle-split () ()
   (let* ((group (current-group))
          (cur-frame (tile-group-current-frame group))
