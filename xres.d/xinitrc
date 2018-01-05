@@ -11,6 +11,7 @@ urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
 hsetroot -tile .xres.d/wallpaper/chicago3.jpg
 compton -c -t-5 -l-5 -r3 -o.48 &
-#exec ~/documents/stumpwm/stumpwm
 #exec redhsift -l 48.886764:2.320873 # long / lat
-exec xmonad
+#exec xmonad
+#exec ~/documents/sources/stumpwm/stumpwm
+exec i3
