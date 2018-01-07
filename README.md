@@ -19,4 +19,8 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 <br>
 <p align="center">
   <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/DIWXB.png"/>
+</p> <br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/IMG_20180107_120412.jpg"/>
 </p> 
