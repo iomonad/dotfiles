@@ -1,0 +1,709 @@
+Writing kernels that boot with Qemu and Grub - a tutorial
+======================================================================
+
+This tutorial is very much based on Brandon's excellent Kernel
+Development Tutorial
+
+http://www.osdever.net/bkerndev/index.php  
+
+It is by no means meant to replace the above tutorial. Indeed, I am
+skipping much of the explanation that is already in the original
+tutorial and present what is mostly a bare-bones introduction. Really,
+you may consider it complimentary. Use it if you want to use ELF
+format instead of a.out and if you are interested in creating a
+bootable Grub image.
+
+Basically i modified a few things here and there (changed to ELF
+format and show how you can do without the linker script [XXX TODO]
+and how you can get the multiboot_info in main [XXX TODO]), but most
+of it is still the same as far as the kernel and linker are concerned.
+
+Indeed, for now at least, I only included a very basic kernel that
+prints "hello world", without any of the drivers that Brandon has in
+his kernel (it would be trivial to add, because my code is almost a
+direct copy of his code).
+
+The only thing I have added is info about how to create a bootable
+grub image that can be booted on a native machine, Qemu, or
+VirtualBos. This will be important unless you always want to use an
+existing image someone else created.
+
+The tutorial consists of two parts: part (I) discusses the software
+(kernel and a dash of assembly that should eventually run), while part
+(II) shows how to create the bootable grub image.
+
+What you need for this tutorial to work:
+
+-x86 PC
+-Linux (I tested with Ubuntu 7.10, the Gutsy Gibbon)
+-gcc + make
+-nasm
+-grub
+-mtools
+-qemu or VirtualBox (unless you want to run the kernel on real hardware)
+
+All of these are standard stuff, that you can just install using
+whatever your local equivalent of apt-get may be (except for the PC,
+which you optain with your local equivalent of euros).
+
+*** Updated 14/08/2016: added explanation of how to do this on
+    VirtualBox (thanks, Antonio Nappa!)
+
+I hope you find this tutorial useful.
+
+Happy hacking!
+HJB
+
+
+----------------------------------------------------------------------
+0. Contents
+----------------------------------------------------------------------
+
+This tutorial consists of the followin sections:
+
+I. The kernel, the linker,  the assembly and the Makefile
+   - I.A. Entry point in assembly
+          This where our world start-  and it is the only assembly we need.
+   - I.B. The C kernel
+     	  The actual 'kernel'. We jump here immediate from assembly.
+   - I.C. The linker script
+     	  This is how we combine the assembly and the C code into a kernel
+   - I.D. Makefile
+     	  Yes, well, we dont want type stuff all the time.
+
+II. Creating a bootable grub image
+     Once, we have a kernel, we mustr create an image with grub
+     installed on it and make sure that our kernel is on the image (as
+     well as a grub menu.lst file with an entry that points to our
+     kernel.
+
+----------------------------------------------------------------------
+I. The kernel, the linker, the assembly and the Makefile
+----------------------------------------------------------------------
+
+ I do not want to repeat every thing that is already in Brandon's
+ tutorial. Instead, I will stick to a bullet list of main points.
+
+
+I.A. Entry point in assembly
+----------------------------
+* We want to minimise assembly and maximise C. However, a tiny bit of
+  assembly cannot be avoided to serve as entry point. The assembly in
+  our example will simply call the entry point of the C kernel. When C
+  returns, the assembly will loop forever.
+
+* We want to work with GRUB. That means that we should make our
+  bootable file (the kernel) multi-boot compliant. A minimum
+  requirement to be multiboot compliant is to have a header with the
+  following 3 32b words in the first 8KB of your file:
+
+  - multiboot magic number (0xbadboo2)
+  - multiboot header flags (e.g., 0x3)
+  - checksum (which can simply be set to:
+    multibootHeaderFlags - multibootMagicNumber
+
+* While not strictly needed to run an extremely basic kernel we will
+  also set up a stack. Stacks are good.
+
+This gives us the following assembly file (note that since i use ELF,
+we do not need to use the aout kludge):
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; start.asm
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This is the kernel's entry point. We could either call main here,
+; or we can use this to setup the stack or other nice stuff, like
+; perhaps setting up the GDT and segments. Please note that interrupts
+; are disabled at this point.
+[BITS 32]
+global start
+start:
+    mov esp, _sys_stack     ; This points the stack to our new stack area
+    jmp stublet
+
+; This part MUST be 4byte aligned, so we solve that issue using 'ALIGN 4'
+ALIGN 4
+mboot:
+    ; Multiboot macros to make a few lines later more readable
+    MULTIBOOT_PAGE_ALIGN	equ 1<<0
+    MULTIBOOT_MEMORY_INFO	equ 1<<1
+    MULTIBOOT_HEADER_MAGIC	equ 0x1BADB002
+    MULTIBOOT_HEADER_FLAGS	equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO
+    MULTIBOOT_CHECKSUM	equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
+
+    ; This is the GRUB Multiboot header. A boot signature
+    dd MULTIBOOT_HEADER_MAGIC
+    dd MULTIBOOT_HEADER_FLAGS
+    dd MULTIBOOT_CHECKSUM
+    
+; A call to main (the C kernel) followed by an infinite loop (jmp $)
+stublet:
+ 	EXTERN cmain 		; start of our kernel
+ 	call cmain
+	jmp $
+
+; Here is the definition of our BSS section. Right now, we'll use
+; it just to store the stack. Remember that a stack actually grows
+; downwards, so we declare the size of the data before declaring
+; the identifier '_sys_stack'
+SECTION .bss
+    resb 8192               ; This reserves 8KBytes of memory here
+_sys_stack:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+We can generate an object from this file by using nasm:
+
+   nasm  -f elf -o start.o start.asm
+
+
+I.B. The C kernel
+-------------------
+
+Glad we got that out of the way. It is straight C from now on. The
+kernel contains a main function that prints hello world on the screen
+and then loops forever (strictly speaking not necessary, as the
+underlying assembly will loop forever already). All of the C code is
+trivial. The way to compile the 2 C files is as follows:
+
+	 gcc -fno-stack-protector -fno-builtin -nostdinc -O -g -Wall -I. -c -o main.o main.c
+
+	 gcc  -fno-stack-protector -fno-builtin -nostdinc -O -g -Wall -I. -c -o scrn.o scrn.c
+
+The only halfway tricky thing in the code is the interaction with the
+screen (in scrn.c). Let me first give the 3 source files, so you can
+skim them (and confirm that it is all fairly trivial). If you are
+still confused by scrn.c, don't worry. We will have a look at the way
+VGA works after presenting the source.
+
+//////////////////////////////////////////////////////////////////////
+// File: system.h
+
+#ifndef __SYSTEM_H
+#define __SYSTEM_H
+
+/* MAIN.C */
+extern unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count);
+extern unsigned char *memset(unsigned char *dest, unsigned char val, int count);
+extern unsigned short *memsetw(unsigned short *dest, unsigned short val, int count);
+extern int strlen(const char *str);
+extern unsigned char inportb (unsigned short _port);
+extern void outportb (unsigned short _port, unsigned char _data);
+
+/* SCRN.C */
+extern  void cls();
+extern void putch(unsigned char c);
+extern void puts(unsigned char *str);
+extern void settextcolor(unsigned char forecolor, unsigned char backcolor);
+extern void init_video();
+#endif
+//////////////////////////////////////////////////////////////////////
+// File: main.c
+#include <system.h>
+
+/* some convenient functions - as we don't ahve libc, we must do
+   everything ourselves */
+
+unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count)
+{
+  int i;
+  for (i=0; i<count;i++) dest[i]=src[i];
+  return dest;
+}
+
+unsigned char *memset(unsigned char *dest, unsigned char val, int count)
+{
+  int i;
+  for (i=0; i<count;i++) dest[i]=val;
+  return dest;
+}
+
+unsigned short *memsetw(unsigned short *dest, unsigned short val, int count)
+{
+  int i;
+  for (i=0; i<count;i++) dest[i]=val;
+  return dest;
+}
+
+int strlen(const char *str)
+{
+  int i;
+  for (i=0;;i++) if (str[i] == '\0') return i;
+}
+
+/* We can use this for reading from the I/O ports to get data from
+*  devices such as the keyboard. We are using what is called 'inline
+*  assembly' in these routines to actually do the work. [XXX I still
+*  have to add devices to the tutorial] */
+unsigned char inportb (unsigned short _port)
+{
+    unsigned char rv;
+    __asm__ __volatile__ ("inb %1, %0" : "=a" (rv) : "dN" (_port));
+    return rv;
+}
+
+/* We can use this to write to I/O ports to send bytes to
+*  devices. Again, we use some inline assembly for the stuff that
+*  simply cannot be done in C */
+void outportb (unsigned short _port, unsigned char _data)
+{
+    __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
+}
+
+/* This is a very simple main() function. All it does is print stuff
+*  and then sit in an infinite loop. This will be like our 'idle'
+*  loop */
+void
+cmain (unsigned long magic, unsigned long addr)
+{
+
+  init_video();
+  puts ((unsigned char*)"hello world!");
+
+    /* ...and leave this loop in. Note: there is an endless loop in
+    *  'start.asm' also, if you accidentally delete this next line */
+    for (;;);
+}
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
+// File: scrn.c - putting characters on the screen (see comments below)
+
+#include <system.h>
+
+/* These define our textpointer, our background and foreground
+*  colors (attributes), and x and y cursor coordinates */
+unsigned short *textmemptr;
+int attrib = 0x0F;
+int csr_x = 0, csr_y = 0;
+
+#define COLS 80
+#define ROWS 24
+
+/* Scrolls the screen */
+void scroll(void)
+{
+    unsigned blank, temp;
+
+    /* A blank is defined as a space... we need to give it
+    *  backcolor too */
+    blank = 0x20 | (attrib << 8);
+
+    /* Row 25 is the end, this means we need to scroll up */
+    if(csr_y >= ROWS/*25*/)
+    {
+        /* Move the current text chunk that makes up the screen
+        *  back in the buffer by a line */
+        temp = csr_y - ROWS/*25*/ + 1;
+        memcpy ((unsigned char *)textmemptr, 
+		(const unsigned char *)textmemptr + temp * COLS, 
+		(ROWS/*25*/ - temp) * COLS * 2);
+
+        /* Finally, we set the chunk of memory that occupies
+        *  the last line of text to our 'blank' character */
+        memsetw (textmemptr + (ROWS/*25*/ - temp) * COLS, blank, COLS);
+        csr_y = ROWS/*25*/ - 1;
+    }
+}
+
+/* Updates the hardware cursor: the little blinking line
+*  on the screen under the last character pressed! */
+void move_csr(void)
+{
+    unsigned temp;
+
+    /* The equation for finding the index in a linear
+    *  chunk of memory can be represented by:
+    *  Index = [(y * width) + x] */
+    temp = csr_y * COLS + csr_x;
+
+    /* This sends a command to indicies 14 and 15 in the
+    *  CRT Control Register of the VGA controller. These
+    *  are the high and low bytes of the index that show
+    *  where the hardware cursor is to be 'blinking'. To
+    *  learn more, you should look up some VGA specific
+    *  programming documents. A great start to graphics:
+    *  http://www.brackeen.com/home/vga */
+    outportb(0x3D4, 14);
+    outportb(0x3D5, temp >> 8);
+    outportb(0x3D4, 15);
+    outportb(0x3D5, temp);
+}
+
+/* Clears the screen */
+void cls()
+{
+    unsigned blank;
+    int i;
+
+    /* Again, we need the 'short' that will be used to
+    *  represent a space with color */
+    blank = 0x20 | (attrib << 8);
+
+    /* Sets the entire screen to spaces in our current
+    *  color */
+    for(i = 0; i < ROWS/*25*/; i++)
+        memsetw (textmemptr + i * COLS, blank, COLS);
+
+    /* Update out virtual cursor, and then move the
+    *  hardware cursor */
+    csr_x = 0;
+    csr_y = 0;
+    move_csr();
+}
+
+/* Puts a single character on the screen */
+void putch(unsigned char c)
+{
+    unsigned short *where;
+    unsigned att = attrib << 8;
+
+    /* Handle a backspace, by moving the cursor back one space */
+    if(c == 0x08)
+    {
+        if(csr_x != 0) csr_x--;
+    }
+    /* Handles a tab by incrementing the cursor's x, but only
+    *  to a point that will make it divisible by 8 */
+    else if(c == 0x09)
+    {
+        csr_x = (csr_x + 8) & ~(8 - 1);
+    }
+    /* Handles a 'Carriage Return', which simply brings the
+    *  cursor back to the margin */
+    else if(c == '\r')
+    {
+        csr_x = 0;
+    }
+    /* We handle our newlines the way DOS and the BIOS do: we
+    *  treat it as if a 'CR' was also there, so we bring the
+    *  cursor to the margin and we increment the 'y' value */
+    else if(c == '\n')
+    {
+        csr_x = 0;
+        csr_y++;
+    }
+    /* Any character greater than and including a space, is a
+    *  printable character. The equation for finding the index
+    *  in a linear chunk of memory can be represented by:
+    *  Index = [(y * width) + x] */
+    else if(c >= ' ')
+    {
+        where = textmemptr + (csr_y * COLS + csr_x);
+        *where = c | att;	/* Character AND attributes: color */
+        csr_x++;
+    }
+
+    /* If the cursor has reached the edge of the screen's width, we
+    *  insert a new line in there */
+    if(csr_x >= COLS)
+    {
+        csr_x = 0;
+        csr_y++;
+    }
+
+    /* Scroll the screen if needed, and finally move the cursor */
+    scroll();
+    move_csr();
+}
+
+/* Uses the above routine to output a string... */
+void puts(unsigned char *text)
+{
+    int i;
+
+    for (i = 0; i < strlen((const char*)text); i++)
+    {
+        putch(text[i]);
+    }
+}
+
+/* Sets the forecolor and backcolor that we will use */
+void settextcolor(unsigned char forecolor, unsigned char backcolor)
+{
+    /* Top 4 bytes are the background, bottom 4 bytes
+    *  are the foreground color */
+  attrib = (backcolor << 4) | (forecolor & 0x0F);
+}
+
+/* Sets our text-mode VGA pointer, then clears the screen for us */
+void init_video(void)
+{
+    textmemptr = (unsigned short *)0xB8000;
+    cls();
+}
+//////////////////////////////////////////////////////////////////////
+
+
+Now how about that VGA stuff? It is actually simple. From Brandon's
+tutorial:
+
+  Fortunately, a VGA video card makes it rather simple: It gives us a
+  chunk of memory that we write both attribute byte and character byte
+  pairs in order to show information on the screen. The VGA controller
+  will take care of automatically drawing the updated changes on the
+  screen. Scrolling is managed by our kernel software. This is
+  technically our first driver, that we will write right now.
+
+  As mentioned, above, the text memory is simply a chunk of memory in
+  our address space. This buffer is located at 0xB8000, in physical
+  memory. The buffer is of the datatype 'short', meaning that each
+  item in this text memory array takes up 16-bits, rather than the
+  usual 8-bits that you might expect. Each 16-bit element in the text
+  memory buffer can be broken into an 'upper' 8-bits and a 'lower'
+  8-bits. The lower 8 bits of each element tells the display
+  controller what character to draw on the screen. The upper 8-bits is
+  used to define the foreground and background colors of which to draw
+  the character.
+
+  The upper 8-bits of each 16-bit text element is called an 'attribute
+  byte', and the lower 8-bits is called the 'character byte'. As you
+  can see from the above table, mapping out the parts of each 16-bit
+  text element, the attribute byte gets broken up further into 2
+  different 4-bit chunks: 1 representing background color and 1
+  representing foreground color. Now, because of the fact that only
+  4-bits define each color, there can only be a maximum of 16
+  different colors to choose from (Using the equation (num bits ^ 2) -
+  4^2 = 16). Below is a table of the default 16-color palette.
+
+   Finally, to access a particular index in memory, there is an
+   equation that we must use. The text mode memory is a simple
+   'linear' (or flat) area of memory, but the video controller makes
+   it appear to be an 80x25 matrix of 16-bit values. Each line of text
+   is sequential in memory; they follow eachother. We therefore try to
+   break up the screen into horizontal lines. The best way to do this
+   is to use the following equation:
+
+      index = (y_value * width_of_screen) + x_value;
+
+   This equation shows that to access the index in the text memory
+   array for say (3, 4), we would use the equation to find that 4 * 80
+   + 3 is 323. This means that to draw to location (3, 4) on the
+   screen, we need to write to do something similar to this:
+
+   	   unsigned short *where = (unsigned short *)0xB8000 + 323;
+	   *where = character | (attribute << 8);
+
+
+
+I.C. The linker script
+----------------------
+
+OK, we are basically done with code. All we have to do is make a
+bootable kernel out of them.
+
+One way to get all objects linked into a bootable kernel is to use an
+explicit linker script (another way is to not use a linker script at
+all, and let ld figure out where things will be placed - we will show
+this later [XXX TODO]). This is the linker script (save as link.ld;
+explanation follows):
+
+
+ENTRY(start)
+phys = 0x00100000;
+SECTIONS
+{
+  .text phys : AT(phys) {
+    code = .;
+    *(.text)
+    *(.rodata)
+    . = ALIGN(4096);
+  }
+  .data : AT(phys + (data - code))
+  {
+    data = .;
+    *(.data)
+    . = ALIGN(4096);
+  }
+  .bss : AT(phys + (bss - code))
+  {
+    bss = .;
+    *(.bss)
+    . = ALIGN(4096);
+  }
+  end = .;
+}
+
+
+While I am not linker script wizzard myself, there is not much magic
+in the linker script. Here is some info that you can find in the
+'Using Ld' document
+(http://sourceware.org/binutils/docs-2.15/ld/index.html)
+
+* With ENTRY), we set the entry point (the first instruction to
+  execute in a program). The argument is a symbol name. Basically, we
+  tell the linker that we want the start of the object to be linked as
+  the first file in the list as it contains the entry point.
+
+* You use the SECTIONS command to describe the memory layout of the
+  output file.
+
+* Every loadable or allocatable output section has two addresses. The
+  first is the VMA, or virtual memory address. This is the address the
+  section will have when the output file is run. The second is the
+  LMA, or load memory address. This is the address at which the
+  section will be loaded. In most cases the two addresses will be the
+  same. An example of when they might be different is when a data
+  section is loaded into ROM, and then copied into RAM when the
+  program starts up (this technique is often used to initialize global
+  variables in a ROM based system). In this case the ROM address would
+  be the LMA, and the RAM address would be the VMA.  The linker will
+  normally set the LMA equal to the VMA. You can change that by using
+  the AT keyword. The expression lma that follows the AT keyword
+  specifies the load address of the section.
+
+* Phys is a variable that is used later throughout the script. It is
+  where we want our binary to be loaded. The data segment will be
+  loaded above the text (page aligned), and the bss
+
+* ALIGN(4096) makes each section start on a 4096 byte boundary. In
+  this case, that means that each section will start on a separate
+  'page' in memory.
+
+You can now link the various object files into a big ELF binary as follows:
+
+	ld -T link.ld -o kernel.bin start.o main.o scrn.o
+
+
+I.D.  Makefile
+---------------
+
+So far we have generated everything by hand which is tedious. Below is
+the Makefile that you can use to reduce the pain:
+
+CFLAGS  := -fno-stack-protector -fno-builtin -nostdinc -O -g -Wall -I.
+LDFLAGS := -nostdlib -Wl,-N -Wl,-Ttext -Wl,100000
+
+all:	kernel.bin
+
+kernel.bin:	start.o	main.o scrn.o
+	ld -T link.ld -o kernel.bin start.o main.o scrn.o
+	@echo Done!
+
+kernel2.bin: start.asm main.c scrn.c start.o
+	gcc -o kernel.bin $(CFLAGS) start.o main.c scrn.c $(LDFLAGS)
+
+
+start.o: start.asm
+	nasm  -f elf -o start.o start.asm
+
+main.o: main.c system.h
+	gcc $(CFLAGS) -c -o main.o main.c
+
+scrn.o: scrn.c system.h
+	gcc  $(CFLAGS) -c -o scrn.o scrn.c
+
+clean: 
+	rm -f *.o *.bin
+
+
+----------------------------------------------------------------------
+II. The bootable grub image
+----------------------------------------------------------------------
+Let us take stock of where we are: we have created a bootable
+kernel. Now we have to get an image with grub installed on it and make
+sure that our kernel is on the image (as well as a grub menu.lst file
+with an entry that points to our kernel. We will do this the easy way,
+using mtools. 
+
+So, make sure you have the following tools installed (install them
+with sudo apt-get install <package_name> if you do not have them):
+ 
+* mtools
+* grub
+* qemu [or virtualbox]
+
+
+Now we create a bootable grub image. We first use mtools to do so
+
+*** Step 1: tell mtools where to find the c: drive
+
+mtools will pick it up from .mtoolsrc in your home directory
+
+     echo "drive c: file=\"`pwd`/core.img\" partition=1" > ~/.mtoolsrc
+
+
+*** Step 2: Create the image
+dd if=/dev/zero of=core.img count=088704 bs=512
+mpartition -I c:
+mpartition -c -t 88 -h 16 -s 63 c:
+mformat c:
+mmd c:/boot
+mmd c:/boot/grub
+
+*** Step 3: copy the bootloader. We assume they live in /boot/grub/
+
+mcopy /boot/grub/stage1 c:/boot/grub
+mcopy /boot/grub/stage2 c:/boot/grub
+mcopy /boot/grub/fat_stage1_5 c:/boot/grub
+
+*** Step 4: grub magic
+
+create a bmap to specify your device map:
+echo "(hd0) core.img" > bmap
+
+printf "geometry (hd0) 88 16 63 \n root (hd0,0) \n setup (hd0)\n" | /usr/sbin/grub --device-map=bmap  --batch
+
+*** Step 5: add a grub menu:
+
+create a file menu.lst with following content:
+
+       serial --unit=0 --stop=1 --speed=115200 --parity=no --word=8
+       terminal --timeout=0 serial console
+
+       default 0
+       timeout = 0
+       title = mykernel
+       kernel=/boot/grub/kernel.bin
+       #       module=/boot/grub/additional_modules
+
+and copy it to core.img
+    
+    mcopy  menu.lst  c:/boot/grub/
+
+** Step 6: copy the kernel
+
+   mcopy  kernel.bin c:/boot/grub/
+
+done!
+
+
+*** Update:
+In case you want to use VirtualBox, just tell grub to output the bootscreen to the terminal instead of the serial port. So menu.lst will be:
+
+#serial --unit=0 --stop=1 --speed=115200 --parity=no --word=8
+#       terminal --timeout=0 serial console
+console=ttyS0 console=tty0 ignore_loglevel
+       default 0
+       timeout = 0
+       title = mykernel
+       kernel=/boot/grub/kernel.bin
+       #       module=/boot/grub/additional_modules
+
+
+
+
+III Booting the kernel in qemu (or virtual box)
+----------------------------------------------------------------------
+qemu -hda core.img
+
+and you should see your kernel in all its glory!
+
+
+
+*** Update: you can convert qemu.img to different formats (e.g., vdi
+    for VirtualBox) using qemu-img convert. For instance (untested, as
+    I no loner have VirtualBox on this machine):
+
+       qemu-img convert -f raw -O vdi image.img image.vdi
+
+   You can then boot the image using VirtualBox
+
+
+
+
+
+*** Acknowledgments
+
+    Thanks to Antonio Nappa for pointing the VirtualBox bit.
