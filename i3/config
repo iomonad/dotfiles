@@ -18,6 +18,7 @@ client.background			#1d1d1d
 bindsym Mod4+Return exec urxvtc
 bindsym Mod4+q kill
 bindsym Mod4+Shift+w exec firefox
+bindsym Mod4+space exec rofi -show run -config /home/iomonad/.config/rofi/rofi-config
 
 bindsym Mod4+j focus right
 bindsym Mod4+k focus down
@@ -50,7 +51,7 @@ bindsym Mod4+e layout default
 
 bindsym Mod4+Shift+space floating toggle
 
-bindsym Mod4+space focus mode_toggle
+#bindsym Mod4+space focus mode_toggle
 
 bindsym Mod4+a focus parent
 
@@ -118,6 +119,7 @@ bar {
                 urgent_workspace     #cd989a #cd989a #2e3436
         }
 }
+
 
 #assign application to workspace
 assign [class="Firefox"] → 2:web
