@@ -1,0 +1,12 @@
+#!/bin/bash
+# 42 Event jar wrapper
+# 2018 - (c) iomonad <https://github.com/iomonad>
+#
+
+if (( $# != 4 )); then
+    echo "Illegal number of parameters"
+	echo "Usage: 42events <username> <password> <event> <driver>"
+	exit 1
+fi
+echo $1 $2 $3 $4
+java -jar -Dwebdriver.gecko.driver="$4" register.jar "$1" "$2" "$3"
