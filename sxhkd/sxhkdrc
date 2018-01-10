@@ -1,164 +1,229 @@
+# vim: set ft=sxhkdrc:
 #
-# sxhkdrc - Hotkey deamon configuration file
-# iomonad (github.com/iomonad/dotfiles)
-# 2017 - <iomonad@riseup.net>
-#
-
-super + shift + Escape
-    bspc quit
-
-# close and kill
-super + {_,shift + }q
-    bspc node -{c,k}
-
-super + shift + t
-    bspc desktop -l next
-
-super + {t,s,f}
-    bspc node -t {tiled,floating,fullscreen}
-
-super + l
-    bspc node -t pseudo_tiled
-
-# Focus the last window/desktop
-super + {grave,Tab}
-    bspc {node,desktop} -f last
-
-# Swap the focused window with the last window
-super + apostrophe
-    bspc node -s last
-
-# Focus the next older/newer window
-super + {o,i}
-    bspc control --record-history off; \
-    bspc node {older,newer} -f; \
-    bspc control --record-history on
-
-super + {comma,period}
-	bspc desktop -C {backward,forward}
-
-
-#
-# preselect
+# bspwm hotkeys
 #
 
-s
-# preselect the direction
-super + ctrl + {Left,Down,Up,Right}
-    bspc node -p {west,south,north,east}
+alt + shift + q
+	bspc quit 1 && pkill bar && pkill dzen2
 
-# preselect the ratio
-super + ctrl + {1-9}
-    bspc node -o 0.{1-9}
+# Toggle panels
+alt + q
+	{pkill panel; pkill cat; pkill conky; bspc config top_padding 0 ,\
+	bspc config top_padding 14; $HOME/.config/bspwm/panel/panel & }
 
-# cancel the preselection for the focused node
-super + ctrl + space
-    bspc node -p cancel
 
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# Workstation Monitor
+alt + w
+	bspc monitor -f next
 
-super + y
-    bspc node -n last.!automatic
+# Kill all detached tmux sessions
+alt + x
+	$HOME/scripts/tmux_purge
 
-super + m
-    bspc node -s biggest
+# Close window
+alt + shift + x
+	bspc  window -c
 
-# Circulate the leaves of the tree of the focused desktop
-super + {c,shift + c}
-    bspc node @/ --circulate {forward,backward}
+# Kill window
+alt + ctrl + shift + x
+	bspc  window -k
 
-super + ctrl + comma
-    bspc node @/ --rotate 90
+# Toggle tile
+alt + {_,shift +} t
+	bspc window -t {floating,fullscreen}
 
-super + {_,shift + }{h,j,k,l}
-    bspc node -{f,s} {west,south,north,east}
+# Lock node
+alt + shift + p
+	bspc window -t private
 
-super + {_,shift + }c
-    bspc node -f {next,prev}
+# Balance tree
+alt + b
+	bspc desktop -B
 
-super + {comma,period}
-    bspc desktop -C {backward,forward}
+# Presel window for splitting
+alt + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
 
-super + bracket{left,right}
-    bspc desktop -f {prev,next}
+# Move window into presel position
+alt + shift {a,s,d,f}
+	bspc window -w {left.manual,down.manual,up.manual,right.manual}
 
-super + ctrl + {h,j,k,l}
-    bspc node -p {west,south,north,east}
+# Select windows, or move
+alt + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
 
-super + ctrl + {_,shift + }space
-    bspc {node -p cancel,desktop -c}
+# Resize nodes
+alt + {a,f}
+	$HOME/scripts/window_move.sh {-p,-n} -x -s 20
+alt + {s,d}
+	$HOME/scripts/window_move.sh {-p,-n} -y -s 20
 
-super + alt + {h,j,k,l}
-    bspc node -e {west -10,south +10,north -10,east +10}
+# Move floating windows (requires baskerville's xdo)
+alt + {Left,Right,Up,Down}
+    xdo move {-x -20,-x +20,-y -20,-y +20}
 
-super + alt + shift + {h,j,k,l}
-    bspc node -e {right -10,up +10,down -10,left +10}
+# Resize floating windows
+alt + shift + {Left,Right,Up,Down}
+    xdo resize {-w -20,-w +20,-h -20,-h +20}    bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}
 
-super + ctrl + {1-9}
-    bspc node -r 0.{1-9}
+# Move current window to largest space
+alt + Return
+	bspc window -s biggest
 
-super + {Left,Down,Up,Right}
-    xdo move {-x -20,-y +20,-y -20,-x +20}
+# Mirror and flip leaves of tree
+alt + {comma,period}
+	bspc desktop -F {horizontal,vertical}
 
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+# Rotate leaves of tree
+alt + shift + {comma,period}
+	bspc desktop -R {90,270}
 
-# Balance windows
-super + b
-   bspc desktop --balance
+# Select previous / next desktop
+alt + {p,n}
+	bspc desktop -f {prev.occupied,next.occupied} 
 
-~button1
-    bspc pointer -g focus
+# Lock a window from closing
+alt + Escape
+	bspc window -t locked 
 
-super + button{1,2,3}
-    bspc pointer -g {move,resize_side,resize_corner}
+# Toggle monocle
+alt + space 
+	bspc desktop -l next
 
-super + !button{1,2,3}
+# Toggle pseudotiled (floating in tile)
+alt + shift + space 
+	bspc window -t pseudo_tiled
+
+# Focus on floating / tiled
+alt + e
+	bspc window -f {next.floating,next.tiled}
+
+# Change desktop padding
+alt + {_, shift} + bracketright
+	bspc config -d focused right_padding $((`bspc config -d focused right_padding` {+,-} 20 ))
+
+alt + {_, shift} + bracketleft
+	bspc config -d focused left_padding $((`bspc config -d focused left_padding` {+,-} 20 ))
+
+ctrl + {_, shift} + bracketright
+	bspc config -d focused bottom_padding $((`bspc config -d focused bottom_padding` {+,-} 20 ))
+
+ctrl + {_, shift} + bracketleft
+	bspc config -d focused top_padding $((`bspc config -d focused top_padding` {+,-} 20 ))
+
+alt + shift + {minus,equal}
+	bspc config -d focused right_padding $((`bspc config -d focused right_padding` {+,-} 20 )); \
+	bspc config -d focused left_padding $((`bspc config -d focused left_padding` {+,-} 20 )); \
+	bspc config -d focused bottom_padding $((`bspc config -d focused bottom_padding` {+,-} 20 )); \
+	bspc config -d focused top_padding $((`bspc config -d focused top_padding` {+,-} 20 ));
+
+
+# Change window gap
+alt + {minus,equal}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+# Set splitting ratio of windows
+alt + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+# Focus or move window to desktops
+alt + {_,shift + }{1-9,0}
+    bspc {desktop -f, window -d} $(bspc query -M -m)/{i,ii,iii,iv,v,vi,vii,viii,ix,x}
+
+#
+# mouse bindings
+#
+
+# Move or resize window
+alt + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+# Needed for ^^^^
+alt + !button{1-3}
     bspc pointer -t %i %i
 
-super + @button{1,2,3}
+
+super + @button{1-3}
     bspc pointer -u
 
 #
-# wm independent hotkeys
+# spawn programs
 #
 
-super + Return
-    urxvtc
+alt + shift + backslash
+	create_frame 
 
+alt + shift + Return
+	urxvtc 
 
-super + F3
-    pamixer -i 2
+alt + ctrl + Return
+	 bspc rule -a urxvt -o pseudo_tiled=on && urxvtc
 
-super + w
-    ~/bin/chromium
+alt + r
+	$HOME/scripts/lens
 
-super + e
-    emacs-25.1
-super + space
-    rofi -show run -terminal urxvtc -lines 7 -eh 3 -width 100 -padding 200 -opacity 80 -bw 0 -bc "#555555" -bg "#222222" -hlbg "#222222" -hlfg "#c79595" -fg "#ffffff" -font "Terminus 15"
-# uguush screen capture
-control + super + shift + w
-    ~/bin/uguush -o mixtape -w
+alt + shift + r
+	$HOME/scripts/dmenu/spotlight
 
-# uguush fullscreen
-control + super + shift + f
-    ~/bin/uguush -o mixtape -f
+alt + shift + b
+	firefox
 
-# uguush selection
-control + super + shift + s
-    ~/bin/uguush -o mixtape -s
+alt + shift + n
+	xterm
+
+alt + z
+	zathura
+
+alt + Tab
+	{$HOME/.config/bspwm/panel/launcher_menu $HOME/.config/bspwm/panel/launcher_apps, pkill dzen2}
+
+Print
+	scrot -q 100
+
+#
+# Media keys
+#
+
+XF86AudioRaiseVolume
+	$HOME/.config/bspwm/panel/notify_volume + 3
+
+XF86AudioLowerVolume
+	$HOME/.config/bspwm/panel/notify_volume - 3
+
+XF86AudioMute
+	$HOME/.config/bspwm/panel/notify_volume !
+
+XF86Sleep
+	pm-suspend
+
+XF86AudioPlay
+	$HOME/.config/bspwm/panel/notify_mpd -t 
+	
+XF86AudioNext
+	$HOME/.config/bspwm/panel/notify_mpd -n
+
+XF86AudioPrev
+	$HOME/.config/bspwm/panel/notify_mpd -p
+
+XF86WebCam
+	sed -i 's/card [0-9]/card {0,1}/' $HOME/.asoundrc
+
+#
+# Dzen applets
+#
+alt + F1
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_music.sh
+alt + F2
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_network.sh
+alt + F3
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_battery.sh
+alt + F4
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_hardware.sh
+alt + F5
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_date.sh
+alt + F6
+	$HOME/.xmonad/sc $HOME/.xmonad/scripts/dzen_log.sh
 
 # make sxhkd reload its configuration files:
-super + Escape
-    pkill -USR1 -x sxhkd
-
-# Your song sucks
-super + shift + m
-	mpc next
-
-# Start pcmanfm
-super + p
-  ck-launch-session dbus-launch pcmanfm
+alt + shift + Escape
+	pkill -USR1 -x sxhkd
