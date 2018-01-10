@@ -76,3 +76,4 @@ newsbeuter/history.cmdline
 newsbeuter/history.search
 sbcl/quicklisp
 *.db
+*gdb_history*

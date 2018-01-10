@@ -1,8 +1,7 @@
-
 # fonts
 font pango:ProFont 10
 floating_modifier Mod4
-new_window normal 
+new_window normal
 
 # colors
 #class			             border	 backgr.  text
@@ -61,10 +60,10 @@ bindsym Mod4+3 workspace 3:im
 bindsym Mod4+4 workspace 4:code
 bindsym Mod4+5 workspace 5:media
 bindsym Mod4+6 workspace 6:share
-bindsym Mod4+7 workspace 7:porn
-bindsym Mod4+8 workspace viii
-bindsym Mod4+9 workspace iv
-bindsym Mod4+0 workspace x
+bindsym Mod4+7 workspace 7:re
+bindsym Mod4+8 workspace 8:porn
+bindsym Mod4+9 workspace 9:sec
+bindsym Mod4+0 workspace 10:hell
 
 bindsym Mod4+Shift+1 move workspace 1:main
 bindsym Mod4+Shift+2 move workspace 2:web
@@ -72,10 +71,10 @@ bindsym Mod4+Shift+3 move workspace 3:im
 bindsym Mod4+Shift+4 move workspace 4:code
 bindsym Mod4+Shift+5 move workspace 5:media
 bindsym Mod4+Shift+6 move workspace 6:share
-bindsym Mod4+Shift+7 move workspace 7:porn
-bindsym Mod4+Shift+8 move workspace viii
-bindsym Mod4+Shift+9 move workspace iv
-bindsym Mod4+Shift+0 move workspace x
+bindsym Mod4+Shift+7 move workspace 7:re
+bindsym Mod4+Shift+8 move workspace 8:porn
+bindsym Mod4+Shift+9 move workspace 9:sec
+bindsym Mod4+Shift+0 move workspace 10:hell
 
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
