@@ -6,7 +6,7 @@
   width="60" height="60" align="right"></a>
 
   > Dotfiles backup.
- 
+
 **Installation*
 ```bash
 git clone https://github.com/iomonad/dotfles ~/etc
@@ -23,4 +23,7 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/IMG_20180107_120412.jpg"/>
-</p> 
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/IMG_20180110_204938.jpg"/>
+</p>
