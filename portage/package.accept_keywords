@@ -1,5 +1,5 @@
 # required by =www-client/firefox-bin-57.0.1 (argument)
-=www-client/firefox-bin-57.0.1 ~amd64
+=www-client/firefox-bin-57.0.4-r1 ~amd64 # fixed due bump
 # required by x11-wm/stumpwm-contrib-20171028::gentoo
 =x11-wm/stumpwm-1.0.1_rc ~amd64
 # required by x11-wm/stumpwm-1.0.1_rc::gentoo[contrib]
@@ -22,3 +22,14 @@
 =dev-util/idea-ultimate-2017.3.1.173.3942.27 ~amd64
 # required by leiningen-bin (argument)
 =dev-java/leiningen-bin-2.7.1-r1 ~amd64
+# required by x11-wm/stumpwm-1.0.1_rc::gentoo
+# required by x11-wm/stumpwm-contrib-20171028::gentoo
+=dev-lisp/clx-0.7.4-r1 ~amd64
+# required by x11-wm/stumpwm-1.0.1_rc::gentoo
+# required by x11-wm/stumpwm-contrib-20171028::gentoo
+=dev-lisp/alexandria-20171029 ~amd64
+# required by dev-util/radare2-2.2.0::gentoo[system-capstone]
+# required by radare2 (argument)
+=dev-libs/capstone-3.0.5_rc2-r1 ~amd64
+# required by radare2 (argument)
+=dev-util/radare2-2.2.0 ~amd64
