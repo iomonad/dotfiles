@@ -1,2 +1,9 @@
 #!/bin/bash
- sudo teensy-loader-cli -mmcu=atmega32u4 -w ergodox_ez_layout.hex -v
+
+if [ -z "$1" ]
+then
+	echo "Usage: $0 <firmware.hex>"
+	exit 0
+fi
+
+sudo teensy-loader-cli -mmcu=atmega32u4 -w $@ -v
