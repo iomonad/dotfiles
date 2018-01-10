@@ -1,0 +1,2 @@
+#!/bin/bash
+ sudo teensy-loader-cli -mmcu=atmega32u4 -w ergodox_ez_layout.hex -v
