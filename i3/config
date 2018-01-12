@@ -119,6 +119,7 @@ bar {
         }
 }
 
+exec $HOME/.config/i3/bar
 
 #assign application to workspace
 assign [class="Firefox"] → 2:web
