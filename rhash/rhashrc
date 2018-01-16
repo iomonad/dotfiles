@@ -22,4 +22,4 @@
 #crc-accept=.sfv,.md5,.sha1,.tiger,.tth,.aich
 
 ; percents are switched off by default
-#percents=on
+percents=on
