@@ -13,3 +13,6 @@ x11-base/xorg-server -minimal
 # required by dev-lang/scala-2.11.4-r1::gentoo[-binary]
 # required by scala (argument)
 >=media-libs/gd-2.2.4 fontconfig
+# required by media-sound/ncmpcpp-0.7.7::gentoo[unicode]
+# required by ncmpcpp (argument)
+>=dev-libs/boost-1.63.0 icu
