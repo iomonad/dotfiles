@@ -50,4 +50,6 @@ main () {
     _retrieve_rc
 }
 
-main
+sandbox
+sudo ./$0
+exit 0
