@@ -77,3 +77,4 @@ newsbeuter/history.search
 sbcl/quicklisp
 *.db
 *gdb_history*
+radare2/history
