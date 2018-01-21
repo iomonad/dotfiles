@@ -15,4 +15,4 @@ compton -c -t-5 -l-5 -r3 -o.48 &
 #exec xmonad
 #exec ~/documents/sources/stumpwm/stumpwm
 exec i3
-xset r rate 178 60
+xset r rate 220 60
