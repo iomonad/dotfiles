@@ -16,3 +16,12 @@ x11-base/xorg-server -minimal
 # required by media-sound/ncmpcpp-0.7.7::gentoo[unicode]
 # required by ncmpcpp (argument)
 >=dev-libs/boost-1.63.0 icu
+# required by sys-power/suspend-1.0_p20150810::gentoo[lzo]
+# required by sys-power/suspend (argument)
+>=dev-libs/lzo-2.09 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by sys-power/suspend (argument)
+>=dev-libs/libgcrypt-1.8.1 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by sys-power/suspend (argument)
+>=dev-libs/libgpg-error-1.27-r1 static-libs

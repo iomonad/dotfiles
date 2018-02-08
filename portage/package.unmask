@@ -1,0 +1,7 @@
+# required by =dev-libs/msgpack-2.1.1 (argument)
+# /usr/portage/profiles/package.mask:
+# Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
+# Packages depending on this library need to be tested first before
+# it is unmasked. Possibly some slotting is still needed.
+# Package testing tracked in bug #611022.
+=dev-libs/msgpack-2.1.1

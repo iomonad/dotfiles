@@ -1,5 +1,5 @@
 # required by =www-client/firefox-bin-57.0.1 (argument)
-=www-client/firefox-bin-57.0.4-r1 ~amd64 # fixed due bump
+=www-client/firefox-bin-58.0.1 ~amd64 # fixed due bump
 # required by x11-wm/stumpwm-contrib-20171028::gentoo
 =x11-wm/stumpwm-1.0.1_rc ~amd64
 # required by x11-wm/stumpwm-1.0.1_rc::gentoo[contrib]
@@ -33,3 +33,7 @@
 =dev-libs/capstone-3.0.5_rc2-r1 ~amd64
 # required by radare2 (argument)
 =dev-util/radare2-2.2.0 ~amd64
+# required by dev-libs/msgpack (argument)
+=dev-libs/msgpack-1.1.0 ~amd64
+# required by =dev-libs/msgpack-2.1.1 (argument)
+=dev-libs/msgpack-2.1.1 ~amd64
