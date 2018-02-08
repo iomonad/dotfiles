@@ -24,6 +24,11 @@ bindsym Mod4+k focus down
 bindsym Mod4+i focus up
 bindsym Mod4+l focus left
 
+# Handle simple back selection
+
+bindsym Mod4+Tab focus left
+bindsym Mod4+Shift+Tab workspace back_and_forth
+
 bindsym Mod4+Left focus left
 bindsym Mod4+Down focus down
 bindsym Mod4+Up focus up
@@ -120,6 +125,7 @@ bar {
 }
 
 exec $HOME/.config/i3/bar
+#exec xautolock -detectsleep -time 5 -locker "i3lock -d -c 000070" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
 
 #assign application to workspace
 assign [class="Firefox"] → 2:web

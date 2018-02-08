@@ -53,20 +53,10 @@ battery_icon() {
 	fi
 }
 
-battery_percentage() {
-	percentage=$(acpi -b | cut -d "," -f 2 | tr -d " %")
-	if [ -z "$percentage" ]; then
-		echo "AC"
-	elif [ $percentage -le $BATTERY_CRITICAL_PERCENTAGE ] && [ $battery_status == "Discharging" ]; then
-		echo 100 | gdbar $BAR_STYLE -fg $BATTERY_CRITICAL_FG_COLOR -bg $BATTERY_CRITICAL_BG_COLOR
-	else
-		bar "$percentage"
-	fi
-}
-
 battery() {
 	battery_status=$(acpi -b | cut -d ' ' -f 3 | tr -d ',')
-	echo $(battery_icon) $(battery_percentage)
+	PP=$( acpi -b | cut -d "," -f 2 | tr -d "%" | tr -d " ")
+	echo bat: $PP%
 }
 
 wireless_quality() {
@@ -91,8 +81,8 @@ clock() {
 
 while :; do
 	echo -n "$(battery)$SEP"
-	echo -n "$(icon $WIRELESS_ICON) $(wireless_quality)$SEP"
-	echo -n "$(icon $VOLUME_ICON) $(volume)$SEP"
-	echo "$(icon $CLOCK_ICON) $(clock) "
+#	echo -n "$(icon $WIRELESS_ICON) $(wireless_quality)$SEP"
+#	echo -n "$(icon $VOLUME_ICON) $(volume)$SEP"
+	echo "$(clock) "
 	sleep 3
 done | dzen2 -fg $FG_COLOR -bg $BG_COLOR -ta $TEXT_ALIGNMENT -w $WIDTH -h $HEIGHT -x $X -y $Y -fn $FONT

@@ -87,3 +87,7 @@ host trosa
     hostname pub.trosa.io
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/github_rsa
+
+host botnet
+    hostname 188.166.30.148
+    user root
