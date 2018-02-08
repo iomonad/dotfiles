@@ -81,6 +81,27 @@ bindsym Mod4+Shift+8 move workspace 8:porn
 bindsym Mod4+Shift+9 move workspace 9:sec
 bindsym Mod4+Shift+0 move workspace 10:hell
 
+# Suspend and locking || x220 specifics
+
+# indsym XF86ScreenSaver exec ~/.config/i3/lock.sh
+# bindsym XF86Sleep exec sudo pm-hibernate
+# bindsym XF86Suspend exec sudo pm-suspend
+# bindsym XF86Battery exec sudo pm-suspend-hybrid
+
+# Remap fn
+bindsym Mod4+Shift+F2 exec ~/.config/i3/lock.sh
+bindsym Mod4+Shift+F3 exec sudo pm-hibernate
+bindsym Mod4+Shift+F4 exec sudo pm-suspend
+#bindsym Mod4+Shift+F3 exec sudo pm-suspend-hybrid
+
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+q exit
