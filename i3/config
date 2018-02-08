@@ -110,11 +110,11 @@ bindsym Mod4+r mode "resize"
 # bar
 bar {
     mode dock
-        position top 
+        position top
         font pango:ProFont 10
         workspace_buttons yes
         colors {
-            background #101010
+				background #101010
                 statusline #101010
                 separator #191919
                 focused_workspace    #121212 #101010 #566d17
@@ -122,6 +122,7 @@ bar {
                 inactive_workspace   #101010 #191919 #56594e
                 urgent_workspace     #cd989a #cd989a #2e3436
         }
+		status_command i3blocks
 }
 
 exec $HOME/.config/i3/bar

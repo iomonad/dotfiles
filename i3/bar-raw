@@ -91,4 +91,4 @@ while :; do
 	echo -n "$"
 	echo "$(clock) "
 	sleep 3
-done | dzen2 -fg $FG_COLOR -bg $BG_COLOR -ta $TEXT_ALIGNMENT -w $WIDTH -h $HEIGHT -x $X -y $Y -fn $FONT
+done
