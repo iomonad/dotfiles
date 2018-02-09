@@ -146,7 +146,6 @@ bar {
 		status_command i3blocks
 }
 
-exec $HOME/.config/i3/bar
 #exec xautolock -detectsleep -time 5 -locker "i3lock -d -c 000070" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
 
 #assign application to workspace

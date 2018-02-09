@@ -1,0 +1,16 @@
+#!/usr/bin/perl -T
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+
+# Simple manager to execute some
+# coreboot tasks like backups, flashs
+# and updates.
+
+sub main {
+	print "Hello\n";
+}
+
+main

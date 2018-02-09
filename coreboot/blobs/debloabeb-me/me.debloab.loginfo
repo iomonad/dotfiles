@@ -1,0 +1,24 @@
+ME/TXE image detected
+Found FPT header at 0x10
+Found 1 partition(s)
+Found FTPR header: FTPR partition spans from 0xcc000 to 0x142000
+ME/TXE firmware version 7.1.14.1107
+Public key match: Intel ME, firmware versions 7.x.x.x, 8.x.x.x
+Reading partitions list...
+ FTPR (0x000cc000 - 0x000142000, 0x00076000 total bytes): NOT removed
+Removing partition entries in FPT...
+Removing EFFS presence flag...
+Correcting checksum (0xed)...
+Reading FTPR modules list...
+ UPDATE           (LZMA   , 0x10ea00 - 0x10ea92       ): removed
+ BUP              (Huffman, fragmented data, ~43 KiB  ): NOT removed, essential
+ KERNEL           (Huffman, fragmented data, ~120 KiB ): removed
+ POLICY           (Huffman, fragmented data, ~84 KiB  ): removed
+ HOSTCOMM         (LZMA   , 0x10ea92 - 0x114018       ): removed
+ RSA              (LZMA   , 0x114018 - 0x118aab       ): removed
+ CLS              (LZMA   , 0x118aab - 0x11d466       ): removed
+ TDT              (LZMA   , 0x11d466 - 0x12353b       ): removed
+ FTCS             (Huffman, fragmented data, ~16 KiB  ): removed
+The ME minimum size should be 913408 bytes (0xdf000 bytes)
+Checking the FTPR RSA signature... VALID
+Done! Good luck!
