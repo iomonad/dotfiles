@@ -1,0 +1,718 @@
+root@raspberrypi:~/coreboot# make crossgcc-i386 CPUS=4
+fatal: Not a git repository (or any of the parent directories): .git
+Welcome to the coreboot cross toolchain builder v1.50 (October 15th, 2017)
+
+Building toolchain using 4 thread(s).
+
+Target architecture is i386-elf
+
+Found compatible Ada compiler, enabling Ada support by default.
+
+Downloading and verifing tarballs ...
+ * gmp-6.1.2.tar.xz (cached)... hash verified (9dc6981197a7d92f339192eea974f5eca48fcffe)
+ * mpfr-3.1.5.tar.xz (cached)... hash verified (c0fab77c6da4cb710c81cc04092fb9bea11a9403)
+ * mpc-1.0.3.tar.gz (cached)... hash verified (b8be66396c726fdc36ebb0f692ed8a8cca3bcc66)
+ * binutils-2.29.1.tar.xz (cached)... hash verified (172244a349d07ec205c39c0321cbc354c125e78e)
+ * gcc-6.3.0.tar.bz2 (cached)... hash verified (928ab552666ee08eed645ff20ceb49d139205dea)
+make[1]: *** [build-i386] Error 2
+util/crossgcc/Makefile.inc:46: recipe for target 'crossgcc-i386' failed
+root@raspberrypi:~/coreboot# make
+#
+# configuration written to /root/coreboot/.config
+#
+    HOSTCC     util/sconfig/lex.yy.o
+    HOSTCC     util/sconfig/sconfig.tab.o
+    HOSTCC     util/sconfig/main.o
+    HOSTCC     util/sconfig/sconfig (link)
+    SCONFIG    mainboard/lenovo/x220/devicetree.cb
+    HOSTCC     nvramtool/cli/nvramtool.o
+    HOSTCC     nvramtool/cli/opts.o
+    HOSTCC     nvramtool/cmos_lowlevel.o
+    HOSTCC     nvramtool/cmos_ops.o
+    HOSTCC     nvramtool/common.o
+    HOSTCC     nvramtool/compute_ip_checksum.o
+    HOSTCC     nvramtool/hexdump.o
+    HOSTCC     nvramtool/input_file.o
+    HOSTCC     nvramtool/layout.o
+    HOSTCC     nvramtool/accessors/layout-common.o
+    HOSTCC     nvramtool/accessors/layout-text.o
+    HOSTCC     nvramtool/accessors/layout-bin.o
+    HOSTCC     nvramtool/lbtable.o
+    HOSTCC     nvramtool/reg_expr.o
+    HOSTCC     nvramtool/cbfs.o
+    HOSTCC     nvramtool/accessors/cmos-mem.o
+    HOSTCC     nvramtool/nvramtool (link)
+    OPTION     option_table.h
+    CC         bootblock/mainboard/lenovo/x220/static.o
+    CC         bootblock/arch/x86/boot.o
+    GEN        generated/bootblock.ld
+    CP         bootblock/arch/x86/bootblock.ld
+    HOSTCC     util/romcc/romcc (this may take a while)
+    ROMCC      generated/bootblock.inc
+    CC         bootblock/arch/x86/bootblock_romcc.o
+    CC         bootblock/arch/x86/cpu_common.o
+    GEN        build.h
+    CC         bootblock/arch/x86/id.o
+    CC         bootblock/arch/x86/memcpy.o
+    CC         bootblock/arch/x86/memset.o
+    CC         bootblock/arch/x86/mmap_boot.o
+    CC         bootblock/arch/x86/timestamp.o
+    CC         bootblock/arch/x86/walkcbfs.o
+    CC         bootblock/commonlib/cbfs.o
+    CC         bootblock/commonlib/iobuf.o
+    CC         bootblock/commonlib/lz4_wrapper.o
+    CC         bootblock/commonlib/mem_pool.o
+    CC         bootblock/commonlib/region.o
+    CC         bootblock/console/die.o
+    CC         bootblock/console/post.o
+    CC         bootblock/console/vsprintf.o
+    CC         bootblock/console/vtxprintf.o
+    CC         bootblock/cpu/x86/lapic/boot_cpu.o
+    CC         bootblock/cpu/x86/mtrr/earlymtrr.o
+    CC         bootblock/cpu/x86/tsc/delay_tsc.o
+    CC         bootblock/device/device_simple.o
+    CC         bootblock/device/i2c.o
+    CC         bootblock/drivers/pc80/rtc/mc146818rtc.o
+    CC         bootblock/drivers/pc80/rtc/mc146818rtc_boot.o
+    CC         bootblock/drivers/spi/adesto.o
+    CC         bootblock/drivers/spi/amic.o
+    CC         bootblock/drivers/spi/atmel.o
+    CC         bootblock/drivers/spi/eon.o
+    CC         bootblock/drivers/spi/gigadevice.o
+    CC         bootblock/drivers/spi/macronix.o
+    CC         bootblock/drivers/spi/spansion.o
+    CC         bootblock/drivers/spi/spi-generic.o
+    CC         bootblock/drivers/spi/spi_flash.o
+    CC         bootblock/drivers/spi/sst.o
+    CC         bootblock/drivers/spi/stmicro.o
+    CC         bootblock/drivers/spi/winbond.o
+    CC         bootblock/lib/boot_device.o
+    CC         bootblock/lib/bootmode.o
+    HOSTCC     cbfstool/fmaptool.o
+    HOSTCC     cbfstool/cbfs_sections.o
+    HOSTCC     cbfstool/fmap_from_fmd.o
+    HOSTCC     cbfstool/fmd.o
+    HOSTCC     cbfstool/fmd_parser.o
+    HOSTCC     cbfstool/fmd_scanner.o
+    HOSTCC     cbfstool/fmap.o
+    HOSTCC     cbfstool/kv_pair.o
+    HOSTCC     cbfstool/valstr.o
+    HOSTCC     cbfstool/fmaptool (link)
+    FMAP       build/util/cbfstool/fmaptool -h build/fmap_config.h build/fmap.fmd build/fmap.fmap
+SUCCESS: Wrote 224 bytes to file 'build/fmap.fmap' (and generated header)
+The sections containing CBFSes are: COREBOOT
+    CC         bootblock/lib/cbfs.o
+    CC         bootblock/lib/cbmem_console.o
+    CC         bootblock/lib/delay.o
+    CC         bootblock/lib/fmap.o
+    CC         bootblock/lib/gcc.o
+    CC         bootblock/lib/halt.o
+    CC         bootblock/lib/hexdump.o
+    CC         bootblock/lib/libgcc.o
+    CC         bootblock/lib/memchr.o
+    CC         bootblock/lib/memcmp.o
+    CC         bootblock/lib/prog_loaders.o
+    CC         bootblock/lib/prog_ops.o
+    CC         bootblock/lib/reset.o
+    CC         bootblock/lib/timestamp.o
+    CC         bootblock/lib/version.o
+    LINK       cbfs/fallback/bootblock.debug
+    OBJCOPY    cbfs/fallback/bootblock.elf
+    OBJCOPY    bootblock.raw.bin
+    CC         romstage/mainboard/lenovo/x220/static.o
+    CC         romstage/arch/x86/acpi_s3.o
+    GEN        generated/assembly.inc
+    CC         romstage/arch/x86/assembly_entry.o
+    CC         romstage/arch/x86/boot.o
+    CC         romstage/arch/x86/cbfs_and_run.o
+    CC         romstage/arch/x86/cbmem.o
+    CC         romstage/arch/x86/cpu_common.o
+    CC         romstage/arch/x86/memcpy.o
+    CP         romstage/arch/x86/memlayout.ld
+    CC         romstage/arch/x86/memmove.o
+    CC         romstage/arch/x86/memset.o
+    CC         romstage/arch/x86/mmap_boot.o
+    CC         romstage/arch/x86/postcar_loader.o
+    CC         romstage/arch/x86/timestamp.o
+    CC         romstage/arch/x86/walkcbfs.o
+    CC         romstage/commonlib/cbfs.o
+    CC         romstage/commonlib/iobuf.o
+    CC         romstage/commonlib/lz4_wrapper.o
+    CC         romstage/commonlib/mem_pool.o
+    CC         romstage/commonlib/region.o
+    CC         romstage/console/console.o
+    CC         romstage/console/die.o
+    CC         romstage/console/init.o
+    CC         romstage/console/post.o
+    CC         romstage/console/printk.o
+    CC         romstage/console/vsprintf.o
+    CC         romstage/console/vtxprintf.o
+    CC         romstage/cpu/intel/car/romstage.o
+    CC         romstage/cpu/intel/microcode/microcode.o
+    CC         romstage/cpu/intel/model_206ax/tsc_freq.o
+    CC         romstage/cpu/x86/car.o
+    CC         romstage/cpu/x86/lapic/boot_cpu.o
+    CC         romstage/cpu/x86/mtrr/earlymtrr.o
+    CC         romstage/cpu/x86/tsc/delay_tsc.o
+    CC         romstage/device/device_simple.o
+    CC         romstage/device/dram/ddr2.o
+    CC         romstage/device/dram/ddr3.o
+    CC         romstage/device/i2c.o
+    CC         romstage/device/pci_early.o
+    CC         romstage/drivers/mrc_cache/mrc_cache.o
+    CC         romstage/drivers/pc80/rtc/mc146818rtc.o
+    CC         romstage/drivers/spi/adesto.o
+    CC         romstage/drivers/spi/amic.o
+    CC         romstage/drivers/spi/atmel.o
+    CC         romstage/drivers/spi/eon.o
+    CC         romstage/drivers/spi/gigadevice.o
+    CC         romstage/drivers/spi/macronix.o
+    CC         romstage/drivers/spi/spansion.o
+    CC         romstage/drivers/spi/spi-generic.o
+    CC         romstage/drivers/spi/spi_flash.o
+    CC         romstage/drivers/spi/sst.o
+    CC         romstage/drivers/spi/stmicro.o
+    CC         romstage/drivers/spi/winbond.o
+    CC         romstage/ec/acpi/ec.o
+    CC         romstage/ec/lenovo/h8/panic.o
+    CC         romstage/ec/lenovo/pmh7/pmh7.o
+    CC         romstage/lib/boot_device.o
+    CC         romstage/lib/bootmode.o
+    CC         romstage/lib/cbfs.o
+    CC         romstage/lib/cbmem_common.o
+    CC         romstage/lib/cbmem_console.o
+    CC         romstage/lib/cbmem_stage_cache.o
+    CC         romstage/lib/compute_ip_checksum.o
+    CC         romstage/lib/delay.o
+    CC         romstage/lib/fmap.o
+    CC         romstage/lib/gcc.o
+    CC         romstage/lib/halt.o
+    CC         romstage/lib/hexdump.o
+    CC         romstage/lib/imd.o
+    CC         romstage/lib/imd_cbmem.o
+    CC         romstage/lib/libgcc.o
+    CC         romstage/lib/lzma.o
+    CC         romstage/lib/lzmadecode.o
+    CC         romstage/lib/memchr.o
+    CC         romstage/lib/memcmp.o
+    CC         romstage/lib/memrange.o
+    CC         romstage/lib/prog_loaders.o
+    CC         romstage/lib/prog_ops.o
+    CP         romstage/lib/program.ld
+    CC         romstage/lib/ramtest.o
+    CC         romstage/lib/region_file.o
+    CC         romstage/lib/reset.o
+    CC         romstage/lib/rmodule.o
+    CC         romstage/lib/romstage_handoff.o
+    CC         romstage/lib/romstage_stack.o
+    CC         romstage/lib/spd_bin.o
+    CC         romstage/lib/stack.o
+    CC         romstage/lib/timestamp.o
+    CC         romstage/lib/version.o
+    CC         romstage/mainboard/lenovo/x220/gpio.o
+    CC         romstage/mainboard/lenovo/x220/romstage.o
+    CC         romstage/northbridge/intel/sandybridge/early_init.o
+    CC         romstage/northbridge/intel/sandybridge/iommu.o
+    CC         romstage/northbridge/intel/sandybridge/ram_calc.o
+    CC         romstage/northbridge/intel/sandybridge/raminit.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_common.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_ivy.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_sandy.o
+    CC         romstage/northbridge/intel/sandybridge/report_platform.o
+    CC         romstage/northbridge/intel/sandybridge/romstage.o
+    CC         romstage/southbridge/intel/bd82x6x/early_me.o
+    CC         romstage/southbridge/intel/bd82x6x/early_pch.o
+    CC         romstage/southbridge/intel/bd82x6x/early_pch_common.o
+    CC         romstage/southbridge/intel/bd82x6x/early_rcba.o
+    CC         romstage/southbridge/intel/bd82x6x/early_smbus.o
+    CC         romstage/southbridge/intel/bd82x6x/early_spi.o
+    CC         romstage/southbridge/intel/bd82x6x/early_thermal.o
+    CC         romstage/southbridge/intel/bd82x6x/early_usb.o
+    CC         romstage/southbridge/intel/bd82x6x/me_status.o
+    CC         romstage/southbridge/intel/bd82x6x/reset.o
+    CC         romstage/southbridge/intel/common/gpio.o
+    CC         romstage/southbridge/intel/common/smbus.o
+    LINK       cbfs/fallback/romstage.debug
+    OBJCOPY    cbfs/fallback/romstage.elf
+    CC         ramstage/superio/common/conf_mode.o
+    CC         ramstage/southbridge/intel/common/acpi_pirq_gen.o
+    CC         ramstage/southbridge/intel/common/gpio.o
+    CC         ramstage/southbridge/intel/common/pciehp.o
+    CC         ramstage/southbridge/intel/common/rcba_pirq.o
+    CC         ramstage/southbridge/intel/common/smbus.o
+    CC         ramstage/southbridge/intel/common/spi.o
+    CC         ramstage/southbridge/intel/bd82x6x/azalia.o
+    CC         ramstage/southbridge/intel/bd82x6x/early_pch_common.o
+    CC         ramstage/southbridge/intel/bd82x6x/lpc.o
+    CC         ramstage/southbridge/intel/bd82x6x/madt.o
+    CC         ramstage/southbridge/intel/bd82x6x/me.o
+    CC         ramstage/southbridge/intel/bd82x6x/me_8.x.o
+    CC         ramstage/southbridge/intel/bd82x6x/me_status.o
+    CC         ramstage/southbridge/intel/bd82x6x/pch.o
+    CC         ramstage/southbridge/intel/bd82x6x/pci.o
+    CC         ramstage/southbridge/intel/bd82x6x/pcie.o
+    CC         ramstage/southbridge/intel/bd82x6x/reset.o
+    CC         ramstage/southbridge/intel/bd82x6x/sata.o
+    CC         ramstage/southbridge/intel/bd82x6x/smbus.o
+    CC         ramstage/southbridge/intel/bd82x6x/smi.o
+    CC         ramstage/southbridge/intel/bd82x6x/usb_ehci.o
+    CC         ramstage/southbridge/intel/bd82x6x/usb_xhci.o
+    CC         ramstage/southbridge/intel/bd82x6x/watchdog.o
+    CC         ramstage/northbridge/intel/sandybridge/acpi.o
+    CC         ramstage/northbridge/intel/sandybridge/gma.o
+    CC         ramstage/northbridge/intel/sandybridge/gma_ivybridge_lvds.o
+    CC         ramstage/northbridge/intel/sandybridge/gma_sandybridge_lvds.o
+    CC         ramstage/northbridge/intel/sandybridge/northbridge.o
+    CC         ramstage/northbridge/intel/sandybridge/ram_calc.o
+    CC         ramstage/mainboard/lenovo/x220/static.o
+    CC         ramstage/mainboard/lenovo/x220/acpi_tables.o
+    CC         ramstage/mainboard/lenovo/x220/hda_verb.o
+    CC         ramstage/mainboard/lenovo/x220/mainboard.o
+    CC         ramstage/lib/b64_decode.o
+    CC         ramstage/lib/boot_device.o
+    CC         ramstage/lib/bootmem.o
+    CC         ramstage/lib/bootmode.o
+    CC         ramstage/lib/cbfs.o
+    CC         ramstage/lib/cbmem_common.o
+    CC         ramstage/lib/cbmem_console.o
+    CC         ramstage/lib/cbmem_stage_cache.o
+    CC         ramstage/lib/compute_ip_checksum.o
+    CC         ramstage/lib/coreboot_table.o
+    CC         ramstage/lib/delay.o
+    CC         ramstage/lib/edid.o
+    CC         ramstage/lib/edid_fill_fb.o
+    CC         ramstage/lib/fallback_boot.o
+    CC         ramstage/lib/fmap.o
+    CC         ramstage/lib/gcc.o
+    CC         ramstage/lib/halt.o
+    CC         ramstage/lib/hardwaremain.o
+    CC         ramstage/lib/hexdump.o
+    CC         ramstage/lib/hexstrtobin.o
+    CC         ramstage/lib/imd.o
+    CC         ramstage/lib/imd_cbmem.o
+    CC         ramstage/lib/lzma.o
+    CC         ramstage/lib/lzmadecode.o
+    CC         ramstage/lib/malloc.o
+    CC         ramstage/lib/memchr.o
+    CC         ramstage/lib/memcmp.o
+    CC         ramstage/lib/memrange.o
+    CC         ramstage/lib/prog_loaders.o
+    CC         ramstage/lib/prog_ops.o
+    CC         ramstage/lib/region_file.o
+    CC         ramstage/lib/reset.o
+    CC         ramstage/lib/rmodule.o
+    CC         ramstage/lib/romstage_handoff.o
+    CC         ramstage/lib/romstage_stack.o
+    CC         ramstage/lib/rtc.o
+    CC         ramstage/lib/selfboot.o
+    CC         ramstage/lib/stack.o
+    CC         ramstage/lib/timestamp.o
+    CC         ramstage/lib/version.o
+    CC         ramstage/lib/wrdd.o
+    CC         ramstage/ec/lenovo/pmh7/pmh7.o
+    CC         ramstage/ec/lenovo/h8/bluetooth.o
+    CC         ramstage/ec/lenovo/h8/h8.o
+    CC         ramstage/ec/lenovo/h8/panic.o
+    CC         ramstage/ec/lenovo/h8/wwan.o
+    CC         ramstage/ec/acpi/ec.o
+    CC         ramstage/drivers/spi/adesto.o
+    CC         ramstage/drivers/spi/amic.o
+    CC         ramstage/drivers/spi/atmel.o
+    CC         ramstage/drivers/spi/boot_device_rw_nommap.o
+    CC         ramstage/drivers/spi/eon.o
+    CC         ramstage/drivers/spi/gigadevice.o
+    CC         ramstage/drivers/spi/macronix.o
+    CC         ramstage/drivers/spi/spansion.o
+    CC         ramstage/drivers/spi/spi-generic.o
+    CC         ramstage/drivers/spi/spi_flash.o
+    CC         ramstage/drivers/spi/sst.o
+    CC         ramstage/drivers/spi/stmicro.o
+    CC         ramstage/drivers/spi/winbond.o
+    CC         ramstage/drivers/ricoh/rce822/rce822.o
+    CC         ramstage/drivers/pc80/vga/vga.o
+    CC         ramstage/drivers/pc80/vga/vga_font_8x16.o
+    CC         ramstage/drivers/pc80/vga/vga_io.o
+    CC         ramstage/drivers/pc80/vga/vga_palette.o
+    CC         ramstage/drivers/pc80/rtc/mc146818rtc.o
+    CC         ramstage/drivers/pc80/pc/i8254.o
+    CC         ramstage/drivers/pc80/pc/i8259.o
+    CC         ramstage/drivers/pc80/pc/isa-dma.o
+    CC         ramstage/drivers/pc80/pc/keyboard.o
+    CC         ramstage/drivers/mrc_cache/mrc_cache.o
+    CC         ramstage/drivers/intel/wifi/wifi.o
+    CC         ramstage/drivers/intel/gma/acpi.o
+    CC         ramstage/drivers/intel/gma/edid.o
+    CC         ramstage/drivers/intel/gma/opregion.o
+    CC         ramstage/drivers/intel/gma/vbt.o
+    CC         ramstage/drivers/i2c/at24rf08c/at24rf08c.o
+    CC         ramstage/drivers/i2c/at24rf08c/lenovo_serials.o
+    CC         ramstage/device/cardbus_device.o
+    CC         ramstage/device/cpu_device.o
+    CC         ramstage/device/device.o
+    CC         ramstage/device/device_util.o
+    CC         ramstage/device/i2c.o
+    CC         ramstage/device/i2c_bus.o
+    CC         ramstage/device/pci_class.o
+    CC         ramstage/device/pci_device.o
+    CC         ramstage/device/pci_early.o
+    CC         ramstage/device/pci_ops.o
+    CC         ramstage/device/pci_rom.o
+    CC         ramstage/device/pciexp_device.o
+    CC         ramstage/device/pcix_device.o
+    CC         ramstage/device/pnp_device.o
+    CC         ramstage/device/root_device.o
+    CC         ramstage/device/smbus_ops.o
+    CC         ramstage/cpu/x86/tsc/delay_tsc.o
+    CC         smm/arch/x86/memcpy.o
+    CC         smm/arch/x86/memmove.o
+    CC         smm/arch/x86/memset.o
+    CC         smm/arch/x86/mmap_boot.o
+    CC         smm/commonlib/cbfs.o
+    CC         smm/commonlib/iobuf.o
+    CC         smm/commonlib/region.o
+    CC         smm/console/die.o
+    CC         smm/cpu/intel/model_206ax/finalize.o
+    CC         smm/cpu/intel/model_206ax/tsc_freq.o
+    CC         smm/cpu/x86/smm/smm_module_handler.o
+    CC         smm/cpu/x86/tsc/delay_tsc.o
+    CC         smm/drivers/pc80/rtc/mc146818rtc.o
+    CC         smm/ec/acpi/ec.o
+    CC         smm/ec/lenovo/h8/smm.o
+    CC         smm/ec/lenovo/pmh7/pmh7.o
+    CC         smm/lib/boot_device.o
+    CC         smm/lib/cbfs.o
+    CC         smm/lib/fmap.o
+    CC         smm/lib/gcc.o
+    CC         smm/lib/halt.o
+    CC         smm/lib/hexdump.o
+    CC         smm/lib/malloc.o
+    CC         smm/lib/memcmp.o
+    CC         smm/lib/reset.o
+    CC         smm/lib/version.o
+    CC         smm/mainboard/lenovo/x220/smihandler.o
+    CC         smm/northbridge/intel/sandybridge/finalize.o
+    CC         smm/southbridge/intel/bd82x6x/finalize.o
+    CC         smm/southbridge/intel/bd82x6x/me.o
+    CC         smm/southbridge/intel/bd82x6x/me_8.x.o
+    CC         smm/southbridge/intel/bd82x6x/pch.o
+    CC         smm/southbridge/intel/bd82x6x/smihandler.o
+    CC         smm/southbridge/intel/common/gpio.o
+    CP         rmodules_x86_32/lib/rmodule.ld
+    HOSTCC     cbfstool/rmodtool.o
+    HOSTCC     cbfstool/rmodule.o
+    HOSTCC     cbfstool/common.o
+    HOSTCC     cbfstool/elfheaders.o
+    HOSTCC     cbfstool/xdr.o
+    HOSTCC     cbfstool/rmodtool (link)
+    OBJCOPY    ramstage/cpu/x86/smm/smm.manual
+    CC         smmstub/cpu/x86/smm/smm_stub.o
+    OBJCOPY    ramstage/cpu/x86/smm/smmstub.manual
+    CC         ramstage/cpu/x86/smm/smm_module_loader.o
+    CC         ramstage/cpu/x86/name/name.o
+    CC         ramstage/cpu/x86/mtrr/mtrr.o
+    CC         ramstage/cpu/x86/lapic/boot_cpu.o
+    CC         ramstage/cpu/x86/lapic/lapic.o
+    CC         ramstage/cpu/x86/lapic/lapic_cpu_init.o
+    CC         ramstage/cpu/x86/lapic/secondary.o
+    CC         ramstage/cpu/x86/cache/cache.o
+    CC         ramstage/cpu/x86/backup_default_smm.o
+    CC         ramstage/cpu/intel/turbo/turbo.o
+    CC         ramstage/cpu/intel/smm/gen1/smmrelocate.o
+    CC         ramstage/cpu/intel/model_206ax/acpi.o
+    CC         ramstage/cpu/intel/model_206ax/model_206ax_init.o
+    CC         ramstage/cpu/intel/model_206ax/tsc_freq.o
+    CC         ramstage/cpu/intel/microcode/microcode.o
+    CC         ramstage/cpu/intel/common/common_init.o
+    CC         ramstage/console/console.o
+    CC         ramstage/console/die.o
+    CC         ramstage/console/init.o
+    CC         ramstage/console/post.o
+    CC         ramstage/console/printk.o
+    CC         ramstage/console/vsprintf.o
+    CC         ramstage/console/vtxprintf.o
+    CC         ramstage/commonlib/cbfs.o
+    CC         ramstage/commonlib/iobuf.o
+    CC         ramstage/commonlib/lz4_wrapper.o
+    CC         ramstage/commonlib/mem_pool.o
+    CC         ramstage/commonlib/region.o
+    CC         ramstage/arch/x86/acpi.o
+    CC         ramstage/arch/x86/acpi_device.o
+    CC         ramstage/arch/x86/acpi_s3.o
+    CC         ramstage/arch/x86/acpigen.o
+    CC         ramstage/arch/x86/acpigen_dsm.o
+    CC         ramstage/arch/x86/boot.o
+    CC         ramstage/arch/x86/c_start.o
+    CC         ramstage/arch/x86/cbmem.o
+    CC         ramstage/arch/x86/cpu.o
+    CC         ramstage/arch/x86/cpu_common.o
+    CC         ramstage/arch/x86/ebda.o
+    CC         ramstage/arch/x86/exception.o
+    CC         ramstage/arch/x86/gdt.o
+    CC         ramstage/arch/x86/ioapic.o
+    CC         ramstage/arch/x86/memcpy.o
+    CC         ramstage/arch/x86/memmove.o
+    CC         ramstage/arch/x86/memset.o
+    CC         ramstage/arch/x86/mmap_boot.o
+    CC         ramstage/arch/x86/pci_ops_conf1.o
+    CC         ramstage/arch/x86/pci_ops_mmconf.o
+    CC         ramstage/arch/x86/rdrand.o
+    CC         ramstage/arch/x86/smbios.o
+    CC         ramstage/arch/x86/tables.o
+    CC         ramstage/arch/x86/timestamp.o
+    CC         ramstage/arch/x86/wakeup.o
+    CC         ramstage/acpi/sata.o
+    CP         ramstage/arch/x86/memlayout.ld
+    CP         ramstage/lib/program.ld
+    CC         generated/ramstage.o
+    CC         cbfs/fallback/ramstage.debug
+    Cloning SeaBIOS from Git
+Cloning into 'seabios'...
+remote: Counting objects: 435, done
+remote: Finding sources: 100% (81/81)
+remote: Total 15148 (delta 44), reused 15127 (delta 44)
+Receiving objects: 100% (15148/15148), 3.43 MiB | 401.00 KiB/s, done.
+Resolving deltas: 100% (12037/12037), done.
+    Fetching new commits from the SeaBIOS git repo
+    Checking out SeaBIOS revision origin/master
+Already on 'master'
+Your branch is up-to-date with 'origin/master'.
+Branch coreboot set up to track remote branch master from origin.
+Switched to a new branch 'coreboot'
+    CONFIG     SeaBIOS origin/master
+#
+# configuration written to /root/coreboot/payloads/external/SeaBIOS/seabios/.config
+#
+    MAKE       SeaBIOS origin/master
+  Build Kconfig config file
+  Compile checking out/src/misc.o
+  Compile checking out/src/stacks.o
+  Compile checking out/src/output.o
+  Compile checking out/src/string.o
+  Compile checking out/src/block.o
+  Compile checking out/src/cdrom.o
+  Compile checking out/src/disk.o
+  Compile checking out/src/mouse.o
+  Compile checking out/src/kbd.o
+  Compile checking out/src/system.o
+  Compile checking out/src/serial.o
+  Compile checking out/src/sercon.o
+  Compile checking out/src/clock.o
+  Compile checking out/src/resume.o
+  Compile checking out/src/pnpbios.o
+  Compile checking out/src/vgahooks.o
+  Compile checking out/src/pcibios.o
+  Compile checking out/src/apm.o
+  Compile checking out/src/cp437.o
+  Compile checking out/src/hw/pci.o
+  Compile checking out/src/hw/timer.o
+  Compile checking out/src/hw/rtc.o
+  Compile checking out/src/hw/dma.o
+  Compile checking out/src/hw/pic.o
+  Compile checking out/src/hw/ps2port.o
+  Compile checking out/src/hw/serialio.o
+  Compile checking out/src/hw/usb.o
+  Compile checking out/src/hw/usb-uhci.o
+  Compile checking out/src/hw/usb-ohci.o
+  Compile checking out/src/hw/usb-ehci.o
+  Compile checking out/src/hw/usb-hid.o
+  Compile checking out/src/hw/usb-msc.o
+  Compile checking out/src/hw/usb-uas.o
+  Compile checking out/src/hw/blockcmd.o
+  Compile checking out/src/hw/floppy.o
+  Compile checking out/src/hw/ata.o
+  Compile checking out/src/hw/ramdisk.o
+  Compile checking out/src/hw/lsi-scsi.o
+  Compile checking out/src/hw/esp-scsi.o
+  Compile checking out/src/hw/megasas.o
+  Compile checking out/src/hw/mpt-scsi.o
+  Compile checking out/src/post.o
+  Compile checking out/src/e820map.o
+  Compile checking out/src/malloc.o
+  Compile checking out/src/romfile.o
+  Compile checking out/src/x86.o
+  Compile checking out/src/optionroms.o
+  Compile checking out/src/pmm.o
+  Compile checking out/src/font.o
+  Compile checking out/src/boot.o
+  Compile checking out/src/bootsplash.o
+  Compile checking out/src/jpeg.o
+  Compile checking out/src/bmp.o
+  Compile checking out/src/tcgbios.o
+  Compile checking out/src/sha1.o
+  Compile checking out/src/hw/pcidevice.o
+  Compile checking out/src/hw/ahci.o
+  Compile checking out/src/hw/pvscsi.o
+  Compile checking out/src/hw/usb-xhci.o
+  Compile checking out/src/hw/usb-hub.o
+  Compile checking out/src/hw/sdcard.o
+  Compile checking out/src/fw/coreboot.o
+  Compile checking out/src/fw/lzmadecode.o
+  Compile checking out/src/fw/multiboot.o
+  Compile checking out/src/fw/csm.o
+  Compile checking out/src/fw/biostables.o
+  Compile checking out/src/fw/paravirt.o
+  Compile checking out/src/fw/shadow.o
+  Compile checking out/src/fw/pciinit.o
+  Compile checking out/src/fw/smm.o
+  Compile checking out/src/fw/smp.o
+  Compile checking out/src/fw/mtrr.o
+  Compile checking out/src/fw/xen.o
+  Compile checking out/src/fw/acpi.o
+  Compile checking out/src/fw/mptable.o
+  Compile checking out/src/fw/pirtable.o
+  Compile checking out/src/fw/smbios.o
+  Compile checking out/src/fw/romfile_loader.o
+  Compile checking out/src/hw/virtio-ring.o
+  Compile checking out/src/hw/virtio-pci.o
+  Compile checking out/src/hw/virtio-blk.o
+  Compile checking out/src/hw/virtio-scsi.o
+  Compile checking out/src/hw/tpm_drivers.o
+  Compile checking out/src/hw/nvme.o
+  Compiling whole program out/ccode32flat.o
+  Compiling whole program out/code32seg.o
+  Compiling whole program out/ccode16.o
+  Compiling to assembler out/src/asm-offsets.s
+  Generating offset file out/asm-offsets.h
+  Compiling (16bit) out/romlayout.o
+  Building ld scripts
+Version: rel-1.11.0-11-g4a6dbce
+Fixed space: 0xe05b-0x10000  total: 8101  slack: 12  Percent slack: 0.1%
+16bit size:           36032
+32bit segmented size: 1720
+32bit flat size:      31144
+32bit flat init size: 52288
+Lowmem size:          2240
+f-segment var size:   1408
+  Linking out/rom16.o
+  Stripping out/rom16.strip.o
+  Linking out/rom32seg.o
+  Stripping out/rom32seg.strip.o
+  Linking out/rom.o
+  Prepping out/bios.bin.prep
+Total size: 128288  Fixed: 70304  Free: 2784 (used 97.9% of 128KiB rom)
+  Creating out/bios.bin.elf
+  Compile checking out/vgasrc/vgainit.o
+  Compile checking out/vgasrc/vgabios.o
+  Compile checking out/vgasrc/vgafb.o
+  Compile checking out/vgasrc/swcursor.o
+  Compile checking out/vgasrc/vgafonts.o
+  Compile checking out/vgasrc/vbe.o
+  Compile checking out/vgasrc/stdvga.o
+  Compile checking out/vgasrc/stdvgamodes.o
+  Compile checking out/vgasrc/stdvgaio.o
+  Compile checking out/vgasrc/clext.o
+  Compile checking out/vgasrc/bochsvga.o
+  Compile checking out/vgasrc/geodevga.o
+  Compile checking out/vgasrc/cbvga.o
+  Compiling whole program out/vgaccode16.raw.s
+  Fixup VGA rom assembler
+  Compiling (16bit) out/vgaentry.o
+  Precompiling out/vgasrc/vgalayout.lds
+  Linking out/vgarom.o
+Version: rel-1.11.0-11-g4a6dbce
+  Extracting binary out/vgabios.bin.raw
+  Finalizing rom out/vgabios.bin
+    CREATE     build/mainboard/lenovo/x220/cbfs-file.5BYFg0.out (from /root/coreboot/.config)
+    MICROCODE  cpu_microcode_blob.bin
+3rdparty/blobs/cpu/intel/model_206ax/microcode.bin 3rdparty/blobs/cpu/intel/model_306ax/microcode.bin
+    OPTION     cmos_layout.bin
+    IASL       build/dsdt.aml
+
+Intel ACPI Component Architecture
+ASL+ Optimizing Compiler version 20161222-32
+Copyright (c) 2000 - 2016 Intel Corporation
+
+coreboot toolchain v1.50 October 15th, 2017
+dsdt.aml    723:  Method(XDSS, 2)
+Remark   2146 -            ^ Method Argument is never used (Arg1)
+
+dsdt.aml   1277:  Method(POSC,3,Serialized)
+Remark   2146 -            ^ Method Argument is never used (Arg0)
+
+dsdt.aml   2137: Method(BINF, 2, NotSerialized)
+Remark   2120 -           ^ Control Method should be made Serialized (due to creation of named objects within)
+
+ASL Input:     dsdt.aml - 2707 lines, 46620 bytes, 1189 keywords
+AML Output:    dsdt.aml - 13412 bytes, 496 named objects, 693 executable opcodes
+
+Compilation complete. 0 Errors, 0 Warnings, 3 Remarks, 314 Optimizations, 1 Constants Folded
+    IASL       build/dsdt.aml disassembled correctly.
+    HOSTCC     cbfstool/cbfstool.o
+    HOSTCC     cbfstool/cbfs_image.o
+    HOSTCC     cbfstool/cbfs-mkstage.o
+    HOSTCC     cbfstool/cbfs-mkpayload.o
+    HOSTCC     cbfstool/fit.o
+    HOSTCC     cbfstool/partitioned_file.o
+    HOSTCC     cbfstool/cbfs.o
+    HOSTCC     cbfstool/fsp_relocate.o
+    HOSTCC     cbfstool/mem_pool.o
+    HOSTCC     cbfstool/region.o
+    HOSTCC     cbfstool/2sha_utility.o
+    HOSTCC     cbfstool/2sha1.o
+    HOSTCC     cbfstool/2sha256.o
+    HOSTCC     cbfstool/2sha512.o
+    HOSTCC     cbfstool/linux_trampoline.o
+    HOSTCC     cbfstool/cbfs-payload-linux.o
+    HOSTCC     cbfstool/compress.o
+    HOSTCC     cbfstool/lz4.o
+    HOSTCC     cbfstool/lz4hc.o
+    HOSTCC     cbfstool/lz4frame.o
+    HOSTCC     cbfstool/xxhash.o
+    HOSTCC     cbfstool/lz4_wrapper.o
+    HOSTCC     cbfstool/lzma.o
+    HOSTCC     cbfstool/LzFind.o
+    HOSTCC     cbfstool/LzmaDec.o
+    HOSTCC     cbfstool/LzmaEnc.o
+    HOSTCC     cbfstool/cbfstool (link)
+Created CBFS (capacity = 917464 bytes)
+    CBFS       fallback/romstage
+    CBFS       cpu_microcode_blob.bin
+    CBFS       fallback/ramstage
+    CBFS       vgaroms/seavgabios.bin
+    CBFS       config
+    CBFS       revision
+    CBFS       cmos_layout.bin
+    CBFS       fallback/dsdt.aml
+    CBFS       fallback/payload
+    CBFS       payload_config
+    CBFS       payload_revision
+    Compile IFDTOOL
+    HOSTCC     util/ifdfake/ifdfake
+    DD         Adding Intel Firmware Descriptor
+    IFDTOOL    me.bin -> coreboot.pre
+File build/coreboot.pre is 8388608 bytes
+File 3rdparty/blobs/mainboard/lenovo/x220/me.bin is 5230592 bytes
+Adding 3rdparty/blobs/mainboard/lenovo/x220/me.bin as the Intel ME section of build/coreboot.pre
+Writing new image to build/coreboot.pre.new
+    IFDTOOL    gbe.bin -> coreboot.pre
+File build/coreboot.pre is 8388608 bytes
+File 3rdparty/blobs/mainboard/lenovo/x220/gbe.bin is 8192 bytes
+Adding 3rdparty/blobs/mainboard/lenovo/x220/gbe.bin as the GbE section of build/coreboot.pre
+Writing new image to build/coreboot.pre.new
+    IFDTOOL    Unlocking Management Engine
+File build/coreboot.pre is 8388608 bytes
+Writing new image to build/coreboot.pre.new
+    CBFS       coreboot.rom
+    SeaBIOS    Wait up to 3000 ms for PS/2 keyboard controller initialization
+    CBFSPRINT  coreboot.rom
+
+Name                           Offset     Type           Size   Comp
+cbfs master header             0x0        cbfs header        32 none
+fallback/romstage              0x80       stage           80868 none
+cpu_microcode_blob.bin         0x13d00    microcode       22528 none
+fallback/ramstage              0x19580    stage           93302 none
+vgaroms/seavgabios.bin         0x30240    raw             27648 none
+config                         0x36ec0    raw               278 none
+revision                       0x37040    raw               570 none
+cmos_layout.bin                0x372c0    cmos_layout      1816 none
+fallback/dsdt.aml              0x37a40    raw             13412 none
+fallback/payload               0x3af00    payload         67453 none
+payload_config                 0x4b6c0    raw              1700 none
+payload_revision               0x4bdc0    raw               240 none
+etc/ps2-keyboard-spinup        0x4bf00    raw                 8 none
+(empty)                        0x4bf40    null           604312 none
+bootblock                      0xdf800    bootblock        1968 none
+    HOSTCC     cbfstool/ifwitool.o
+    HOSTCC     cbfstool/ifwitool (link)
+
+Built lenovo/x220 (ThinkPad X220)
