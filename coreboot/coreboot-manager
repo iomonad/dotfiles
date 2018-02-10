@@ -1,16 +1,46 @@
-#!/usr/bin/perl -T
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# 2018 iomonad <me@trosa.io>
+# (https://github.com/iomonad/dotfiles)
+#
+# Simple coreboot manager to avoid command
+# line mistakes and bios dramas.
+# Actually support build, rebuild, flash
+# backups, extractions and deblobing.
 
-use strict;
-use warnings;
+import os, sys
+import argparse
+import subprocess
 
-use Getopt::Long;
+tasks = ["backups"]
 
-# Simple manager to execute some
-# coreboot tasks like backups, flashs
-# and updates.
+if not os.geteuid() == 0:
+        sys.exit("\nOnly Root can manipulate coreboot.\n")
 
-sub main {
-	print "Hello\n";
-}
+parser = argparse.ArgumentParser(description='Coreboot Manager')
+parser.add_argument('--version', action='version', version='%(prog)s 1.0')
+parser.add_argument('--server', '-s', dest='ssh_host', action='store',
+                    required=True, type=str,
+                    help='Coreboot Compiler Server. Eg: Raspberry PI.')
+parser.add_argument('--port', '-p', dest='ssh_port', action='store',
+                    required=False, type=int, default=22, help="CC server port.")
+parser.add_argument('--outdir', '-o', dest='backup_file', action='store',
+                    required=False, type=str, default="coreboot_backup_stock_latest.rom",
+                    help='Output dump path.')
+parser.add_argument('--task','-t', dest='task', action='store',
+                    required=True, choices=tasks,
+                    help='Task to compute')
+parser.add_argument('-x', '--system', dest='system_backup', action="store_true", default=False,
+                    help='Use flashrom on system. Warning, Coreboot should be already hardware flashed !')
+def backup(agv):
+    if args.system_backup:
+        subprocess.check_call(["flashrom", "-c", "MX25L6405", "-p",
+                               "internal:laptop=force_I_want_a_brick",
+                               "-r", args.backup_file])
 
-main
+if __name__ == '__main__':
+    args = parser.parse_args()
+    ({
+        args.task == "backups" : backup(args)
+    })
