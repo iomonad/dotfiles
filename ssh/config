@@ -14,6 +14,16 @@ host *
     controlpersist  yes
     ForwardX11 no
     IdentityFile ~/.ssh/keys/default_keys
+    CheckHostIP yes
+	ConnectTimeout 4
+	ExitOnForwardFailure yes
+	LogLevel VERBOSE
+	PasswordAuthentication no
+	NoHostAuthenticationForLocalhost yes
+	PreferredAuthentications publickey
+	Protocol 2,1
+	PubkeyAuthentication yes
+	VisualHostKey yes
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 
 Host *.42.fr
