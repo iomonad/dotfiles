@@ -13,6 +13,7 @@ host *
     controlpath ~/.ssh/connections/ssh_%r@%h:%p
     controlpersist  yes
     ForwardX11 no
+    IdentityFile ~/.ssh/keys/default_keys
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 
 Host *.42.fr
@@ -92,6 +93,22 @@ host botnet
     hostname 188.166.30.148
     user root
 
-host coreboot-cc
+host coreboot
     hostname 192.168.0.43
+    port 23147
     user root
+
+host ajitpai
+    hostname l233fngm4h5ycdhy.onion
+    port 23147
+    user root
+    compression no
+    cipher arcfour
+
+host ajitpai-tunnel
+    LocalForward 9906 127.0.0.1:3306
+    hostname l233fngm4h5ycdhy.onion
+    port 23147
+    user root
+    compression no
+    cipher arcfour
