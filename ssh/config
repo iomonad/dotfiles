@@ -15,14 +15,14 @@ host *
     ForwardX11 no
     IdentityFile ~/.ssh/keys/default_keys
     CheckHostIP yes
-	ConnectTimeout 4
+    #ConnectTimeout 4
 	ExitOnForwardFailure yes
 	LogLevel VERBOSE
-	PasswordAuthentication no
+#	PasswordAuthentication no
 	NoHostAuthenticationForLocalhost yes
-	PreferredAuthentications publickey
+#	PreferredAuthentications publickey
 	Protocol 2,1
-	PubkeyAuthentication yes
+#	PubkeyAuthentication yes
 	VisualHostKey yes
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 
@@ -122,3 +122,11 @@ host ajitpai-tunnel
     user root
     compression no
     cipher arcfour
+
+host 42pi
+	 hostname 10.18.190.43
+	 Preferredauthentications password
+	 Passwordauthentication yes
+	 Pubkeyauthentication no
+	 port 23147
+	 user root

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DATE=`date +%Y%m%d`
+
+if [ "$EUID" -ne 0 ]
+then echo "Please run this script as root"
+	 exit 1
+fi
+
+mkdir $DATE
+flashrom -p internal:laptop=force_I_want_a_brick -c MX25L6405 -r $DATE/coreboot-snapshot.rom
+cp ../.config $DATE/coreboot-snapshot-config
