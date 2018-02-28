@@ -25,3 +25,11 @@ x11-base/xorg-server -minimal
 # required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
 # required by sys-power/suspend (argument)
 >=dev-libs/libgpg-error-1.27-r1 static-libs
+# required by dev-texlive/texlive-xetex-2016::gentoo
+# required by texlive-xetex (argument)
+>=app-text/texlive-core-2016-r6 xetex
+# required by app-text/texlive-core-2016-r6::gentoo[xetex]
+# required by dev-texlive/texlive-mathscience-2016::gentoo
+# required by dev-texlive/texlive-xetex-2016::gentoo
+# required by texlive-xetex (argument)
+>=media-libs/harfbuzz-1.7.2 icu

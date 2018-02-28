@@ -37,3 +37,7 @@
 =dev-libs/msgpack-1.1.0 ~amd64
 # required by =dev-libs/msgpack-2.1.1 (argument)
 =dev-libs/msgpack-2.1.1 ~amd64
+# required by hub (argument)
+=dev-vcs/hub-2.2.9 ~amd64
+# required by cassandra (argument)
+=dev-db/cassandra-3.11.2 ~amd64
