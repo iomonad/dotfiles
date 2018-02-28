@@ -9,10 +9,13 @@ wmname LG3D
 unclutter&
 urxvtd --quiet --opendisplay --fork
 autocutsel -selection clipboard -fork
-hsetroot -tile .wall.png
+hsetroot -tile .splash.jpg
 compton -c -t-5 -l-5 -r3 -o.48 &
 #exec redhsift -l 48.886764:2.320873 # long / lat
 #exec xmonad
 #exec ~/documents/sources/stumpwm/stumpwm
+
+setxkbmap us dvorak
+
 exec i3
 xset r rate 220 60
