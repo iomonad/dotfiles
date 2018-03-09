@@ -150,3 +150,5 @@ bar {
 
 #assign application to workspace
 assign [class="Firefox"] → 2:web
+
+exec gtk-redshift
