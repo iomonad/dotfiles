@@ -79,3 +79,5 @@ sbcl/quicklisp
 *gdb_history*
 radare2/history
 mpd/mpd.db
+radare2/plugins
+radare2/r2pm
