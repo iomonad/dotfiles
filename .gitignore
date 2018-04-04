@@ -81,3 +81,5 @@ radare2/history
 mpd/mpd.db
 radare2/plugins
 radare2/r2pm
+target
+*.lock

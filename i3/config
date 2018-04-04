@@ -150,5 +150,5 @@ bar {
 
 #assign application to workspace
 assign [class="Firefox"] → 2:web
-
+assign [class="jetbrains-idea"] 4:code
 exec gtk-redshift

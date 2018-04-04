@@ -24,6 +24,8 @@ host *
 	Protocol 2,1
 #	PubkeyAuthentication yes
 	VisualHostKey yes
+	StrictHostKeyChecking ask
+	UpdateHostKeys ask
     KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 
 Host *.42.fr
