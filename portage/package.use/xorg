@@ -33,3 +33,8 @@ x11-base/xorg-server -minimal
 # required by dev-texlive/texlive-xetex-2016::gentoo
 # required by texlive-xetex (argument)
 >=media-libs/harfbuzz-1.7.2 icu
+# required by dev-python/sqlalchemy-1.1.12::gentoo[python_targets_python3_5]
+# required by dev-python/sphinxcontrib-websupport-1.0.1-r1::gentoo
+# required by dev-python/sphinx-1.6.3-r3::gentoo[-test]
+# required by dev-python/sphinx (argument)
+>=dev-lang/python-3.5.4-r1:3.5 sqlite

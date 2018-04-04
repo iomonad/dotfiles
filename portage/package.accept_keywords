@@ -41,3 +41,35 @@
 =dev-vcs/hub-2.2.9 ~amd64
 # required by cassandra (argument)
 =dev-db/cassandra-3.11.2 ~amd64
+# required by dev-qt/qtgui-5.9.4-r3::gentoo[dbus]
+# required by dev-qt/qtwidgets-5.9.4-r1::gentoo
+# required by dev-util/cutter-1.0::gentoo
+# required by dev-util/cutter (argument)
+=dev-qt/qtdbus-5.9.4 ~amd64
+# required by dev-qt/qtdbus-5.9.4::gentoo
+# required by dev-qt/qtgui-5.9.4-r3::gentoo[dbus]
+# required by dev-qt/qtwidgets-5.9.4-r1::gentoo
+# required by dev-util/cutter-1.0::gentoo
+# required by dev-util/cutter (argument)
+=dev-qt/qtcore-5.9.4-r2 ~amd64
+# required by dev-util/cutter (argument)
+=dev-util/cutter-1.0 ~amd64
+# required by dev-qt/qtwidgets-5.9.4-r1::gentoo
+# required by dev-util/cutter-1.0::gentoo
+# required by dev-util/cutter (argument)
+=dev-qt/qtgui-5.9.4-r3 ~amd64
+# required by dev-qt/qtsvg-5.9.4-r1::gentoo
+# required by dev-util/cutter-1.0::gentoo
+# required by dev-util/cutter (argument)
+=dev-qt/qtwidgets-5.9.4-r1 ~amd64
+# required by dev-util/cutter-1.0::gentoo
+# required by dev-util/cutter (argument)
+=dev-qt/qtsvg-5.9.4-r1 ~amd64
+# required by opendht (argument)
+=net-libs/opendht-1.6.1 **
+# required by casync (argument)
+=net-misc/casync-2 ~amd64
+# required by sbtool (argument)
+=dev-java/sbtool-1.1.1 ~amd64
+# required by dev-java/sbt-bin (argument)
+=dev-java/sbt-bin-0.13.15 ~amd64
