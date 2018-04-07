@@ -36,7 +36,7 @@ zstyle ':completion:*'                       list-dirs-first true
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
-zstyle ':completion:*'                       my-accounts='kopri@unixhub.net'
+zstyle ':completion:*'                       my-accounts='iomonad@riseup.net'
 
 zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
@@ -116,7 +116,7 @@ zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
       adm bin daemon halt lp named shutdown sync
 
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
-  'kopri@kopri.mooo.com' 'root@192.168.1.1' 'mobile@192.168.1.2'
+	   'root@pirate' 'root@coreboot'
 
 
 zstyle ':completion:*:*:*:users' ignored-patterns \
