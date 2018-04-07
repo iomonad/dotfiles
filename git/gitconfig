@@ -1,7 +1,6 @@
-# ┏━╸╻╺┳╸   
-#┏━╸┏━┓┏┓╻┏━╸╻┏━╸
-# ┃╺┓┃ ┃    ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓
-# ┗━┛╹ ╹    ┗━╸┗━┛╹ ╹╹  ╹┗━┛
+#
+# (c) iomonad - iomonad@riseup.net
+#
 
 # --~-- User related --~--
 [user]
@@ -16,13 +15,13 @@
   whitespace = cr-at-eol
   editor     = vim
   pager = less -x4
-	excludesfile = ~/documents/dotfiles/git/globalignore
+  excludesfile = ~/documents/dotfiles/git/globalignore
 
 # --~-- Merging --~--
 [merge]
   tool = vimdiff
-	branchdesc = true
-	stat = true
+  branchdesc = true
+  stat = true
 
 # --~-- Credentials --~--
 [credential]
@@ -120,12 +119,12 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   us =  submodule update --recursive --remote
-	yolo = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
+  gud = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
 
 #--~-- Misc --~--
 [gpg]
-	program = gpg2
+  program = gpg2
 [commit]
-	template = ~/.gitmessage
-	status = true
-	gpgsign = true
+  template = ~/.gitmessage
+  status = true
+  gpgsign = true
