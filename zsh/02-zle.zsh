@@ -95,3 +95,7 @@ zle -C orig-expand-or-complete .expand-or-complete _main_complete
 #".expand-or-complete" widget doesn't work the same)
 expand-or-complete() { builtin zle orig-expand-or-complete && colorize-zle-buffer }
 zle -N expand-or-complete
+
+# search following completions
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward"]]"
