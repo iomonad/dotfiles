@@ -83,3 +83,4 @@ radare2/plugins
 radare2/r2pm
 target
 *.lock
+zsh/01-private.zsh

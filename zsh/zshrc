@@ -1,0 +1,12 @@
+#!/bin/zsh
+#
+# (c) iomonad
+#
+
+# load config modules
+for r in $HOME/.zsh/*.zsh; do
+	if [[ $DEBUG > 0 ]]; then
+		echo "zsh: sourcing $r"
+	fi
+	source $r
+done
