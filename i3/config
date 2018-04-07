@@ -7,11 +7,11 @@ new_window normal
 #class			             border	 backgr.  text
 client.focused              #121212 #101010 #566d17
 #9e8a8e
-client.focused_inactive     #101010 #191919 #999999
-client.unfocused            #101010 #191919 #56594e
-client.urgent               #cd989a #cd989a #2e3436
+client.focused_inactive     #14161A #040404 #999999
+client.unfocused            #101010 #040404 #56594e
+client.urgent               #cd989a #683e8e #2e3436
 
-client.background			#1d1d1d
+client.background			#040404
 
 # keybinds
 bindsym Mod4+Return exec urxvtc
@@ -135,20 +135,21 @@ bar {
         font pango:ProFont 10
         workspace_buttons yes
         colors {
-				background #101010
-                statusline #101010
+		background #040404
+                statusline #D7D7D7
                 separator #191919
                 focused_workspace    #121212 #101010 #566d17
-                active_workspace     #101010 #191919 #999999
-                inactive_workspace   #101010 #191919 #56594e
-                urgent_workspace     #cd989a #cd989a #2e3436
+                active_workspace     #14161A #040404 #999999
+                inactive_workspace   #14161A #14161A #56594e
+                urgent_workspace     #cd989a #683e3e #2e3436
         }
 		status_command i3blocks
 }
 
-#exec xautolock -detectsleep -time 5 -locker "i3lock -d -c 000070" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-
 #assign application to workspace
 assign [class="Firefox"] → 2:web
 assign [class="jetbrains-idea"] 4:code
-exec gtk-redshift
+
+# autostart
+exec redshift
+exec pulseaudio --start

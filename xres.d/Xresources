@@ -9,9 +9,9 @@
 !#include </home/iomonad/.xres.d/crayolo/Xresources>
 
 ! Classic import
-#include </home/iomonad/.xres.d/colorschemes/hfb>
+!#include </home/iomonad/.xres.d/colorschemes/hfb>
 
-!#include </home/iomonad/.xres.d/colorschemes/nord>
+#include </home/iomonad/.xres.d/colorschemes/fyre>
 ! Font
 !*font: xft:berry:style=bold:pixelsize=12
 !*boldFont: xft:berry:style=bold:pixelsize=12
@@ -28,8 +28,9 @@
 !URxvt*italicFont:        -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
 !URxvt*boldItalicFont:    -*-lemon-medium-r-normal-*-10-*-75-75-m-50-i
 
-URxvt*font:             xft:profont-10
+URxvt*font:     xft:profont-10
 URxvt*boldFont: xft:profont-10
+
 ! Xft settings
 Xft.antialias: true
 Xft.autohint: 1
@@ -58,6 +59,7 @@ URxvt.internalBorder: 6
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 
+URxvt.urgentOnBell: true
 ! Extensions
 URxvt*perl-ext-common: default,matcher,searchable-scrollback
 URxvt*urlLauncher:     /usr/bin/firefox-bin
@@ -76,3 +78,16 @@ URxvt.cursorUnderline: 1
 
 URxvt.print-pipe: "cat > /dev/null"
 
+rofi.color-window: argb:c82d303b, #7c8389, #1d1f21
+rofi.color-normal: argb:31d1f21, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
+rofi.color-urgent: argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9
+rofi.color-active: argb:2c1d1f21, #65acff, argb:e44b5160, #4491ed, #f9f9f9
+rofi.width: 100
+rofi.lines: 5
+rofi.columns: 2
+rofi.font: Noto Sans 14
+rofi.bw: 0
+rofi.padding: 400
+rofi.eh: 1
+!rofi.separator-style: solid
+rofi.hide-scrollbar: true
