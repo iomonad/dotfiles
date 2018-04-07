@@ -1,3 +1,6 @@
+# iomonad - github.com/iomonad
+# i3 config
+
 # fonts
 font pango:ProFont 10
 floating_modifier Mod4
@@ -66,7 +69,7 @@ bindsym Mod4+4 workspace 4:code
 bindsym Mod4+5 workspace 5:media
 bindsym Mod4+6 workspace 6:share
 bindsym Mod4+7 workspace 7:re
-bindsym Mod4+8 workspace 8:porn
+bindsym Mod4+8 workspace 8:virt
 bindsym Mod4+9 workspace 9:sec
 bindsym Mod4+0 workspace 10:hell
 
@@ -77,7 +80,7 @@ bindsym Mod4+Shift+4 move workspace 4:code
 bindsym Mod4+Shift+5 move workspace 5:media
 bindsym Mod4+Shift+6 move workspace 6:share
 bindsym Mod4+Shift+7 move workspace 7:re
-bindsym Mod4+Shift+8 move workspace 8:porn
+bindsym Mod4+Shift+8 move workspace 8:virt
 bindsym Mod4+Shift+9 move workspace 9:sec
 bindsym Mod4+Shift+0 move workspace 10:hell
 
@@ -149,6 +152,14 @@ bar {
 #assign application to workspace
 assign [class="Firefox"] → 2:web
 assign [class="jetbrains-idea"] 4:code
+assign [class="^Transmission-remote-gtk$"] 6:share
+assign [class="Tor Browser"] 10:hell
+assign [class="qemu-system-*"] 8:virt
+assign [class="MuPDF"] 5:media
+assign [class="zathura"] 5:media
+
+# app rules
+for_window [class="qemu-system-*"] floating toggle
 
 # autostart
 exec redshift

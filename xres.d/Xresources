@@ -1,83 +1,43 @@
-! /-----------------------\
-! | Updated by iomonad    |
-! | localhost             |
-! | 2017                  |
-! \-----------------------/
-
-!! Crayolo mode
-!#include </home/iomonad/.xres.d/crayolo/colors/mattd>
-!#include </home/iomonad/.xres.d/crayolo/Xresources>
-
-! Classic import
-!#include </home/iomonad/.xres.d/colorschemes/hfb>
+!
+! (c) 2014-2018 iomonad - iomonad@riseup.net
+!
 
 #include </home/iomonad/.xres.d/colorschemes/fyre>
-! Font
-!*font: xft:berry:style=bold:pixelsize=12
-!*boldFont: xft:berry:style=bold:pixelsize=12
 
-!*.letterSpace: -1
-
-!Xft.dpi:        96
-!XTerm*faceName: xft:PragmataPro:pixelsize=12
-!URxvt*font: xft:PragmataPro Mono:pixelsize=12:antialias=true
-!URxvt*boldFont: xft:PragmataPro Mono:pixelsize=12:antialias=true
-
-!URxvt*font:              -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
-!URxvt*boldFont:          -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
-!URxvt*italicFont:        -*-lemon-medium-r-normal-*-10-*-75-75-m-50-iso8859-1
-!URxvt*boldItalicFont:    -*-lemon-medium-r-normal-*-10-*-75-75-m-50-i
-
+! ----------------- [ Font ] -----------------------------
 URxvt*font:     xft:profont-10
 URxvt*boldFont: xft:profont-10
-
-! Xft settings
 Xft.antialias: true
 Xft.autohint: 1
 Xft.hinting: true
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
+! --------------------------------------------------------
 
-!URxvt.depth: 0
-
+! ----------------- [ Urxvt ] -----------------------------
 URxvt.intensityStyles:  false
-
-! Terminal window size
 URxvt*geometry: 65x17
-
-! Disable scrollbar
 URxvt.scrollBar: false
-
-! Set URxvt as login shell
 URxvt*loginShell: true
-
-! Set terminal padding
 URxvt.internalBorder: 6
-
-! resize on the fly
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
-
 URxvt.urgentOnBell: true
-! Extensions
 URxvt*perl-ext-common: default,matcher,searchable-scrollback
 URxvt*urlLauncher:     /usr/bin/firefox-bin
 URxvt*matcher.button: C1
-
-! Keybind
-!URxvt.keysym.Control-Alt-C: perl:clipboard:copy
-!URxvt.keysym.Control-Alt-V: perl:clipboard:paste
-!URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!URxvt.keysym.C-Escape: perl:keyboard-select:activate
-!URxvt.keysym.C-u: perl:url-select:select_next
-
-! blink
+URxvt.keysym.Control-Alt-C: perl:clipboard:copy
+URxvt.keysym.Control-Alt-V: perl:clipboard:paste
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-u: perl:url-select:select_next
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
-
 URxvt.print-pipe: "cat > /dev/null"
+! --------------------------------------------------------
 
+! ----------------- [ Rofi ] -----------------------------
 rofi.color-window: argb:c82d303b, #7c8389, #1d1f21
 rofi.color-normal: argb:31d1f21, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
 rofi.color-urgent: argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9
@@ -89,5 +49,29 @@ rofi.font: Noto Sans 14
 rofi.bw: 0
 rofi.padding: 400
 rofi.eh: 1
-!rofi.separator-style: solid
 rofi.hide-scrollbar: true
+! --------------------------------------------------------
+
+! ----------------- [ Xscreensaver ] -----------------------------
+xscreensaver.Dialog.headingFont:        -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.foreground:         #101010
+xscreensaver.Dialog.background:         #D8D8D8
+xscreensaver.Dialog.topShadowColor:     #D8D8D8
+xscreensaver.Dialog.bottomShadowColor:  #D8D8D8
+xscreensaver.Dialog.Button.foreground:  #101010
+xscreensaver.Dialog.Button.background:  #E5E5E5
+xscreensaver.Dialog.text.foreground:    #101010
+xscreensaver.Dialog.text.background:    #E5E5E5
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+xscreensaver.passwd.thermometer.foreground:  #101010
+xscreensaver.passwd.thermometer.background:  #2E2E2E
+xscreensaver.passwd.thermometer.width:       8
+!-------------------------------------------------------------------

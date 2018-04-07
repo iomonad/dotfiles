@@ -1,6 +1,6 @@
-# ┏━┓┏━┓╻ ╻   ┏━╸┏━┓┏┓╻┏━╸╻┏━╸
-# ┗━┓┗━┓┣━┫   ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓
-# ┗━┛┗━┛╹ ╹   ┗━╸┗━┛╹ ╹╹  ╹┗━┛
+#
+# (c) iomonad - iomonad@riseup.net
+#
 
 Include private/*
 
@@ -15,14 +15,10 @@ host *
     ForwardX11 no
     IdentityFile ~/.ssh/keys/default_keys
     CheckHostIP yes
-    #ConnectTimeout 4
 	ExitOnForwardFailure yes
 	LogLevel VERBOSE
-#	PasswordAuthentication no
 	NoHostAuthenticationForLocalhost yes
-#	PreferredAuthentications publickey
 	Protocol 2,1
-#	PubkeyAuthentication yes
 	VisualHostKey yes
 	StrictHostKeyChecking ask
 	UpdateHostKeys ask
@@ -31,8 +27,8 @@ host *
 Host *.42.fr
      SendEnv LANG LC_*
      StrictHostKeyChecking no
-     GSSAPIAuthentication yes
-     GSSAPIDelegateCredentials yes
+	 #GSSAPIAuthentication yes
+	 #GSSAPIDelegateCredentials yes
      PasswordAuthentication yes
 
 host space
@@ -58,7 +54,6 @@ Host github.com
     IdentityFile ~/.ssh/keys/github_rsa
     IdentitiesOnly yes
     cipher arcfour
-
 
 Host gitlab.com
     HostName gitlab.com
@@ -93,7 +88,7 @@ host cluster2
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/home_key
 
-
+# bios flasher
 host coreboot
     hostname 192.168.0.43
     port 23147
@@ -114,6 +109,7 @@ host ajitpai-tunnel
     compression no
     cipher arcfour
 
+# work rpi
 host 42pi
 	 hostname 10.18.190.43
 	 Preferredauthentications password
