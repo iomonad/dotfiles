@@ -84,3 +84,4 @@ radare2/r2pm
 target
 *.lock
 zsh/01-private.zsh
+zsh/history
