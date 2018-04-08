@@ -98,4 +98,4 @@ zle -N expand-or-complete
 
 # search following completions
 bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward"]]"
+bindkey "^[[B" history-beginning-search-forward

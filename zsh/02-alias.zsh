@@ -1,5 +1,7 @@
 # 02-alias.zsh
 
+alias ls="ls++"
+
 alias die='kill -9 $$'
 
 alias df='df -h | grep sd |\

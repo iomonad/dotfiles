@@ -1,6 +1,6 @@
 # 04-prompt.zsh
 
-PROMPT=' %B%F{red}>> %f'
+PROMPT='%B%F{red}>> %f'
 RPROMPT='%B%F{black}%~ %B%F{white}%#'
 # Color command correction promt
 autoload -U colors && colors
