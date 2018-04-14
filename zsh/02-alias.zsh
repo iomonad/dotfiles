@@ -80,3 +80,5 @@ alias eqm='equery m'
 alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
+
+alias make="make -s"
