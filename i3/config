@@ -155,7 +155,7 @@ assign [class="jetbrains-idea"] 4:code
 assign [class="^Transmission-remote-gtk$"] 6:share
 assign [class="Tor Browser"] 10:hell
 assign [class="qemu-system-*"] 8:virt
-assign [class="QEMU"] 8:virt
+assign [class="^QEMU$"] 8:virt
 assign [class="MuPDF"] 5:media
 assign [class="zathura"] 5:media
 
@@ -165,3 +165,4 @@ for_window [class="qemu-system-*"] floating toggle
 # autostart
 exec redshift
 exec pulseaudio --start
+exec transmission-daemon
