@@ -13,7 +13,7 @@
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
-  editor     = vim
+  editor     = emacs
   pager = less -x4
   excludesfile = ~/documents/dotfiles/git/globalignore
 
