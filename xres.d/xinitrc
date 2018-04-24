@@ -15,10 +15,10 @@ compton -c -t-5 -l-5 -r3 -o.48 &
 #exec xmonad
 #exec ~/documents/sources/stumpwm/stumpwm
 
-#pulseaudio --start
-
 setxkbmap us dvorak
+
 # Make Shift like space cadets
 xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
-exec i3
 xset r rate 220 60
+hsetroot -tile /home/iomonad/.xres.d/wallpaper/chicago3.jpg -blur 10
+exec i3
