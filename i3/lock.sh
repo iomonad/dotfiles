@@ -1,2 +1,2 @@
 #!/bin/bash
-i3lock -i ~/.config/i3/lock.png 
+i3lock -i /home/iomonad/.i3/lock.png
