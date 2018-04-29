@@ -1,5 +1,7 @@
 # 01-options.zsh
 
+fpath=(~/.zsh/completion $fpath)
+
 zmodload zsh/stat
 zmodload zsh/complist
 autoload zmv
