@@ -85,3 +85,4 @@ target
 zsh/01-private.zsh
 zsh/history
 mpv/watch_later
+*.keep*
