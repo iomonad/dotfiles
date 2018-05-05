@@ -82,3 +82,5 @@ alias eqs='equery s'
 alias eqw='equery w'
 
 alias make="make -s"
+
+alias external_call="nm -Du $1 | grep U | tr -d \"U\" | rev | grep -v \"_\" | xargs printf \"%s\n\" - | rev | sed \"1d\""
