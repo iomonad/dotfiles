@@ -164,5 +164,4 @@ for_window [class="qemu-system-*"] floating toggle
 
 # autostart
 exec redshift
-exec pulseaudio --start
-exec transmission-daemon
+# exec transmission-daemon
