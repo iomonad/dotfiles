@@ -4,3 +4,4 @@ e asm.cmtright=true
 e asm.pseudo = true
 eco solarized
 e scr.utf8 = true
+e asm.os = linux
