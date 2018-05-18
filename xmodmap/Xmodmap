@@ -12,3 +12,6 @@ keycode 182 = XF86ZoomIn
 keycode 183 = XF86Launch0
 keycode 187 = XF86WebCam
 keycode 118 = XF86TouchpadToggle
+keycode 162 = XF86RotateWindows
+keycode 161 = XF86RotationPB
+keycode 248 = XF86AudioRecord

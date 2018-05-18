@@ -1,0 +1,9 @@
+#!/bin/sh
+
+LFILE="xorg.log"
+
+if [ -z "$XDG_VTNR" ]; then
+  exec /usr/bin/X -quiet -nolisten tcp "$@"
+else
+  exec /usr/bin/X -quiet -nolisten tcp "$@" vt$XDG_VTNR
+fi

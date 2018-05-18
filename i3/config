@@ -163,5 +163,5 @@ assign [class="zathura"] 5:media
 for_window [class="qemu-system-*"] floating toggle
 
 # autostart
-exec redshift
+exec hsetroot -tile /home/iomonad/.xres.d/wallpaper/chicago3.jpg -blur 10
 # exec transmission-daemon
