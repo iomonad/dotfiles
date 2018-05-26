@@ -25,3 +25,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
+[submodule "gentoo-overlay"]
+	path = gentoo-overlay
+	url = https://github.com/iomonad/iomonad-overlay
