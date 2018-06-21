@@ -5,7 +5,7 @@ start_uri       gopher://gopher.floodgap.com:70/
 cmd_text        less
 cmd_browser     firefox
 cmd_image       display
-cmd_player      mplayer
+cmd_player      mpv
 
 # colors
 color_prompt    1;34
