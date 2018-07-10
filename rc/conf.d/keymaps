@@ -1,6 +1,6 @@
 # Use keymap to specify the default console keymap.  There is a complete tree
 # of keymaps in /usr/share/keymaps to choose from.
-keymap="us"
+keymap="us dvorak"
 
 # Should we first load the 'windowkeys' console keymap?  Most x86 users will
 # say "yes" here.  Note that non-x86 users should leave it as "no".
@@ -9,7 +9,7 @@ keymap="us"
 windowkeys="YES"
 
 # The maps to load for extended keyboards.  Most users will leave this as is.
-extended_keymaps="dvorak"
+extended_keymaps=""
 #extended_keymaps="backspace keypad euro2"
 
 # Tell dumpkeys(1) to interpret character action codes to be

@@ -1,0 +1,32 @@
+# package.keywords# required by app-admin/stow (argument)
+=app-admin/stow-2.2.2-r1 ~amd64
+# required by qutebrowser (argument)
+=www-client/qutebrowser-1.2.1 ~amd64
+# required by x11-misc/xcape (argument)
+=x11-misc/xcape-1.2 ~amd64
+# required by openspades (argument)
+=games-fps/openspades-0.1.1c ~amd64
+# required by dev-util/radare2-2.5.0::gentoo[system-capstone]
+# required by radare2 (argument)
+=dev-libs/capstone-3.0.5_rc2-r1 ~amd64
+# required by radare2 (argument)
+=dev-util/radare2-2.5.0 ~amd64
+# required by idea-community (argument)
+=dev-util/idea-community-2017.2.2.172.3757.52 ~amd64
+# required by =dev-lang/elixir-1.6.2 (argument)
+=dev-lang/elixir-1.6.2 ~amd64
+# required by sbt-bin (argument)
+=dev-java/sbt-bin-1.1.4 ~amd64
+# required by sbt (argument)
+=dev-java/sbt-0.13.13 ~amd64
+# required by dev-java/sbt-0.13.13::gentoo
+# required by sbt (argument)
+=dev-lang/scala-2.11.11 ~amd64
+# required by leiningen-bin (argument)
+=dev-java/leiningen-bin-2.7.1-r1 ~amd64
+# required by stack-bin (argument)
+=dev-haskell/stack-bin-1.6.1 ~amd64
+# required by =dev-lang/elixir-1.6.6 (argument)
+=dev-lang/elixir-1.6.6 ~amd64
+# required by luakit (argument)
+=www-client/luakit-2017.08.10 ~amd64

@@ -1,1 +1,2 @@
-dns_domain_lo="infra.gentoo.org"
+# Set the dns_domain_lo variable to the selected domain name
+dns_domain_lo="homenetwork"

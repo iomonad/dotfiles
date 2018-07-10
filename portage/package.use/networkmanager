@@ -1,1 +1,1 @@
-net-misc/networkmanager -bluetooth -introspection -ppp -modemmanager
+net-misc/networkmanager -introspection -modemmanager -ncurses nss -gnutls -ppp -wext wifi dbus

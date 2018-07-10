@@ -1,1 +1,1 @@
-dev-vcs/git -perl -python -nls -webdav -blksha1
+dev-vcs/git curl -perl webdav -python -pcre -pcre-jit

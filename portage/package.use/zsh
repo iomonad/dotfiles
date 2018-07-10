@@ -1,0 +1,5 @@
+app-shells/zsh doc
+# required by x11-misc/hsetroot-1.0.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/imlib2-1.5.1 X

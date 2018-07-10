@@ -5,7 +5,8 @@
 # console.  You can find a good selection of fonts in /usr/share/consolefonts;
 # you shouldn't specify the trailing ".psf.gz", just the font name below.
 # To use the default console font, comment out the CONSOLEFONT setting below.
-consolefont="ter120n"
+#consolefont="default8x16"
+consolefont="ter-v16n"
 
 # consoletranslation is the charset map file to use.  Leave commented to use
 # the default one.  Have a look in /usr/share/consoletrans for a selection of
