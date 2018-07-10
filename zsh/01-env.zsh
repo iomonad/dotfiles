@@ -5,7 +5,7 @@ export SHELL='/bin/zsh'
 export EDITOR='emacs'
 export VIEW='w3m'
 export PAGER='less'
-
+export TERM=xterm
 # locales
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

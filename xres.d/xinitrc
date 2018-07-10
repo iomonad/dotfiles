@@ -12,7 +12,7 @@ autocutsel -selection clipboard -fork &
 compton -c -t-5 -l-5 -r3 -o.48 &
 pulseaudio --start -D &
 xset r rate 220 60 &
-#xinput disable 10 &
+xinput disable 10 &
 xset +dpms &
 xset dpms 0 0 300 &
 xset s noblank &
@@ -21,8 +21,8 @@ redshift -l 48.886764:2.320873 &
 #stty -ixon &
 
 # Set space cadets shift
-xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
 setxkbmap us dvorak &
+xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
 xmodmap ~/.xmodmap
 
 #exec xmonad

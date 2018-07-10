@@ -8,81 +8,28 @@ http://xkcd.org/rss.xml comics
 #
 http://news.ycombinator.com/rss  tech
 https://lobste.rs/newest.rss  tech
+https://www.theregister.co.uk/headlines.atom tech
+http://n-gate.com/index.rss tech
 
 #
 # News
 #
 http://www.lemonde.fr/rss/une.xml news
 http://www.lemonde.fr/paris/rss_full.xml news
-http://www.lemonde.fr/culture/rss_full.xml
+http://www.lemonde.fr/culture/rss_full.xml news
 
 #
 # Security
 #
-https://www.us-cert.gov/ncas/current-activity.xml
-http://krebsonsecurity.com/feed/
-https://www.schneier.com/blog/atom.xml
-http://www.darkreading.com/rss_simple.asp
-http://www.cio.com/index.rss
-http://feeds.pcmag.com/Rss.aspx/SectionArticles?sectionId=25442
-https://www.wired.com/category/security/feed/
-http://www.forbes.com/sites/firewall/feed/
-http://www.techrepublic.com/rssfeeds/topic/security/
-http://www.zdnet.com/blog/rss.xml
-http://news.hitb.org/rss.xml
-https://threatpost.com/feed/
-http://www.itsecurityguru.org/feed/
-http://itsecurity.co.uk/feed/
-https://dankaminsky.com/feed/
-http://emergentchaos.com/feed
-http://www.flyingpenguin.com/?feed=rss2
-http://feeds.feedburner.com/inftoint
-https://www.grahamcluley.com/feed/
-https://blog.elearnsecurity.com/feed
-http://www.hackingarticles.in/feed/
-http://holisticinfosec.blogspot.com/feeds/posts/default
-http://jeffsoh.blogspot.com/feeds/posts/default
-http://feeds.feedburner.com/MattFlynnsIdentityManagementBlog
-http://feeds.feedburner.com/blogspot/CqwP?format=xml
-https://nakedsecurity.sophos.com/feed/
-http://infosecisland.com/rss.html
-http://robert.penz.name/feed/
-https://blog.trailofbits.com/feed/
-http://blog.uncommonsensesecurity.com/feeds/posts/default
-https://www.veracode.com/blog/feed
-https://labsblog.f-secure.com/feed/
-http://feeds.danielmiessler.com/danielmiessler
-https://feeds.feedblitz.com/thesecurityledger
-https://zeltser.com/feed/
+https://www.us-cert.gov/ncas/current-activity.xml security
+http://www.darkreading.com/rss_simple.asp security
 
 # kernel
 https://www.kernel.org/feeds/kdist.xml kernel
 
-#
-# Music
-#
-http://hardwax.com/feeds/news/ music
-http://hardwax.com/feeds/techno/ music
-qy
+
 #
 # Gentoo
 #
 http://feeds.feedburner.com/universe_larry gentoo
 http://planet.exherbo.org/rss20.xml gentoo
-
-#
-# Arch
-#
-http://planet.archlinux.org/rss20.xml archlinux
-http://www.archlinux.org/feeds/news/ archlinux
-
-#
-# Reddit
-#
-http://www.reddit.com/r/unixporn/.rss reddit
-http://www.reddit.com/r/sysadmin/.rss reddit
-http://www.reddit.com/r/haskell/.rss reddit
-http://www.reddit.com/r/clojure/.rss reddit
-http://www.reddit.com/r/scala/.rss reddit
-http://www.reddit.com/r/FixedGearBicycle/.rss reddit
-http://www.reddit.com/r/devops/.rss reddit

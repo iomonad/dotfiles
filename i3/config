@@ -20,7 +20,8 @@ client.background			#040404
 bindsym Mod4+Return exec urxvtc
 bindsym Mod4+q kill
 bindsym Mod4+Shift+w exec firefox
-bindsym Mod4+space exec rofi -show run -config /home/iomonad/.config/rofi/rofi-config
+bindsym Mod4+space exec rofi -show run #-config /home/iomonad/.config/rofi/rofi-config
+bindsym Mod4+Shift+s exec rofi -show ssh
 
 bindsym Mod4+j focus right
 bindsym Mod4+k focus down
