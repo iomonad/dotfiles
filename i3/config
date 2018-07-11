@@ -164,6 +164,6 @@ assign [class="zathura"] 5:media
 for_window [class="qemu-system-*"] floating toggle
 
 # autostart
-exec hsetroot -tile /home/iomonad/.xres.d/wallpaper/current.jpg
-xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
+exec hsetroot -fill /home/iomonad/.xres.d/wallpaper/current.jpg
+exec xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
 # exec transmission-daemon
