@@ -22,7 +22,6 @@ redshift -l 48.886764:2.320873 &
 
 # Set space cadets shift
 setxkbmap us dvorak &
-xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright'
 xmodmap ~/.xmodmap
 
 #exec xmonad
