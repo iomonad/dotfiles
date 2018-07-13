@@ -26,5 +26,5 @@ xmodmap ~/.xmodmap
 
 #exec xmonad
 #exec stumpwm
-exec i3 > /dev/null
+exec dbus-launch i3 > /dev/null
 #exec fvwm
