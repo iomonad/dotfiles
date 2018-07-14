@@ -12,6 +12,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 export JAVA_HOME=/opt/oracle-jdk-bin-1.8.0.172
+export R2PM_DBDIR=$HOME/devels/r2pm
 
 # paths
 export PATH=$PATH:$HOME/documents/bins:$HOME/.local/bin:$HOME/medias/games/bin
