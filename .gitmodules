@@ -22,3 +22,6 @@
 [submodule "gentoo-overlay"]
 	path = gentoo-overlay
 	url = https://github.com/iomonad/iomonad-overlay
+[submodule "emacs/home"]
+	path = emacs/home
+	url = https://github.com/iomonad/iomonad.el
