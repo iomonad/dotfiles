@@ -128,3 +128,5 @@
   template = ~/.gitmessage
   status = true
   gpgsign = true
+[help]
+	autocorrect = 1

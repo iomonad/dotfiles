@@ -6,7 +6,7 @@
 ;    By: iomonad <iomonad@riseup.net>               +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/07/14 10:14:47 by iomonad           #+#    #+#              ;
-;    Updated: 2018/07/14 10:14:58 by iomonad          ###   ########.fr        ;
+;    Updated: 2018/07/14 11:18:52 by iomonad          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -36,25 +36,3 @@
                              64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 ;;Load user configuration
 (if (file-exists-p "~/.emacs.d/myemacs.el") (load-file "~/.emacs.d/myemacs.el"))
-
-;; ~~ doom ~~
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(electric-pair-mode t)
- '(global-linum-mode t)
- '(gud-gdb-command-name "gdb --annotate=1")
- '(large-file-warning-threshold nil)
- '(package-selected-packages
-   (quote
-	(company-plsense plsense web-mode php-mode dockerfile-mode yaml-mode scala-mode elixir-mode use-package column-marker)))
- '(show-paren-mode t))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line-inactive ((t (:background nil)))))
