@@ -10,9 +10,6 @@
 [submodule "bin/utils"]
 	path = bin/utils
 	url = https://github.com/iomonad/utils
-[submodule "emacs"]
-	path = emacs
-	url = https://github.com/iomonad/iomonad.el
 [submodule "jenkins/utils"]
 	path = jenkins/utils
 	url = git@github.com:edx/jenkins-configuration.git
