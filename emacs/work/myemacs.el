@@ -336,4 +336,13 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;;
+;; Epub mode
+;;
+
+(use-package nov
+  :ensure t)
+
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
 ;;; config end here
