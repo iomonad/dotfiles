@@ -1,0 +1,53 @@
+#
+# beet configuration file
+# (c) iomonad - https://gitub.com/iomonad/dotfiles
+#
+
+directory: ~/medias/music
+
+plugins: [
+    embedart,
+    fetchart,
+    discogs,
+    edit,
+    mpdupdate,
+    duplicates,
+    missing
+]
+
+# imports
+import:
+    write: yes # write metadata
+    move: yes
+    copy: no  # save disk
+    delete: no
+    autotag: yes
+    timid: no
+    resume: ask
+
+threaded: yes
+timeout: 5.0
+
+paths:
+    default: $genre/$albumartist/$album/$track $title
+    singleton: Singletons/$artist - $title
+    comp: $genre/$album/$track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title
+
+# plugins
+mpd:
+    host: localhost
+    port: 6600
+
+fetchart:
+    auto: yes
+    maxwidth: 300
+    cautious: true
+    cover_names: cover folder
+
+embedart:
+    auto: yes
+    maxwidth: 300
+
+duplicates:
+    checksum: no
