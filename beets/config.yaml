@@ -12,7 +12,8 @@ plugins: [
     edit,
     mpdupdate,
     duplicates,
-    missing
+    missing,
+    lastgenre
 ]
 
 # imports
@@ -51,3 +52,7 @@ embedart:
 
 duplicates:
     checksum: no
+
+lastgenre:
+    auto: yes
+    canonical: yes
