@@ -186,7 +186,7 @@
 ;;
 
 (setq whitespace-style '(face empty lines-tail trailing))
- (global-whitespace-mode t)
+(global-whitespace-mode t)
 
 ;; Note: Added to the  C mode only ! Must be added to 'before-save-hook
 ;; to have a global effect
@@ -230,7 +230,34 @@
 ;;
 
 (fset '42-comment-indent
-   "\C-a** \C-[OB\C-a")
+	  "\C-a** \C-[OB\C-a")
+
+;;
+;; Functions
+;;
+
+(defun save-all-buffers ()
+  (interactive) ; Disable prompt
+  (save-some-buffers t))
+
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (indent-region (point-min)
+				 (point-max)))
+
+;;
+;; Custom keybinds
+;;
+
+(global-set-key (kbd "C-x s") 'save-all-buffers)
+(global-set-key (kbd "C-c n") 'indent-buffer)
+
+;;
+;; Hooks
+;;
+
+(add-hook 'focus-out-hook 'save-all-buffer)
 
 ;;
 ;; Extra-Packages configurations:
