@@ -372,4 +372,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+;;
+;; Colorschemes
+;;
+
+(use-package distinguished-theme
+  :ensure t)
+
 ;;; config end here

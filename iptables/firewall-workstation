@@ -11,7 +11,7 @@ IS=/sbin/iptables-save
 ISP=backup_iptables.txt
 
 # Allowed ports
-PORTS=(8080 23147)
+PORTS=(8080)
 
 $IPTABLES -F
 $IPTABLES -X
