@@ -106,6 +106,10 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 
+bindsym F9 exec mpc --host=smokedsalmon@localhost prev
+bindsym F10 exec mpc --host=smokedsalmon@localhost next
+bindsym F11 exec current
+
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+q exit
