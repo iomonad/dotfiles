@@ -30,3 +30,20 @@
 =dev-lang/elixir-1.6.6 ~amd64
 # required by luakit (argument)
 =www-client/luakit-2017.08.10 ~amd64
+# required by x11-misc/sw-notify-send-1.2.1::gentoo
+# required by sw-notify-send (argument)
+=x11-libs/libtinynotify-cli-1.2.1 ~amd64
+# required by x11-misc/sw-notify-send-1.2.1::gentoo
+# required by sw-notify-send (argument)
+=x11-libs/libtinynotify-0.2.1 ~amd64
+# required by sw-notify-send (argument)
+=x11-misc/sw-notify-send-1.2.1 ~amd64
+# required by x11-misc/sw-notify-send-1.2.1::gentoo
+# required by sw-notify-send (argument)
+=x11-libs/libtinynotify-systemwide-0.1 ~amd64
+# required by tinynotify-send (argument)
+=x11-misc/tinynotify-send-1.2.1-r1 ~amd64
+# required by transmission-remote-cli (argument)
+=net-p2p/transmission-remote-cli-1.7.1 ~amd64
+# required by xcalib (argument)
+=x11-misc/xcalib-0.9.0_p20161210 ~amd64

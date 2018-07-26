@@ -3,3 +3,10 @@ app-shells/zsh doc
 # required by @selected
 # required by @world (argument)
 >=media-libs/imlib2-1.5.1 X
+# required by x11-misc/xdg-utils-1.1.1-r1::gentoo
+# required by net-analyzer/wireshark-2.6.1::gentoo[gtk,-qt5]
+# required by wireshark (argument)
+>=app-text/xmlto-0.0.26-r1 text
+# required by sys-auth/consolekit-1.2.0::gentoo
+# required by consolekit (argument)
+>=dev-libs/glib-2.52.3 dbus
