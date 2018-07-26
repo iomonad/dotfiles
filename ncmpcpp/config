@@ -1,26 +1,44 @@
-# Host and music location
+#
+# file: config
+# iomonad - https://github.com/iomonad/dotfiles
+#
 
-mpd_host = "localhost"
+#
+# Host and music location
+#
+
+mpd_host = "smokedsalmon@0.0.0.0"
 mpd_port = "6600"
 mpd_music_dir = "/home/iomonad/media/music"
 
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory = ~/.ncmpcpp/lyrics
+
+#
 # Delays
+#
 
 playlist_disable_highlight_delay = "1"
+mpd_crossfade_time = 5
 
+#
 # Song Format
+#
 
 song_list_format = "{$6%a$9} $1|$9 {$7%t$9} $R $1|$9 {$2%b$9} $1|$9 {$6%l$9}"
 song_library_format = "{%n - }{%t}|{%f}"
 song_status_format = "$b{$6%a$9 $1|$9 } {$7%t$9} $1|$9 {$2%b$9} $1|$9 {$6%y$9} $1|$9"
 song_window_title_format = "{%b}"
 
+#
 # Columns settings
+#
 
 song_columns_list_format = "(6)[magenta]{l} (30)[red]{a} (30)[blue]{b} (53)[magenta]{t}"
 
-
+#
 # Misc
+#
 
 playlist_display_mode = "classic"
 titles_visibility="no"
@@ -34,15 +52,20 @@ display_bitrate= "yes"
 ignore_leading_the = "yes"
 enable_window_title = "yes"
 progressbar_look = "━━ "
+external_editor = "emacs"
 
+#
 # Interface
+#
 user_interface="classic"
 alternative_header_first_line_format ="{$b$6%a$9} $1««$9 {$6%t$9}"
 alternative_header_second_line_format ="{$5%b$9} $1»»$9 {$5(%y)$9}"
 alternative_ui_separator_color ="black"
 playlist_separate_albums = "no"
 
+#
 # Colors
+#
 
 colors_enabled = "yes"
 empty_tag_color = "blue"
@@ -60,3 +83,14 @@ statusbar_color = "black"
 active_column_color = "magenta"
 window_border_color = "red"
 active_window_border = "red"
+
+#
+# Visualizer
+#
+
+visualizer_output_name = "~ Stereo Trippin ~"
+visualizer_in_stereo = "yes"
+visualizer_sample_multiplier = "1"
+visualizer_sync_interval = "10"
+visualizer_type = "wave"
+visualizer_color = blue, cyan, green, yellow, magenta, red

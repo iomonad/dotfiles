@@ -8,7 +8,7 @@ wmname LG3D &
 unclutter -idle 2 &
 urxvtd --quiet --opendisplay --fork &
 autocutsel -selection clipboard -fork &
-#autocutsel -s PRIMARY &
+autocutsel -s PRIMARY &
 compton -c -t-5 -l-5 -r3 -o.48 &
 pulseaudio --start -D &
 xset r rate 220 60 &
