@@ -370,13 +370,6 @@
 (use-package magit
   :ensure t)
 
-(use-package magithub
-  :after magit
-  :ensure t
-  :config
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/projects"))
-
 ;;
 ;; Colorschemes
 ;;
