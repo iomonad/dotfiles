@@ -364,13 +364,18 @@
   :init (setq markdown-command "multimarkdown"))
 
 ;;
-;; Epub mode
+;; Magit
 ;;
 
-(use-package nov
+(use-package magit
   :ensure t)
 
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(use-package magithub
+  :after magit
+  :ensure t
+  :config
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/projects"))
 
 ;;
 ;; Colorschemes
