@@ -15,7 +15,7 @@ export JAVA_HOME=/opt/oracle-jdk-bin-1.8.0.172
 export R2PM_DBDIR=$HOME/devels/r2pm
 
 # paths
-export PATH=$PATH:$HOME/documents/bins:$HOME/.local/bin:$HOME/medias/games/bin
+export PATH=$PATH:$HOME/documents/bins:$HOME/.local/bin:$HOME/medias/games/bin:$HOME/.gem/ruby/2.3.0/bin/
 
 PATH="$HOME/devels/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/devels/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
