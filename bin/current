@@ -17,7 +17,7 @@ shopt -s nocaseglob
 # Globals
 #
 
-MPD_PATH=$HOME/medias/music
+MPD_PATH=$HOME/medias/musique
 LOCAL_ART=$(dirname "$(mpc status -f '%file%' | head -n1)")
 ARTS=($MPD_PATH/$LOCAL_ART/*.{jpg,jgeg,png})
 ART="$MPD_PATH/$LOCAL_ART/cover.jpg"

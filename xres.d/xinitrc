@@ -24,6 +24,9 @@ redshift -l 48.886764:2.320873 &
 setxkbmap us dvorak &
 xmodmap ~/.xmodmap
 
+# Eye condy
+hsetroot -tile ~/.xres.d/wallpaper/tiled/neck.png -tint "#3d3d3d" 
+
 #exec xmonad
 #exec stumpwm
 exec dbus-launch i3 > /dev/null

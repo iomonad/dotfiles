@@ -9,7 +9,7 @@
 
 mpd_host = "smokedsalmon@0.0.0.0"
 mpd_port = "6600"
-mpd_music_dir = "/home/iomonad/media/music"
+mpd_music_dir = "/home/iomonad/media/musique"
 
 ncmpcpp_directory = ~/.ncmpcpp
 lyrics_directory = ~/.ncmpcpp/lyrics
