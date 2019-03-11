@@ -40,7 +40,9 @@
 
 ;;; Changelog:
 
-;; 0.1.1: Config backup init
+;; 0.1.1: Config backup init.
+;; 0.1.2: Cleanup unused packages (ensime due to Intellij Usage)
+;;        and theme bump.
 
 ;;; Code:
 
@@ -123,6 +125,8 @@
 (setq show-paren-delay 0)
 (setq blink-matching-paren 1)
 (show-paren-mode 1)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;
 ;; UI configuration:
@@ -304,39 +308,6 @@
 (setq cider-save-file-on-load t)
 
 ;;
-;; Scala emacs mode
-;;
-
-(use-package ensime
-  :ensure t)
-
-(setq ensime-sem-high-faces
-	  '((implicitConversion nil)
-		(var . (:foreground "#ff2222"))
-		(val . (:foreground "#dddddd"))
-		(varField . (:foreground "#ff3333"))
-		(valField . (:foreground "#dddddd"))
-		(functionCall . (:foreground "#dc9157"))
-		(param . (:foreground "#ffffff"))
-		(object . (:foreground "#D884E3"))
-		(class . (:foreground "green"))
-		(trait . (:foreground "#009933"))
-		(operator . (:foreground "#cc7832"))
-		(object . (:foreground "#6897bb" :slant italic))
-		(package . (:foreground "yellow"))
-		(implicitConversion . (:underline (:style wave :color "blue")))
-		(implicitParams . (:underline (:style wave :color "blue")))
-		(deprecated . (:strike-through "#a9b7c6"))
-		(implicitParams nil))
-	  ensime-tooltip-hints t ;; disable type-inspecting tooltips
-	  ensime-tooltip-type-hints t);; disable typeinspecting tooltips
-
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-(use-package sbt-mode
-  :ensure t)
-
-;;
 ;; Yasnippet mode
 ;;
 
@@ -374,7 +345,7 @@
 ;; Colorschemes
 ;;
 
-(use-package distinguished-theme
+(use-package twilight-theme
   :ensure t)
 
 ;;; config end here
