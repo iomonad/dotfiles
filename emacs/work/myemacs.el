@@ -120,6 +120,9 @@
 (setq debug-on-quit nil)
 (setq debug-on-message nil)
 
+(require 'zone)
+(zone-when-idle 120)
+
 (electric-pair-mode 1) 					; Can be annoying
 (setq create-lockfiles nil)
 (setq show-paren-delay 0)
