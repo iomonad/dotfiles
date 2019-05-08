@@ -15,7 +15,7 @@
   whitespace = cr-at-eol
   editor     = emacs
   pager = less -x4
-  excludesfile = ~/documents/dotfiles/git/globalignore
+  excludesfile = ~/.globalignore
 
 # --~-- Merging --~--
 [merge]
@@ -123,10 +123,10 @@
 
 #--~-- Misc --~--
 [gpg]
-  program = gpg2
+  program = gpg
 [commit]
   template = ~/.gitmessage
   status = true
-  gpgsign = true
+  gpgsign = false
 [help]
 	autocorrect = 1

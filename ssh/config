@@ -31,23 +31,6 @@ Host *.42.fr
 	 #GSSAPIDelegateCredentials yes
      PasswordAuthentication yes
 
-host space
-    hostname inother.space
-    port 2314
-    user root
-    compression no
-    cipher blowfish-cbc
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/space_rsa
-
-Host tunnel
-    HostName git.inother.space
-    IdentityFile ~/.ssh/keys/space_rsa
-    LocalForward 9906 127.0.0.1:3306
-    IdentitiesOnly yes
-    cipher arcfour
-    User root
-
 Host github.com
     HostName github.com
     user git
@@ -67,53 +50,3 @@ Host gist.github.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/keys/github_rsa
     cipher arcfour
-
-host pi
-    user pi
-    hostname fsociety.local
-
-host openbsd
-    user pirate
-    port 23147
-    hostname 192.168.0.20
-    cipher arcfour
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/home_key
-
-host cluster2
-    user pirate
-    hostname 192.168.0.31
-    port 24728
-    cipher arcfour
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/home_key
-
-# bios flasher
-host coreboot
-    hostname 192.168.0.43
-    port 23147
-    user root
-
-host ajitpai
-    hostname l233fngm4h5ycdhy.onion
-    port 23147
-    user root
-    compression no
-    cipher arcfour
-
-host ajitpai-tunnel
-    LocalForward 9906 127.0.0.1:3306
-    hostname l233fngm4h5ycdhy.onion
-    port 23147
-    user root
-    compression no
-    cipher arcfour
-
-# work rpi
-host 42pi
-	 hostname 10.18.190.43
-	 Preferredauthentications password
-	 Passwordauthentication yes
-	 Pubkeyauthentication no
-	 port 23147
-	 user root

@@ -40,7 +40,9 @@
 
 ;;; Changelog:
 
-;; 0.1.1: Config backup init
+;; 0.1.1: Config backup init.
+;; 0.1.2: Cleanup unused packages (ensime due to Intellij Usage)
+;;        and theme bump.
 
 ;;; Code:
 
@@ -118,11 +120,16 @@
 (setq debug-on-quit nil)
 (setq debug-on-message nil)
 
+(require 'zone)
+(zone-when-idle 120)
+
 (electric-pair-mode 1) 					; Can be annoying
 (setq create-lockfiles nil)
 (setq show-paren-delay 0)
 (setq blink-matching-paren 1)
 (show-paren-mode 1)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;
 ;; UI configuration:
@@ -304,39 +311,6 @@
 (setq cider-save-file-on-load t)
 
 ;;
-;; Scala emacs mode
-;;
-
-(use-package ensime
-  :ensure t)
-
-(setq ensime-sem-high-faces
-	  '((implicitConversion nil)
-		(var . (:foreground "#ff2222"))
-		(val . (:foreground "#dddddd"))
-		(varField . (:foreground "#ff3333"))
-		(valField . (:foreground "#dddddd"))
-		(functionCall . (:foreground "#dc9157"))
-		(param . (:foreground "#ffffff"))
-		(object . (:foreground "#D884E3"))
-		(class . (:foreground "green"))
-		(trait . (:foreground "#009933"))
-		(operator . (:foreground "#cc7832"))
-		(object . (:foreground "#6897bb" :slant italic))
-		(package . (:foreground "yellow"))
-		(implicitConversion . (:underline (:style wave :color "blue")))
-		(implicitParams . (:underline (:style wave :color "blue")))
-		(deprecated . (:strike-through "#a9b7c6"))
-		(implicitParams nil))
-	  ensime-tooltip-hints t ;; disable type-inspecting tooltips
-	  ensime-tooltip-type-hints t);; disable typeinspecting tooltips
-
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-(use-package sbt-mode
-  :ensure t)
-
-;;
 ;; Yasnippet mode
 ;;
 
@@ -374,7 +348,44 @@
 ;; Colorschemes
 ;;
 
-(use-package distinguished-theme
+(use-package twilight-theme
   :ensure t)
+
+;;
+;; EBNF Mode
+;;
+
+(define-generic-mode 'bnf-mode
+  () ;; comment char: inapplicable because # must be at start of line
+  nil ;; keywords
+  '(
+    ("^#.*" . 'font-lock-comment-face) ;; comments at start of line
+    ("^<.*?>" . 'font-lock-function-name-face) ;; LHS nonterminals
+    ("<.*?>" . 'font-lock-builtin-face) ;; other nonterminals
+    ("::=" . 'font-lock-const-face) ;; "goes-to" symbol
+    ("\|" . 'font-lock-warning-face) ;; "OR" symbol
+    ("\{:\\|:\}" . 'font-lock-keyword-face) ;; special pybnf delimiters
+	)
+  '("\\.bnf\\'" "\\.ebnf\\'") ;; filename suffixes
+  nil ;; extra function hooks
+  "Major mode for BNF highlighting.")
+
+;;
+;; Undotree
+;;
+
+(use-package undo-tree
+  :ensure t)
+
+(global-undo-tree-mode 1)
+
+(defun undo-tree-visualizer-update-linum (&rest args)
+    (linum-update undo-tree-visualizer-parent-buffer))
+(advice-add 'undo-tree-visualize-undo :after #'undo-tree-visualizer-update-linum)
+(advice-add 'undo-tree-visualize-redo :after #'undo-tree-visualizer-update-linum)
+(advice-add 'undo-tree-visualize-undo-to-x :after #'undo-tree-visualizer-update-linum)
+(advice-add 'undo-tree-visualize-redo-to-x :after #'undo-tree-visualizer-update-linum)
+(advice-add 'undo-tree-visualizer-mouse-set :after #'undo-tree-visualizer-update-linum)
+(advice-add 'undo-tree-visualizer-set :after #'undo-tree-visualizer-update-linum)
 
 ;;; config end here
