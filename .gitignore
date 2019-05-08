@@ -86,3 +86,7 @@ zsh/01-private.zsh
 zsh/history
 mpv/watch_later
 *.keep*
+emacs/work/network-security.data
+emacs/work/elpa
+emacs/work/packages
+emacs/work/request
