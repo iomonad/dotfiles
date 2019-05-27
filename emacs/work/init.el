@@ -6,7 +6,7 @@
 ;    By: iomonad <iomonad@riseup.net>               +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/07/14 10:14:47 by iomonad           #+#    #+#              ;
-;    Updated: 2019/05/21 16:27:28 by iomonad          ###   ########.fr        ;
+;    Updated: 2019/05/27 14:19:10 by iomonad          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -45,12 +45,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(tuareg request go-autocomplete go-mode distinguished-theme magit markdown-mode yasnippet-snippets ensime cider multiple-cursors company use-package)))
- '(safe-local-variable-values
-   (quote
-	((company-clang-arguments "-I/Users/ctrouill/Projects/ft_malloc/includes" "-I/Users/ctrouill/Projects/ft_malloc/libft/includes" "~/Projects/malloc/includes" "~/Projects/malloc/libft/includes")
-	 (company-clang-arguments "-I/Users/ctrouill/Projects/ft_malloc/includes" "-I/Users/ctrouill/Projects/ft_malloc/libft/includes")
-	 (company-clang-arguments "-I/Users/ctrouill/Projects/ft_ssl/includes" "-I/Users/ctrouill/Projects/ft_ssl/libft/includes")))))
+	(tuareg request go-autocomplete go-mode distinguished-theme magit markdown-mode yasnippet-snippets ensime cider multiple-cursors company use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

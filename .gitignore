@@ -92,3 +92,4 @@ emacs/work/packages
 emacs/work/request
 *eshell*
 *history*
+*__pycache__*
