@@ -1,0 +1,52 @@
+WindowTitle {ConfirmQuit}
+WindowSize  268 80
+Font "xft:Sans:style=Bold:size=10"
+Init
+ Begin
+ End
+
+Widget 1
+Property
+ Title {Do you really want to shutdown?}
+ Size  252 30
+ Position 8 0
+ Type ItemDraw
+ Flags NoReliefString
+Main
+ Case message of
+  SingleClic :
+  Begin
+  End
+End
+
+Widget 2
+Property
+ Title {Shutdown}
+ Size 122 28
+ Position 8 40
+ Flags NoReliefString
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Exec exec shutdown -p now}
+  End
+End
+
+Widget 3
+Property
+ Title {Cancel}
+ Size 122 28
+ Position 138 40
+ Flags NoReliefString
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Quit
+  End
+End

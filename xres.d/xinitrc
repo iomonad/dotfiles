@@ -1,33 +1,60 @@
-# Load X ressources
-xrdb -load  $HOME/.Xresources &
+#
+# file: ~/.xinitrc
+#
+# X Server configs & hacks
+#
+
+#
+# X related
+#
+
+xrdb -load $HOME/.Xresources &
 xset +fp ~/.fonts &
 xset fp rehash &
-xrdb -load .Xresources &
-xsetroot -cursor_name left_ptr &
-wmname LG3D &
-unclutter -idle 2 &
-urxvtd --quiet --opendisplay --fork &
-autocutsel -selection clipboard -fork &
-autocutsel -s PRIMARY &
-compton -c -t-5 -l-5 -r3 -o.48 &
-pulseaudio --start -D &
-xset r rate 220 60 &
+xset r rate 220 60 & # Make input on steroid
 xinput disable 10 &
 xset +dpms &
 xset dpms 0 0 300 &
 xset s noblank &
-#xrandr --dpi 125 &
-redshift -l 48.886764:2.320873 &
-#stty -ixon &
+xset b off # Disable bell
+wmname LG3D & # Needed for Xmonad
+stty -ixon &
 
-# Set space cadets shift
+#
+# Input Related
+#
+
+xsetroot -cursor_name left_ptr &
+unclutter -idle 2 &
+autocutsel -selection clipboard -fork &
+autocutsel -s PRIMARY &
 setxkbmap us dvorak &
-xmodmap ~/.xmodmap
+xmodmap ~/.xmodmap &
+xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright' & # Space cadet shift
 
-# Eye condy
-hsetroot -tile ~/.xres.d/wallpaper/tiled/neck.png -tint "#3d3d3d" 
+#
+# Eye Candy
+#
 
-#exec xmonad
-#exec stumpwm
+hsetroot -tile ~/.xres.d/wallpaper/tiled/neck.png -tint "#3d3d3d" &
+compton -c -t-5 -l-5 -r3 -o.48 &
+
+#
+# Extra Software
+#
+
+xscreensaver -no-splash &
+redshift -O 3700
+urxvtd --quiet --opendisplay --fork & # Daemon Terminal
+pulseaudio --start -D &
+udiskie -N -s &
+
+#
+# Windows manager
+#
+
+# exec xmonad
+# exec stumpwm
+# exec fvwm
+
 exec dbus-launch i3 > /dev/null
-#exec fvwm

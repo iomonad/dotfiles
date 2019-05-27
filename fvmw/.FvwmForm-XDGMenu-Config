@@ -1,0 +1,19 @@
+# This file last created by FvwmForm-XDGMenu-Config on: Sun Feb  4 01:41:31 EST 2018.
+*FvwmForm-XDGMenu-ConfigDefault: MENgnome-applications     on 
+
+*FvwmForm-XDGMenu-ConfigDefault: IncludeConfig 
+*FvwmForm-XDGMenu-ConfigDefault: IncludeRegen 
+*FvwmForm-XDGMenu-ConfigDefault: IncludeBoth   
+*FvwmForm-XDGMenu-ConfigDefault: IncludeNone  on
+*FvwmForm-XDGMenu-ConfigDefault: IconsOn      on 
+*FvwmForm-XDGMenu-ConfigDefault: IconsOff      
+*FvwmForm-XDGMenu-ConfigDefault: Size          
+*FvwmForm-XDGMenu-ConfigDefault: TitlesOn     on 
+*FvwmForm-XDGMenu-ConfigDefault: TitlesOff     
+*FvwmForm-XDGMenu-ConfigDefault: Theme         
+*FvwmForm-XDGMenu-ConfigDefault: Title        XDGMenu  
+*FvwmForm-XDGMenu-ConfigDefault: InsertInto    
+*FvwmForm-XDGMenu-ConfigDefault: Path         $FVWM_USERDIR/.XDGMenu  
+*FvwmForm-XDGMenu-ConfigDefault: IconDir      ~/.fvwm/icons  
+*FvwmForm-XDGMenu-ConfigDefault: DirIcon      gnome-fs-directory  
+*FvwmForm-XDGMenu-ConfigDefault: AppIcon      gnome-applications  

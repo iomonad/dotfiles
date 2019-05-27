@@ -35,10 +35,10 @@ if [ -n "${BASH_VERSION-}" ] ; then
 	if [ -f /etc/bash/bashrc ] ; then
 		# Bash login shells run only /etc/profile
 		# Bash non-login shells run only /etc/bash/bashrc
-		# Since we want to run /etc/bash/bashrc regardless, we source it 
-		# from here.  It is unfortunate that there is no way to do 
-		# this *after* the user's .bash_profile runs (without putting 
-		# it in the user's dot-files), but it shouldn't make any 
+		# Since we want to run /etc/bash/bashrc regardless, we source it
+		# from here.  It is unfortunate that there is no way to do
+		# this *after* the user's .bash_profile runs (without putting
+		# it in the user's dot-files), but it shouldn't make any
 		# difference.
 		. /etc/bash/bashrc
 	else
@@ -55,3 +55,8 @@ for sh in /etc/profile.d/*.sh ; do
 	[ -r "$sh" ] && . "$sh"
 done
 unset sh
+
+#
+# Custom profiles
+#
+# export QT_QPA_PLATFORMTHEME=gtk2

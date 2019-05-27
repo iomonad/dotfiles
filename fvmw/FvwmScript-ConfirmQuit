@@ -1,0 +1,52 @@
+WindowTitle {ConfirmQuit}
+WindowSize  224 80
+Font "xft:Sans:style=Bold:size=10"
+Init
+ Begin
+ End
+
+Widget 1
+Property
+ Title {Do you really want to quit?}
+ Size  200 30
+ Position 8 0
+ Type ItemDraw
+ Flags NoReliefString
+Main
+ Case message of
+  SingleClic :
+  Begin
+  End
+End
+
+Widget 2
+Property
+ Title {Quit}
+ Size 100 28
+ Position 8 40
+ Flags NoReliefString
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Quit}
+  End
+End
+
+Widget 3
+Property
+ Title {Cancel}
+ Size 100 28
+ Position 116 40
+ Flags NoReliefString
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Quit
+  End
+End
