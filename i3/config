@@ -162,7 +162,7 @@ assign [class="Tor Browser"] 10:hell
 assign [class="qemu-system-*"] 8:virt
 assign [class="^QEMU$"] 8:virt
 assign [class="MuPDF"] 5:media
-assign [class="Clementine"] 5:media
+assign [class="GMPC"] 5:media
 assign [class="zathura"] 5:media
 
 # app rules
