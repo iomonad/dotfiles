@@ -345,7 +345,7 @@
 ;; Colorschemes
 ;;
 
-(use-package twilight-theme
+(use-package cyberpunk-theme
   :ensure t)
 
 ;;

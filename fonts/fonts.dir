@@ -1,17 +1,14 @@
-16
-beep.pcf -jmk-beep-medium-r-normal--11-100-75-75-c-60-iso8859-1
-berry.pcf -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
-candy.pcf -shdw-candy-medium-r-normal--11-80-120-120-m-60-iso10646-1
-creep.pcf -gbdfed-creep-regular-r-normal--16-120-96-96-m-4-iso10646-1
-dweep.pcf -jmk-dweep-medium-r-semicondensed--11-100-75-75-c-50-iso8859-1
-lemon.pcf -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1
-marathonmod-14-b-r-sc.pcf -nucleus-marathon-bold-r-semicondensed--14-14-75-75-c-60-iso8859-1
-marathonmod-14-b-r.pcf -nucleus-marathon-bold-r-normal--14-14-75-75-c-70-iso8859-1
-marathonmod-14-m-r-sc.pcf -nucleus-marathon-medium-r-semicondensed--14-140-75-75-c-60-iso8859-1
-marathonmod-14-m-r.pcf -nucleus-marathonmod-medium-r-normal--14-140-75-75-c-70-iso8859-1
-siji.pcf -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
-stlarch.pcf -misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-terminus12.pcf -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
-terminus14.pcf -beastie-terminus14-medium-r-normal--14-140-72-72-c-80-iso8859-1
-tinycandy.pcf -shdw-tinycandy-medium-r-normal--8-60-75-75-m-50-iso10646-1
-uushi.pcf -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+13
+Dina_i400-10.bdf -windows-dina-medium-i-normal--13-100-96-96-c-80-microsoft-cp1252
+Dina_i400-8.bdf -windows-dina-medium-i-normal--10-80-96-96-c-70-microsoft-cp1252
+Dina_i400-9.bdf -windows-dina-medium-i-normal--12-90-96-96-c-70-microsoft-cp1252
+Dina_i700-10.bdf -windows-dina-bold-i-normal--13-100-96-96-c-80-microsoft-cp1252
+Dina_i700-8.bdf -windows-dina-bold-i-normal--10-80-96-96-c-70-microsoft-cp1252
+Dina_i700-9.bdf -windows-dina-bold-i-normal--12-90-96-96-c-70-microsoft-cp1252
+Dina_r400-10.bdf -windows-dina-medium-r-normal--13-100-96-96-c-80-microsoft-cp1252
+Dina_r400-6.bdf -windows-dina-medium-r-normal--8-60-96-96-c-60-microsoft-cp1252
+Dina_r400-8.bdf -windows-dina-medium-r-normal--10-80-96-96-c-70-microsoft-cp1252
+Dina_r400-9.bdf -windows-dina-medium-r-normal--12-90-96-96-c-70-microsoft-cp1252
+Dina_r700-10.bdf -windows-dina-bold-r-normal--13-100-96-96-c-80-microsoft-cp1252
+Dina_r700-8.bdf -windows-dina-bold-r-normal--10-80-96-96-c-70-microsoft-cp1252
+Dina_r700-9.bdf -windows-dina-bold-r-normal--12-90-96-96-c-70-microsoft-cp1252

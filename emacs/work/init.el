@@ -6,7 +6,7 @@
 ;    By: iomonad <iomonad@riseup.net>               +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/07/14 10:14:47 by iomonad           #+#    #+#              ;
-;    Updated: 2019/05/27 14:19:10 by iomonad          ###   ########.fr        ;
+;    Updated: 2019/06/11 11:57:54 by iomonad          ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -41,14 +41,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-safe-themes
+   (quote
+	("59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "450f3382907de50be905ae8a242ecede05ea9b858a8ed3cc8d1fbdf2d57090af" "0d456bc74e0ffa4bf5b69b0b54dac5104512c324199e96fc9f3a1db10dfa31f3" default)))
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(tuareg request go-autocomplete go-mode distinguished-theme magit markdown-mode yasnippet-snippets ensime cider multiple-cursors company use-package))))
+	(cyberpunk-theme tuareg request go-autocomplete go-mode distinguished-theme magit markdown-mode yasnippet-snippets ensime cider multiple-cursors company use-package)))
+ '(safe-local-variable-values
+   (quote
+	((company-clang-arguments "-I/Users/ctrouill/Projects/ft_malloc/includes" "-I/Users/ctrouill/Projects/ft_malloc/libft/includes" "~/Projects/malloc/includes" "~/Projects/malloc/libft/includes")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line-inactive ((t (:background nil)))))
+ )
