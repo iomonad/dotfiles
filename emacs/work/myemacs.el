@@ -126,8 +126,6 @@
 (setq blink-matching-paren 1)
 (show-paren-mode 1)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;;
 ;; UI configuration:
 ;;
@@ -210,11 +208,11 @@
 (define-key global-map "\C-cb" 'org-iswitchb)
 
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "home.org"))
-(setq org-agenda-files (list "~/org/work.org"
-							 "~/org/school.org"
-							 "~/org/bucket.org"
-							 "~/org/home.org"))
+(setq org-default-notes-file (concat org-directory "bucket.org"))
+(setq org-agenda-files '("~/org/projets"
+						 "~/org/travail/"
+						 "~/org/perso/tasks.org"
+						 "~/org/bucket.org"))
 
 (setq org-todo-keywords
 	  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "DELEGATED" "CANCELED(c@)")))
@@ -295,19 +293,6 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;
-;; Cider Clojure Mode
-;;
-
-(use-package cider
-  :ensure t)
-
-(setq cider-eval-result-prefix ";; => ")
-(setq cider-auto-mode t)
-(setq nrepl-hide-special-buffers t)
-(setq cider-save-file-on-load nil)
-(setq cider-save-file-on-load t)
-
-;;
 ;; Yasnippet mode
 ;;
 
@@ -323,69 +308,10 @@
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;;
-;; Markdown mode
-;;
-
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
-;;
 ;; Magit
 ;;
 
 (use-package magit
   :ensure t)
-
-;;
-;; Colorschemes
-;;
-
-(use-package cyberpunk-theme
-  :ensure t)
-
-;;
-;; EBNF Mode
-;;
-
-(define-generic-mode 'bnf-mode
-  () ;; comment char: inapplicable because # must be at start of line
-  nil ;; keywords
-  '(
-    ("^#.*" . 'font-lock-comment-face) ;; comments at start of line
-    ("^<.*?>" . 'font-lock-function-name-face) ;; LHS nonterminals
-    ("<.*?>" . 'font-lock-builtin-face) ;; other nonterminals
-    ("::=" . 'font-lock-const-face) ;; "goes-to" symbol
-    ("\|" . 'font-lock-warning-face) ;; "OR" symbol
-    ("\{:\\|:\}" . 'font-lock-keyword-face) ;; special pybnf delimiters
-	)
-  '("\\.bnf\\'" "\\.ebnf\\'") ;; filename suffixes
-  nil ;; extra function hooks
-  "Major mode for BNF highlighting.")
-
-;;
-;; Undotree
-;;
-
-(use-package undo-tree
-  :ensure t)
-
-(use-package tuareg
-  :ensure t)
-
-(global-undo-tree-mode 1)
-
-(defun undo-tree-visualizer-update-linum (&rest args)
-    (linum-update undo-tree-visualizer-parent-buffer))
-(advice-add 'undo-tree-visualize-undo :after #'undo-tree-visualizer-update-linum)
-(advice-add 'undo-tree-visualize-redo :after #'undo-tree-visualizer-update-linum)
-(advice-add 'undo-tree-visualize-undo-to-x :after #'undo-tree-visualizer-update-linum)
-(advice-add 'undo-tree-visualize-redo-to-x :after #'undo-tree-visualizer-update-linum)
-(advice-add 'undo-tree-visualizer-mouse-set :after #'undo-tree-visualizer-update-linum)
-(advice-add 'undo-tree-visualizer-set :after #'undo-tree-visualizer-update-linum)
 
 ;;; config end here
