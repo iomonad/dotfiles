@@ -30,11 +30,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+	("bb5a253b1e359db941284cc74750ecf38aa93878b208919fc0f2199daaef491e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" default)))
  '(gud-gdb-command-name "gdb --annotate=1")
- '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(intero yasnippet-snippets use-package undo-tree twilight-theme tuareg request multiple-cursors markdown-mode magit go-mode go-autocomplete ensime distinguished-theme cyberpunk-theme cider))))
+	(cyberpunk-2019-theme intero yasnippet-snippets use-package undo-tree twilight-theme tuareg request multiple-cursors markdown-mode magit go-mode go-autocomplete ensime distinguished-theme cyberpunk-theme cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

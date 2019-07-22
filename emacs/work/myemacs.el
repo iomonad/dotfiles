@@ -314,4 +314,14 @@
 (use-package magit
   :ensure t)
 
+;;
+;; Python Mode
+;;
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
+
 ;;; config end here
