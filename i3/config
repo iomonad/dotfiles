@@ -2,7 +2,7 @@
 # i3 config
 
 # fonts
-font pango:ProFont 10
+#font pango:ProFont 10
 floating_modifier Mod4
 new_window normal
 
@@ -138,7 +138,7 @@ bindsym Mod4+r mode "resize"
 bar {
     mode dock
         position top
-        font pango:ProFont 10
+#        font pango:ProFont 10
         workspace_buttons yes
         colors {
 		background #040404

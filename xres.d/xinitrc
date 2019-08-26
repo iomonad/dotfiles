@@ -49,6 +49,7 @@ redshift -O 3700
 urxvtd --quiet --opendisplay --fork & # Daemon Terminal
 pulseaudio --start -D &
 udiskie -N -s &
+nm-applet &
 
 #
 # Windows manager
