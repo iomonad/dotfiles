@@ -12,9 +12,9 @@
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
-  editor     = emacs
   pager = less -x4
   excludesfile = ~/.globalignore
+  editor = emacs -nw
 
 [merge]
   tool = vimdiff
