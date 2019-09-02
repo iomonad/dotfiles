@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<darktable_style version="1.0"><info><name>Watermark</name><description></description></info><style><plugin><num>0</num><module>4</module><operation>watermark</operation><op_params>gz03eJxjYHBwZGAQcEwQat7TMPvIbg4GBCjOzC3ISdUtSa0o0SsuS2cgFRxaqZCcWJKYk5pXQrJeCGiwh+GAosT0XKBhAUX5CoYGpJsEAFMTFxM=</op_params><enabled>1</enabled><blendop_params>gz11eJxjYGBgkGAAgRNODGiAEV0AJ2iwh+CRxQcA5qIZBA==</blendop_params><blendop_version>8</blendop_version><multi_priority>0</multi_priority><multi_name></multi_name></plugin></style></darktable_style>

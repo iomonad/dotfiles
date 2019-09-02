@@ -1,14 +1,13 @@
 #
-# (c) iomonad - iomonad@riseup.net
+# (c) iomonad - clement@trosa.io
+# See: github.com/iomonad/dotfiles
 #
 
-# --~-- User related --~--
 [user]
   name = Clement Trosa
   email = me@trosa.io
-  signingkey = 0247363E3F7A1F48
+  signingkey = 6D8010A2D121BC6E
 
-# --~-- Core configuration  --~--
 [core]
   autocrlf = input
   ignorecase = false
@@ -17,25 +16,20 @@
   pager = less -x4
   excludesfile = ~/.globalignore
 
-# --~-- Merging --~--
 [merge]
   tool = vimdiff
   branchdesc = true
   stat = true
 
-# --~-- Credentials --~--
 [credential]
   helper = cache --timeout=28800
 
-# --~-- Github options --~--
 [github]
   user = iomonad
 
-# --~-- Force ident on https
 [url "https://iomonad@github.com"]
   insteadOf = https://github.com
 
-# --~-- Color the output --~--
 [color]
   branch     = auto
   diff       = 1
@@ -66,7 +60,6 @@
   commit     = 4
   whitespace = 160 bold
 
-# --~-- Some alias --~--
 [alias]
   cmd = commit --amend --no-edit
   gg = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
@@ -124,9 +117,11 @@
 #--~-- Misc --~--
 [gpg]
   program = gpg
+
 [commit]
   template = ~/.gitmessage
   status = true
-  gpgsign = false
+  gpgsign = true
+
 [help]
 	autocorrect = 1
