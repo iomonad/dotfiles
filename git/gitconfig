@@ -6,7 +6,7 @@
 [user]
   name = Clement Trosa
   email = me@trosa.io
-  signingkey = 6D8010A2D121BC6E
+  signingkey = 3185D6F49AA40096
 
 [core]
   autocrlf = input
