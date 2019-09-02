@@ -4,9 +4,9 @@
 #
 
 [user]
-  name = Clement Trosa
+  name = Clement T.
   email = me@trosa.io
-  signingkey = 3185D6F49AA40096
+  signingkey = 91C9862F659893ED
 
 [core]
   autocrlf = input
