@@ -29,7 +29,6 @@ Style * IconFont "xft:Neep:pixelsize=11"
 Colorset 0 Fore #353540, Back #09090d
 Colorset 1 Fore #839496, Back #09090d
 
-
 # Text and background color for the title bar (overridden in the WIN case),
 # and the border of the inactive window (also used by icon title,
 # and "hilight" and "shadow" colors).
@@ -91,8 +90,7 @@ MenuStyle winops VerticalItemSpacing 1 2, VerticalTitleSpacing 1 2
 AddToMenu MainMenu
 + "term" 			Exec exec urxvt
 + "files"			Exec exec thunar
-+ "firefox"			Exec exec firefox-bin
-+ "chrome"			Exec exec google-chrome-stable
++ "firefox"			Exec exec firefox
 + "apps"			Popup Apps
 + "games"			Popup Games
 + ""				Nop
@@ -165,7 +163,7 @@ AddToFunc raise-shade
 + I Raise
 + D WindowShade
 
-Mouse 1 			R 	A 	Menu MainMenu 
+Mouse 1 			R 	A 	Menu MainMenu
 Mouse 1 			1 	N 	Iconify
 Mouse 2				1	N	WindowShade
 Mouse 3				1	N	Maximize 1280p 1004p
@@ -293,7 +291,7 @@ DestroyModuleConfig FvwmPager: *
 *FvwmPager: BalloonColorset * 1
 *FvwmPager: BalloonBorderWidth 0
 *FvwmPager: BalloonFont "xft:Neep:pixelsize=11"
-*FvwmPager: Geometry 130x70+1140+924 
+*FvwmPager: Geometry 130x70+1366+768
 *FvwmPager: WindowColorsets 0 1
 *FvwmPager: SmallFont "xft:Neep:pixelsize=11"
 

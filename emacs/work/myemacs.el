@@ -325,6 +325,18 @@
   (advice-add 'python-mode :before 'elpy-enable))
 
 ;;
+;; Undotree
+;;
+
+(use-package undo-tree
+  :ensure t)
+
+;; NeoTree
+(use-package neotree
+  :ensure t)
+(global-set-key [f8] 'neotree-toggle)
+
+;;
 ;; Haskell
 ;;
 
@@ -338,5 +350,8 @@
 (add-hook 'objc-mode-hook 'irony-mode)
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; Erase trailing whitespace on save
+(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
 
 ;;; config end here

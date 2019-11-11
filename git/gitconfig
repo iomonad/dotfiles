@@ -12,12 +12,12 @@
   autocrlf = input
   ignorecase = false
   whitespace = cr-at-eol
-  pager = less -x4
+  pager = colordiff
   excludesfile = ~/.globalignore
   editor = emacs -nw
 
 [merge]
-  tool = vimdiff
+  tool = colordiff
   branchdesc = true
   stat = true
 
@@ -31,13 +31,13 @@
   insteadOf = https://github.com
 
 [color]
-  branch     = auto
+	branch = auto
   diff       = 1
   grep       = auto
   pager      = 0
   showbranch = auto
-  status     = auto
-  ui         = auto
+	status = auto
+	ui = auto
 [color "status"]
   added     = 2 bold
   branch    = 100

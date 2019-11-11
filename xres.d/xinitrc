@@ -45,7 +45,7 @@ compton -c -t-5 -l-5 -r3 -o.48 &
 #
 
 xscreensaver -no-splash &
-redshift -O 3700
+redshift -O 3100
 urxvtd --quiet --opendisplay --fork & # Daemon Terminal
 pulseaudio --start -D &
 udiskie -N -s &
@@ -57,6 +57,6 @@ nm-applet &
 
 # exec xmonad
 # exec stumpwm
-# exec fvwm
+exec fvwm2
 
-exec dbus-launch i3 > /dev/null
+#exec dbus-launch i3 > /dev/null
