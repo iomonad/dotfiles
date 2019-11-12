@@ -1,0 +1,128 @@
+#  -*- mode: conf; fill-column: 50;-*-
+#      .___             __                  __
+#    __| _/____ _______|  | __ ____   _____/  |_
+#   / __ |\__  \\_  __ \  |/ //    \_/ __ \   __\
+#  / /_/ | / __ \|  | \/    <|   |  \  ___/|  |
+#  \____ |(____  /__|  |__|_ \___|  /\___  >__|
+#       \/     \/           \/    \/     \/
+#
+#   _-_-_ iomonad's fvwm2 configuration _-_-_
+#
+#
+# See: https://github.com/iomonad/dotfiles
+#
+
+# ~--~ Hooks ~--~
+DestroyFunc StartFunction
+AddToFunc   StartFunction
+# -- BEGIN IMPORT SECTION --
++ I Module FvwmCommandS
++ I Module FvwmAnimate
++ I Module FvwmButtons
++ I Module FvwmBacker
++ I Module FvwmPerl
+# -- BEGIN INIT SECTION --
++ I Test (Init) Exec exec urxvtc
+# -- BEGIN RESTART SECTION --
++ I Test (Restart) Exec exec xmessage "Restarted FVWM"
+# ~-------------~
+
+# ~--~ Functions ~--~
+# Toggle 'always on top' using TestRc
+DestroyFunc WinOnTop
+AddToFunc WinOnTop
++ I ThisWindow (Layer 6) Layer
++ I TestRc (NoMatch) Layer 0 6
+
+
+# Widescreen formatting 
+DestroyFunc ReadableWidth
+AddToFunc ReadableWidth
++ I Maximize 60
++ I Move 50-50w 50-50w
+
+# Autoshade functions set mimics
+# kwin autoshade feature
+DestroyFunc ToggleAutoshaded
+AddToFunc ToggleAutoshaded
++ I State 0
+
+DestroyFunc AutoShade
+AddToFunc AutoShade
++ I ThisWindow (State 0) WindowShade True
+
+DestroyFunc AutoUnshade
+AddToFunc AutoUnshade
++ I ThisWindow (State 0) WindowShade False
+
+# This module call actually belongs to startup 
+# function, but I left it here for readability
+
+Module FvwmAuto 0 -menter "Silent AutoUnshade" "Silent AutoShade"
+
+# This is a smart launcher to launch an
+# an application if it is not running. 
+# Also it raises the application if it's
+# running and switches between given
+# applications/windows if you have two or
+# more of them.
+DestroyFunc LaunchRaiseSwitch
+AddToFunc LaunchRaiseSwitch
++ I None (*$0*) Exec exec $1
++ I Next (*$0*) Focus
++ I Next (*$0*) Iconify False
+
+Module FvwmAuto 0 -mfocus "Silent Raise"
+
+# A mixture of previous two examples would
+# let you group windows so that you can
+# switch between them with a hotkey.
+# Adding a window to a group by chanding
+# it's state
+DestroyFunc AddToGroup
+AddToFunc AddToGroup
+
++ I ThisWindow State $0
+
+# And switching between groups amd inside them:
+DestroyFunc GroupSwitch
+AddToFunc GroupSwitch
++ I Next (State $0) Focus
+
+# Undecorate given window
+DestroyFunc UnDecorate
+AddToFunc UnDecorate
++ I WindowStyle !Title, !Borders, !Handles
+
+# And decorate it again
+DestroyFunc Decorate
+AddToFunc Decorate
++ I WindowStyle  Borders, Handles
+
+# File browser menu using $[fvwm_filemanager]
+AddToFunc FuncFvwmMenuDirectory
++ I PipeRead \
+"fvwm-menu-directory -d '$0' \
+-command-t 'Exec exec $[fvwm_filemanager] "%d"' \
+-command-f 'Exec exec $[fvwm_filemanager] "%f"'"
+
+# Function for titlebar push focus
+# and window menu
+DestroyFunc TitleFunction
+AddToFunc TitleFunction
++ C Focus
++ D Lower
++ M Move
+
+# Undecorate window and maximize it
+DestroyFunc UndecMax
+AddToFunc UndecMax
++ I ThisWindow UnDecorate
++ I Schedule 100 Maximize 100 100
+
+# Autoshading a window and putting
+# it to top layer
+DestroyFunc AutoShadeAndOnTop
+AddToFunc AutoShadeAndOnTop
++ I ToggleAutoShade
++ I WinOnTop

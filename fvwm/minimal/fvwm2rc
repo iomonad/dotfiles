@@ -68,6 +68,7 @@ DefaultColorset 7
 #WIN 4
 #MenuStyle * fvwm
 MenuStyle * MenuColorset 7
+
 MenuStyle * font "xft:Neep:pixelsize=11"
 #MenuStyle * Foreground #839496, Background #09090d
 MenuStyle * ActiveFore #7086b2, !HilightBack

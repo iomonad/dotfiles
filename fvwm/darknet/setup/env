@@ -14,3 +14,17 @@
 
 # --~ Global font ~--
 SetEnv fvwm_global_font "xft:Neep:pixelsize=11"
+
+# --~ Wallpaper ~--
+Setenv fvwm_wallpaper_dir $[FVWM_USERDIR]/wallpapers
+SetEnv fvwm_wallpaper $[fvwm_wallpaper_dir]/neck.png
+
+# --~ Application Preferences ~--
+SetEnv fvwm_browser firefox
+SetEnv fvwm_terminal urxvtc
+SetEnv fvwm_player "urxvtc -e ncmpcpp"
+SetEnv fvwm_filemanager pcmanfm
+SetEnv fvwm_image_viewer sxiv
+
+# --~ Icons ~--
+ImagePath $[FVWM_USERDIR]/images

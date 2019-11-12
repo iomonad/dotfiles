@@ -94,3 +94,4 @@ emacs/work/request
 *history*
 *__pycache__*
 darktable/darktablerc
+emacs/work/smex-items

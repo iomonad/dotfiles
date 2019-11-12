@@ -82,3 +82,11 @@ xscreensaver.passwd.thermometer.foreground:  #101010
 xscreensaver.passwd.thermometer.background:  #2E2E2E
 xscreensaver.passwd.thermometer.width:       8
 !-------------------------------------------------------------------
+! Xclock Colors
+XClock.Clock.majorColor:  #D2B48C
+XClock.Clock.minorColor:  #E17A6B
+XClock.Clock.hourColor:   #1f1f1f
+XClock.Clock.secondColor: #1f1f1f
+XClock.Clock.minuteColor: #1f1f1f
+
+xmessage*font: "xft:Neep:pixelsize=11"

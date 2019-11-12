@@ -12,57 +12,53 @@
 # See: https://github.com/iomonad/dotfiles
 #
 
-#        --~ Cursor ~--
-
-CursorStyle ROOT         left_ptr
-CursorStyle TITLE        left_ptr
-CursorStyle DEFAULT      left_ptr
-CursorStyle SYS          left_ptr
-CursorStyle MENU         left_ptr
-
 #       --~ Bindings  ~--
 
-Mouse 1                         R       A       Menu MainMenu
-Mouse 1                         1       N       Iconify
-Mouse 2                         1       N       WindowShade
-Mouse 3                         1       N       Maximize 1280p 1004p
-Mouse 1                         6       N       Delete
-Mouse 1                         I       A       Function deiconify
-Mouse 1                         W       4       Function move-raise
-Mouse 3                         W       4       Function resize-raise
-Mouse 1                         T       A   Function raise-maximize
-Mouse 3                         T       A       Function raise-shade
+# Cheatsheat
+#
+# Contexts:
+#
+#  R - Root window
+#  I - Iconified window
+#  F - window decoration corner
+#  S - window decoration side
+#  T - window decoration title
+#  W - active window
+#  0-9 - titlebar buttons
+#  M - Menu
+#  A - any context
+#
+#  You can combine contexts: FWST etc.
+#
+#  Modifiers:
+#  ctrl - C
+#  super - 4
+#  alt - 1
+#  shift - S
+#  caps - L
+#  num - 2
+#
+#  You can combine modifiers: 1S, 4S, etc.
 
-Key Return                      A       4       Exec exec urxvt
-Key d                           A       4       Exec exec dmenu_run
-Key q                           A       4       Close
-Key F4                          A       M       Close
-Key w                           W       4       Maximize 1280p 1004p
-Key e                           W       4       Iconify
-Key 1                           A       4       Function switch-page 0 0
-Key 2                           A       4       Function switch-page 1 0
-Key 3                           A       4       Function switch-page 2 0
-Key 4                           A       4       Function switch-page 0 1
-Key 5                           A       4       Function switch-page 1 1
-Key 6                           A       4       Function switch-page 2 1
-Key 1                           A       4S      MoveToPage 0 0
-Key 2                           A       4S      MoveToPage 1 0
-Key 3                           A       4S      MoveToPage 2 0
-Key 4                           A       4S      MoveToPage 0 1
-Key 5                           A       4S      MoveToPage 1 1
-Key 6                           A       4S      MoveToPage 2 1
-Key Tab                         A       M       Next (CurrentPage !Iconic) Function focus-raise
-Key Tab                         A       4       Prev (CurrentPage !Iconic) Function focus-raise
-Key Tab                         A       S       Next (CurrentPage Iconic) Focus
-Key r                           A       4       Function deiconify-raise
-Key F1                          W       4       Function movie-chat
-Key Print                       A       N       Exec exec scrot -e 'mv $f ~/img/scrot'
-Key Print                       A       M       Exec exec scrot -s -e 'mv $f ~/img/scrot'
+ #Switch desktops with arrow keys
+Key Left A C1 Scroll -100 0
+Key Right A C1 Scroll +100 +0
+Key Up A C1 Scroll +0 -100
+Key Down A C1 Scroll +0 +100
 
-Key XF86AudioMute                       A N Exec exec amixer set Master toggle
-Key XF86AudioRaiseVolume                A N Exec exec amixer set Master 2dB+
-Key XF86AudioLowerVolume                A N Exec exec amixer set Master 2dB-
-Key XF86AudioPlay                       A N Exec exec mpc toggle
-Key XF86AudioPrev                       A N Exec exec mpc prev
-Key XF86AudioNext                       A N Exec exec mpc next
-Key XF86AudioStop                       A N Exec exec mpc stop
+# Mouse bindings
+Mouse 3 R A Menu MainMenu
+Mouse 1 R A WindowList Root NoGeometry
+Mouse 1 T A TitleFunction
+Mouse 1 A 1 Move
+Mouse 3 A 1 Resize
+Mouse 1 W M Move
+
+# De-iconify an iconified window
+Mouse 1 I N Iconify
+
+# Titlebar Functions
+Mouse 1 2 N Maximize 100 100
+Mouse 1 4 N Delete
+Mouse 1 6 N Iconify
+Mouse 1 1 A Menu WindowMenu

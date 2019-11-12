@@ -15,10 +15,69 @@
 # --~ Multiple Screens ~--
 EdgeScroll 0 0
 
+# Ignore CapsLock and NumLock modifiers
+IgnoreModifiers 2L
+
+# Indexed window names to make sure
+# each window name is unique
+Style * IndexedWindowName
+
+# Hides the position and resize dialog
+HideGeometryWindow
+
+# Focus Policy
+Style * SloppyFocus, FPGrabFocus
+Style * MouseFocusClickRaises
+Style EdgeScroll 100 100
+Style EdgeResistance 400 400
+Style EdgeThickness 1
+OpaqueMoveSize 100
+Style * ResizeOpaque
+Style * WindowShadeSteps 20
+Style * PositionPlacement center
+Style * !UsePPosition # Emacs fix
+
+# --~ Desktops ~--
+DesktopSize 3x2
+Desktop 0 Main
+Desktop 1 Dev
+Desktop 2 Media
+DesktopName 0 /dev/vty0
+DesktopName 1 /dev/vty1
+DesktopName 2 /dev/vty2
+
 # --~ Menus ~--
-AddToMenu MainMenu
-+ "term" 			Exec exec urxvt
-+ "files"			Exec exec thunar
-+ "firefox"			Exec exec firefox
-+ ""				Nop
-+ "restart"			Restart
+AddToMenu MainMenu MainMenu title
++ DynamicPopupAction Function MakeMainMenu
+
+AddToFunc MakeMainMenu
++ I DestroyMenu recreate MainMenu
++ I AddToMenu MainMenu MissingSubmenuFunction FuncFvwmMenuDirectory
++ I AddToMenu MainMenu "&Term" Exec exec $[fvwm_terminal]
++ I AddToMenu MainMenu "&Web" Exec exec $[fvwm_browser]
++ I AddToMenu MainMenu "&Apps" Popup Applications
++ I AddToMenu MainMenu "" Nop
++ I AddToMenu MainMenu "Re&start" Restart
++ I AddToMenu MainMenu "E&xit" Exec exec fvwmcommand quit
+
+# Applications menu
+DestroyMenu Applications
+AddToMenu Applications
++ "clock" Exec exec urxvt -geometry 83x10 -e cli-clock
++ "gimp" Exec exec gimp
++ "run" Exec exec gmrun
++ "sublime" Exec exec sublime
++ "htop" Exec exec urxvt -e htop
++ "gcolor2" Exec exec gcolor2
++ "xterm" Exec exec xterm
+
+# Window Menu
+DestroyMenu WindowMenu
+AddToMenu WindowMenu
++ "On &Top" WinOnTop
++ "Audo&shade" ToggleAutoShaded
++ "Undecorate and &Maximize" UndecMax
++ "Autoshade and &On Top" AutoShadeAndOnTop
++ "S&tick" Stick
++ "" Nop
++ "Force close" Destroy

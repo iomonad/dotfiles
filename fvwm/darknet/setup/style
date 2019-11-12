@@ -12,6 +12,98 @@
 # See: https://github.com/iomonad/dotfiles
 #
 
-# Fonts
+# --~ Background ~--
+*FvwmBacker: Command (Desk 0, Page 0 0) Exec fvwm-root $[fvwm_background]
 
+# --~ Fonts ~--
 Style * Font $[fvwm_global_font]
+Style * IconFont $[fvwm_global_font]
+
+# --~ Colorscheme ~--
+
+# Default window color
+Colorset 0 Fore #353540, Back #09090d
+Colorset 1 Fore #839496, Back #09090d
+
+# Text & Backgroud color
+Style * ForeColor #353540, BackColor #09090d
+
+# Text & Backgroud color for title bar
+Style * HilightFore #839496, HilightBack #09090d
+
+# Border, Titles & Buttons style
+Style * BorderWidth 2, HandleWidth 3
+
+# W13
+Style	"*"	FvwmBorder  # MWMBorder
+Style	"*"	FvwmButtons
+BorderStyle	Inactive -- HiddenHandles NoInset Flat
+BorderStyle	Active -- HiddenHandles NoInset Flat
+TitleStyle	ActiveUp ( -- Flat)
+TitleStyle	ActiveDown ( -- Flat)
+TitleStyle	Inactive ( -- Flat)
+TitleStyle	Centered
+ButtonStyle	all	-- UseTitleStyle Flat
+
+# Colorsets
+Colorset 7 fg #839496, bg #09090d, hi #09090d, sh #09090d
+Colorset 8 fg #839496, bg #09090d, hi #353540, sh #353540
+DefaultColorset 7 # Set default colorset
+
+# Menu Style
+
+MenuStyle * MenuColorset 7
+MenuStyle * font $[fvwm_global_font]
+MenuStyle * ActiveFore #7086b2, !HilightBack
+MenuStyle * Hilight3DOff, BorderWidth 5, TrianglesSolid
+MenuStyle * PopupOffset 0 100, TrianglesUseFore, hi #09090d, sh #09090d
+MenuStyle * VerticalItemSpacing 2 4, VerticalTitleSpacing 2 4
+
+Style * !Button 2, !Button 4
+
+# Button Style
+
+AddButtonStyle 1 Vector 4 \
+45x45@3 45x55@3 55x55@3 55x45@3
+AddButtonStyle 6 Vector 4 \
+40x40@3 60x60@3 40x60@4 60x40@3
+
+# Menu Style
+
+MenuStyle winops VerticalItemSpacing 1 2, VerticalTitleSpacing 1 2
+
+# --~ Icons ~--
+
+Style * IconTitleColorset 7
+Style * HilightIconTitleColorset 8, IconBackgroundRelief 0
+Style * IconBox 48x1004+10+10
+
+Style * Icon xorg.png
+Style urxvt IconBox 48x900+1224+10, IconFill b l, Icon term.png
+Style MPlayer Icon player.png
+Style mpv Icon player.png
+Style zathura Icon pdf.png
+
+# --~ Misc ~--
+Style "clock" !Borders, Sticky
+Style "FvwmButtons" Sticky, !Title
+
+# --~ Booties ~--
+*FvwmButtonsGeometry 228x108-8-8
+*FvwmButtonsBack #111111
+*FvwmButtons(Frame 0 Padding 2 2 Container(Rows 2 Columns 2 Frame 0 \
+                                           Padding 10 0))
+*FvwmButtons(1x2 Frame 0 Swallow(UseOld) "FvwmPager" "Module FvwmPager 0 0 ")
+*FvwmPager: Font $[fvwm_global_font]
+*FvwmPager: Back "#111111"
+*FvwmPager: Fore "#b5e15d"
+*FvwmPager: Hilight "#111111"
+*FvwmPager: WindowColors fore "#404040" back "#94C7B5" hiFore "#111111" hiBack "#111111"
+*FvwmPager: SolidSeparators
+*FvwmPager: WindowBorderWidth 1
+*FvwmButtons(1x2 Frame 0 Container(Rows 2 Columns 2 Frame 0))
+*FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xbiff" `Exec exec xbiff -bg "#111111" -fg "#9C9A94"`)
+*FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xclock" `Exec exec xclock   -bg "#111111" -fg "#D2B48C"  -padding 0 -update 1`)
+*FvwmButtons(2x1 Frame 0 Swallow(UseOld,NoHints,Respawn) "xload" `Exec exec xload -bg "#111111" -fg "#B5E15D" -update 5 -nolabel`)
+*FvwmButtons(End)
+*FvwmButtons(End)

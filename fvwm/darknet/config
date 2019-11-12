@@ -14,7 +14,7 @@
 SetEnv FVWM2_SETUP_PATH $[FVWM_USERDIR]/setup
 
 Read $[FVWM2_SETUP_PATH]/env
-Read $[FVWM2_SETUP_PATH]/functions
+Read $[FVWM2_SETUP_PATH]/hooks
 Read $[FVWM2_SETUP_PATH]/behaviour
 Read $[FVWM2_SETUP_PATH]/keybinds
 Read $[FVWM2_SETUP_PATH]/style
