@@ -12,6 +12,13 @@
 # See: https://github.com/iomonad/dotfiles
 #
 
-# Fonts
+# ~--~ Hooks ~--~
 
-Style * Font $[fvwm_global_font]
+DestroyFunc StartFunction
+AddToFunc   StartFunction
+# -- BEGIN INIT SECTION --
++ I Test (Init) Exec exec urxvtc
+# -- BEGIN RESTART SECTION --
++ I Test (Restart) Exec exec urxvtc
+
+# ~-------------~

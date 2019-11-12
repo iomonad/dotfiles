@@ -11,9 +11,11 @@
 # See: https://github.com/iomonad/dotfiles
 #
 
-SetEnv FVWM2_SETUP_PATH setup
+SetEnv FVWM2_SETUP_PATH $[FVWM_USERDIR]/setup
 
-Read ${FVWM2_SETUP_PATH}/behaviour
-Read ${FVWM2_SETUP_PATH}/style
-Read ${FVWM2_SETUP_PATH}/keybinds
-Read ${FVWM2_SETUP_PATH}/misc
+Read $[FVWM2_SETUP_PATH]/env
+Read $[FVWM2_SETUP_PATH]/functions
+Read $[FVWM2_SETUP_PATH]/behaviour
+Read $[FVWM2_SETUP_PATH]/keybinds
+Read $[FVWM2_SETUP_PATH]/style
+Read $[FVWM2_SETUP_PATH]/misc

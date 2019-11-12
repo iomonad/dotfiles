@@ -12,6 +12,5 @@
 # See: https://github.com/iomonad/dotfiles
 #
 
-# Fonts
-
-Style * Font $[fvwm_global_font]
+# --~ Global font ~--
+SetEnv fvwm_global_font "xft:Neep:pixelsize=11"

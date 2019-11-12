@@ -1,3 +1,4 @@
+#  -*- mode: conf; fill-column: 50;-*-
 #      .___             __                  __
 #    __| _/____ _______|  | __ ____   _____/  |_
 #   / __ |\__  \\_  __ \  |/ //    \_/ __ \   __\
@@ -10,3 +11,14 @@
 #
 # See: https://github.com/iomonad/dotfiles
 #
+
+# --~ Multiple Screens ~--
+EdgeScroll 0 0
+
+# --~ Menus ~--
+AddToMenu MainMenu
++ "term" 			Exec exec urxvt
++ "files"			Exec exec thunar
++ "firefox"			Exec exec firefox
++ ""				Nop
++ "restart"			Restart
