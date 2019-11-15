@@ -57,6 +57,4 @@ nm-applet &
 
 # exec xmonad
 # exec stumpwm
-exec fvwm2
-
-#exec dbus-launch i3 > /dev/null
+exec i3

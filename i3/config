@@ -2,19 +2,18 @@
 # i3 config
 
 # fonts
-#font pango:ProFont 10
 floating_modifier Mod4
 new_window normal
 
 # colors
-#class			             border	 backgr.  text
+#class			    border  backgr. text
 client.focused              #121212 #101010 #566d17
 #9e8a8e
 client.focused_inactive     #14161A #040404 #999999
 client.unfocused            #101010 #040404 #56594e
 client.urgent               #cd989a #683e8e #2e3436
 
-client.background			#040404
+client.background           #040404
 
 # keybinds
 bindsym Mod4+Shift+Return exec urxvtc
@@ -56,8 +55,6 @@ bindsym Mod4+e layout default
 
 bindsym Mod4+Shift+space floating toggle
 
-#bindsym Mod4+space focus mode_toggle
-
 bindsym Mod4+a focus parent
 
 bindsym Mod4+1 workspace 1:main
@@ -87,12 +84,6 @@ bindsym XF86ScreenSaver exec xscreensaver-command -lock
 bindsym XF86Sleep exec sudo pm-hibernate
 bindsym XF86Suspend exec sudo pm-suspend
 bindsym XF86Battery exec sudo pm-suspend-hybrid
-
-# Remap fn
-#bindsym Mod4+Shift+F2 exec xscreensaver-command -lock
-#bindsym Mod4+Shift+F3 exec sudo pm-hibernate
-#bindsym Mod4+Shift+F4 exec sudo pm-suspend
-#bindsym Mod4+Shift+F3 exec sudo pm-suspend-hybrid
 
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
@@ -138,7 +129,6 @@ bindsym Mod4+r mode "resize"
 bar {
     mode dock
         position top
-#        font pango:ProFont 10
         workspace_buttons yes
         colors {
 		background #040404
@@ -153,16 +143,18 @@ bar {
 }
 
 #assign application to workspace
-assign [class="Firefox"] → 2:web
+assign [class="urxvtc"] 1:main
+assign [class="Mozilla Firefox"] 2:web
+assign [class="Telegram"] 3:im
 assign [class="jetbrains-idea"] 4:code
-assign [class="^Transmission-remote-gtk$"] 6:share
-assign [class="Tor Browser"] 10:hell
-assign [class="qemu-system-*"] 8:virt
-assign [class="^QEMU$"] 8:virt
 assign [class="MuPDF"] 5:media
 assign [class="GMPC"] 5:media
 assign [class="zathura"] 5:media
+assign [class="^Transmission-remote-gtk$"] 6:share
+assign [class="qemu-system-*"] 8:virt
+assign [class="^QEMU$"] 8:virt
 
+assign [class="Tor Browser"] 10:hell
 # app rules
 for_window [class="qemu-system-*"] floating toggle
 
