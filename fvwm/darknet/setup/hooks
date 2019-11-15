@@ -22,6 +22,7 @@ AddToFunc   StartFunction
 + I Module FvwmBacker
 + I Module FvwmPerl
 # -- BEGIN INIT SECTION --
++ I Test (Init) Exec $[FVWM_USERDIR]/bar.sh
 + I Test (Init) Exec exec urxvtc
 # -- BEGIN RESTART SECTION --
 + I Test (Restart) Exec exec xmessage "Restarted FVWM"
@@ -34,8 +35,7 @@ AddToFunc WinOnTop
 + I ThisWindow (Layer 6) Layer
 + I TestRc (NoMatch) Layer 0 6
 
-
-# Widescreen formatting 
+# Widescreen formatting
 DestroyFunc ReadableWidth
 AddToFunc ReadableWidth
 + I Maximize 60
@@ -55,7 +55,7 @@ DestroyFunc AutoUnshade
 AddToFunc AutoUnshade
 + I ThisWindow (State 0) WindowShade False
 
-# This module call actually belongs to startup 
+# This module call actually belongs to startup
 # function, but I left it here for readability
 
 Module FvwmAuto 0 -menter "Silent AutoUnshade" "Silent AutoShade"

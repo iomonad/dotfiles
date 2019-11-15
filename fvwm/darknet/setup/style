@@ -88,22 +88,22 @@ Style zathura Icon pdf.png
 Style "clock" !Borders, Sticky
 Style "FvwmButtons" Sticky, !Title
 
-# --~ Booties ~--
-*FvwmButtonsGeometry 228x108-8-8
-*FvwmButtonsBack #111111
-*FvwmButtons(Frame 0 Padding 2 2 Container(Rows 2 Columns 2 Frame 0 \
-                                           Padding 10 0))
-*FvwmButtons(1x2 Frame 0 Swallow(UseOld) "FvwmPager" "Module FvwmPager 0 0 ")
-*FvwmPager: Font $[fvwm_global_font]
-*FvwmPager: Back "#111111"
-*FvwmPager: Fore "#b5e15d"
-*FvwmPager: Hilight "#111111"
-*FvwmPager: WindowColors fore "#404040" back "#94C7B5" hiFore "#111111" hiBack "#111111"
-*FvwmPager: SolidSeparators
-*FvwmPager: WindowBorderWidth 1
-*FvwmButtons(1x2 Frame 0 Container(Rows 2 Columns 2 Frame 0))
-*FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xbiff" `Exec exec xbiff -bg "#111111" -fg "#9C9A94"`)
-*FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xclock" `Exec exec xclock   -bg "#111111" -fg "#D2B48C"  -padding 0 -update 1`)
-*FvwmButtons(2x1 Frame 0 Swallow(UseOld,NoHints,Respawn) "xload" `Exec exec xload -bg "#111111" -fg "#B5E15D" -update 5 -nolabel`)
-*FvwmButtons(End)
-*FvwmButtons(End)
+# # --~ Booties ~--
+# *FvwmButtonsGeometry 228x108-8-8
+# *FvwmButtonsBack #111111
+# *FvwmButtons(Frame 0 Padding 2 2 Container(Rows 2 Columns 2 Frame 0 \
+#                                            Padding 10 0))
+# *FvwmButtons(1x2 Frame 0 Swallow(UseOld) "FvwmPager" "Module FvwmPager 0 0 ")
+# *FvwmPager: Font $[fvwm_global_font]
+# *FvwmPager: Back "#111111"
+# *FvwmPager: Fore "#b5e15d"
+# *FvwmPager: Hilight "#111111"
+# *FvwmPager: WindowColors fore "#404040" back "#94C7B5" hiFore "#111111" hiBack "#111111"
+# *FvwmPager: SolidSeparators
+# *FvwmPager: WindowBorderWidth 1
+# *FvwmButtons(1x2 Frame 0 Container(Rows 2 Columns 2 Frame 0))
+# *FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xbiff" `Exec exec xbiff -bg "#111111" -fg "#9C9A94"`)
+# *FvwmButtons(Frame 0 Swallow(UseOld,NoHints,Respawn) "xclock" `Exec exec xclock   -bg "#111111" -fg "#D2B48C"  -padding 0 -update 1`)
+# *FvwmButtons(2x1 Frame 0 Swallow(UseOld,NoHints,Respawn) "xload" `Exec exec xload -bg "#111111" -fg "#B5E15D" -update 5 -nolabel`)
+# *FvwmButtons(End)
+# *FvwmButtons(End)

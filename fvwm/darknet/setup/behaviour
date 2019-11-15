@@ -55,7 +55,7 @@ AddToFunc MakeMainMenu
 + I AddToMenu MainMenu MissingSubmenuFunction FuncFvwmMenuDirectory
 + I AddToMenu MainMenu "&Term" Exec exec $[fvwm_terminal]
 + I AddToMenu MainMenu "&Web" Exec exec $[fvwm_browser]
-+ I AddToMenu MainMenu "&Apps" Popup Applications
++ I AddToMenu MainMenu "&Apps" Popup XDGMenu
 + I AddToMenu MainMenu "" Nop
 + I AddToMenu MainMenu "Re&start" Restart
 + I AddToMenu MainMenu "E&xit" Exec exec fvwmcommand quit
@@ -63,12 +63,6 @@ AddToFunc MakeMainMenu
 # Applications menu
 DestroyMenu Applications
 AddToMenu Applications
-+ "clock" Exec exec urxvt -geometry 83x10 -e cli-clock
-+ "gimp" Exec exec gimp
-+ "run" Exec exec gmrun
-+ "sublime" Exec exec sublime
-+ "htop" Exec exec urxvt -e htop
-+ "gcolor2" Exec exec gcolor2
 + "xterm" Exec exec xterm
 
 # Window Menu
@@ -80,4 +74,4 @@ AddToMenu WindowMenu
 + "Autoshade and &On Top" AutoShadeAndOnTop
 + "S&tick" Stick
 + "" Nop
-+ "Force close" Destroy
++ "close" Close
