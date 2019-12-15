@@ -126,6 +126,8 @@
 (setq blink-matching-paren 1)
 (show-paren-mode 1)
 
+(menu-bar-mode -1)
+
 ;;
 ;; UI configuration:
 ;;
@@ -197,6 +199,13 @@
 	    (add-to-list 'write-file-functions
 			 'delete-trailing-whitespace)))
 
+(setq c-toggle-auto-newline 1)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(setq c-default-style "k&r")
+    (setq-default c-basic-offset 4
+                  tab-width 4
+                  indent-tabs-mode t)
+
 ;;
 ;; Org Mode
 ;;
@@ -228,27 +237,6 @@
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-compact-blocks t)
 (setq org-log-done t)
-
-;;
-;; Functions
-;;
-
-(defun save-all-buffers ()
-  (interactive) ; Disable prompt
-  (save-some-buffers t))
-
-(defun indent-buffer ()
-  "Indent the whole buffer."
-  (interactive)
-  (indent-region (point-min)
-		 (point-max)))
-
-;;
-;; Custom keybinds
-;;
-
-(global-set-key (kbd "C-x s") 'save-all-buffers)
-(global-set-key (kbd "C-c n") 'indent-buffer)
 
 ;;
 ;; Hooks
@@ -337,37 +325,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Elfeed
-
-(use-package elfeed
-  :ensure t)
-
-(setq elfeed-feeds
-      '(("https://lobste.rs/newest.rss" tech)
-	("http://n-gate.com/index.rss" tech)
-	("http://www.lemonde.fr/paris/rss_full.xml" news)
-	("https://www.kernel.org/feeds/kdist.xml" kernel)
-	("http://nullprogram.com/feed/" blog tech)
-	))
-
-(setf url-queue-timeout 30)
-(global-set-key (kbd "C-x w") 'elfeed)
-
 ;;
 ;; CUSTOM SET VARIABLES
 ;;
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (elfeed yasnippet-snippets use-package undo-tree smex neotree magit irony elpy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
