@@ -1,4 +1,0 @@
-# streamlink config
-player=mpv
-default-stream=720p60,720p,best
-ringbuffer-size=12M

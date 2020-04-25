@@ -1,7 +1,0 @@
-# Set the dns_domain_lo variable to the selected domain name
-dns_domain_lo="xkeyscore.nsa.gov"
-
-# set domain ssid
-dns_domain_SSID="xkeyscore.nsa.gov"
-
-nis_domain_lo="xkeyscore"
