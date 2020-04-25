@@ -1,50 +1,32 @@
 #
-# (c) iomonad - iomonad@riseup.net
+# (c) 2015 iomonad <iomonad@riseup.net>
 #
 
+# Load private configurations
 Include private/*
 
-Host vgs vgs.42.fr vgse vgse.42.fr vogsphere vogsphere.42.fr vogsphere-exam vogsphere-exam.42.fr
-	User vogsphere
+# Default configuration for
+# all hosts
+Host *
+  AddressFamily inet
+  Compression yes
+  ConnectionAttempts 3
+  ConnectTimeout 5
+  ControlMaster auto
+  ControlPath ~/.ssh/connections/ssh_%r@%h:%p
+  ExitOnForwardFailure yes
+  ForwardX11 no
+  PasswordAuthentication no
+  Protocol 2,1
+  VisualHostKey yes
+  StrictHostKeyChecking ask
+  UpdateHostKeys ask
+  LogLevel VERBOSE
+  IdentityFile ~/.ssh/keys/default_keys
 
-VisualHostKey yes
-host *
-    controlmaster auto
-    controlpath ~/.ssh/connections/ssh_%r@%h:%p
-    controlpersist  yes
-    ForwardX11 no
-    IdentityFile ~/.ssh/keys/default_keys
-    CheckHostIP yes
-	ExitOnForwardFailure yes
-	LogLevel VERBOSE
-	NoHostAuthenticationForLocalhost yes
-	Protocol 2,1
-	VisualHostKey yes
-	StrictHostKeyChecking ask
-	UpdateHostKeys ask
-    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-
-Host *.42.fr
-     SendEnv LANG LC_*
-     StrictHostKeyChecking no
-     PasswordAuthentication yes
-
-Host github.com
-    HostName github.com
-    user git
-    IdentityFile ~/.ssh/keys/github_rsa
-    IdentitiesOnly yes
-    cipher arcfour
-
-Host gitlab.com
-    HostName gitlab.com
-    user git
-    IdentityFile ~/.ssh/keys/github_rsa
-    IdentitiesOnly yes
-    cipher arcfour
-
-Host gist.github.com
-    user git
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/github_rsa
-    cipher arcfour
+# Commons hosts
+Host github.com *.github.com gitlab.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/keys/github_rsa
+  IdentitiesOnly yes
