@@ -1,10 +1,13 @@
 # 02-zle.zsh
-# show waiting dots for tab completion
+# (c) 2015 iomonad <iomonad@riseup.net>
+
+# Show waiting dots for tab completion
 expand-or-complete-with-dots() {
   echo -n "\e[31m......\e[0m"
   zle expand-or-complete
   zle redisplay
 }
+
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
@@ -99,3 +102,22 @@ zle -N expand-or-complete
 # search following completions
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# Other Magic Stuff
+zle -C most-accessed-file menu-complete _generic
+
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+function _url-quote-magic() {
+    url-quote-magic;
+    _zsh_highlight-zle-buffer
+}
+
+compinit
+autoload -U url-quote-magic
+
+zle -N bracketed-paste bracketed-paste-url-magic
+
+# stop screwing with my clipboard
+unset zle_bracketed_paste

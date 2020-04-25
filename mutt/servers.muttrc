@@ -1,0 +1,31 @@
+#
+# (c) iomonad <iomonad@riseup.net>
+# See: github.com/iomonad/dotfiles
+#
+
+# META
+
+set realname="Clement T."
+
+#
+# RISEUP.NET
+#
+
+set imap_user           = "iomonad@riseup.net"
+set from                = "iomonad@riseup.net"
+
+# Send
+set smtp_url            = smtps://$imap_user@mail.riseup.net/
+set smtp_pass           = `pass Mail/Riseup`
+set smtp_authenticators = "gssapi:login"
+set ssl_force_tls       = yes
+set ssl_starttls        = yes
+
+# Receive
+set imap_pass           = `pass Mail/Riseup`
+set folder              = imaps://iomonad@mail.riseup.net/
+
+# Folders
+set spoolfile           = +INBOX
+set postponed           = +Drafts
+set record              = +Sent

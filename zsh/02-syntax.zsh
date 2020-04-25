@@ -1,8 +1,14 @@
 # 02-syntax.zsh
+# (c) 2015 iomonad <iomonad@riseup.net>
 
 # Syntax Highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ ${SSH_CONNECTION} ]]; then
+    . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+fi
 
 # STYLES
 # Aliases and functions

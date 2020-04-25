@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# A reasonably secure laptop firewall configuration
+#       (c) 2017 iomonad - <iomonad@riseup.net>
+#
+
+IPTABLES=/sbin/iptables
+IP6TABLES=/sbin/ip6tables
+INTERFACES=(wlp2s0 enp0s25)
+IS=/sbin/iptables-save
+ISP=backup_iptables.txt
+
+# Allowed ports
+PORTS=(8080)
+
+$IPTABLES -F
+$IPTABLES -X
+$IPTABLES -Z
+
+$IPTABLES -P INPUT DROP
+$IPTABLES -P FORWARD DROP
+$IPTABLES -P OUTPUT ACCEPT
+
+$IPTABLES -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$IPTABLES -A INPUT -i lo -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type 3 -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type 11 -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type 12 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --syn --dport 113 -j REJECT --reject-with tcp-reset
+
+$IP6TABLES -F
+$IP6TABLES -X
+$IP6TABLES -Z
+
+$IP6TABLES -P INPUT DROP
+$IP6TABLES -P FORWARD DROP
+$IP6TABLES -P OUTPUT ACCEPT
+
+$IP6TABLES -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$IP6TABLES -A INPUT -i lo -j ACCEPT
+$IP6TABLES -A INPUT -m conntrack --ctstate INVALID -j DROP
+$IP6TABLES -A INPUT -s fe80::/10 -p ipv6-icmp -j ACCEPT
+$IP6TABLES -A INPUT -p udp -m conntrack --ctstate NEW -j REJECT --reject-with icmp6-port-unreachable
+$IP6TABLES -A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j REJECT --reject-with tcp-reset
+
+for port in ${PORTS[*]}; do
+	for interface in ${INTERFACES[*]}; do
+		echo "[*] Allowed $port in $interface"
+		$IPTABLES -A INPUT -p tcp -i $interface --dport $port -j ACCEPT
+	done
+done
+
+$IS > $ISP

@@ -1,15 +1,16 @@
 #!/bin/zsh
-#
-# (c) iomonad
+# (c) 2015 iomonad <iomonad@riseup.net>
 #
 
-# load config modules
+COMPILE=false
+
 for r in $HOME/.zsh/*.zsh; do
-	if [[ $DEBUG > 0 ]]; then
-		echo "zsh: sourcing $r"
-	fi
-	source $r
+    if [[ ${+DEBUG} > 0 ]]; then
+	echo "ZSH: Sourcing $r"
+    fi
+    if $COMPILE = true ; then
+        builtin zcompile -ca -M $r
+    else
+	builtin source $r
+    fi
 done
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

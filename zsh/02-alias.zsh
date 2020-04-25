@@ -1,6 +1,5 @@
 # 02-alias.zsh
-
-alias ls="ls++"
+# (c) 2015 iomonad <iomonad@riseup.net>
 
 alias die='kill -9 $$'
 
@@ -12,35 +11,17 @@ alias df='df -h | grep sd |\
   sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\
   sed -e "s_/mnt/[-_A-Za-z0-9]*_\x1b[34;1m&\x1b[0m_"'
 
-alias duch='du -ch | grep insgesamt |\
-  sed -e "s_[0-9]*,[0-9]*[B|G|K|M|T]_\x1b[32m&\x1b[0m_"'
 alias t='tmux'
 alias ta='tmux attach -t'
 alias cp='cp -r '
 alias pingg='ping google.fr -c 5'
-alias pingb='ping 192.168.0.254 -c 5''""''"""""""""""]"'
-
-alias radio="mplayer http://radio.2f30.org:8000/live.mp3"
-alias radio-trinitas="mpv http://live.radiotrinitas.ro:8003"
-alias radio-uzic="mplayer http://www.uzic.ch/tek.m3u"
-alias radio-trance="mplayer http://streaming.radionomy.com:8000/Trance-Libre-webradio.m3u"
-
-alias sb="stack build"
-alias st="stack test"
-alias sr="stack resolv"
-alias se="stack exec"
-alias sg="stack ghci"
-alias sd="stack list-dependencies"
-
-alias e="emacs -nw"
-alias es="emacs --daemon"
-alias ec="emacsclient -c"
+alias ls="ls --color"
 
 alias sshu='ssh -o UserKnownHostsFile=/dev/null'
 alias sr='ssh -l root'
 alias sru='ssh -l root -o UserKnownHostsFile=/dev/null'
 
-alias g="git"
+alias gcd='cd $(git rev-parse --show-toplevel)'
 alias open="xdg-open"
 
 alias ...='cd ../..'
@@ -81,6 +62,75 @@ alias eqy='equery y'
 alias eqs='equery s'
 alias eqw='equery w'
 
-alias make="make -s"
-
 alias external_call="nm -Du $1 | grep U | tr -d \"U\" | rev | grep -v \"_\" | xargs printf \"%s\n\" - | rev | sed \"1d\""
+
+#
+# Git related aliases
+#
+
+alias g='git'
+compdef g=git
+alias gst='git status'
+compdef _git gst=git-status
+alias gl='git pull'
+compdef _git gl=git-pull
+alias gup='git fetch && git rebase'
+compdef _git gup=git-fetch
+alias gp='git push'
+compdef _git gp=git-push
+gdv() { git diff -w "$@" | view - }
+compdef _git gdv=git-diff
+alias gc='git commit -v'
+compdef _git gc=git-commit
+alias gca='git commit -v -a'
+compdef _git gca=git-commit
+alias gco='git checkout'
+compdef _git gco=git-checkout
+alias gcm='git checkout master'
+alias gb='git branch'
+compdef _git gb=git-branch
+alias gba='git branch -a'
+compdef _git gba=git-branch
+alias gcount='git shortlog -sn'
+compdef gcount=git
+alias gcp='git cherry-pick'
+compdef _git gcp=git-cherry-pick
+alias glg='git log --stat --max-count=5'
+compdef _git glg=git-log
+alias glgg='git log --graph --max-count=5'
+compdef _git glgg=git-log
+alias gss='git status -s'
+compdef _git gss=git-status
+alias ga='git add'
+compdef _git ga=git-add
+alias gm='git merge'
+compdef _git gm=git-merge
+alias grh='git reset HEAD'
+alias grhh='git reset HEAD --hard'
+
+# Git and svn mix
+alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+compdef git-svn-dcommit-push=git
+
+alias gsr='git svn rebase'
+alias gsd='git svn dcommit'
+
+alias ggpull='git pull origin $(current_branch)'
+compdef ggpull=git
+alias ggpush='git push origin $(current_branch)'
+compdef ggpush=git
+alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+compdef ggpnp=git
+
+#
+# SystemD
+#
+
+alias dc='systemctl'
+compdef dc=systemctl
+alias jc='journalctl'
+compdef jc=systemctl
+
+alias dcf='systemctl list-units --failed'
+alias jce='journalctl -xe'
+alias jceu='journalctl -xe --unit'

@@ -1,4 +1,5 @@
 # 03-binds.zsh
+# (c) 2015 iomonad <iomonad@riseup.net>
 
 # insert sudo at the beginning of
 # command input

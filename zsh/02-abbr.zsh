@@ -1,21 +1,19 @@
 # 02-abbr.zsh
+# (c) 2015 iomonad <iomonad@riseup.net>
 
 typeset -Ag abbreviations
+
 abbreviations=(
-	"pinc"  "/usr/{lib,share}/perl5/{core,site,vendor}_perl/"
-	"jj"    "!$"
 	"Im"    "| more"
 	"Ia"    "| awk"
 	"Ig"    "| grep"
 	"Ieg"   "| egrep"
 	"Iag"   "| agrep"
-	"Igr"   "| groff -s -p -t -e -Tlatin1 -mandoc"
 	"Ip"    "| $PAGER"
 	"Ih"    "| head"
 	"Ik"    "| keep"
 	"It"    "| tail"
 	"Is"    "| sort"
-	"Iv"    "| ${VISUAL:-${EDITOR}}"
 	"Iw"    "| wc"
 	"Ix"    "| xargs"
 )
@@ -33,6 +31,3 @@ no-magic-abbrev-expand() {
 
 zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
-#bindkey " " magic-abbrev-expand
-#bindkey "^x " no-magic-abbrev-expand
-

@@ -1,0 +1,8 @@
+#
+# (c) iomonad <iomonad@riseup.net>
+# See: github.com/iomonad/dotfiles
+#
+
+source ~/.mutt/core.muttrc
+source ~/.mutt/theme.muttrc
+source ~/.mutt/servers.muttrc

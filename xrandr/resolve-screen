@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Udev target script to automaticaly
+# resolve-screen resolution on VGA cable
+# plug
+#
+
+set -euo pipefail
+
+export DISPLAY=:0
+
+readonly VGA_connected=$(xrandr | grep "VGA-1 connected")
+
+LAYOUTD=/etc/xrandr.d/layout.d
+
+if [[ $VGA_connected ]]; then
+    sh "$LAYOUTD"/work.screenlayout
+else
+    sh "$LAYOUTD"/x220.screenlayout
+fi

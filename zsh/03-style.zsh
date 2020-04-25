@@ -1,4 +1,5 @@
 # 03-style.zsh
+# (c) 2015 iomonad <iomonad@riseup.net>
 
 # ignore completion to commands we don't have
 zstyle ':completion:*:functions'          ignored-patterns '_*'
@@ -40,7 +41,6 @@ zstyle ':completion:*'                       my-accounts='iomonad@riseup.net'
 
 zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
-#zstyle ':completion:*:cd:*'                  tag-order 'named-directories'
 
 zstyle ':completion:*:(all-|)files'          ignored-patterns '*.un~'
 zstyle ':completion:*:*:kill:*:processes' \
@@ -66,7 +66,6 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   file-sort modification
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   tag-order files
-#zstyle ':completion:*:vim:*:directories' ignored-patterns \*
 
 zstyle ':completion:*:*:(scp):*' \
   file-sort modification
@@ -118,7 +117,6 @@ zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
 	   'root@pirate' 'root@coreboot'
 
-
 zstyle ':completion:*:*:*:users' ignored-patterns \
         adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
         dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
@@ -126,5 +124,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         mailman mailnull mldonkey mysql nagios \
         named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
         operator pcap postfix postgres privoxy pulse pvm quagga radvd \
-        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
+        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs root
+
 zstyle '*' single-ignored show
