@@ -6,12 +6,14 @@
 
 IPTABLES=/sbin/iptables
 IP6TABLES=/sbin/ip6tables
-INTERFACES=(wlp2s0 eth0)
+INTERFACES=(wlp2s0 enp0s25)
 IS=/sbin/iptables-save
 ISP=backup_iptables.txt
 
 # Allowed ports
-PORTS=(8080)
+PORTS=(
+   #8080
+)
 
 $IPTABLES -F
 $IPTABLES -X

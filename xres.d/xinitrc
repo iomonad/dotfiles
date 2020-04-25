@@ -36,8 +36,6 @@ xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright' & # Space cadet 
 # Eye Candy
 #
 
-#hsetroot -tile ~/.xres.d/wallpaper/tiled/neck.png -tint "#3d3d3d" &
-hsetroot -fill .xres.d/wallpaper/chicago3.jpg
 compton -c -t-5 -l-5 -r3 -o.48 &
 
 #

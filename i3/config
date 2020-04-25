@@ -154,6 +154,8 @@ assign [class="^Transmission-remote-gtk$"] 6:share
 assign [class="qemu-system-*"] 8:virt
 assign [class="^QEMU$"] 8:virt
 
+assign [class="*QGIS"] 4:code
+
 assign [class="Tor Browser"] 10:hell
 # app rules
 for_window [class="qemu-system-*"] floating toggle
@@ -162,4 +164,4 @@ for_window [class="qemu-system-*"] floating toggle
 # autostart
 #
 
-# exec transmission-daemon
+exec /etc/xrandr.d/resolve-screen

@@ -27,8 +27,6 @@ host *
 Host *.42.fr
      SendEnv LANG LC_*
      StrictHostKeyChecking no
-	 #GSSAPIAuthentication yes
-	 #GSSAPIDelegateCredentials yes
      PasswordAuthentication yes
 
 Host github.com
@@ -48,11 +46,5 @@ Host gitlab.com
 Host gist.github.com
     user git
     IdentitiesOnly yes
-    IdentityFile ~e/.ssh/keys/github_rsa
+    IdentityFile ~/.ssh/keys/github_rsa
     cipher arcfour
-
-Host berry
-    user root
-    hostname 192.168.0.10
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/keys/home_key

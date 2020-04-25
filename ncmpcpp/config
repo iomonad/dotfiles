@@ -9,7 +9,7 @@
 
 mpd_host = "smokedsalmon@0.0.0.0"
 mpd_port = "6600"
-mpd_music_dir = "/home/iomonad/media/musique"
+mpd_music_dir = "/home/iomonad/Medias/Musique"
 
 ncmpcpp_directory = ~/.ncmpcpp
 lyrics_directory = ~/.ncmpcpp/lyrics
@@ -93,10 +93,3 @@ visualizer_in_stereo = "yes"
 visualizer_sample_multiplier = "1"
 visualizer_sync_interval = "10"
 visualizer_type = "wave"
-visualizer_color = blue, cyan, green, yellow, magenta, red
-
-#
-# Notifier
-#
-
-execute_on_song_change = "current"
