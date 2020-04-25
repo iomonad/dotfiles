@@ -1,1 +1,0 @@
-xres.d/xinitrc

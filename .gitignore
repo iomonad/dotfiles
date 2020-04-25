@@ -102,3 +102,4 @@ emacs.d/packages
 emacs.d/transient/
 emacs.d/smex-items
 emacs.d/network-security.data
+emacs.d/auto-save-list/
