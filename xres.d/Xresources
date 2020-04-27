@@ -35,6 +35,8 @@ URxvt.keysym.C-u: perl:url-select:select_next
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
 URxvt.print-pipe: "cat > /dev/null"
+
+URxvt*saveLines:0 # Scroll hack
 ! --------------------------------------------------------
 
 ! ----------------- [ Rofi ] -----------------------------

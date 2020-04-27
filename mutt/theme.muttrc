@@ -1,4 +1,3 @@
-
 # set default
 color normal      yellow         default
 
@@ -75,3 +74,4 @@ color quoted7    red           default
 ## CUSTOM
 set index_format="%4C %Z %{%b %d %R} %-15.15L (%?l?%4l&%4c?) %s"
 set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_visible = no

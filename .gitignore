@@ -95,7 +95,6 @@ emacs/work/request
 *__pycache__*
 darktable/darktablerc
 emacs/work/smex-items
-*/playlists/*
 emacs.d/custom.el
 emacs.d/elpa
 emacs.d/packages

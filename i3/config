@@ -7,8 +7,7 @@ new_window normal
 
 # colors
 #class			    border  backgr. text
-client.focused              #121212 #101010 #566d17
-#9e8a8e
+client.focused              #121212 #101010 #9e8a8e
 client.focused_inactive     #14161A #040404 #999999
 client.unfocused            #101010 #040404 #56594e
 client.urgent               #cd989a #683e8e #2e3436
@@ -100,8 +99,14 @@ bindsym F11 exec current
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+q exit
+
 # Menu shit
 bindsym Mod4+space exec jgmenu_run
+
+# Print screen
+
+bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 mode "resize" {
     bindsym l               resize shrink left 10 px or 10 ppt
@@ -123,6 +128,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
 bindsym Mod4+r mode "resize"
 
 # bar
@@ -132,9 +138,9 @@ bar {
         workspace_buttons yes
         colors {
 		background #040404
-                statusline #566d17
+		statusline #8b898a
                 separator #191919
-                focused_workspace    #121212 #101010 #566d17
+                focused_workspace    #121212 #101010 #8b898a
                 active_workspace     #14161A #040404 #999999
                 inactive_workspace   #14161A #14161A #56594e
                 urgent_workspace     #cd989a #683e3e #2e3436
@@ -165,3 +171,4 @@ for_window [class="qemu-system-*"] floating toggle
 #
 
 exec /etc/xrandr.d/resolve-screen
+exec hsetroot -solid "#906873" -contrast 0

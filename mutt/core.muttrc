@@ -89,6 +89,8 @@ bind index K           previous-unread
 bind index J           next-unread
 bind index,pager R     group-reply
 
+bind index,pager B sidebar-toggle-visible
+
 # Signature
 set sig_on_top        = yes
 
