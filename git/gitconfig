@@ -113,6 +113,8 @@
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   us =  submodule update --recursive --remote
   gud = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
+  last-tag = describe --tags
+  last-taga = describe --abbrev=0
 
 #--~-- Misc --~--
 [gpg]

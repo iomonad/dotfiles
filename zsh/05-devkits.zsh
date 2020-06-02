@@ -7,8 +7,8 @@ if [[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
 fi
 
 # GO
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
+export GOPATH=$HOME/Devel/go
+export GOROOT=/usr/lib/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin

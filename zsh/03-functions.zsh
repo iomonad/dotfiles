@@ -56,3 +56,10 @@ function audio_and_img_to_yt() {
 	   -pix_fmt yuv420p \
 	   -shortest output.mkv
 }
+
+# High level lisp loading
+
+function lisp() {
+    sbcl --noinform \
+	 --script "$@"
+}

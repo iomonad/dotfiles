@@ -62,7 +62,7 @@ bindsym Mod4+3 workspace 3:im
 bindsym Mod4+4 workspace 4:code
 bindsym Mod4+5 workspace 5:media
 bindsym Mod4+6 workspace 6:share
-bindsym Mod4+7 workspace 7:re
+bindsym Mod4+7 workspace 7:gis
 bindsym Mod4+8 workspace 8:virt
 bindsym Mod4+9 workspace 9:sec
 bindsym Mod4+0 workspace 10:hell
@@ -73,7 +73,7 @@ bindsym Mod4+Shift+3 move workspace 3:im
 bindsym Mod4+Shift+4 move workspace 4:code
 bindsym Mod4+Shift+5 move workspace 5:media
 bindsym Mod4+Shift+6 move workspace 6:share
-bindsym Mod4+Shift+7 move workspace 7:re
+bindsym Mod4+Shift+7 move workspace 7:gis
 bindsym Mod4+Shift+8 move workspace 8:virt
 bindsym Mod4+Shift+9 move workspace 9:sec
 bindsym Mod4+Shift+0 move workspace 10:hell
@@ -148,21 +148,29 @@ bar {
 	status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
 }
 
-#assign application to workspace
-assign [class="urxvtc"] 1:main
+#
+# Rules
+#
+assign [class="urxvt*"] 1:main
 assign [class="Mozilla Firefox"] 2:web
-assign [class="Telegram"] 3:im
+assign [class="Telegram*"] 3:im
 assign [class="jetbrains-idea"] 4:code
+assign [class="*Android Studio"] 4:code
+assign [class="*emacs*"] 4:code
+assign [class="Emacs*"] 4:code
 assign [class="MuPDF"] 5:media
 assign [class="GMPC"] 5:media
 assign [class="zathura"] 5:media
+assign [class="*mpv"] 5:media
 assign [class="^Transmission-remote-gtk$"] 6:share
+assign [class="Nicotine*"] 6:share
+assign [class="*QGIS"] 7:gis
+assign [class="*QGIS3"] 7:gis
 assign [class="qemu-system-*"] 8:virt
 assign [class="^QEMU$"] 8:virt
-
 assign [class="*QGIS"] 4:code
-
 assign [class="Tor Browser"] 10:hell
+
 # app rules
 for_window [class="qemu-system-*"] floating toggle
 

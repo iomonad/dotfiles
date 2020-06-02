@@ -102,3 +102,7 @@ emacs.d/transient/
 emacs.d/smex-items
 emacs.d/network-security.data
 emacs.d/auto-save-list/
+zsh/09-private.zsh
+ranger/tagged
+emacs.d/irony
+mpd/playlists
