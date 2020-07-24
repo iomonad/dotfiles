@@ -8,6 +8,12 @@
   email = me@trosa.io
   signingkey = 91C9862F659893ED
 
+[credential]
+  helper = cache --timeout=28800
+
+[github]
+  user = iomonad
+
 [core]
   autocrlf = input
   ignorecase = false
@@ -16,28 +22,34 @@
   excludesfile = ~/.globalignore
   editor = emacs -nw
 
+[gpg]
+  program = gpg
+
+[commit]
+  template = ~/.gitmessage
+  status = true
+  gpgsign = true
+
+[help]
+  autocorrect = 1
+
 [merge]
   tool = colordiff
   branchdesc = true
   stat = true
 
-[credential]
-  helper = cache --timeout=28800
-
-[github]
-  user = iomonad
-
 [url "https://iomonad@github.com"]
   insteadOf = https://github.com
 
 [color]
-	branch = auto
+  branch     = auto
   diff       = 1
   grep       = auto
   pager      = 0
   showbranch = auto
-	status = auto
-	ui = auto
+  status     = auto
+  ui         = auto
+
 [color "status"]
   added     = 2 bold
   branch    = 100
@@ -45,11 +57,13 @@
   header    = 086
   nobranch  = 197
   untracked = 240
+
 [color "branch"]
-  current = 172
-  local   = 85 bold
-  remote  = 039
-  plain   = 240 reverse
+  current   = 172
+  local     = 85 bold
+  remote    = 039
+  plain     = 240 reverse
+
 [color "diff"]
   old        = 124
   new        = 34 bold
@@ -115,17 +129,3 @@
   gud = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
   last-tag = describe --tags
   last-taga = describe --abbrev=0
-
-#--~-- Misc --~--
-[gpg]
-  program = gpg
-
-[commit]
-  template = ~/.gitmessage
-  status = true
-  gpgsign = true
-
-[help]
-	autocorrect = 1
-[branch]
-	autosetuprebase = always

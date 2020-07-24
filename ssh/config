@@ -16,7 +16,6 @@ Host *
   ControlPath ~/.ssh/connections/ssh_%r@%h:%p
   ExitOnForwardFailure yes
   ForwardX11 no
-  PasswordAuthentication no
   Protocol 2,1
   VisualHostKey yes
   StrictHostKeyChecking ask
@@ -30,3 +29,4 @@ Host github.com *.github.com gitlab.com
   User git
   IdentityFile ~/.ssh/keys/github_rsa
   IdentitiesOnly yes
+  PasswordAuthentication no
