@@ -469,7 +469,7 @@
                          c-lineup-arglist-tabs-only))))))
 
 (setq c-default-style "linux"
-      c-basic-offset 8)
+      c-basic-offset 4)
 
 ;; Rust
 

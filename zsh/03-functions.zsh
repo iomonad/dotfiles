@@ -63,3 +63,23 @@ function lisp() {
     sbcl --noinform \
 	 --script "$@"
 }
+
+# Synchronize folders
+
+function fs_sync () {
+
+    local sourcef=$1
+    local dest=$2
+
+    rsync --info=progress2 \
+	  --ignore-existing \
+	  -auvz \
+	  ${sourcef} \
+	  ${dest}
+}
+
+function normalize_utf8() {
+    local buffer=$1
+
+    iconv -f utf-8 -t ascii//TRANSLIT <<< ${buffer}
+}
