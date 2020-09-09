@@ -1,0 +1,10 @@
+# -*- mode: conf -*-
+
+[Unit]
+Description=Limited resources Slice
+DefaultDependencies=no
+Before=slices.target
+
+[Slice]
+CPUQuota=50%
+MemoryLimit=1G
