@@ -134,3 +134,10 @@ compdef jc=systemctl
 alias dcf='systemctl list-units --failed'
 alias jce='journalctl -xe'
 alias jceu='journalctl -xe --unit'
+
+#
+# Virtualbox
+#
+
+alias vb='VBoxManage'
+compdef vb="VBoxManage"

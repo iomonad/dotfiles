@@ -329,7 +329,7 @@
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/org/bucket.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t))))
+               "*** TODO %?\n%U\n%a\n"))))
 
 (setq org-agenda-dim-blocked-tasks nil
       org-agenda-compact-blocks t
