@@ -33,12 +33,6 @@ xmodmap ~/.xmodmap &
 xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright' & # Space cadet shift
 
 #
-# Eye Candy
-#
-
-compton -c -t-5 -l-5 -r3 -o.48 &
-
-#
 # Extra Software
 #
 
@@ -47,7 +41,6 @@ redshift -O 3100
 urxvtd --quiet --opendisplay --fork & # Daemon Terminal
 pulseaudio --start -D &
 udiskie -N -s &
-nm-applet &
 
 #
 # Windows manager
