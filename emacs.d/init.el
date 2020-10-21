@@ -58,8 +58,6 @@
 
 ;;; Code:
 
-(package-initialize)
-
 (require 'org)
 (require 'linum)
 (require 'package)
@@ -264,11 +262,10 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
 
-(setq org-directory "~/org/"
+(setq org-directory "~/Documents/org/"
       org-default-notes-file (concat org-directory "bucket.org")
-      org-agenda-files '("~/org/travail"
-			 "~/org/perso"
-			 "~/org/bucket.org")
+      org-agenda-files '("~/Documents/org/travail"
+			 "~/Documents/org/bucket.org")
       org-todo-keywords
       '((sequence "TODO(t)"
 		  "WAIT(w@/!)"
@@ -328,7 +325,7 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/org/bucket.org")
+      (quote (("t" "todo" entry (file "~/Documents/org/bucket.org")
                "*** TODO %?\n%U\n%a\n"))))
 
 (setq org-agenda-dim-blocked-tasks nil
@@ -469,7 +466,7 @@
                          c-lineup-arglist-tabs-only))))))
 
 (setq c-default-style "linux"
-      c-basic-offset 4)
+      c-basic-offset 8)
 
 ;; Rust
 
@@ -523,3 +520,53 @@
 				       (0 'mail-multiply-quoted-text-face))
 				      ("^[ \t]*>[ \t]*>.*$"
 				       (0 'mail-double-quoted-text-face))))))
+
+(defun c-lineup-arglist-tabs-only (ignored)
+  "Line up argument lists by tabs, not spaces"
+  (let* ((anchor (c-langelem-pos c-syntactic-element))
+         (column (c-langelem-2nd-pos c-syntactic-element))
+         (offset (- (1+ column) anchor))
+         (steps (floor offset c-basic-offset)))
+    (* (max steps 1)
+       c-basic-offset)))
+
+;; Assembly
+
+(add-hook 'asm-mode-hook (lambda ()
+			   (setq indent-tabs-mode nil) ; use spaces to indent
+			   (electric-indent-mode -1) ; indentation in asm-mode is annoying
+			   (setq tab-stop-list (number-sequence 2 60 2))))
+
+(dir-locals-set-class-variables
+ 'linux-kernel
+ '((c-mode . (
+        (c-basic-offset . 8)
+        (c-label-minimum-indentation . 0)
+        (c-offsets-alist . (
+                (arglist-close         . c-lineup-arglist-tabs-only)
+                (arglist-cont-nonempty .
+                    (c-lineup-gcc-asm-reg c-lineup-arglist-tabs-only))
+                (arglist-intro         . +)
+                (brace-list-intro      . +)
+                (c                     . c-lineup-C-comments)
+                (case-label            . 0)
+                (comment-intro         . c-lineup-comment)
+                (cpp-define-intro      . +)
+                (cpp-macro             . -1000)
+                (cpp-macro-cont        . +)
+                (defun-block-intro     . +)
+                (else-clause           . 0)
+                (func-decl-cont        . +)
+                (inclass               . +)
+                (inher-cont            . c-lineup-multi-inher)
+                (knr-argdecl-intro     . 0)
+                (label                 . -1000)
+                (statement             . 0)
+                (statement-block-intro . +)
+                (statement-case-intro  . +)
+                (statement-cont        . +)
+                (substatement          . +)
+                ))
+        (indent-tabs-mode . t)
+        (show-trailing-whitespace . t)
+        ))))

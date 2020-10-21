@@ -26,8 +26,8 @@ stty -ixon &
 
 xsetroot -cursor_name left_ptr &
 unclutter -idle 2 &
-autocutsel -selection clipboard -fork &
-autocutsel -s PRIMARY &
+#autocutsel -selection clipboard -fork &
+autocutsel -fork&
 setxkbmap us dvorak &
 xmodmap ~/.xmodmap &
 xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright' & # Space cadet shift

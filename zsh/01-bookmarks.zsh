@@ -3,3 +3,4 @@
 
 hash -d w=~/Work/
 hash -d z=~/.zsh/
+hash -d dl=~/Downloads

@@ -83,3 +83,16 @@ function normalize_utf8() {
 
     iconv -f utf-8 -t ascii//TRANSLIT <<< ${buffer}
 }
+
+
+# Normalize Analog Scan Folder
+
+function normalize_analog_scan() {
+    local count=1
+
+    for i in *.jpg; do
+	mv ${i} analog-${(l:3::0:)count};
+	echo "[*] ${(l:10::0:)value}"
+	((count++))
+    done
+}

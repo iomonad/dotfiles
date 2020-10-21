@@ -4,7 +4,7 @@
 #
 
 [user]
-  name = Clement T.
+  name = Clement Van Truyart
   email = me@trosa.io
   signingkey = 91C9862F659893ED
 
@@ -23,7 +23,7 @@
   editor = emacs -nw
 
 [gpg]
-  program = gpg
+  program = gpg2
 
 [commit]
   template = ~/.gitmessage
@@ -37,6 +37,8 @@
   tool = colordiff
   branchdesc = true
   stat = true
+[pull]
+  rebase = false
 
 [url "https://iomonad@github.com"]
   insteadOf = https://github.com
