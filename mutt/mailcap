@@ -1,0 +1,30 @@
+application/x-bzip; tar --list %s; copiousoutput
+application/x-bzip1; tar --list %s; copiousoutput
+application/x-bzip-compressed-tar; tar --list %s; copiousoutput
+application/x-bzip1-compressed-tar; tar --list %s; copiousoutput
+application/x-tar; tar --list %s; copiousoutput
+application/x-tarz; tar --list %s; copiousoutput
+application/x-lzma; xz -l %s; copiousoutput
+application/x-lzma-compressed-tar; xz -l %s; copiousoutput
+application/x-xz; xz -l %s; copiousoutput
+application/x-xz-compressed-tar; xz -l %s; copiousoutput
+application/x-7z-compressed; 7z l %s; copiousoutput
+application/x-7z-compressed-tar; tar --list %s; copiousoutput
+application/x-zip; unzip -l %s; copiousoutput
+application/x-zip-compressed; unzip -l %s; copiousoutput
+application/zip; unzip -l %s; copiousoutput
+
+application/gpg; gpg -d %s; copiousoutput
+
+text/pdf; pdftotext -layout %s -; copiousoutput
+application/pdf; pdftotext -layout %s -; copiousoutput
+application/x-pdf; pdftotext -layout %s -; copiousoutput
+application/x-bzpdf; pdftotext -layout %s -; copiousoutput
+application/x-gzpdf; pdftotext -layout %s -; copiousoutput
+
+image/*; cacaview %s; needsterminal
+
+text/html;\
+	w3m -T text/html -I %{charset} -dump %s;\
+	nametemplate=%s.html;\
+	copiousoutput

@@ -1,13 +1,13 @@
 ;;; init.el --- Work emacs config -*- lexical-binding: t -*-
 
-;; Copyright (c) 2014-2020 Clement T.
+;; Copyright (c) 2014-2021 Clement T.
 
 ;; Author: Clement T. <clement@trosa.io>
 ;; Maintainer: Clement T. <clement@trosa.io>
 ;; URL: https://github.com/iomonad/dotfiles
 ;; Created: January 2014
 ;; Keywords: config
-;; Version: 0.1.8
+;; Version: 0.2.0
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -55,17 +55,23 @@
 ;;        cursor visibility with global-line.
 ;; 0.1.8: Added small hack to set mail mod when mutt open
 ;;        a new mail buffer
+;; 0.1.9: Minor mode additions and added special theme for graphical
+;;        mode only.
+;; 0.2.0: New year update. This year will be impacted by productivity need
+;;        and GDT. Some minor cleanup, and `org-roam adition`.
 
+;;; --------------------------------------------------------------------------
 ;;; Code:
+;;; --------------------------------------------------------------------------
 
 (require 'org)
 (require 'linum)
 (require 'package)
 (require 'whitespace)
 
-;;
-;; Package and Melpa configuration:
-;;
+;;; --------------------------------------------------------------------------
+;;; Package and Melpa configuration:
+;;; --------------------------------------------------------------------------
 
 (setq package-user-dir  (expand-file-name
 			 (convert-standard-filename "packages")
@@ -73,7 +79,6 @@
       package-enable-at-startup nil
       package-archives '(("melpa"      . "http://melpa.org/packages/")
 			 ("gnu"        . "http://elpa.gnu.org/packages/")
-			 ("marmalade"  . "http://marmalade-repo.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")))
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -91,9 +96,9 @@
 (eval-when-compile
   (require 'use-package))
 
-;;
-;; Vanilla emacs configuration:
-;;
+;;; --------------------------------------------------------------------------
+;;; Vanilla emacs configuration:
+;;; --------------------------------------------------------------------------
 
 (defalias 'yes-or-no-p 'y-or-n-p) ; fck off
 
@@ -144,9 +149,9 @@
 (add-hook 'after-init-hook 'global-hl-line-mode)
 (set-face-attribute 'highlight nil :background "black" :foreground 'unspecified)
 
-;;
-;; Ibuffer
-;;
+;;; --------------------------------------------------------------------------
+;;; Ibuffer
+;;; --------------------------------------------------------------------------
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
@@ -176,14 +181,10 @@
 ;; Don't ask for confirmation to delete marked buffers
 (setq ibuffer-expert t)
 
-;;
-;; UI configuration:
-;;
+;;; --------------------------------------------------------------------------
+;;; UI configuration:
+;;; --------------------------------------------------------------------------
 
-(set-face-foreground 'mode-line "white")
-(set-face-background 'mode-line "#151515")
-(set-face-background 'mode-line-inactive "black")
-(set-face-foreground 'mode-line-inactive "#505050")
 (display-time-mode)
 (column-number-mode)
 (line-number-mode)
@@ -192,16 +193,29 @@
 (setq scroll-step            2 ; Scrolling suxx
       scroll-conservatively 10000)
 
-(let ((basedir "~/.emacs.d/themes/")) 	; Themes
+;;; --------------------------------------------------------------------------
+;;; Themes
+;;; --------------------------------------------------------------------------
+
+(let ((basedir "~/.emacs.d/themes/"))
   (dolist (f (directory-files basedir))
     (if (and (not (or (equal f ".") (equal f "..")))
 	     (file-directory-p (concat basedir f)))
 	(add-to-list 'custom-theme-load-path (concat basedir f)))))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes") ; custom path
 
-;;
-;; Linum configuration:
-;;
+(if (display-graphic-p) 		; Set theme only on gui mode
+    (load-theme 'distinguished t))
+
+(set-face-foreground 'mode-line "white")
+(set-face-background 'mode-line "#000000")
+(set-face-foreground 'mode-line-inactive "white")
+(set-face-background 'mode-line-inactive "#120f0f")
+
+
+;;; --------------------------------------------------------------------------
+;;; Linum configuration:
+;;; --------------------------------------------------------------------------
 
 
 (set-face-attribute 'linum nil
@@ -238,9 +252,9 @@
 
 (global-linum-mode) ; Set global mode
 
-;;
-;; Whitespace remover hook:
-;;
+;;; --------------------------------------------------------------------------
+;;; Whitespace remover hook:
+;;; --------------------------------------------------------------------------
 
 (setq whitespace-style '(face empty lines-tail trailing))
 (global-whitespace-mode t)
@@ -253,9 +267,9 @@
 	    (add-to-list 'write-file-functions
 			 'delete-trailing-whitespace)))
 
-;;
-;; Org Mode
-;;
+;;; --------------------------------------------------------------------------
+;;; Org Mode
+;;; --------------------------------------------------------------------------
 
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-cc" 'org-capture)
@@ -337,9 +351,9 @@
       org-fast-tag-selection-single-key t
       org-fast-tag-selection-include-todo t)
 
-;;
-;; Functions
-;;
+;;; --------------------------------------------------------------------------
+;;; Functions
+;;; --------------------------------------------------------------------------
 
 (defun save-all-buffers ()
   (interactive) ; Disable prompt
@@ -351,23 +365,23 @@
   (indent-region (point-min)
 		 (point-max)))
 
-;;
-;; Custom keybinds
-;;
+;;; --------------------------------------------------------------------------
+;;; Custom keybinds
+;;; --------------------------------------------------------------------------
 
 (global-set-key (kbd "C-x s") 'save-all-buffers)
 (global-set-key (kbd "C-c n") 'indent-buffer)
 
-;;
-;; Hooks
-;;
+;;; --------------------------------------------------------------------------
+;;; Hooks
+;;; --------------------------------------------------------------------------
 
 (add-hook 'focus-out-hook 'save-all-buffers)
 (add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
 
-;;
-;; Extra-Packages configurations:
-;;
+;;; --------------------------------------------------------------------------
+;;; Extra-Packages configurations:
+;;; --------------------------------------------------------------------------
 
 ;; Company completion engine:
 
@@ -383,9 +397,7 @@
 (setq company-backends (delete 'company-semantic company-backends))
 (add-to-list 'company-backends 'company-clang)
 
-;;
 ;; Yasnippet mode
-;;
 
 (use-package yasnippet
   :ensure t)
@@ -397,9 +409,7 @@
 
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-;;
 ;; Magit
-;;
 
 (use-package magit
   :ensure t)
@@ -468,14 +478,23 @@
 (setq c-default-style "linux"
       c-basic-offset 8)
 
-;; Rust
+;; Syntax Checking
 
-(use-package racer
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package dap-mode
+  :ensure t
+  :hook
+  (lsp-mode . dap-mode)
+  (lsp-mode . dap-ui-mode)
+  )
+
+;; Elixir
+
+(use-package elixir-mode
   :ensure t)
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
 
 ;; Clojure
 
@@ -521,52 +540,23 @@
 				      ("^[ \t]*>[ \t]*>.*$"
 				       (0 'mail-double-quoted-text-face))))))
 
-(defun c-lineup-arglist-tabs-only (ignored)
-  "Line up argument lists by tabs, not spaces"
-  (let* ((anchor (c-langelem-pos c-syntactic-element))
-         (column (c-langelem-2nd-pos c-syntactic-element))
-         (offset (- (1+ column) anchor))
-         (steps (floor offset c-basic-offset)))
-    (* (max steps 1)
-       c-basic-offset)))
+;; Org-Roam, note taking management
 
-;; Assembly
+(use-package org-roam
+      :ensure t
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "~/Documents/org")
+      :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
 
-(add-hook 'asm-mode-hook (lambda ()
-			   (setq indent-tabs-mode nil) ; use spaces to indent
-			   (electric-indent-mode -1) ; indentation in asm-mode is annoying
-			   (setq tab-stop-list (number-sequence 2 60 2))))
+;;; --------------------------------------------------------------------------
+;;; Automatic adition are added under
+;;; --------------------------------------------------------------------------
 
-(dir-locals-set-class-variables
- 'linux-kernel
- '((c-mode . (
-        (c-basic-offset . 8)
-        (c-label-minimum-indentation . 0)
-        (c-offsets-alist . (
-                (arglist-close         . c-lineup-arglist-tabs-only)
-                (arglist-cont-nonempty .
-                    (c-lineup-gcc-asm-reg c-lineup-arglist-tabs-only))
-                (arglist-intro         . +)
-                (brace-list-intro      . +)
-                (c                     . c-lineup-C-comments)
-                (case-label            . 0)
-                (comment-intro         . c-lineup-comment)
-                (cpp-define-intro      . +)
-                (cpp-macro             . -1000)
-                (cpp-macro-cont        . +)
-                (defun-block-intro     . +)
-                (else-clause           . 0)
-                (func-decl-cont        . +)
-                (inclass               . +)
-                (inher-cont            . c-lineup-multi-inher)
-                (knr-argdecl-intro     . 0)
-                (label                 . -1000)
-                (statement             . 0)
-                (statement-block-intro . +)
-                (statement-case-intro  . +)
-                (statement-cont        . +)
-                (substatement          . +)
-                ))
-        (indent-tabs-mode . t)
-        (show-trailing-whitespace . t)
-        ))))

@@ -141,3 +141,4 @@ alias jceu='journalctl -xe --unit'
 
 alias vb='VBoxManage'
 compdef vb="VBoxManage"
+alias vbl="VBoxManage list runningvms"
