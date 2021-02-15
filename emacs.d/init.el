@@ -59,6 +59,7 @@
 ;;        mode only.
 ;; 0.2.0: New year update. This year will be impacted by productivity need
 ;;        and GDT. Some minor cleanup, and `org-roam adition`.
+;; 0.2.1: Org mode cleanup, using it only for roam note taking.
 
 ;;; --------------------------------------------------------------------------
 ;;; Code:
@@ -277,9 +278,6 @@
 (define-key global-map "\C-cb" 'org-iswitchb)
 
 (setq org-directory "~/Documents/org/"
-      org-default-notes-file (concat org-directory "bucket.org")
-      org-agenda-files '("~/Documents/org/travail"
-			 "~/Documents/org/bucket.org")
       org-todo-keywords
       '((sequence "TODO(t)"
 		  "WAIT(w@/!)"
@@ -337,11 +335,6 @@
 	("BONUS" . (:foreground "GoldenRod" :weight bold))
 	("noexport" . (:foreground "LimeGreen" :weight bold))))
 
-;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
-(setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Documents/org/bucket.org")
-               "*** TODO %?\n%U\n%a\n"))))
-
 (setq org-agenda-dim-blocked-tasks nil
       org-agenda-compact-blocks t
       org-log-done t
@@ -364,6 +357,11 @@
   (interactive)
   (indent-region (point-min)
 		 (point-max)))
+
+(defun insert-date ()
+  "Insert today's date at point"
+  (interactive "*")
+  (insert (format-time-string "%F")))
 
 ;;; --------------------------------------------------------------------------
 ;;; Custom keybinds
@@ -434,6 +432,13 @@
   :ensure t)
 
 (global-set-key (kbd "C-x t") 'neotree-toggle)
+(setq neo-theme 'arrow)
+
+(custom-set-faces
+ '(neo-root-dir-face ((t (:foreground "#dddfdb"))))
+ '(neo-dir-link-face ((t (:foreground "#776e61"))))
+ '(neo-file-link-face ((t (:foreground "#BA36A5")))))
+
 
 ;; SMEX
 
@@ -548,6 +553,10 @@
       (after-init . org-roam-mode)
       :custom
       (org-roam-directory "~/Documents/org")
+      (org-journal-date-prefix "#+TITLE: ")
+      (org-journal-file-format "%Y-%m-%d.org")
+      (org-journal-date-format "%A, %d %B %Y")
+      (setq org-journal-enable-agenda-integration t)
       :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
@@ -560,3 +569,4 @@
 ;;; Automatic adition are added under
 ;;; --------------------------------------------------------------------------
 
+(provide 'init) ;;; init.el ends here
