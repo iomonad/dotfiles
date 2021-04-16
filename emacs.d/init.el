@@ -7,7 +7,7 @@
 ;; URL: https://github.com/iomonad/dotfiles
 ;; Created: January 2014
 ;; Keywords: config
-;; Version: 0.2.0
+;; Version: 0.3.0
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,7 +35,6 @@
 ;;  - Magit for git porcelain
 ;;  - Improved UX With Undotree & SMEX
 ;;  - Clojure CIDER mode
-;;  - Mutt integration
 
 ;;; Changelog:
 
@@ -60,19 +59,24 @@
 ;; 0.2.0: New year update. This year will be impacted by productivity need
 ;;        and GDT. Some minor cleanup, and `org-roam adition`.
 ;; 0.2.1: Org mode cleanup, using it only for roam note taking.
-
+;; 0.3.0: New job configuration update. Mainly clojure and Gnus so
+;;        ride of superflue plugins & added projectile support.
+;;
 ;;; --------------------------------------------------------------------------
 ;;; Code:
 ;;; --------------------------------------------------------------------------
+
 
 (require 'org)
 (require 'linum)
 (require 'package)
 (require 'whitespace)
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Package and Melpa configuration:
 ;;; --------------------------------------------------------------------------
+
 
 (setq package-user-dir  (expand-file-name
 			 (convert-standard-filename "packages")
@@ -97,9 +101,11 @@
 (eval-when-compile
   (require 'use-package))
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Vanilla emacs configuration:
 ;;; --------------------------------------------------------------------------
+
 
 (defalias 'yes-or-no-p 'y-or-n-p) ; fck off
 
@@ -136,7 +142,9 @@
       debug-on-quit nil
       debug-on-message nil
       vc-follow-symlinks t
-      show-trailing-whitespace t)
+      show-trailing-whitespace t
+      compilation-scroll-output t
+      dired-dwim-target t)
 
 (electric-pair-mode 1)			; Can be annoying
 (setq create-lockfiles nil)
@@ -150,9 +158,18 @@
 (add-hook 'after-init-hook 'global-hl-line-mode)
 (set-face-attribute 'highlight nil :background "black" :foreground 'unspecified)
 
+;; Date
+(setq display-time-24hr-format t)
+(display-time-mode +1)
+
+;; Init Hook
+(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message nil)
+
 ;;; --------------------------------------------------------------------------
 ;;; Ibuffer
 ;;; --------------------------------------------------------------------------
+
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
@@ -163,14 +180,31 @@
 
 	       ("web" (or (mode . web-mode) (mode . js2-mode)))
 	       ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
-	       ("mu4e" (name . "\*mu4e\*"))
 	       ("programming" (or
 			       (mode . python-mode)
-			       (mode . c++-mode)))
+			       (mode . c++-mode)
+			       (mode . shell-mode)))
+	       ("clojure" (or
+			   (mode . clojure-mode)
+			   (mode . cider-mode)
+			   (name . "*cider*")))
+	       ("planner" (or
+			   (name . "^\\*Calendar\\*$")
+			   (name . "^diary$")
+			   (mode . muse-mode)))
+	       ("gnus" (or
+			(mode . message-mode)
+			(mode . bbdb-mode)
+			(mode . mail-mode)
+			(mode . gnus-group-mode)
+			(mode . gnus-summary-mode)
+			(mode . gnus-article-mode)
+			(name . "^\\.bbdb$")
+			(name . "^\\.newsrc-dribble")))
 	       ("emacs" (or
+			 (mode . emacs-elisp-mode)
 			 (name . "^\\*scratch\\*$")
-			 (name . "^\\*Messages\\*$")))
-	       ))))
+			 (name . "^\\*Messages\\*$")))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
@@ -182,9 +216,11 @@
 ;; Don't ask for confirmation to delete marked buffers
 (setq ibuffer-expert t)
 
+
 ;;; --------------------------------------------------------------------------
 ;;; UI configuration:
 ;;; --------------------------------------------------------------------------
+
 
 (display-time-mode)
 (column-number-mode)
@@ -194,9 +230,11 @@
 (setq scroll-step            2 ; Scrolling suxx
       scroll-conservatively 10000)
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Themes
 ;;; --------------------------------------------------------------------------
+
 
 (let ((basedir "~/.emacs.d/themes/"))
   (dolist (f (directory-files basedir))
@@ -213,6 +251,24 @@
 (set-face-foreground 'mode-line-inactive "white")
 (set-face-background 'mode-line-inactive "#120f0f")
 
+
+;;; --------------------------------------------------------------------------
+;;; Fonts
+;;; --------------------------------------------------------------------------
+
+(if (display-graphic-p)
+    (set-face-attribute
+     'default nil :family "Ubuntu Mono"
+                  :height 120
+		  :weight 'normal
+		  :width 'normal)
+  (when (functionp 'set-fontset-font)
+    (set-fontset-font "fontset-default"
+                    'unicode
+                    (font-spec :family "DejaVu Sans Mono"
+                               :width 'normal
+                               :size 15.5
+                               :weight 'normal))))
 
 ;;; --------------------------------------------------------------------------
 ;;; Linum configuration:
@@ -253,9 +309,11 @@
 
 (global-linum-mode) ; Set global mode
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Whitespace remover hook:
 ;;; --------------------------------------------------------------------------
+
 
 (setq whitespace-style '(face empty lines-tail trailing))
 (global-whitespace-mode t)
@@ -268,9 +326,11 @@
 	    (add-to-list 'write-file-functions
 			 'delete-trailing-whitespace)))
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Org Mode
 ;;; --------------------------------------------------------------------------
+
 
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-cc" 'org-capture)
@@ -344,9 +404,11 @@
       org-fast-tag-selection-single-key t
       org-fast-tag-selection-include-todo t)
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Functions
 ;;; --------------------------------------------------------------------------
+
 
 (defun save-all-buffers ()
   (interactive) ; Disable prompt
@@ -363,23 +425,36 @@
   (interactive "*")
   (insert (format-time-string "%F")))
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Custom keybinds
 ;;; --------------------------------------------------------------------------
 
+
+;; Core Interactions
 (global-set-key (kbd "C-x s") 'save-all-buffers)
 (global-set-key (kbd "C-c n") 'indent-buffer)
+
+;; Gnus / Mails
+(global-set-key (kbd "C-x m") 'gnus)
+
 
 ;;; --------------------------------------------------------------------------
 ;;; Hooks
 ;;; --------------------------------------------------------------------------
 
+
+;; Save buffer on focus out
 (add-hook 'focus-out-hook 'save-all-buffers)
+
+;; On save, remove trailing whitespaces
 (add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
+
 
 ;;; --------------------------------------------------------------------------
 ;;; Extra-Packages configurations:
 ;;; --------------------------------------------------------------------------
+
 
 ;; Company completion engine:
 
@@ -407,9 +482,11 @@
 
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-;; Magit
+;; Magit & Git HL
 
 (use-package magit
+  :ensure t)
+(use-package diff-hl
   :ensure t)
 
 (custom-set-faces			; Highlight are too much imo
@@ -418,6 +495,11 @@
  '(magit-diff-context-highlight ((t (:background "color-16" :foreground "grey50"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "color-243" :foreground "grey30"))))
  '(magit-diff-removed-highlight ((t (:background "color-16" :foreground "#aa2222")))))
+
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+(global-diff-hl-mode)
 
 ;; Undotree
 
@@ -452,24 +534,6 @@
 ;; C/C++ Mode
 ;;
 
-(use-package irony
-  :ensure t)
-
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(defun c-lineup-arglist-tabs-only (ignored)
-  "Line up argument lists by tabs, not spaces"
-  (let* ((anchor (c-langelem-pos c-syntactic-element))
-         (column (c-langelem-2nd-pos c-syntactic-element))
-         (offset (- (1+ column) anchor))
-         (steps (floor offset c-basic-offset)))
-    (* (max steps 1)
-       c-basic-offset)))
-
 (add-hook 'c-mode-common-hook
           (lambda ()
             ;; Add kernel style
@@ -493,13 +557,15 @@
   :ensure t
   :hook
   (lsp-mode . dap-mode)
-  (lsp-mode . dap-ui-mode)
-  )
+  (lsp-mode . dap-ui-mode))
 
-;; Elixir
+;; Projectile
 
-(use-package elixir-mode
+(use-package projectile
   :ensure t)
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Clojure
 
@@ -512,6 +578,9 @@
       cider-prefer-local-resources t
       cider-save-file-on-load t
       cider-eval-result-prefix ";; REPL => ")
+
+(setq cider-repl-history-file 		; History in file
+      (expand-file-name "~/.emacs.d/.cider-repl-history"))
 
 ;; Markdown
 
@@ -532,41 +601,15 @@
 (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
 (put 'downcase-region 'disabled nil)
 
-;; Mutt integration
-
-(add-to-list 'auto-mode-alist '("/neomutt" . mail-mode))
-(add-hook 'mail-mode-hook 'turn-on-auto-fill)
-(add-hook 'mail-mode-hook 'mail-abbrevs-setup)
-(add-hook 'mail-mode-hook
-          (lambda ()
-            (font-lock-add-keywords nil
-				    '(("^[ \t]*>[ \t]*>[ \t]*>.*$"
-				       (0 'mail-multiply-quoted-text-face))
-				      ("^[ \t]*>[ \t]*>.*$"
-				       (0 'mail-double-quoted-text-face))))))
-
-;; Org-Roam, note taking management
-
-(use-package org-roam
-      :ensure t
-      :hook
-      (after-init . org-roam-mode)
-      :custom
-      (org-roam-directory "~/Documents/org")
-      (org-journal-date-prefix "#+TITLE: ")
-      (org-journal-file-format "%Y-%m-%d.org")
-      (org-journal-date-format "%A, %d %B %Y")
-      (setq org-journal-enable-agenda-integration t)
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
 
 ;;; --------------------------------------------------------------------------
-;;; Automatic adition are added under
+;;; Load autogenerated tweaks
 ;;; --------------------------------------------------------------------------
+
+
+(let ((cst-cfg "~/.emacs.d/custom.el"))
+  (if (file-exists-p cst-cfg)
+      (load cst-cfg)))
+
 
 (provide 'init) ;;; init.el ends here
