@@ -15,7 +15,7 @@ client.urgent               #cd989a #683e8e #2e3436
 client.background           #040404
 
 # keybinds
-bindsym Mod4+Shift+Return exec urxvtc
+bindsym Mod4+Shift+Return exec gnome-terminal
 bindsym Mod4+q kill
 bindsym Mod4+Shift+w exec firefox
 bindsym Mod4+j focus right
@@ -88,20 +88,17 @@ bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-
-bindsym F9 exec mpc --host=smokedsalmon@localhost prev
-bindsym F10 exec mpc --host=smokedsalmon@localhost next
-bindsym F11 exec current
-
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+q exit
 
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+
 # Menu shit
-bindsym Mod4+space exec jgmenu_run
+bindsym Mod4+space exec dmenu_run
 
 # Print screen
 
@@ -178,5 +175,5 @@ for_window [class="qemu-system-*"] floating toggle
 # autostart
 #
 
-exec /etc/xrandr.d/resolve-screen
-exec hsetroot -solid "#906873" -contrast 0
+exec nm-applet
+exec gnome-screensaver
