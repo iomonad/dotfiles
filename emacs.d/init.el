@@ -7,7 +7,7 @@
 ;; URL: https://github.com/iomonad/dotfiles
 ;; Created: January 2014
 ;; Keywords: config
-;; Version: 0.3.0
+;; Version: 0.3.1
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -61,7 +61,13 @@
 ;; 0.2.1: Org mode cleanup, using it only for roam note taking.
 ;; 0.3.0: New job configuration update. Mainly clojure and Gnus so
 ;;        ride of superflue plugins & added projectile support.
+;; 0.3.1: Added paredit in lisp modes and raindbow-delimiters mainly
+;;        for eye-candy. Also made minor updates in org-mode since
+;;        I decided to leave Todoist plateform for work.
+;;        Also added Elfeed support. Yes, my life
+;;        become more and more in that text editor ...
 ;;
+
 ;;; --------------------------------------------------------------------------
 ;;; Code:
 ;;; --------------------------------------------------------------------------
@@ -166,6 +172,7 @@
 (setq initial-major-mode 'org-mode)
 (setq initial-scratch-message nil)
 
+
 ;;; --------------------------------------------------------------------------
 ;;; Ibuffer
 ;;; --------------------------------------------------------------------------
@@ -184,6 +191,12 @@
 			       (mode . python-mode)
 			       (mode . c++-mode)
 			       (mode . shell-mode)))
+	       ("GIT" (or
+		       (mode . magit-mode)
+		       (name . "magit*")))
+	       ("Ansible" (or
+			   (mode . ansible-mode)
+			   (name . "*\/ansible\/*")))
 	       ("clojure" (or
 			   (mode . clojure-mode)
 			   (mode . cider-mode)
@@ -192,6 +205,7 @@
 			   (name . "^\\*Calendar\\*$")
 			   (name . "^diary$")
 			   (mode . muse-mode)))
+	       ("IRC" (mode . erc-mode))
 	       ("gnus" (or
 			(mode . message-mode)
 			(mode . bbdb-mode)
@@ -204,6 +218,7 @@
 	       ("emacs" (or
 			 (mode . emacs-elisp-mode)
 			 (name . "^\\*scratch\\*$")
+			 (name . "*init.el")
 			 (name . "^\\*Messages\\*$")))))))
 
 (add-hook 'ibuffer-mode-hook
@@ -335,9 +350,8 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cb" 'org-iswitchb)
 
-(setq org-directory "~/Documents/org/"
+(setq org-directory "~/Org"
       org-todo-keywords
       '((sequence "TODO(t)"
 		  "WAIT(w@/!)"
@@ -404,6 +418,10 @@
       org-fast-tag-selection-single-key t
       org-fast-tag-selection-include-todo t)
 
+
+;; Load org buffer
+
+(setq org-agenda-files (list "~/Org/agenda.org"))
 
 ;;; --------------------------------------------------------------------------
 ;;; Functions
@@ -521,7 +539,6 @@
  '(neo-dir-link-face ((t (:foreground "#776e61"))))
  '(neo-file-link-face ((t (:foreground "#BA36A5")))))
 
-
 ;; SMEX
 
 (use-package smex
@@ -577,10 +594,38 @@
       nrepl-hide-special-buffers t
       cider-prefer-local-resources t
       cider-save-file-on-load t
+      cider-repl-display-help-banner nil
       cider-eval-result-prefix ";; REPL => ")
 
 (setq cider-repl-history-file 		; History in file
       (expand-file-name "~/.emacs.d/.cider-repl-history"))
+
+(use-package rainbow-delimiters
+  :ensure t)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(use-package paredit
+  :ensure t)
+
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+
+;;; Elfeed
+
+(use-package elfeed
+  :defer t
+  :bind ("C-x w" . elfeed)
+  :init (setf url-queue-timeout 30)
+  :config
+  (require 'feed-setup)
+  (push "-k" elfeed-curl-extra-arguments)
+  (setf bookmark-default-file (locate-user-emacs-file "local/bookmarks")))
+
 
 ;; Markdown
 
