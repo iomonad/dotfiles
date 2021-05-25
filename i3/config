@@ -15,7 +15,7 @@ client.urgent               #cd989a #683e8e #2e3436
 client.background           #040404
 
 # keybinds
-bindsym Mod4+Shift+Return exec gnome-terminal
+bindsym Mod4+Shift+Return exec dbus-launch gnome-terminal
 bindsym Mod4+q kill
 bindsym Mod4+Shift+w exec firefox
 bindsym Mod4+j focus right
@@ -55,6 +55,9 @@ bindsym Mod4+e layout default
 bindsym Mod4+Shift+space floating toggle
 
 bindsym Mod4+a focus parent
+bindsym Mod4+Shift+e exec emacs
+bindsym Mod4+Shift+f exec /usr/bin/i3lock-fancy
+bindsym Mod4+Shift+s exec sudo pm-suspend
 
 bindsym Mod4+1 workspace 1:main
 bindsym Mod4+2 workspace 2:web
@@ -149,24 +152,11 @@ bar {
 # Rules
 #
 assign [class="urxvt*"] 1:main
-assign [class="Mozilla Firefox"] 2:web
+assign [class="*Mozilla Firefox*"] 2:web
 assign [class="Telegram*"] 3:im
-assign [class="jetbrains-idea"] 4:code
-assign [class="*Android Studio"] 4:code
 assign [class="*emacs*"] 4:code
 assign [class="Emacs*"] 4:code
-assign [class="MuPDF"] 5:media
-assign [class="GMPC"] 5:media
-assign [class="zathura"] 5:media
-assign [class="*mpv"] 5:media
-assign [class="^Transmission-remote-gtk$"] 6:share
-assign [class="Nicotine*"] 6:share
-assign [class="*QGIS"] 7:gis
-assign [class="*QGIS3"] 7:gis
-assign [class="qemu-system-*"] 8:virt
-assign [class="^QEMU$"] 8:virt
-assign [class="*QGIS"] 4:code
-assign [class="Tor Browser"] 10:hell
+
 
 # app rules
 for_window [class="qemu-system-*"] floating toggle
@@ -176,4 +166,4 @@ for_window [class="qemu-system-*"] floating toggle
 #
 
 exec nm-applet
-exec gnome-screensaver
+exec pasystray
