@@ -66,6 +66,8 @@
 ;;        I decided to leave Todoist plateform for work.
 ;;        Also added Elfeed support. Yes, my life
 ;;        become more and more in that text editor ...
+;; 0.3.2: Spells support & minor configurations changes
+;;        Also added multiples curors support
 ;;
 
 ;;; --------------------------------------------------------------------------
@@ -88,22 +90,26 @@
 			 (convert-standard-filename "packages")
 			 user-emacs-directory)
       package-enable-at-startup nil
-      package-archives '(("melpa"      . "http://melpa.org/packages/")
+      package-archives '(("melpa"      . "https://melpa.org/packages/")
 			 ("gnu"        . "http://elpa.gnu.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")))
 
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-		    (not (gnutls-available-p))))
-       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-  (add-to-list 'package-archives (cons "melpa" url) t))
+;; (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+;; 		    (not (gnutls-available-p))))
+;;        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+;;   (add-to-list 'package-archives (cons "melpa" url) t))
 
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+;; (when (< emacs-major-version 24)
+;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 (package-initialize)
+
 (unless package-archive-contents
   (package-refresh-contents))
+
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
 (eval-when-compile
   (require 'use-package))
 
@@ -160,9 +166,18 @@
 
 (tool-bar-mode -1) 			; We are in term mode right ?
 (menu-bar-mode -1)
+(toggle-scroll-bar -1)
 
 (add-hook 'after-init-hook 'global-hl-line-mode)
 (set-face-attribute 'highlight nil :background "black" :foreground 'unspecified)
+
+;;; Env
+
+(mapcar
+ (lambda (e)
+   (setenv (car e) (cdr e)))
+ ;; Needed for work
+ '(("GOOGLE_APPLICATION_CREDENTIALS" . "/home/clement/.sa.google.txt")))
 
 ;; Date
 (setq display-time-24hr-format t)
@@ -230,7 +245,6 @@
 (setq ibuffer-show-empty-filter-groups nil)
 ;; Don't ask for confirmation to delete marked buffers
 (setq ibuffer-expert t)
-
 
 ;;; --------------------------------------------------------------------------
 ;;; UI configuration:
@@ -324,7 +338,33 @@
 
 (global-linum-mode) ; Set global mode
 
+;;; --------------------------------------------------------------------------
+;;; Ispell & Spell checking
+;;; --------------------------------------------------------------------------
 
+;; This will setup flyspell for any text derived
+;; mode.
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+
+;; Set default dictionary
+(setq ispell-dictionary "en")
+
+
+;; Quick lang swap helper
+(defun ispell-langage (lang)
+  (interactive)
+  (ispell-change-dictionary lang)
+  (flyspell-buffer))
+
+(defun ispell-french ()
+  (ispell-langage "french"))
+(defun ispell-english ()
+  (ispell-langage "english"))
+
+;;;
 ;;; --------------------------------------------------------------------------
 ;;; Whitespace remover hook:
 ;;; --------------------------------------------------------------------------
@@ -356,6 +396,7 @@
       '((sequence "TODO(t)"
 		  "WAIT(w@/!)"
 		  "ONGOING"
+		  "REVIEWN"
 		  "|"
 		  "DONE(d!)"
 		  "DELEGATED"
@@ -419,9 +460,39 @@
       org-fast-tag-selection-include-todo t)
 
 
-;; Load org buffer
 
-(setq org-agenda-files (list "~/Org/agenda.org"))
+(setq org-agenda-files (list "~/Org/agenda.org"
+			     "~/Org/perso.org"))
+
+
+(setq org-agenda-hide-tags-regexp
+      (regexp-opt '("work" "projects" "perso" "udg")))
+
+;;; Agenda Eye Candy
+
+
+(setq org-agenda-breadcrumbs-separator " >> ")
+
+(add-hook 'org-capture-mode-hook #'org-align-all-tags)
+
+(setq org-capture-templates
+      '(
+	;; Professional
+	("w" "TODO WORK" entry (file+headline "~/Org/agenda.org" "Work")
+         "** TODO %? :work:\n  %i\n")
+	;; Hobbies / Workflow related
+	("i" "TODO PROJECTS" entry (file+headline "~/Org/agenda.org" "Projects")
+         "** TODO %? :projects:\n  %i\n")
+	;; Personal stuff
+	("u" "TODO UDG" entry (file+headline "~/Org/perso.org" "UDG")
+         "** TODO %? :udg:\n  %i\n")
+	("t" "TODO PERSO" entry (file+headline "~/Org/perso.org" "Perso")
+         "** TODO %? :perso:\n  %i\n")
+	;; Habbits Tracking
+        ("l" "TIL" entry (file+datetree "~/Org/til.org")
+         "** %?\n  %i\n")
+	("r" "ROUTINE" entry (file+datetree "~/Org/routine.org")
+         "** %?\n  %i\n")))
 
 ;;; --------------------------------------------------------------------------
 ;;; Functions
@@ -472,6 +543,22 @@
 ;;; --------------------------------------------------------------------------
 ;;; Extra-Packages configurations:
 ;;; --------------------------------------------------------------------------
+
+;;; Ivy / Swiper
+
+(use-package ivy
+  :ensure t
+  :config (ivy-mode))
+
+(use-package swiper
+  :ensure t)
+
+(setq ivy-use-virtual-buffers t
+      enable-recursive-minibuffers t
+      search-default-mode #'char-fold-to-regexp)
+
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 
 ;; Company completion engine:
@@ -597,8 +684,33 @@
       cider-repl-display-help-banner nil
       cider-eval-result-prefix ";; REPL => ")
 
+(add-hook 'cider-repl-mode-hook
+      '(lambda () (define-key cider-repl-mode-map (kbd "C-c M-b")
+            'cider-repl-clear-buffer)))
+
+(use-package clj-refactor
+  :ensure t)
+
+(defun clojure-refactor-hook ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import statements
+  ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook #'clojure-refactor-hook)
+
 (setq cider-repl-history-file 		; History in file
       (expand-file-name "~/.emacs.d/.cider-repl-history"))
+
+
+(defun start-cider-repl-with-profile ()
+  (interactive)
+  (letrec ((profile (read-string "Enter profile name: "))
+           (lein-params (concat "with-profile +" profile " repl :headless")))
+    (message "lein-params set to: %s" lein-params)
+    (set-variable 'cider-lein-parameters lein-params)
+    (cider-jack-in)))
+
 
 (use-package rainbow-delimiters
   :ensure t)
@@ -620,11 +732,49 @@
 (use-package elfeed
   :defer t
   :bind ("C-x w" . elfeed)
-  :init (setf url-queue-timeout 30)
-  :config
-  (require 'feed-setup)
-  (push "-k" elfeed-curl-extra-arguments)
-  (setf bookmark-default-file (locate-user-emacs-file "local/bookmarks")))
+  :init (setf url-queue-timeout 30))
+
+(setq elfeed-feeds
+      '(
+	;; Clojure & Lisps
+	("http://planet.clojure.in/atom.xml" clojure)
+	("https://cognitect.com/feed.xml" clojure)
+	("https://corfield.org/atom.xml" clojure)
+	("https://metaredux.com/feed.xml" clojure)
+	("https://purelyfunctional.tv/feed/normal-feed" clojure)
+	("https://old.reddit.com/r/Clojure.rss" clojure)
+	;; Code & General IT
+	("http://helpful.cat-v.org/Blog/index.rss" general cat-v-help)
+	("http://harmful.cat-v.org/Blog/index.rss" general cat-v-harm)
+	;; Linux / Unix
+	("https://planet.kernel.org/rss20.xml" linux kernel)
+	("https://lwn.net/headlines/rss" linux kernel)
+	("https://security.gentoo.org/glsa/feed.rss" linux gentoo)
+	("http://www.netbsd.org/changes/rss-netbsd.xml" bsd netbsd)
+	("http://www.netbsd.org/support/security/rss-advisories.xml" bsd netbsd)
+	("http://openbsd-current-rss.appspot.com/" bsd openbsd)
+	("https://undeadly.org/cgi?action=rss" bsd openbsd)
+	;; Security
+	("http://www.exploit-monday.com/feeds/posts/default" security)
+	("http://reverse.put.as/feed/" security)
+	("https://markitzeroday.com/feed.xml" security)))
+
+(setq elfeed-show-mode-hook
+      (lambda ()
+	(set-face-attribute 'variable-pitch (selected-frame)
+			    :font (font-spec :family "Ubuntu Mono" :size 16))
+	(setq fill-column 120)
+	(setq elfeed-show-entry-switch #'my-show-elfeed)))
+
+
+(defun my-show-elfeed (buffer)
+  (with-current-buffer buffer
+    (setq buffer-read-only nil)
+    (goto-char (point-min))
+    (re-search-forward "\n\n")
+    (fill-individual-paragraphs (point) (point-max))
+    (setq buffer-read-only t))
+  (switch-to-buffer buffer))
 
 
 ;; Markdown
@@ -646,6 +796,12 @@
 (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
 (put 'downcase-region 'disabled nil)
 
+;;; Multiples Cursors
+
+(use-package multiple-cursors
+  :ensure t)
+
+(global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
 ;;; --------------------------------------------------------------------------
 ;;; Load autogenerated tweaks

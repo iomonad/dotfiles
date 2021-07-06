@@ -156,7 +156,7 @@ assign [class="*Mozilla Firefox*"] 2:web
 assign [class="Telegram*"] 3:im
 assign [class="*emacs*"] 4:code
 assign [class="Emacs*"] 4:code
-
+assign [class="*Bitwig Studio*"] 5:media
 
 # app rules
 for_window [class="qemu-system-*"] floating toggle
