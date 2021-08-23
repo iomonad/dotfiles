@@ -68,7 +68,8 @@
 ;;        become more and more in that text editor ...
 ;; 0.3.2: Spells support & minor configurations changes
 ;;        Also added multiples curors support
-;;
+;; 0.3.3: Minor updated, dotfiles repo decorelation & cider minors hacks
+;;        and configuration update. Added support for gnus notification vendors.
 
 ;;; --------------------------------------------------------------------------
 ;;; Code:
@@ -93,14 +94,6 @@
       package-archives '(("melpa"      . "https://melpa.org/packages/")
 			 ("gnu"        . "http://elpa.gnu.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")))
-
-;; (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-;; 		    (not (gnutls-available-p))))
-;;        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-;;   (add-to-list 'package-archives (cons "melpa" url) t))
-
-;; (when (< emacs-major-version 24)
-;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
@@ -177,7 +170,7 @@
  (lambda (e)
    (setenv (car e) (cdr e)))
  ;; Needed for work
- '(("GOOGLE_APPLICATION_CREDENTIALS" . "/home/clement/.sa.google.txt")))
+ '(("GOOGLE_APPLICATION_CREDENTIALS" . "/home/iomonad/.sa.google.txt")))
 
 ;; Date
 (setq display-time-24hr-format t)
@@ -187,6 +180,13 @@
 (setq initial-major-mode 'org-mode)
 (setq initial-scratch-message nil)
 
+;;; Smooth Scroll
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
+(pixel-scroll-mode 1)
 
 ;;; --------------------------------------------------------------------------
 ;;; Ibuffer
@@ -338,32 +338,6 @@
 
 (global-linum-mode) ; Set global mode
 
-;;; --------------------------------------------------------------------------
-;;; Ispell & Spell checking
-;;; --------------------------------------------------------------------------
-
-;; This will setup flyspell for any text derived
-;; mode.
-
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-
-
-;; Set default dictionary
-(setq ispell-dictionary "en")
-
-
-;; Quick lang swap helper
-(defun ispell-langage (lang)
-  (interactive)
-  (ispell-change-dictionary lang)
-  (flyspell-buffer))
-
-(defun ispell-french ()
-  (ispell-langage "french"))
-(defun ispell-english ()
-  (ispell-langage "english"))
-
 ;;;
 ;;; --------------------------------------------------------------------------
 ;;; Whitespace remover hook:
@@ -465,15 +439,10 @@
 			     "~/Org/perso.org"))
 
 
-(setq org-agenda-hide-tags-regexp
-      (regexp-opt '("work" "projects" "perso" "udg")))
-
 ;;; Agenda Eye Candy
 
 
 (setq org-agenda-breadcrumbs-separator " >> ")
-
-(add-hook 'org-capture-mode-hook #'org-align-all-tags)
 
 (setq org-capture-templates
       '(
@@ -493,6 +462,23 @@
          "** %?\n  %i\n")
 	("r" "ROUTINE" entry (file+datetree "~/Org/routine.org")
          "** %?\n  %i\n")))
+
+(setq org-agenda-prefix-format
+      (quote
+       ((agenda . "%-12c%?-12t% s")
+        (timeline . "% s")
+        (todo . "%-12c")
+        (tags . "%-12c")
+        (search . "%-12c"))))
+
+(setq org-agenda-deadline-leaders (quote ("!D!: " "D%2d: " "")))
+(setq org-agenda-scheduled-leaders (quote ("" "S%3d: ")))
+
+;;; Bug with tags
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (visual-line-mode -1)
+            (toggle-truncate-lines 1)))
 
 ;;; --------------------------------------------------------------------------
 ;;; Functions
@@ -556,6 +542,8 @@
 (setq ivy-use-virtual-buffers t
       enable-recursive-minibuffers t
       search-default-mode #'char-fold-to-regexp)
+
+(setq swiper-stay-on-quit t)
 
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
@@ -684,9 +672,15 @@
       cider-repl-display-help-banner nil
       cider-eval-result-prefix ";; REPL => ")
 
+;;; Reload strategies
+(setq cider-ns-refresh-before-fn "user/stop-system!"
+      cider-ns-refresh-after-fn "user/start-system!")
+
 (add-hook 'cider-repl-mode-hook
       '(lambda () (define-key cider-repl-mode-map (kbd "C-c M-b")
-            'cider-repl-clear-buffer)))
+		    'cider-repl-clear-buffer)))
+;;; Format
+;(add-hook 'before-save-hook 'cider-format-buffer t t)
 
 (use-package clj-refactor
   :ensure t)
@@ -726,6 +720,14 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+
+
+(use-package aggressive-indent
+  :ensure t)
+
+(add-hook 'cider-mode-hook #'aggressive-indent-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+
 
 ;;; Elfeed
 
@@ -803,10 +805,25 @@
 
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
+
+;;; --------------------------------------------------------------------------
+;;; Load Vendors path
+;;; --------------------------------------------------------------------------
+
+(defun load-directory (dir)
+  (let ((load-it (lambda (f)
+		   (load-file (concat (file-name-as-directory dir) f)))))
+        (message "Loading vendor directory %s" dir)
+	(mapc load-it (directory-files dir nil "\\.el$"))))
+
+;;; Load directories at start
+(mapc 'load-directory '("~/.emacs.d/vendor/" ; External lisp files found
+			"~/.emacs.d/private/" ; Private & work related
+			))
+
 ;;; --------------------------------------------------------------------------
 ;;; Load autogenerated tweaks
 ;;; --------------------------------------------------------------------------
-
 
 (let ((cst-cfg "~/.emacs.d/custom.el"))
   (if (file-exists-p cst-cfg)
