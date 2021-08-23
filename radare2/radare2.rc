@@ -1,7 +1,0 @@
-e scr.color = true
-e dbg.bep   = loader
-e asm.cmtright=true
-e asm.pseudo = true
-eco solarized
-e scr.utf8 = true
-e asm.os = linux
