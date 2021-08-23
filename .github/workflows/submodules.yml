@@ -1,0 +1,36 @@
+name: 'Synchronize Submodules'
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    name: 'Submodules Sync'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.CI_TOKEN }}
+        submodules: true
+
+    - name: Git Sumbodule Update
+      run: |
+        git pull --recurse-submodules
+        git submodule update --remote --recursive
+
+    - name: Commit update
+      run: |
+        git config --global user.name '[bot] Github Action'
+        git config --global user.email 'bot@noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit -am "[CI] Updated submodules" && git push || echo "No changes to commit"
