@@ -25,3 +25,6 @@
 [submodule "emacs/home"]
 	path = emacs/home
 	url = https://github.com/iomonad/iomonad.el
+[submodule "emacs.d"]
+	path = emacs.d
+	url = git@github.com:iomonad/emacs.d.git
