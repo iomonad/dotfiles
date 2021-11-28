@@ -1,4 +1,0 @@
-# required by oracle-jdk-bin (argument)
->=dev-java/oracle-jdk-bin-1.8.0.162-r1:1.8 Oracle-BCLA-JavaSE
-# required by virtualbox-bin (argument)
-=app-emulation/virtualbox-bin-5.1.36.122089 PUEL

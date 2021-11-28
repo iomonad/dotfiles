@@ -1,1 +1,0 @@
-net-misc/networkmanager -introspection -modemmanager -ncurses nss -gnutls -ppp -wext wifi dbus
