@@ -6,5 +6,6 @@
 dont_use_when_you_are_drunk () {
 	zle beginning-of-line; zle -U "sudo "
 }
+
 zle -N dont-use-when-you-are-drunk dont_use_when_you_are_drunk
 bindkey "^X" dont-use-when-you-are-drunk

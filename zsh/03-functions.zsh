@@ -96,29 +96,3 @@ function normalize_analog_scan() {
 	((count++))
     done
 }
-
-# Virtualbox related
-
-function vbl () {
-    vb list runningvms
-}
-
-function vbs () {
-    local vname=$1
-
-    vb startvm $vname --type headless
-}
-
-function vbk () {
-    local vname=$1
-
-    vb controlvm $vname poweroff 
-}
-
-function git_sync_branches () {
-    for BRANCH in $(ls .git/refs/heads);
-    do git checkout $BRANCH ;
-       git merge origin/master $BRANCH ;
-    done
-    git push --all
-}
