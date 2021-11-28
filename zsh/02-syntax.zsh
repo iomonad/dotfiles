@@ -2,7 +2,12 @@
 # (c) 2015 iomonad <iomonad@riseup.net>
 
 # Syntax Highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+#
+# Install dependencies:
+#  $ emerge -a app-shells/zsh-syntax-highlighting
+#
 
 if [[ ${SSH_CONNECTION} ]]; then
     . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

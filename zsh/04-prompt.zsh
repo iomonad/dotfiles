@@ -1,7 +1,7 @@
 # 04-prompt.zsh
 # (c) 2015 iomonad <iomonad@riseup.net>
 
-# Requirments
+# Requirements
 autoload colors; colors;
 
 setopt multios

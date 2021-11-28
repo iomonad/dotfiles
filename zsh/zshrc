@@ -14,10 +14,3 @@ for r in $HOME/.zsh/*.zsh; do
 	builtin source $r
     fi
 done
-export PATH=/home/iomonad/.local/share/fury/usr/active/bin:/home/iomonad/.local/share/fury/usr/active/opt:$PATH # Added by Fury
-fpath=(/home/iomonad/.local/share/fury/usr/0.18.29/script /home/iomonad/.local/share/fury/usr/active/completions $fpath) # Added by Fury
-autoload -U compinit && compinit # Added by Fury
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

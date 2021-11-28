@@ -5,4 +5,6 @@ function emacs() {
     emacsclient -c -nw -a= $* 2> /dev/null
 }
 
-alias e=emacs
+alias e="mg -n"
+alias nano="mg -n"
+alias vim="mg -n"

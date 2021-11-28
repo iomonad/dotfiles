@@ -3,16 +3,18 @@
 
 # Basic Environs
 export SHELL='/bin/zsh'
-export EDITOR='emacs -nw -c -nw -a= $*'
-export ALTERNATE_EDITOR="nano"
+export EDITOR='mg'
+export ALTERNATE_EDITOR="emacs"
 export VIEW='w3m'
 export PAGER='less'
 
 # Locales
-# export LC_ALL=en_US.UTF-8
-# export LANG=en_US.UTF-8
-# export LANGUAGE=en_US.UTF-8
-export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 
 # Paths
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+# Misc
+export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
