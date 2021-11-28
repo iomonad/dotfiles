@@ -8,44 +8,27 @@
 # X related
 #
 
-xrdb -load $HOME/.Xresources &
 xset +fp ~/.fonts &
 xset fp rehash &
-xset r rate 220 60 & # Make input on steroid
-xinput disable 10 &
+xset r rate 220 60 & 
 xset +dpms &
 xset dpms 0 0 300 &
 xset s noblank &
 xset b off # Disable bell
-wmname LG3D & # Needed for Xmonad
 stty -ixon &
 
 #
 # Input Related
 #
 
-xsetroot -cursor_name left_ptr &
 unclutter -idle 2 &
-#autocutsel -selection clipboard -fork &
-autocutsel -fork&
-setxkbmap us dvorak &
-xmodmap ~/.xmodmap &
-xcape -e 'Shift_L=Shift_L|parenleft;Shift_R=Shift_R|parenright' & # Space cadet shift
 
-#
+# ================
 # Extra Software
-#
+# ===============
 
-xscreensaver -no-splash &
 redshift -O 3100
-urxvtd --quiet --opendisplay --fork & # Daemon Terminal
 pulseaudio --start -D &
 udiskie -N -s &
 
-#
-# Windows manager
-#
-
-# exec xmonad
-# exec stumpwm
 exec i3

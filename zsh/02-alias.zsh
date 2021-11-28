@@ -123,19 +123,6 @@ alias ggpnp='git pull origin $(current_branch) && git push origin $(current_bran
 compdef ggpnp=git
 
 #
-# SystemD
-#
-
-alias dc='systemctl'
-compdef dc=systemctl
-alias jc='journalctl'
-compdef jc=systemctl
-
-alias dcf='systemctl list-units --failed'
-alias jce='journalctl -xe'
-alias jceu='journalctl -xe --unit'
-
-#
 # Virtualbox
 #
 

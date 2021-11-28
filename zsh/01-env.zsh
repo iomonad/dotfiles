@@ -15,4 +15,4 @@ export PAGER='less'
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
 # Paths
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin

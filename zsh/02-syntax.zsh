@@ -7,7 +7,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 if [[ ${SSH_CONNECTION} ]]; then
     . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+    .  /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 fi
 
 # STYLES

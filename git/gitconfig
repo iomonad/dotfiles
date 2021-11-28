@@ -4,9 +4,9 @@
 #
 
 [user]
-  name = Clement Van Truyart
-  email = me@trosa.io
-  signingkey = 91C9862F659893ED
+  name = iomonad
+  email = iomonad@riseup.net
+  signingkey = 280B8CD8A99047372CD4551B0781ECEA9ED09403
 
 [credential]
   helper = cache --timeout=28800
@@ -20,7 +20,7 @@
   whitespace = cr-at-eol
   pager = colordiff
   excludesfile = ~/.globalignore
-  editor = emacs -nw
+  editor = mg
 
 [gpg]
   program = gpg2
@@ -28,7 +28,7 @@
 [commit]
   template = ~/.gitmessage
   status = true
-  gpgsign = true
+  gpgSign = true
 
 [help]
   autocorrect = 1
@@ -121,9 +121,7 @@
   wip = commit -am "WIP"
   undo = reset HEAD~1 --mixed
   amend = commit -a --amend
-  # Whipe last commit
   shit = !git add -A && git commit -qm 'Just fucked up my commit' && git reset HEAD~1 --hard
-  # clean merged branch
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

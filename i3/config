@@ -1,7 +1,11 @@
 # iomonad - github.com/iomonad
 # i3 config
 
-# fonts
+# ==============================================================================
+#                             Cores Variables
+# ==============================================================================
+
+
 floating_modifier Mod4
 new_window normal
 
@@ -14,10 +18,11 @@ client.urgent               #cd989a #683e8e #2e3436
 
 client.background           #040404
 
-# keybinds
-bindsym Mod4+Shift+Return exec dbus-launch gnome-terminal
+# ==============================================================================
+#                              Core Keybinds
+# ==============================================================================
+
 bindsym Mod4+q kill
-bindsym Mod4+Shift+w exec firefox
 bindsym Mod4+j focus right
 bindsym Mod4+k focus down
 bindsym Mod4+i focus up
@@ -55,9 +60,31 @@ bindsym Mod4+e layout default
 bindsym Mod4+Shift+space floating toggle
 
 bindsym Mod4+a focus parent
+
+bindsym Mod4+Shift+c reload
+bindsym Mod4+Shift+r restart
+bindsym Mod4+Shift+q exit
+
+
+# ==============================================================================
+#                           Application Keybinds
+# ==============================================================================
+
+
 bindsym Mod4+Shift+e exec emacs
-bindsym Mod4+Shift+f exec /usr/bin/i3lock-fancy
 bindsym Mod4+Shift+s exec sudo pm-suspend
+bindsym Mod4+Shift+w exec google-chrome-stable
+bindsym Mod4+Shift+Return exec xfce4-terminal
+bindsym Mod4+space exec dmenu_run
+
+# Screenshots
+bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+
+# ==============================================================================
+#                              Namespaces
+# ==============================================================================
 
 bindsym Mod4+1 workspace 1:main
 bindsym Mod4+2 workspace 2:web
@@ -81,65 +108,45 @@ bindsym Mod4+Shift+8 move workspace 8:virt
 bindsym Mod4+Shift+9 move workspace 9:sec
 bindsym Mod4+Shift+0 move workspace 10:hell
 
-# Suspend and locking || x220 specifics
-bindsym XF86ScreenSaver exec xscreensaver-command -lock
-bindsym XF86Sleep exec sudo pm-hibernate
-bindsym XF86Suspend exec sudo pm-suspend
-bindsym XF86Battery exec sudo pm-suspend-hybrid
-
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-
-bindsym Mod4+Shift+c reload
-bindsym Mod4+Shift+r restart
-bindsym Mod4+Shift+q exit
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
-
-
-# Menu shit
-bindsym Mod4+space exec dmenu_run
-
-# Print screen
-
-bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
-bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# ==============================================================================
+#                                Resize
+# ==============================================================================
 
 mode "resize" {
-    bindsym l               resize shrink left 10 px or 10 ppt
-        bindsym Shift+l         resize grow   left 10 px or 10 ppt
-        bindsym k               resize shrink down 10 px or 10 ppt
-        bindsym Shift+k         resize grow   down 10 px or 10 ppt
-        bindsym i               resize shrink up 10 px or 10 ppt
-        bindsym Shift+i         resize grow   up 10 px or 10 ppt
-        bindsym j       resize shrink right 10 px or 10 ppt
-        bindsym Shift+j resize grow   right 10 px or 10 ppt
-        bindsym Left        resize shrink left 10 px or 10 ppt
-        bindsym Shift+Left  resize grow   left 10 px or 10 ppt
-        bindsym Down        resize shrink down 10 px or 10 ppt
-        bindsym Shift+Down  resize grow   down 10 px or 10 ppt
-        bindsym Up          resize shrink up 10 px or 10 ppt
-        bindsym Shift+Up    resize grow   up 10 px or 10 ppt
-        bindsym Right       resize shrink right 10 px or 10 ppt
-        bindsym Shift+Right resize grow   right 10 px or 10 ppt
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym l               resize shrink  left 10 px or 10 ppt
+    bindsym Shift+l         resize grow    left 10 px or 10 ppt
+    bindsym k               resize shrink  down 10 px or 10 ppt
+    bindsym Shift+k         resize grow    down 10 px or 10 ppt
+    bindsym i               resize shrink  up 10 px or 10 ppt
+    bindsym Shift+i         resize grow    up 10 px or 10 ppt
+    bindsym j               resize shrink  right 10 px or 10 ppt
+    bindsym Shift+j         resize grow    right 10 px or 10 ppt
+    bindsym Left            resize shrink  left 10 px or 10 ppt
+    bindsym Shift+Left      resize grow    left 10 px or 10 ppt
+    bindsym Down            resize shrink  down 10 px or 10 ppt
+    bindsym Shift+Down      resize grow    down 10 px or 10 ppt
+    bindsym Up              resize shrink  up 10 px or 10 ppt
+    bindsym Shift+Up        resize grow    up 10 px or 10 ppt
+    bindsym Right           resize shrink  right 10 px or 10 ppt
+    bindsym Shift+Right     resize grow    right 10 px or 10 ppt
+    bindsym Return mode     "default"
+    bindsym Escape mode     "default"
 }
 
 bindsym Mod4+r mode "resize"
 
-# bar
+# ==============================================================================
+#                                Bar
+# ==============================================================================
+
 bar {
     mode dock
         position top
         workspace_buttons yes
         colors {
-		background #040404
-		statusline #8b898a
-                separator #191919
+		background           #040404
+		statusline           #8b898a
+                separator            #191919
                 focused_workspace    #121212 #101010 #8b898a
                 active_workspace     #14161A #040404 #999999
                 inactive_workspace   #14161A #14161A #56594e
@@ -148,22 +155,22 @@ bar {
 	status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
 }
 
-#
-# Rules
-#
-assign [class="urxvt*"] 1:main
-assign [class="*Mozilla Firefox*"] 2:web
-assign [class="Telegram*"] 3:im
-assign [class="*emacs*"] 4:code
-assign [class="Emacs*"] 4:code
-assign [class="*Bitwig Studio*"] 5:media
+# ==============================================================================
+#                               Rules
+# ==============================================================================
 
-# app rules
+
+assign [class="Xfce4-*"]   1:main
+assign [class="*Chrome*"]  2:web
+assign [class="*emacs*"]   4:code
+assign [class="Emacs*"]    4:code
+assign [class="Renoise*"]  5:media
+assign [class="Mpv*"]      5:media
+
 for_window [class="qemu-system-*"] floating toggle
 
-#
-# autostart
-#
+# ==============================================================================
+#                                Autostart
+# ==============================================================================
 
-exec nm-applet
 exec pasystray
