@@ -6,7 +6,7 @@
 
 IPTABLES=/sbin/iptables
 IP6TABLES=/sbin/ip6tables
-INTERFACES=(wlp2s0 enp0s25)
+INTERFACES=(eno1)
 IS=/sbin/iptables-save
 ISP=backup_iptables.txt
 

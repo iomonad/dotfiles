@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ -z "$1" ]
-then
-	echo "Usage: $0 <firmware.hex>"
-	exit 0
-fi
-
-sudo teensy-loader-cli -mmcu=atmega32u4 -w $@ -v
