@@ -75,7 +75,8 @@ bindsym Mod4+Shift+e exec emacs
 bindsym Mod4+Shift+s exec sudo pm-suspend
 bindsym Mod4+Shift+w exec google-chrome-stable
 bindsym Mod4+Shift+Return exec xfce4-terminal
-bindsym Mod4+space exec dmenu_run
+bindsym Mod4+Shift+d exec dmenu_run
+bindsym Mod4+Shift+m exec jgmenu_run
 
 # Screenshots
 bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"

@@ -93,4 +93,4 @@ darktable/darktablerc
 zsh/09-private.zsh
 ranger/tagged
 mpd/playlists
-
+*.txt
