@@ -9,11 +9,15 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 #  $ emerge -a app-shells/zsh-syntax-highlighting
 #
 
-if [[ ${SSH_CONNECTION} ]]; then
-    . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-    .  /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-fi
+case $(cat /etc/os-release | head -n 1 | cut -d \" -f 2) in
+    "Arch Linux")
+	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	;;
+    "Gentoo Linux")
+        .  /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+	;;
+esac
+
 
 # STYLES
 # Aliases and functions
