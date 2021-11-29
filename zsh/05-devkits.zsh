@@ -27,3 +27,33 @@ fi
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+#
+# Kubernetes
+#
+
+if command -v kubectl &> /dev/null
+then
+    if [[ $DEBUG > 0 ]]; then
+	echo "ZSH: Initialzed kubernetes module"
+    fi
+
+    source <(kubectl completion zsh)
+
+    # env
+    export KUBECTL_EXTERNAL_DIFF=colordiff
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+    # aliases
+    alias kctx=kubectx
+    alias kns=kubens
+fi
+
+# NixPKG
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    if [[ $DEBUG > 0 ]]; then
+	echo "ZSH: Initialzed NixPKGs"
+    fi
+    . $HOME/.nix-profile/etc/profile.d/nix.sh;
+fi

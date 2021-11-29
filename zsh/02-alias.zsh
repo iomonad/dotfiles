@@ -30,6 +30,8 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+# portage
+
 alias esystem_update='sudo emerge -aev world'
 alias efull_system_update='sudo emerge -auDN @world'
 alias esync="sudo emerge --sync"
@@ -122,10 +124,6 @@ compdef ggpush=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 compdef ggpnp=git
 
-#
-# Virtualbox
-#
+# tools & misc
 
-alias vb='VBoxManage'
-compdef vb="VBoxManage"
-alias vbl="VBoxManage list runningvms"
+alias cat=bat
