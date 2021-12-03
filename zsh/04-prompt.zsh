@@ -13,10 +13,19 @@ else
     SCREEN_NO=""
 fi
 
+# VCS
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b) '
+
+
 # Prompt
-PROMPT=' %B%F{red}» %f'
+PROMPT=' %B${vcs_info_msg_0_}%F{red}» %f'
 RPROMPT='%B%F{black}%~ %B%F{white}%#'
 setopt prompt_subst
+
+
 
 # Correction Prompt
 autoload -U colors && colors
