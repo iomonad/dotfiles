@@ -78,6 +78,7 @@ bindsym Mod4+Shift+w exec google-chrome-stable
 bindsym Mod4+Shift+Return exec xfce4-terminal
 bindsym Mod4+Shift+d exec dmenu_run
 bindsym Mod4+Shift+m exec jgmenu_run
+bindsym Mod4+Shift+f exec xscreensaver-command -lock
 
 # Screenshots
 bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
@@ -148,7 +149,7 @@ bar {
     workspace_buttons yes
     separator_symbol  yes
     tray_output       primary
-    output            primary
+    #output            primary
     # ========================= #
     colors {
         background           #040404
