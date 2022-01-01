@@ -1,0 +1,157 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# =======================================
+# Env
+# =======================================
+
+env:
+  TERM: xterm-256color
+
+# =======================================
+# Window
+# =======================================
+
+window:
+  title: Term
+  class:
+    instance: Term
+    general: Term
+
+# =======================================
+# Scrolling
+# =======================================
+
+scrolling:
+  history: 5000
+
+# =======================================
+# Fonts
+# =======================================
+
+font:
+  normal:
+    family: Classic Console Neue
+    style: Regular
+  bold:
+    family: Classic Console Neue
+    style: Bold
+  italic:
+    family: Classic Console Neue
+    style: Italic
+  bold_italic:
+    family: Classic Console Neue
+    style: Bold Italic
+
+  size: 10.0
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+   x: 0
+   y: 0
+
+# =======================================
+# Colorschemes
+# =======================================
+
+schemes:
+
+ Iomonad: &Iomonad
+     # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xf7f7f7'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xa54242'
+    green:   '0x8c9440'
+    yellow:  '0xde935f'
+    blue:    '0x81a2be'
+    magenta: '0x85678f'
+    cyan:    '0x5e8d87'
+    white:   '0xc5c8c6'
+
+  # Bright colors
+  bright:
+    black:   '0x373b41'
+    red:     '0xcc6666'
+    green:   '0xb5bd68'
+    yellow:  '0xf0c674'
+    blue:    '0x81a2be'
+    magenta: '0xb294bb'
+    cyan:    '0x8abeb7'
+    white:   '0xc5c8c6'
+
+# =======================================
+# Selection
+# =======================================
+
+colors: *Iomonad
+
+# =======================================
+# Misc
+# =======================================
+
+visual_bell:
+ animation: EaseOutExpo
+ duration: 1
+ color: '#ffffff'
+
+background_opacity: 1.0
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  # When set to `true`, selected text will
+  # be copied to the primary clipboard.
+  save_to_clipboard: false
+
+dynamic_title: true
+
+cursor:
+  #Cursor style
+  style: Block
+
+
+mouse:
+
+  hide_when_typing: true
+
+  hints:
+    launcher:
+     program: xdg-open
+     args: []
+
+mouse_bindings:
+ - { mouse: Middle, action: PasteSelection }
+
+# =======================================
+#  Keybinds
+# =======================================
+
+key_bindings:
+    # (Windows, Linux, and BSD only)
+  - { key: V,         mods: Control|Shift, action: Paste                       }
+  - { key: C,         mods: Control|Shift, action: Copy                        }
+  - { key: Insert,    mods: Shift,         action: PasteSelection              }
+  - { key: Key0,      mods: Control,       action: ResetFontSize               }
+  - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
+  - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+  - { key: F11,       mods: None,          action: ToggleFullscreen            }
+  - { key: Paste,     mods: None,          action: Paste                       }
+  - { key: Copy,      mods: None,          action: Copy                        }
+  - { key: L,         mods: Control,       action: ClearLogNotice              }
+  - { key: L,         mods: Control,       chars: "\x0c"                       }
+  - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
+  - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
+  - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
+  - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
+
+
+# Hot Reload
+
+live_config_reload: true

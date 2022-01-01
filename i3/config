@@ -75,7 +75,7 @@ bindsym Mod4+Shift+q exit
 bindsym Mod4+Shift+e exec emacs
 bindsym Mod4+Shift+s exec sudo pm-suspend
 bindsym Mod4+Shift+w exec google-chrome-stable
-bindsym Mod4+Shift+Return exec xfce4-terminal
+bindsym Mod4+Shift+Return exec alacritty
 bindsym Mod4+Shift+d exec dmenu_run
 bindsym Mod4+Shift+m exec jgmenu_run
 bindsym Mod4+Shift+f exec xscreensaver-command -lock
@@ -148,7 +148,7 @@ bar {
     position          top
     workspace_buttons yes
     separator_symbol  yes
-    tray_output       primary
+    #tray_output       primary
     #output            primary
     # ========================= #
     colors {
@@ -182,3 +182,4 @@ for_window [class="qemu-system-*"] floating toggle
 # ==============================================================================
 
 exec pasystray
+exec hsetroot -fill ~/dots/xres.d/wallpaper/chicago3.jpg

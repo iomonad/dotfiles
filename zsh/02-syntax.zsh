@@ -13,7 +13,7 @@ case $(cat /etc/os-release | head -n 1 | cut -d \" -f 2) in
     "Arch Linux")
 	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
-    "Gentoo Linux")
+    *)
         .  /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 	;;
 esac
