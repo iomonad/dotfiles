@@ -4,17 +4,31 @@
   src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/32.png" alt="Normalize Logo"
   width="60" height="60" align="right"></a>
 
-  > Dotfiles backup.
+  > Yet another dotfile backup. I sync here all my configurations that are shared between all my work setups.
 
-**Installation*
+### Usage & Installation
+
 ```bash
 git clone https://github.com/iomonad/dotfles ~/etc
 
 ln -s $HOME/etc/ssh $HOME/.ssh
 ```
-## What does it contains ?
+## Screenshots
 
-* Mainly a garbage with maybe useful things.
+### Desktop
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/fakebusy.png"/>
+</p> <br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/irc.png"/>
+</p> <br>
+
+### Laptop
+
+X220 / SSD Mod / Coreboot / IntelME Deblob / Gentoo ~amd64
+
 <br>
 <p align="center">
   <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/DIWXB.png"/>
@@ -23,6 +37,7 @@ ln -s $HOME/etc/ssh $HOME/.ssh
 <p align="center">
   <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/IMG_20180107_120412.jpg"/>
 </p>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/iomonad/dotfiles/master/.github/IMG_20180110_204938.jpg"/>
 </p>
