@@ -1,0 +1,98 @@
+#!/bin/bash
+
+PROG_NAME="hack.exe"
+
+if [ "$EUID" -ne 0 ]
+then
+    tput setaf 1;
+    echo "IF9faQp8LS0tfCAgICAKfFtfXXwgICAgCnw6Ojp8ICAgIAp8Ojo6fCAgICAKYFwgICBcICAgCiAgXF89X1wK" | base64 -d
+    echo ""
+    echo "Hey, only root can do that. Calling the police right now ..";
+    tput setaf sr0;
+    exit 1;
+fi
+
+# ============================================
+# Utils
+# ============================================
+
+function banner () {
+    local message=$1;
+    echo "CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAsLS4KICAgICAgICAgIF9fXywtLS0uX18gICAgICAgICAgLyd8YFwgICAgICAgICAgX18sLS0tLF9fXwogICAgICAgLC0nICAgIFxgICAgIGAtLl9fX18sLScgIHwgIGAtLl9fX18sLScgICAgLy8gICAgYC0uCiAgICAgLCcgICAgICAgIHwgICAgICAgICAgIH4nXCAgICAgL2B+ICAgICAgICAgICB8ICAgICAgICBgLgogICAgLyAgICAgIF9fXy8vICAgICAgICAgICAgICBgLiAsJyAgICAgICAgICAsICAsIFxfX18gICAgICBcCiAgIHwgICAgLC0nICAgYC0uX18gICBfICAgICAgICAgfCAgICAgICAgLCAgICBfXywtJyAgIGAtLiAgICB8CiAgIHwgICAvICAgICAgICAgIC9cXyAgYCAgIC4gICAgfCAgICAsICAgICAgXy9cICAgICAgICAgIFwgICB8CiAgIFwgIHwgICAgICAgICAgIFwgXGAtLl9fXyBcICAgfCAgIC8gX19fLC0nLyAvICAgICAgICAgICB8ICAvCiAgICBcICBcICAgICAgICAgICB8IGAuXyAgIGBcXCAgfCAgLy8nICAgXywnIHwgICAgICAgICAgIC8gIC8KICAgICBgLS5cICAgICAgICAgLycgIF8gYC0tLScnICwgLiBgYC0tLScgXyAgYFwgICAgICAgICAvLC0nCiAgICAgICAgYGAgICAgICAgLyAgICAgXCAgICAsPScvIFxgPS4gICAgLyAgICAgXCAgICAgICAnJwogICAgICAgICAgICAgICAgfF9fICAgL3xcXywtLS4sLS4tLSwtLS5fL3xcICAgX198CiAgICAgICAgICAgICAgICAvICBgLi8gIFxcYFwgfCAgfCAgfCAvLC8vJyBcLCcgIFwKICAgICAgICAgICAgICAgLyAgIC8gICAgIHx8LS0rLS18LS0rLS8tfCAgICAgXCAgIFwKICAgICAgICAgICAgICB8ICAgfCAgICAgLydcX1xfXCB8IC9fL18vYFwgICAgIHwgICB8CiAgICAgICAgICAgICAgIFwgICBcX18sIFxfICAgICBgficgICAgIF8vIC5fXy8gICAvCiAgICAgICAgICAgICAgICBgLS5fLC0nICAgYC0uX19fX19fXywtJyAgIGAtLl8sLScKCg==" | base64 -d
+    tput setaf 1;
+    figlet -f rowancap <<< $1
+    tput setaf sr0;
+}
+
+function info () {
+    tput setaf 32;
+    echo "[+|+] INFO - $1";
+    tput setaf sr0;
+}
+
+function warn () {
+    tput setaf 33;
+    echo "[/!\] INFO - $1";
+    tput setaf sr0;
+}
+
+function err () {
+    tput setaf 36;
+    echo "[!!!]  ERROR - $1";
+    tput setaf sr0;
+}
+
+# ============================================
+# Gentoo Utils
+# ============================================
+
+function portage_sync () {
+    info "updating portage tree"
+    emerge --sync --ask n || err "problem while syncing"
+}
+
+function portage_world_update () {
+    info "updating portage world"
+    emerge -auDN @world || err "problem while updating"
+    while true; do
+	read -p "Rebuild Nvidia Drivers (only if kernel update occurs) [y/n]? " yn
+	case $yn in
+            [Yy]* ) emerge @module-rebuild; break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+	esac
+    done
+}
+
+
+function portage_depclean () {
+    info "cleaning portage orphans"
+    emerge --depclean || err "problem while cleanup"
+}
+
+function emaint_cleanup () {
+    info "processing deep cleanup"
+    emaint all || err "problem while processing deep cleanup #1"
+    emaint cleanresume -f || err "problem while processing deep cleanup #1"
+
+}
+
+function portage_eclean () (
+    info "processing eclean"
+    (eclean-dist && eclean-pkg) || err "problem while processing eclean"
+)
+
+# ============================================
+# Entrypoint
+# ============================================
+
+function main () {
+    banner $PROG_NAME;
+    portage_sync
+    portage_world_update
+    portage_depclean
+    portage_eclean
+    emaint_cleanup
+}
+
+main

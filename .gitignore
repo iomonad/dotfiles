@@ -96,4 +96,9 @@ mpd/playlists
 *.txt
 themes/
 !themes/ahoka
-*.oldy
+*.old
+scripts/bat
+scripts/k9s
+scripts/bitwig-studio
+scripts/docker-compose
+scripts/mooltipass
