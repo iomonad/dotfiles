@@ -96,3 +96,4 @@ mpd/playlists
 *.txt
 themes/
 !themes/ahoka
+*.oldy
