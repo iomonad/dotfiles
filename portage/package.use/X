@@ -1,0 +1,3 @@
+x11-drivers/nvidia-drivers -tools
+#x11-libs/pango -introspection
+sys-auth/polkit elogind

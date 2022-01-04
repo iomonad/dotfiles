@@ -1,0 +1,4 @@
+cross-aarch64-unknown-linux-gnu/binutils -multilib
+cross-aarch64-unknown-linux-gnu/linux-headers -selinux -multilib
+cross-aarch64-unknown-linux-gnu/glibc -selinux -libraries -multilib
+cross-aarch64-unknown-linux-gnu/gcc -vtv -selinux -boundschecking -d -gcj -gtk -libffi -mudflap -objc -objc++ -objc-gc -multilib
