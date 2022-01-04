@@ -146,8 +146,6 @@ key_bindings:
   - { key: Copy,      mods: None,          action: Copy                        }
   - { key: L,         mods: Control,       action: ClearLogNotice              }
   - { key: L,         mods: Control,       chars: "\x0c"                       }
-  - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
-  - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
 
