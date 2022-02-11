@@ -1,32 +1,24 @@
-#
+# -*- mode: shell-script;-*-
 # file: ~/.xinitrc
-#
-# X Server configs & hacks
-#
 
-#
-# X related
-#
+# ======================
+#      X related
+# ======================
 
 xset +fp ~/.fonts &
 xset fp rehash &
-xset r rate 220 60 & 
+xset r rate 220 60 &
 xset +dpms &
 xset dpms 0 0 300 &
 xset s noblank &
-xset b off # Disable bell
+xset b off
 stty -ixon &
 
-#
-# Input Related
-#
+# =====================
+#    Input Related
+# =====================
 
 unclutter -idle 2 &
-
-# ================
-# Extra Software
-# ===============
-
 redshift -O 3100
 pulseaudio --start -D &
 udiskie -N -s &

@@ -82,6 +82,8 @@ then
     alias kdel='kubectl delete'
     alias kdelf='kubectl delete -f'
 
+    alias kgj='kubectl get jobs'
+
     # Pod management.
     alias kgp='kubectl get pods'
     alias kgpa='kubectl get pods --all-namespaces'
@@ -232,3 +234,10 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     fi
     . $HOME/.nix-profile/etc/profile.d/nix.sh;
 fi
+
+# Perl
+
+export PATH="$PATH:~/.perl/bin"
+export PERL5LIB="~/.perl/lib/perl5"
+export PERL_MB_OPT="--install_base '$HOME/.perl'"
+export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl"

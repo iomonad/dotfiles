@@ -66,7 +66,7 @@ schemes:
 
   # Normal colors
   normal:
-    black:   '0x000000'
+    black:   '0x050505'
     red:     '0xa54242'
     green:   '0x8c9440'
     yellow:  '0xde935f'
@@ -84,7 +84,7 @@ schemes:
     blue:    '0x81a2be'
     magenta: '0xb294bb'
     cyan:    '0x8abeb7'
-    white:   '0xc5c8c6'
+    white:   '0xf7f7f7'
 
 # =======================================
 # Selection

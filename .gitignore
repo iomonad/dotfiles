@@ -102,3 +102,6 @@ scripts/k9s
 scripts/bitwig-studio
 scripts/docker-compose
 scripts/mooltipass
+zsh/99-private.zsh
+/scripts/csview
+/scripts/dog

@@ -89,6 +89,17 @@ bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xcl
 #                              Namespaces
 # ==============================================================================
 
+workspace 1:main output DP-0
+workspace 2:web output DP-2
+workspace 3:im output DP-2
+workspace 4:code output DP-0
+workspace 5:media output DP-0
+workspace 6:share output DP-0
+workspace 7:gis output DP-0
+workspace 8:virt output DP-2
+workspace 9:sec output DP-0
+workspace 10:w00t output DP-0
+
 bindsym Mod4+1 workspace 1:main
 bindsym Mod4+2 workspace 2:web
 bindsym Mod4+3 workspace 3:im
@@ -98,7 +109,7 @@ bindsym Mod4+6 workspace 6:share
 bindsym Mod4+7 workspace 7:gis
 bindsym Mod4+8 workspace 8:virt
 bindsym Mod4+9 workspace 9:sec
-bindsym Mod4+0 workspace 10:hell
+bindsym Mod4+0 workspace 10:w00t
 
 bindsym Mod4+Shift+1 move workspace 1:main
 bindsym Mod4+Shift+2 move workspace 2:web
@@ -109,7 +120,8 @@ bindsym Mod4+Shift+6 move workspace 6:share
 bindsym Mod4+Shift+7 move workspace 7:gis
 bindsym Mod4+Shift+8 move workspace 8:virt
 bindsym Mod4+Shift+9 move workspace 9:sec
-bindsym Mod4+Shift+0 move workspace 10:hell
+bindsym Mod4+Shift+0 move workspace 10:w00t
+
 
 # ==============================================================================
 #                                Resize
@@ -168,14 +180,28 @@ bar {
 # ==============================================================================
 
 
-assign [class="Xfce4-*"]   1:main
-assign [class="*Chrome*"]  2:web
-assign [class="*emacs*"]   4:code
-assign [class="Emacs*"]    4:code
-assign [class="Renoise*"]  5:media
-assign [class="Mpv*"]      5:media
+assign [class="Term*"]             1:main
+assign [class="google-chrome"]     2:web
+assign [class="*telegram*"]        3:im
+assign [class="Emacs*"]            4:code
+assign [class="Renoise*"]          5:media
+assign [class="Mpv*"]              5:media
 
 for_window [class="qemu-system-*"] floating toggle
+for_window [class="*QjackCtl"]     floating toggle
+
+# ==============================================================================
+#                               Scratchpad
+# ==============================================================================
+
+# Make the currently focused window a scratchpad
+bindsym Mod4+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym Mod4+minus scratchpad show
+
+# Show the sup-mail scratchpad window, if any.
+#bindsym mod4+s [title="^Sup ::"] scratchpad show
 
 # ==============================================================================
 #                                Autostart
@@ -183,3 +209,4 @@ for_window [class="qemu-system-*"] floating toggle
 
 exec pasystray
 exec hsetroot -fill ~/dots/xres.d/wallpaper/chicago3.jpg
+exec $HOME/.screenlayout/home.sh
