@@ -22,7 +22,7 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}(%b) '
 
 # Prompt
 PROMPT=' %B${vcs_info_msg_0_}%F{red}» %f'
-RPROMPT='%B%F{black}%~ %B%F{white}%#'
+RPROMPT='%B%F{dark_grey}%~ %B%F{white}%#'
 setopt prompt_subst
 
 
