@@ -66,5 +66,20 @@
 # required by media-gfx/raw-thumbnailer-0.2.1-r1::gentoo
 # required by media-gfx/raw-thumbnailer (argument)
 >=media-libs/libopenraw-0.1.3 gtk
->=net-wireless/gnuradio-3.8.5.0 qt5 jack modtool grc
->=net-wireless/gr-osmosdr-0.2.3 hackrf python 
+# required by net-wireless/gnuradio-3.8.5.0::gentoo[python_single_target_python3_9]
+# required by gnuradio (argument)
+>=dev-libs/boost-1.78.0-r2 python
+# required by dev-python/scipy-1.7.3::gentoo[-test]
+# required by net-wireless/gnuradio-3.8.5.0::gentoo[-fec,-trellis,filter]
+# required by gnuradio (argument)
+>=dev-python/numpy-1.22.2 lapack
+# required by dev-python/matplotlib-3.5.1::gentoo[-test]
+# required by net-wireless/gnuradio-3.8.5.0::gentoo[utils,python_single_target_python3_9]
+# required by gnuradio (argument)
+>=virtual/imagemagick-tools-0 tiff jpeg
+# required by net-wireless/gnuradio-3.8.5.0::gentoo[python_single_target_python3_9,qt5]
+# required by gnuradio (argument)
+>=dev-python/PyQt5-5.15.4-r1 opengl
+# required by media-sound/cadence-0.9.1-r2::gentoo[python_single_target_python3_9]
+# required by cadence (argument)
+>=dev-python/PyQt5-5.15.4-r1 svg dbus

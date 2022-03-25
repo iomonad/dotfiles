@@ -3,9 +3,8 @@
 
 alias die='kill -9 $$'
 
-alias df='df -h | grep sd |\
-  sed -e "s_/dev/sda[1-9]_\x1b[34m&\x1b[0m_" |\
-  sed -e "s_/dev/sd[b-z][1-9]_\x1b[33m&\x1b[0m_" |\
+alias df='df -h | grep dev \
+  sed -e "s_ /dev/root_\x1b[34m&\x1b[0m_" |\
   sed -e "s_[,0-9]*[MG]_\x1b[36m&\x1b[0m_" |\
   sed -e "s_[0-9]*%_\x1b[32m&\x1b[0m_" |\
   sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\

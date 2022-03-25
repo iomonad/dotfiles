@@ -19,8 +19,9 @@ stty -ixon &
 # =====================
 
 unclutter -idle 2 &
-redshift -O 3100
 pulseaudio --start -D &
+redshift -O 3100
 udiskie -N -s &
 
-exec i3
+#cadence-session-start --system-start
+exec dbus-run-session i3

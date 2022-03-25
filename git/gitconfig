@@ -129,3 +129,5 @@
   gud = !git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\"
   last-tag = describe --tags
   last-taga = describe --abbrev=0
+[init]
+	defaultBranch = master

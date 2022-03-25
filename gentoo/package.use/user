@@ -1,10 +1,19 @@
 gnome-base/gvfs udisks
 sys-auth/elogind policykit
-app-editors/emacs threads xft gui gsettings
+app-editors/emacs threads xft gui gsettings libxml2 imagemagick jpeg xwidgets png cairo
 app-portage/layman git sync-plugin-portage
 #app-text/ghostscript-gpl -cups
 www-client/w3m imlib
 app-emulation/qemu -doc
 sys-fs/android-file-transfer-linux fuse
 gnome-base/gvfs mtp nfs
-media-gfx/imagemagick jpeg png
+media-gfx/imagemagick jpeg png tiff raw
+net-misc/kafkacat -avro
+app-misc/jq -oniguruma
+www-client/w3m X imlib jpeg
+media-sound/pulseaudio jack
+sys-apps/flatpak gtk X introspection policykit
+app-emulation/bochs X sdl debugger
+dev-python/PyQt5 gui widgets
+media-sound/jack2 dbus
+media-sound/cadence opengl pulseaudio
