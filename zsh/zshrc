@@ -14,3 +14,5 @@ for r in $HOME/.zsh/*.zsh; do
 	builtin source $r
     fi
 done
+
+export CLOUDSDK_PYTHON=/usr/bin/python2
