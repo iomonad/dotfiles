@@ -6,7 +6,7 @@ export SHELL='/bin/zsh'
 export EDITOR='mg'
 export ALTERNATE_EDITOR="emacs"
 export VIEW='w3m'
-export PAGER='less'
+export PAGER='colorless'
 
 # Locales
 export LC_ALL=en_US.UTF-8
