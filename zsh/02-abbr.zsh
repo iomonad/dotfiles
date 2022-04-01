@@ -31,3 +31,6 @@ no-magic-abbrev-expand() {
 
 zle -N magic-abbrev-expand
 zle -N no-magic-abbrev-expand
+
+# Bind space to abbrev trigger
+bindkey " " magic-abbrev-expand

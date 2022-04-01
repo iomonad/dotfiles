@@ -6,7 +6,14 @@ export SHELL='/bin/zsh'
 export EDITOR='mg'
 export ALTERNATE_EDITOR="emacs"
 export VIEW='w3m'
-export PAGER='colorless'
+export PAGER='bat -p'
+export DIFFTOOL="difft"
+
+if [ -n "$DISPLAY" ]; then
+    export BROWSER=google-chrome-stable
+else
+    export BROWSER=w3m
+fi
 
 # Locales
 export LC_ALL=en_US.UTF-8
