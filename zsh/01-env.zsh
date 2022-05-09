@@ -6,7 +6,7 @@ export SHELL='/bin/zsh'
 export EDITOR='mg'
 export ALTERNATE_EDITOR="emacs"
 export VIEW='w3m'
-export PAGER='bat -p'
+export PAGER='less'
 export DIFFTOOL="difft"
 
 if [ -n "$DISPLAY" ]; then
