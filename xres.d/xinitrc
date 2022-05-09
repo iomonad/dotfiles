@@ -19,9 +19,12 @@ stty -ixon &
 # =====================
 
 unclutter -idle 2 &
-pulseaudio --start -D &
 redshift -O 3100
 udiskie -N -s &
+exec ~/bin/init-audio.sh
 
-#cadence-session-start --system-start
+# =====================
+#    Windows Manager
+# =====================
+
 exec dbus-run-session i3
