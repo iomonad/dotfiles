@@ -96,3 +96,7 @@ function normalize_analog_scan() {
 	((count++))
     done
 }
+
+function ansi-cat () {
+    iconv -f CP437 $@
+}
