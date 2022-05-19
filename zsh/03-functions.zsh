@@ -100,3 +100,10 @@ function normalize_analog_scan() {
 function ansi-cat () {
     iconv -f CP437 $@
 }
+
+function recursive-replace () {
+    local search=$1
+    local replace=$2
+
+    grep -rl $search . | xargs sed -i s/${search}/${replace}/g
+}
