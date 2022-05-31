@@ -107,3 +107,4 @@ zsh/99-private.zsh
 /scripts/dog
 /scripts/flatpak-pip-generator
 /scripts/rcp
+/scripts/matrix

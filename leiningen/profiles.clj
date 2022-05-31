@@ -2,6 +2,7 @@
                   [lein-ancient "1.0.0-RC3"]
                   [lein-marginalia "0.9.1"]
                   [io.aviso/pretty "1.1.1"]
-                  [lein-cljfmt "0.8.0"]]
+                  [lein-cljfmt "0.8.0"]
+		  [lein-cloverage "1.2.2"]]
         :dependencies [[io.aviso/pretty "1.1.1"]]
         :middleware [io.aviso.lein-pretty/inject]}}
