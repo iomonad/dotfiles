@@ -28,6 +28,8 @@ setopt HIST_VERIFY
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY_TIME
 setopt autocd auto_pushd pushdignoredups
 
 # Remove Features
@@ -37,6 +39,7 @@ unsetopt beep
 export HISTSIZE=10000
 export SAVEHIST=1000
 export HISTFILE=$HOME/.zsh/history
+setopt appendhistory
 
 # spectrum
 # A script to make using 256 colors in zsh less painful.
