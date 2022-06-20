@@ -200,8 +200,8 @@ bindsym Mod4+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym Mod4+minus scratchpad show
 
-# Show the sup-mail scratchpad window, if any.
-#bindsym mod4+s [title="^Sup ::"] scratchpad show
+# select throught scratch
+bindsym mod4+s+minus [title="^Emacs ::"] scratchpad show
 
 # ==============================================================================
 #                                Autostart
