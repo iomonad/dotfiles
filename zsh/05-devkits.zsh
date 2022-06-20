@@ -44,12 +44,27 @@ if [ -f '/home/iomonad/dev/sdks/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Only on AUR package
+if [ -f "/etc/arch-release" ]; then
+    export CLOUDSDK_PYTHON=/usr/bin/python2
+fi
+
+#
+# Docker
+#
+
+alias d=docker
+
+alias dc=docker-compose
+alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
+alias dcd="docker-compose down"
+
 #
 # Kubernetes
 #
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 
 if command -v kubectl &> /dev/null
 then
@@ -62,6 +77,7 @@ then
     # env
     export KUBECTL_EXTERNAL_DIFF=colordiff
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+    export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
     # aliases
     alias k=kubectl
