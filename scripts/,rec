@@ -1,0 +1,20 @@
+if [ -z "$1" ]
+ then
+    echo "rec - Simple screen recording"
+    echo "Usage: rec <name>"
+    exit 1
+fi
+
+DATE=`date +%Y-%m-%d-%H-%M-%S`
+
+notify-send "[+] Starting recording screen with filename $1.mp4 <ctrl-c to end>"
+ffmpeg -r 30 -s 1366x768 -f x11grab -i :0.0 -vcodec msmpeg4v2 -qscale 1 $1.avi &> /dev/null
+
+notify-send "[+] Starting encoding ..."
+ffmpeg -i $1.avi -c:v libx264 -crf 19 -preset slow -c:a libfaac -b:a 192k -ac 2 $1.mp4 &> /dev/null
+
+notify-send "[+] Cleaning up ..."
+rm $1.avi &> /dev/null
+mv $1.mp4 $HOME/media/rice/cast/$1-$DATE.mp4
+
+notify-send "[+] Done !"

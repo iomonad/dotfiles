@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-wmname LG3D # FIX ERROS !
-bash /opt/android-studio/bin/studio.sh&

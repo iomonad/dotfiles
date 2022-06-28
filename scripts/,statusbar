@@ -1,0 +1,32 @@
+#!/bin/bash
+
+focused="%{U#FF277333+u}----------%{U-}"
+active="%{U#FFbbbbbb+u}----------%{U-}"
+normal="%{U#FF1b1b1b+u}----------%{U-}"
+
+desktops() {
+    desktops=""
+    for e in $(echo $1 | cut -d':' -f2-6 | tr ':' '\n')
+    do
+        if [ "${e:0:1}" == "O" ]; then
+            desktops="$desktops $focused"
+        elif [ "${e:0:1}" == "F" ]; then
+            desktops="$desktops $focused"
+        elif [ "${e:0:1}" == "o" ]; then
+            desktops="$desktops $active"
+        else
+            desktops="$desktops $normal"
+        fi
+    done
+    echo $desktops
+}
+
+bspc control --subscribe | \
+while read -r line ; do
+
+    # skip messages for other monitors
+    [ $( echo $line | grep "^WM$MONITOR" ) ] || continue
+
+    output=$(desktops $line)
+    echo "%{c}$output%{r}"
+done | bare -bp -g "1366x18" -u 6 -F "#00000000" -B "#00000000"

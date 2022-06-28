@@ -14,5 +14,3 @@ while(<$fh>) {
 
 printf("\033[38;5;178m%-12s\033[0m \033[1m%s\033[0m\n", $alias{$_}, $_)
   for(sort({$alias{$a} cmp $alias{$b}} keys(%alias)));
-
-
