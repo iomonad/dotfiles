@@ -69,7 +69,7 @@ alias dcd="docker-compose down"
 #
 # Kubernetes
 #
-
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 if command -v kubectl &> /dev/null
