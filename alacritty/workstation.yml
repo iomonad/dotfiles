@@ -13,6 +13,7 @@ env:
 
 window:
   title: Term
+  opacity: 1.0
   class:
     instance: Term
     general: Term
@@ -101,8 +102,6 @@ visual_bell:
  duration: 1
  color: '#ffffff'
 
-background_opacity: 1.0
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   # When set to `true`, selected text will
@@ -114,7 +113,6 @@ dynamic_title: true
 cursor:
   #Cursor style
   style: Block
-
 
 mouse:
 

@@ -108,3 +108,4 @@ zsh/99-private.zsh
 /scripts/flatpak-pip-generator
 /scripts/rcp
 /scripts/matrix
+/scripts/capstan
