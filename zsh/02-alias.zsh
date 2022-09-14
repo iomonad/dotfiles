@@ -126,3 +126,6 @@ compdef ggpnp=git
 # tools & misc
 
 alias cat=bat
+
+alias c=xclip
+alias v="xclip -o"
