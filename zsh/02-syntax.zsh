@@ -9,7 +9,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 #  $ emerge -a app-shells/zsh-syntax-highlighting
 #
 
-case $(cat /etc/os-release | head -n 1 | cut -d \" -f 2) in
+case $(/bin/cat /etc/os-release | head -n 1 | cut -d \" -f 2) in
     "Arch Linux")
 	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
