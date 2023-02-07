@@ -59,6 +59,15 @@ fi
 # Docker
 #
 
+# Alias docker top podman if exists
+if command -v podman &> /dev/null
+then
+    if [[ $DEBUG > 0 ]]; then
+	echo "ZSH: using podman as docker client"
+    fi
+    alias docker=podman
+fi
+
 alias d=docker
 
 alias dc=docker-compose
