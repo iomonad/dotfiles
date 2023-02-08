@@ -56,7 +56,7 @@ bindsym Mod4+f fullscreen
 
 bindsym Mod4+s layout stacking
 bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout default
+bindsym Mod4+d layout default
 
 bindsym Mod4+Shift+space floating toggle
 
@@ -84,6 +84,7 @@ bindsym Mod4+Shift+f exec xscreensaver-command -lock
 bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
+bindsym Mod4+Shift+p exec flameshot gui
 
 # ==============================================================================
 #                              Namespaces

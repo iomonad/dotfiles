@@ -65,15 +65,13 @@ then
     if [[ $DEBUG > 0 ]]; then
 	echo "ZSH: using podman as docker client"
     fi
+    export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
     alias docker=podman
 fi
 
 alias d=docker
-
-alias dc=docker-compose
-alias dcu="docker-compose up"
-alias dcud="docker-compose up -d"
-alias dcd="docker-compose down"
+alias p=podman
+alias pc=podman-compose
 
 #
 # Kubernetes
