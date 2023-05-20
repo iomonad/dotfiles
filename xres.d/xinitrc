@@ -21,11 +21,9 @@ stty -ixon &
 unclutter -idle 2 &
 redshift -O 3100
 udiskie -N -s &
-#exec ~/bin/init-audio.sh
 
 # =====================
 #    Windows Manager
 # =====================
 
-exec pulseaudio -D&
-exec dbus-run-session i3
+exec dbus-launch --exit-with-session i3
