@@ -73,18 +73,17 @@ bindsym Mod4+Shift+q exit
 
 
 bindsym Mod4+Shift+e exec emacs
-bindsym Mod4+Shift+s exec sudo pm-suspend
+bindsym Mod4+Shift+s exec flatpak run org.flameshot.Flameshot gui || flameshot gui
 bindsym Mod4+Shift+w exec google-chrome-stable
 bindsym Mod4+Shift+Return exec alacritty
 bindsym Mod4+Shift+d exec dmenu_run
 bindsym Mod4+Shift+m exec jgmenu_run
 bindsym Mod4+Shift+f exec xscreensaver-command -lock
+bindsym Mod4+Shift+o exec flatpak run md.obsidian.Obsidian
 
 # Screenshots
 bindsym Print --release exec "scrot -s -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print exec "scrot -q 70 /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
-
-bindsym Mod4+Shift+p exec flameshot gui
 
 # ==============================================================================
 #                              Namespaces
@@ -99,7 +98,7 @@ workspace 6:share output DP-0
 workspace 7:gis output DP-0
 workspace 8:virt output DP-2
 workspace 9:sec output DP-0
-workspace 10:w00t output DP-0
+workspace 10:roam output DP-0
 
 bindsym Mod4+1 workspace 1:main
 bindsym Mod4+2 workspace 2:web
@@ -110,7 +109,7 @@ bindsym Mod4+6 workspace 6:share
 bindsym Mod4+7 workspace 7:gis
 bindsym Mod4+8 workspace 8:virt
 bindsym Mod4+9 workspace 9:sec
-bindsym Mod4+0 workspace 10:w00t
+bindsym Mod4+0 workspace 10:roam
 
 bindsym Mod4+Shift+1 move workspace 1:main
 bindsym Mod4+Shift+2 move workspace 2:web
@@ -121,7 +120,7 @@ bindsym Mod4+Shift+6 move workspace 6:share
 bindsym Mod4+Shift+7 move workspace 7:gis
 bindsym Mod4+Shift+8 move workspace 8:virt
 bindsym Mod4+Shift+9 move workspace 9:sec
-bindsym Mod4+Shift+0 move workspace 10:w00t
+bindsym Mod4+Shift+0 move workspace 10:roam
 
 
 # ==============================================================================
@@ -181,12 +180,14 @@ bar {
 # ==============================================================================
 
 
-assign [class="Term*"]             1:main
-assign [class="google-chrome"]     2:web
-assign [class="*telegram*"]        3:im
-assign [class="Emacs*"]            4:code
-assign [class="Renoise*"]          5:media
-assign [class="Mpv*"]              5:media
+assign [class="Term*"]              1:main
+assign [class="google-chrome"]      2:web
+assign [class="*telegram-desktop*"] 3:im
+assign [class="*Signal*"]           3:im
+assign [class="Emacs*"]             4:code
+assign [class="Renoise*"]           5:media
+assign [class="Mpv*"]               5:media
+assign [class="*obsidian*"]         10:roam
 
 for_window [class="qemu-system-*"] floating toggle
 for_window [class="*QjackCtl"]     floating toggle
