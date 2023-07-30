@@ -208,8 +208,7 @@ bindsym mod4+s+minus [title="^Emacs ::"] scratchpad show
 #                                Autostart
 # ==============================================================================
 
-exec gentoo-pipewire-launcher
-exec pulseaudio -D
-exec pasystray
+exec gentoo-pipewire-launcher &
+exec pasystray &
 exec hsetroot -fill ~/dots/xres.d/wallpaper/chicago3.jpg
 exec $HOME/.screenlayout/home.sh
