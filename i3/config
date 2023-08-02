@@ -74,7 +74,8 @@ bindsym Mod4+Shift+q exit
 
 bindsym Mod4+Shift+e exec emacs
 bindsym Mod4+Shift+s exec flatpak run org.flameshot.Flameshot gui || flameshot gui
-bindsym Mod4+Shift+w exec google-chrome-stable
+bindsym Mod4+Shift+v exec google-chrome-stable
+bindsym Mod4+Shift+w exec firefox-bin
 bindsym Mod4+Shift+Return exec alacritty
 bindsym Mod4+Shift+d exec dmenu_run
 bindsym Mod4+Shift+m exec jgmenu_run
