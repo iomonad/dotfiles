@@ -190,7 +190,7 @@ assign [class="*Signal*"]           3:im
 assign [class="Emacs*"]             4:code
 assign [class="Renoise*"]           5:media
 assign [class="Mpv*"]               5:media
-assign [class="*obsidian*"]         10:roam
+assign [class="obsidian"]           10:roam
 
 for_window [class="qemu-system-*"] floating toggle
 for_window [class="*QjackCtl"]     floating toggle
