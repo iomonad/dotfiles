@@ -5,6 +5,7 @@
                   [lein-cljfmt "0.8.0"]
 		  [lein-cloverage "1.2.2"]
                   [venantius/yagni "0.1.7"]
-                  [lein-marginalia "0.9.1"]]
+                  [lein-marginalia "0.9.1"]
+                  [nvd-clojure "3.2.0"]]
         :dependencies [[io.aviso/pretty "1.1.1"]]
         :middleware [io.aviso.lein-pretty/inject]}}

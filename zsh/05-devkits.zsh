@@ -53,24 +53,6 @@ if [ -f '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc' ]; then . '
 export CLOUDSDK_PYTHON=/usr/bin/python3.11
 
 #
-# Docker
-#
-
-# Alias docker top podman if exists
-if command -v podman &> /dev/null
-then
-    if [[ $DEBUG > 0 ]]; then
-	echo "ZSH: using podman as docker client"
-    fi
-    export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
-    alias docker=podman
-fi
-
-alias d=docker
-alias p=podman
-alias pc=podman-compose
-
-#
 # Kubernetes
 #
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
