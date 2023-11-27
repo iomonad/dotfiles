@@ -186,6 +186,7 @@ assign [class="google-chrome"]      2:web
 assign [class="firefox"]            2:web
 assign [class="*Navigator*"]        2:web
 assign [class="*telegram-desktop*"] 3:im
+assign [class="*TelegramDesktop*"]  3:im
 assign [class="*Signal*"]           3:im
 assign [class="Emacs*"]             4:code
 assign [class="Renoise*"]           5:media

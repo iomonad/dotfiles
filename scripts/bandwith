@@ -22,4 +22,4 @@ TBPS=`expr $T2 - $T1`
 RBPS=`expr $R2 - $R1`
 TKBPS=`expr $TBPS / 1024`
 RKBPS=`expr $RBPS / 1024`
-echo "TX $TKBPS kB/s ~ RX $RKBPS kB/s"
+echo "TX $TKBPS kB/s RX $RKBPS kB/s"

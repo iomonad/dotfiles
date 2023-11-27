@@ -109,3 +109,4 @@ zsh/99-private.zsh
 /scripts/rcp
 /scripts/matrix
 /scripts/capstan
+/scripts/arduino-cli

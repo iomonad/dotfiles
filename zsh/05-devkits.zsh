@@ -24,6 +24,9 @@ fi
 #
 # SDKMAN
 #
+if [[ $DEBUG > 0 ]]; then
+    echo "ZSH: initializing SDKMAN"
+fi
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -44,9 +47,12 @@ export NVM_DIR="$HOME/.nvm"
 # Google SDK
 #
 
+if [[ $DEBUG > 0 ]]; then
+    echo "ZSH: initializing gcloud sdk"
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc'; fi
 
@@ -79,10 +85,12 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if command -v kubectl &> /dev/null
 then
     if [[ $DEBUG > 0 ]]; then
-	echo "ZSH: Initialzed kubernetes module"
+	echo "ZSH: Initializing Kubernetes module"
     fi
 
-    source <(kubectl completion zsh)
+    # Moved to completion dir
+    # NOTE: To update often
+    # source <(kubectl completion zsh)
 
     # env
     export KUBECTL_EXTERNAL_DIFF=colordiff

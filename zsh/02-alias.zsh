@@ -3,13 +3,6 @@
 
 alias die='kill -9 $$'
 
-alias df='df -h | grep dev \
-  sed -e "s_ /dev/root_\x1b[34m&\x1b[0m_" |\
-  sed -e "s_[,0-9]*[MG]_\x1b[36m&\x1b[0m_" |\
-  sed -e "s_[0-9]*%_\x1b[32m&\x1b[0m_" |\
-  sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\
-  sed -e "s_/mnt/[-_A-Za-z0-9]*_\x1b[34;1m&\x1b[0m_"'
-
 alias t='tmux'
 alias ta='tmux attach -t'
 alias cp='cp -r '
