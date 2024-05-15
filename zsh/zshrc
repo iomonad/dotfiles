@@ -14,3 +14,14 @@ for r in $HOME/.zsh/*.zsh; do
 	builtin source $r
     fi
 done
+
+for r in $HOME/.zsh/vendor/*.zsh; do
+    if [[ ${+DEBUG} > 0 ]]; then
+	echo "ZSH: Vendors Sourcing $r"
+    fi
+    if $COMPILE = true ; then
+        builtin zcompile -ca -M $r
+    else
+	builtin source $r
+    fi
+done

@@ -19,13 +19,10 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{yellow}(%b) '
 
-
 # Prompt
-PROMPT=' %B${vcs_info_msg_0_}%F{red}» %f'
+PROMPT=' %B$(kube_ps1)%F %B${vcs_info_msg_0_}%F{red}» %f'
 RPROMPT='%B%F{dark_grey}%~ %B%F{white}%#'
 setopt prompt_subst
-
-
 
 # Correction Prompt
 autoload -U colors && colors
