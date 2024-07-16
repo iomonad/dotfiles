@@ -77,7 +77,7 @@ bindsym Mod4+Shift+s exec flatpak run org.flameshot.Flameshot gui || flameshot g
 bindsym Mod4+Shift+v exec google-chrome-stable
 bindsym Mod4+Shift+w exec firefox-bin -P defaut
 bindsym Mod4+Shift+t exec firefox-bin -P Work
-bindsym Mod4+Shift+Return exec alacritty
+bindsym Mod4+Shift+Return exec kitty
 bindsym Mod4+Shift+d exec dmenu_run
 bindsym Mod4+Shift+m exec jgmenu_run
 bindsym Mod4+Shift+f exec xscreensaver-command -lock
