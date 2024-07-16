@@ -3,6 +3,8 @@
 #
 # FZF
 
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# KUBE PS1
+
+KUBE_PS1_SYMBOL_ENABLE=false
