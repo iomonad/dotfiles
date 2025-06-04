@@ -261,3 +261,9 @@ export PATH="$PATH:~/.perl/bin"
 export PERL5LIB="~/.perl/lib/perl5"
 export PERL_MB_OPT="--install_base '$HOME/.perl'"
 export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl"
+
+# android
+
+export ANDROID_HOME=$HOME/dev/sdks/android
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools

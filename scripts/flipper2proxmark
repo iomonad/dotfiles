@@ -1,0 +1,14 @@
+#!/bin/zsh
+# Convert Flipper's NFC file to Proxmark3 compatible file
+set -eu
+
+if ! [ $# -eq 2 ]
+  then
+      echo "usage: $0 <input.nfc> <output.bin>"
+      exit 1
+fi
+
+local F=$1
+local O=$2
+
+grep -E '^Block [0-9]{1,2}:' $F | sed -e 's/ //g' -e 's/.*://' | head -c -1 | xxd -ps -c16 -u -r > $F.bin
