@@ -56,8 +56,6 @@ if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/pa
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/iomonad/dev/sdks/google-cloud-sdk/completion.zsh.inc'; fi
 
-export CLOUDSDK_PYTHON=/usr/bin/python3.11
-
 #
 # Kubernetes
 #
